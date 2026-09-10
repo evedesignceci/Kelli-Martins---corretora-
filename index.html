@@ -254,29 +254,66 @@
     </div>
   </section>
 
-  <!-- IMÓVEIS EM DESTAQUE (SANTOS - SP) -->
+  <!-- IMÓVEIS EM DESTAQUE (SANTOS - SP) COM BARRA DE PESQUISA & FILTRO -->
   <section id="imoveis" class="py-20 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6">
       
-      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
         <div>
           <span class="text-xs font-bold uppercase tracking-widest text-km-laranja">Portfólio Selecionado</span>
           <h2 class="font-serif text-3xl sm:text-4xl font-bold text-km-petroleo">Imóveis em Santos - SP</h2>
           <p class="text-sm text-gray-600 mt-1">Oportunidades exclusivas a apenas 50 metros da Praia do José Menino.</p>
         </div>
         
+        <!-- Botões de Categoria -->
         <div class="flex flex-wrap gap-2">
-          <button class="px-4 py-1.5 rounded-full text-xs font-bold bg-km-petroleo text-white shadow">Todos</button>
-          <button class="px-4 py-1.5 rounded-full text-xs font-bold bg-km-claro text-km-petroleo hover:bg-km-ceu transition">Venda</button>
-          <button class="px-4 py-1.5 rounded-full text-xs font-bold bg-km-claro text-km-petroleo hover:bg-km-ceu transition">Aluguel Anual</button>
-          <button class="px-4 py-1.5 rounded-full text-xs font-bold bg-km-claro text-km-petroleo hover:bg-km-ceu transition">Temporada</button>
+          <button onclick="filtrarCategoria('todos', this)" class="btn-filtro px-4 py-1.5 rounded-full text-xs font-bold bg-km-petroleo text-white shadow">Todos</button>
+          <button onclick="filtrarCategoria('venda', this)" class="btn-filtro px-4 py-1.5 rounded-full text-xs font-bold bg-km-claro text-km-petroleo hover:bg-km-ceu transition">Venda</button>
+          <button onclick="filtrarCategoria('aluguel', this)" class="btn-filtro px-4 py-1.5 rounded-full text-xs font-bold bg-km-claro text-km-petroleo hover:bg-km-ceu transition">Aluguel Anual</button>
+          <button onclick="filtrarCategoria('temporada', this)" class="btn-filtro px-4 py-1.5 rounded-full text-xs font-bold bg-km-claro text-km-petroleo hover:bg-km-ceu transition">Temporada</button>
         </div>
       </div>
 
-      <div class="grid md:grid-cols-3 gap-8">
+      <!-- BARRA DE PESQUISA E FILTROS INTERATIVOS -->
+      <div class="bg-km-claro p-4 sm:p-5 rounded-3xl border border-km-ceu/80 shadow-sm mb-10">
+        <div class="grid grid-cols-1 sm:grid-cols-12 gap-3 items-center">
+          
+          <!-- Campo de Digitação -->
+          <div class="sm:col-span-8 relative">
+            <i class="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-km-petroleo/50"></i>
+            <input 
+              type="text" 
+              id="campoBusca" 
+              oninput="filtrarImoveis()" 
+              placeholder="Pesquise por tipo, bairro ou detalhe (ex: duplex, 1 dormitório, varanda, 50 metros, piscina)..." 
+              class="w-full pl-11 pr-4 py-3 rounded-2xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-km-petroleo text-sm bg-white"
+            />
+          </div>
+
+          <!-- Filtro Rápido de Dormitórios -->
+          <div class="sm:col-span-4">
+            <select 
+              id="filtroQuartos" 
+              onchange="filtrarImoveis()" 
+              class="w-full px-4 py-3 rounded-2xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-km-petroleo text-sm bg-white text-gray-700"
+            >
+              <option value="">Todos os dormitórios</option>
+              <option value="1">1 Suíte / 1 Dormitório</option>
+              <option value="2">2 Dormitórios</option>
+            </select>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- GRID DE IMÓVEIS -->
+      <div id="gridImoveis" class="grid md:grid-cols-3 gap-8">
         
         <!-- IMÓVEL 1: COBERTURA DUPLEX – JOSÉ MENINO -->
-        <div class="bg-white rounded-3xl overflow-hidden border border-km-ceu/80 shadow-md hover:shadow-xl transition group flex flex-col justify-between">
+        <div class="card-imovel bg-white rounded-3xl overflow-hidden border border-km-ceu/80 shadow-md hover:shadow-xl transition group flex flex-col justify-between"
+             data-categoria="venda"
+             data-quartos="1"
+             data-texto="cobertura duplex jose menino santos 50 metros praia 1 suite 2 vagas piscina academia salao de festas area gourmet 430.000 430 mil 72,25 m2">
           <div>
             <div class="relative aspect-[16/10] overflow-hidden">
               <span class="absolute top-3 left-3 bg-km-laranja text-white text-[11px] font-bold uppercase px-3 py-1 rounded-full z-10 shadow">
@@ -292,12 +329,10 @@
                 Linda cobertura duplex, super bem localizada a só 50 metros da praia do José Menino. Perfeita para quem quer conforto, praticidade e uma localização incrível, pertinho de mercados, padarias e farmácias.
               </p>
 
-              <!-- Condomínio e Lazer -->
               <p class="text-[11px] text-km-petroleo font-semibold mb-3">
                 <i class="fas fa-check-circle text-km-turquesa mr-1"></i> Condomínio: Piscina, Academia, Salão de festas e Área gourmet.
               </p>
               
-              <!-- Ficha Técnica -->
               <div class="grid grid-cols-3 gap-2 text-center text-xs text-gray-600 py-3 border-y border-gray-100 mb-4 bg-km-claro/60 rounded-xl">
                 <div><i class="fas fa-ruler-combined text-km-petroleo block mb-1"></i> 72,25 m²</div>
                 <div><i class="fas fa-bed text-km-petroleo block mb-1"></i> 1 Suíte</div>
@@ -320,7 +355,10 @@
         </div>
 
         <!-- IMÓVEL 2: APARTAMENTO DE 1 DORMITÓRIO – JOSÉ MENINO -->
-        <div class="bg-white rounded-3xl overflow-hidden border border-km-ceu/80 shadow-md hover:shadow-xl transition group flex flex-col justify-between">
+        <div class="card-imovel bg-white rounded-3xl overflow-hidden border border-km-ceu/80 shadow-md hover:shadow-xl transition group flex flex-col justify-between"
+             data-categoria="venda"
+             data-quartos="1"
+             data-texto="apartamento de 1 dormitorio um quarto jose menino santos 50 metros praia garagem portaria 24 horas piscina academia salao de festas area gourmet 320.000 320 mil aceita financiamento 36,6 m2">
           <div>
             <div class="relative aspect-[16/10] overflow-hidden">
               <span class="absolute top-3 left-3 bg-km-laranja text-white text-[11px] font-bold uppercase px-3 py-1 rounded-full z-10 shadow">
@@ -339,12 +377,10 @@
                 Excelente apartamento a apenas 50 metros da Praia do José Menino. Uma ótima oportunidade para morar, investir ou ter seu imóvel pertinho da praia com portaria 24 horas.
               </p>
 
-              <!-- Condomínio e Lazer -->
               <p class="text-[11px] text-km-petroleo font-semibold mb-3">
                 <i class="fas fa-check-circle text-km-turquesa mr-1"></i> Condomínio: Piscina, Academia, Salão de festas e Área gourmet.
               </p>
               
-              <!-- Ficha Técnica -->
               <div class="grid grid-cols-3 gap-2 text-center text-xs text-gray-600 py-3 border-y border-gray-100 mb-4 bg-km-claro/60 rounded-xl">
                 <div><i class="fas fa-ruler-combined text-km-petroleo block mb-1"></i> 36,6 m²</div>
                 <div><i class="fas fa-bed text-km-petroleo block mb-1"></i> 1 Dorm.</div>
@@ -367,7 +403,10 @@
         </div>
 
         <!-- IMÓVEL 3: APARTAMENTO DE 2 DORMITÓRIOS COM VARANDA – JOSÉ MENINO -->
-        <div class="bg-white rounded-3xl overflow-hidden border border-km-ceu/80 shadow-md hover:shadow-xl transition group flex flex-col justify-between">
+        <div class="card-imovel bg-white rounded-3xl overflow-hidden border border-km-ceu/80 shadow-md hover:shadow-xl transition group flex flex-col justify-between"
+             data-categoria="venda"
+             data-quartos="2"
+             data-texto="apartamento de 2 dormitorios dois quartos varanda sacada jose menino santos 50 metros praia vaga garagem portaria 24 horas piscina academia salao de festas area gourmet 430 mil 430.000 aceita financiamento 57 m2">
           <div>
             <div class="relative aspect-[16/10] overflow-hidden">
               <span class="absolute top-3 left-3 bg-km-laranja text-white text-[11px] font-bold uppercase px-3 py-1 rounded-full z-10 shadow">
@@ -386,12 +425,10 @@
                 Excelente apartamento com varanda, localizado a 50m da praia. Ótima oportunidade para morar ou investir em ponto nobre, com portaria 24h e total comodidade.
               </p>
 
-              <!-- Condomínio e Lazer -->
               <p class="text-[11px] text-km-petroleo font-semibold mb-3">
                 <i class="fas fa-check-circle text-km-turquesa mr-1"></i> Condomínio: Piscina, Academia, Salão de festas e Área gourmet.
               </p>
               
-              <!-- Ficha Técnica -->
               <div class="grid grid-cols-3 gap-2 text-center text-xs text-gray-600 py-3 border-y border-gray-100 mb-4 bg-km-claro/60 rounded-xl">
                 <div><i class="fas fa-ruler-combined text-km-petroleo block mb-1"></i> 57 m²</div>
                 <div><i class="fas fa-bed text-km-petroleo block mb-1"></i> 2 Dorms.</div>
@@ -414,6 +451,21 @@
         </div>
 
       </div>
+
+      <!-- MENSAGEM QUANDO NENHUM IMÓVEL FOR ENCONTRADO NA BUSCA -->
+      <div id="semResultados" class="hidden text-center py-16 px-4 bg-km-claro rounded-3xl border border-dashed border-km-petroleo/30 my-8">
+        <div class="w-16 h-16 rounded-full bg-white flex items-center justify-center mx-auto text-2xl text-km-laranja shadow-sm mb-4">
+          <i class="fas fa-search"></i>
+        </div>
+        <h3 class="font-serif text-xl font-bold text-km-petroleo mb-2">Nenhum imóvel encontrado para essa busca</h3>
+        <p class="text-sm text-gray-600 max-w-md mx-auto mb-6">
+          A Kelli possui acesso a opções exclusivas fora da vitrine pública. Conte o que você procura que ela busca para você!
+        </p>
+        <a href="https://wa.me/5513974250913?text=Ol%C3%A1%2C%20Kelli!%20Procurei%20um%20im%C3%B3vel%20espec%C3%ADfico%20no%20site%20e%20gostaria%20de%20saber%20se%20voc%C3%AA%20tem%20outras%20op%C3%A7%C3%B5es." target="_blank" class="inline-flex items-center gap-2 bg-km-laranja hover:bg-orange-600 text-white px-6 py-3 rounded-full font-bold text-xs shadow-md transition">
+          <i class="fab fa-whatsapp"></i> Encomendar Imóvel no WhatsApp
+        </a>
+      </div>
+
     </div>
   </section>
 
@@ -517,14 +569,16 @@
     </div>
   </footer>
 
-  <!-- JAVASCRIPT DO FORMULÁRIO E MENU -->
+  <!-- SCRIPTS: FORMULÁRIO, MENU E BUSCA DINÂMICA -->
   <script>
+    // Menu mobile toggle
     const menuBtn = document.getElementById('menu-btn');
     const mobileMenu = document.getElementById('mobile-menu');
     menuBtn.addEventListener('click', () => {
       mobileMenu.classList.toggle('hidden');
     });
 
+    // Envio do formulário formatado para o WhatsApp
     function enviarParaWhatsApp(e) {
       e.preventDefault();
       const nome = document.getElementById('lead-nome').value;
@@ -539,6 +593,58 @@
                     (msg ? `*Detalhes:* ${encodeURIComponent(msg)}` : '');
 
       window.open(`https://wa.me/5513974250913?text=${texto}`, '_blank');
+    }
+
+    // Variável para guardar a categoria selecionada nos botões
+    let categoriaAtual = 'todos';
+
+    function filtrarCategoria(cat, botao) {
+      categoriaAtual = cat;
+      
+      // Atualiza estilo visual dos botões
+      document.querySelectorAll('.btn-filtro').forEach(btn => {
+        btn.classList.remove('bg-km-petroleo', 'text-white', 'shadow');
+        btn.classList.add('bg-km-claro', 'text-km-petroleo');
+      });
+      botao.classList.remove('bg-km-claro', 'text-km-petroleo');
+      botao.classList.add('bg-km-petroleo', 'text-white', 'shadow');
+
+      filtrarImoveis();
+    }
+
+    function filtrarImoveis() {
+      const termoBusca = document.getElementById('campoBusca').value.toLowerCase().trim();
+      const filtroQuartos = document.getElementById('filtroQuartos').value;
+      const cards = document.querySelectorAll('.card-imovel');
+      let visiveis = 0;
+
+      cards.forEach(card => {
+        const textoCard = card.getAttribute('data-texto').toLowerCase();
+        const categoriaCard = card.getAttribute('data-categoria');
+        const quartosCard = card.getAttribute('data-quartos');
+
+        // Valida texto digitado
+        const bateTexto = termoBusca === '' || textoCard.includes(termoBusca);
+        // Valida categoria do botão
+        const bateCategoria = categoriaAtual === 'todos' || categoriaCard === categoriaAtual;
+        // Valida filtro de quartos
+        const bateQuartos = filtroQuartos === '' || quartosCard === filtroQuartos;
+
+        if (bateTexto && bateCategoria && bateQuartos) {
+          card.classList.remove('hidden');
+          visiveis++;
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+
+      // Exibe ou esconde o aviso de sem resultados
+      const semResultados = document.getElementById('semResultados');
+      if (visiveis === 0) {
+        semResultados.classList.remove('hidden');
+      } else {
+        semResultados.classList.add('hidden');
+      }
     }
   </script>
 </body>
