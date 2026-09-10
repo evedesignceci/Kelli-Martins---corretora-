@@ -3,6 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  <!-- DIRETRIZES DE SEGURANÇA E PRIVACIDADE -->
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <meta name="description" content="Kelli Martins - Corretora e Avaliadora de Imóveis em Santos/SP. CRECI-SP 323425, CNAI 58458. Compra, venda, aluguel e avaliações com total segurança e conformidade com a LGPD." />
+
   <title>Kelli Martins | Corretora & Avaliadora de Imóveis em Santos - SP</title>
   
   <!-- Tailwind CSS -->
@@ -59,10 +65,10 @@
         <span>CNAI: <strong class="text-km-turquesa">58458</strong></span>
       </div>
       <div class="flex items-center gap-4">
-        <a href="https://www.instagram.com/kellimartins014" target="_blank" class="hover:text-km-turquesa transition flex items-center gap-1.5">
+        <a href="https://www.instagram.com/kellimartins014" target="_blank" rel="noopener noreferrer" class="hover:text-km-turquesa transition flex items-center gap-1.5">
           <i class="fab fa-instagram"></i> @kellimartins014
         </a>
-        <a href="https://wa.me/5513974250913" target="_blank" class="hover:text-km-turquesa transition flex items-center gap-1.5">
+        <a href="https://wa.me/5513974250913" target="_blank" rel="noopener noreferrer" class="hover:text-km-turquesa transition flex items-center gap-1.5">
           <i class="fab fa-whatsapp"></i> (13) 97425-0913
         </a>
       </div>
@@ -306,32 +312,36 @@
         </div>
       </div>
 
-      <!-- GRID DE IMÓVEIS -->
+      <!-- GRID DOS 3 IMÓVEIS EXATOS -->
       <div id="gridImoveis" class="grid md:grid-cols-3 gap-8">
         
-        <!-- IMÓVEL 1: COBERTURA DUPLEX – JOSÉ MENINO -->
+        <!-- 1. COBERTURA DUPLEX À VENDA – JOSÉ MENINO | SANTOS/SP -->
         <div class="card-imovel bg-white rounded-3xl overflow-hidden border border-km-ceu/80 shadow-md hover:shadow-xl transition group flex flex-col justify-between"
              data-categoria="venda"
              data-quartos="1"
-             data-texto="cobertura duplex jose menino santos 50 metros praia 1 suite 2 vagas piscina academia salao de festas area gourmet 430.000 430 mil 72,25 m2">
+             data-texto="cobertura duplex a venda jose menino santos sp 72,25 m2 50 metros praia conforto praticidade 1 suite 2 vagas privativas piscina academia salao de festas area gourmet mercados padarias farmacias 430.000,00 430 mil cond 1.200 iptu 285 aceita financiamento">
           <div>
             <div class="relative aspect-[16/10] overflow-hidden">
               <span class="absolute top-3 left-3 bg-km-laranja text-white text-[11px] font-bold uppercase px-3 py-1 rounded-full z-10 shadow">
                 Venda
+              </span>
+              <span class="absolute top-3 right-3 bg-km-petroleo text-white text-[10px] font-semibold uppercase px-2.5 py-1 rounded-full z-10 shadow">
+                Aceita financiamento
               </span>
               <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80" alt="Cobertura Duplex José Menino" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
             </div>
             
             <div class="p-6">
               <span class="text-[11px] font-bold text-km-turquesa uppercase tracking-wider block">José Menino • 50m da Praia • Santos/SP</span>
-              <h3 class="font-serif font-bold text-lg text-km-petroleo mt-1 mb-2">Cobertura Duplex</h3>
+              <h3 class="font-serif font-bold text-lg text-km-petroleo mt-1 mb-2">Cobertura Duplex à Venda</h3>
               <p class="text-xs text-gray-500 mb-3 leading-relaxed">
-                Linda cobertura duplex, super bem localizada a só 50 metros da praia do José Menino. Perfeita para quem quer conforto, praticidade e uma localização incrível, pertinho de mercados, padarias e farmácias.
+                Linda cobertura duplex, super bem localizada, a só 50 metros da praia do José Menino, em Santos — perfeita para quem quer conforto, praticidade e uma localização incrível. Pertinho de mercados, padarias, farmácias e tudo o que você precisa no dia a dia.
               </p>
 
-              <p class="text-[11px] text-km-petroleo font-semibold mb-3">
-                <i class="fas fa-check-circle text-km-turquesa mr-1"></i> Condomínio: Piscina, Academia, Salão de festas e Área gourmet.
-              </p>
+              <div class="text-[11px] text-km-petroleo font-semibold mb-3 bg-teal-50/70 p-2.5 rounded-xl border border-teal-100">
+                <span class="block text-km-petroleo mb-1"><i class="fas fa-building text-km-turquesa mr-1"></i> <strong>Condomínio com ótima infraestrutura:</strong></span>
+                <span class="text-gray-600 font-normal block">• Piscina • Academia • Salão de festas • Área gourmet</span>
+              </div>
               
               <div class="grid grid-cols-3 gap-2 text-center text-xs text-gray-600 py-3 border-y border-gray-100 mb-4 bg-km-claro/60 rounded-xl">
                 <div><i class="fas fa-ruler-combined text-km-petroleo block mb-1"></i> 72,25 m²</div>
@@ -347,18 +357,18 @@
                 <span class="text-[10px] text-gray-400 block font-medium">Cond: R$ 1.200,00 | IPTU: R$ 285,00/mês</span>
                 <span class="font-bold text-xl text-km-petroleo">R$ 430.000,00</span>
               </div>
-              <a href="https://wa.me/5513974250913?text=Ol%C3%A1%2C%20Kelli!%20Tenho%20interesse%20na%20Cobertura%20Duplex%20no%20Jos%C3%A9%20Menino%20(R%24%20430.000%2C00)." target="_blank" class="text-xs font-bold bg-km-laranja hover:bg-orange-600 text-white px-4 py-2.5 rounded-xl transition shadow-sm flex items-center gap-1.5">
-                <i class="fab fa-whatsapp"></i> Visitar
+              <a href="https://wa.me/5513974250913?text=Ol%C3%A1%2C%20Kelli!%20Gostaria%20de%20agendar%20uma%20visita%20na%20Cobertura%20Duplex%20no%20Jos%C3%A9%20Menino%20(R%24%20430.000%2C00)." target="_blank" rel="noopener noreferrer" class="text-xs font-bold bg-km-laranja hover:bg-orange-600 text-white px-4 py-2.5 rounded-xl transition shadow-sm flex items-center gap-1.5">
+                <i class="fab fa-whatsapp"></i> Agendar Visita
               </a>
             </div>
           </div>
         </div>
 
-        <!-- IMÓVEL 2: APARTAMENTO DE 1 DORMITÓRIO – JOSÉ MENINO -->
+        <!-- 2. APARTAMENTO DE 1 DORMITÓRIO À VENDA – JOSÉ MENINO, SANTOS/SP -->
         <div class="card-imovel bg-white rounded-3xl overflow-hidden border border-km-ceu/80 shadow-md hover:shadow-xl transition group flex flex-col justify-between"
              data-categoria="venda"
              data-quartos="1"
-             data-texto="apartamento de 1 dormitorio um quarto jose menino santos 50 metros praia garagem portaria 24 horas piscina academia salao de festas area gourmet 320.000 320 mil aceita financiamento 36,6 m2">
+             data-texto="apartamento de 1 dormitorio a venda jose menino santos sp 36,6 m2 50 metros praia garagem portaria 24 horas area de lazer completa piscina academia salao de festas area gourmet 320.000,00 320 mil aceita financiamento cond 474,05 iptu 137,64">
           <div>
             <div class="relative aspect-[16/10] overflow-hidden">
               <span class="absolute top-3 left-3 bg-km-laranja text-white text-[11px] font-bold uppercase px-3 py-1 rounded-full z-10 shadow">
@@ -374,12 +384,13 @@
               <span class="text-[11px] font-bold text-km-turquesa uppercase tracking-wider block">José Menino • 50m da Praia • Santos/SP</span>
               <h3 class="font-serif font-bold text-lg text-km-petroleo mt-1 mb-2">Apartamento de 1 Dormitório</h3>
               <p class="text-xs text-gray-500 mb-3 leading-relaxed">
-                Excelente apartamento a apenas 50 metros da Praia do José Menino. Uma ótima oportunidade para morar, investir ou ter seu imóvel pertinho da praia com portaria 24 horas.
+                Excelente apartamento com 36,6 m² de área útil, localizado a apenas 50 metros da Praia do José Menino, em Santos. Uma ótima oportunidade para morar, investir ou ter seu imóvel pertinho da praia! Conta com portaria 24 horas.
               </p>
 
-              <p class="text-[11px] text-km-petroleo font-semibold mb-3">
-                <i class="fas fa-check-circle text-km-turquesa mr-1"></i> Condomínio: Piscina, Academia, Salão de festas e Área gourmet.
-              </p>
+              <div class="text-[11px] text-km-petroleo font-semibold mb-3 bg-teal-50/70 p-2.5 rounded-xl border border-teal-100">
+                <span class="block text-km-petroleo mb-1"><i class="fas fa-building text-km-turquesa mr-1"></i> <strong>O condomínio oferece:</strong></span>
+                <span class="text-gray-600 font-normal block">• Piscina • Academia • Salão de festas • Área gourmet</span>
+              </div>
               
               <div class="grid grid-cols-3 gap-2 text-center text-xs text-gray-600 py-3 border-y border-gray-100 mb-4 bg-km-claro/60 rounded-xl">
                 <div><i class="fas fa-ruler-combined text-km-petroleo block mb-1"></i> 36,6 m²</div>
@@ -395,18 +406,18 @@
                 <span class="text-[10px] text-gray-400 block font-medium">Cond: R$ 474,05 | IPTU: R$ 137,64</span>
                 <span class="font-bold text-xl text-km-petroleo">R$ 320.000,00</span>
               </div>
-              <a href="https://wa.me/5513974250913?text=Ol%C3%A1%2C%20Kelli!%20Tenho%20interesse%20no%20Apartamento%20de%201%20Dormit%C3%B3rio%20no%20Jos%C3%A9%20Menino%20(R%24%20320.000%2C00)." target="_blank" class="text-xs font-bold bg-km-laranja hover:bg-orange-600 text-white px-4 py-2.5 rounded-xl transition shadow-sm flex items-center gap-1.5">
-                <i class="fab fa-whatsapp"></i> Visitar
+              <a href="https://wa.me/5513974250913?text=Ol%C3%A1%2C%20Kelli!%20Gostaria%20de%20agendar%20uma%20visita%20no%20Apartamento%20de%201%20Dormit%C3%B3rio%20no%20Jos%C3%A9%20Menino%20(R%24%20320.000%2C00)." target="_blank" rel="noopener noreferrer" class="text-xs font-bold bg-km-laranja hover:bg-orange-600 text-white px-4 py-2.5 rounded-xl transition shadow-sm flex items-center gap-1.5">
+                <i class="fab fa-whatsapp"></i> Agendar Visita
               </a>
             </div>
           </div>
         </div>
 
-        <!-- IMÓVEL 3: APARTAMENTO DE 2 DORMITÓRIOS COM VARANDA – JOSÉ MENINO -->
+        <!-- 3. APARTAMENTO DE 2 DORMITÓRIOS COM VARANDA À VENDA – JOSÉ MENINO, SANTOS/SP -->
         <div class="card-imovel bg-white rounded-3xl overflow-hidden border border-km-ceu/80 shadow-md hover:shadow-xl transition group flex flex-col justify-between"
              data-categoria="venda"
              data-quartos="2"
-             data-texto="apartamento de 2 dormitorios dois quartos varanda sacada jose menino santos 50 metros praia vaga garagem portaria 24 horas piscina academia salao de festas area gourmet 430 mil 430.000 aceita financiamento 57 m2">
+             data-texto="apartamento de 2 dormitorios com varanda a venda jose menino santos sp 57 m2 varanda 50 metros praia vaga de garagem portaria 24 horas area de lazer completa piscina academia salao de festas area gourmet valor 430 mil 430.000 aceita financiamento cond 664,00 iptu 200,00">
           <div>
             <div class="relative aspect-[16/10] overflow-hidden">
               <span class="absolute top-3 left-3 bg-km-laranja text-white text-[11px] font-bold uppercase px-3 py-1 rounded-full z-10 shadow">
@@ -420,19 +431,20 @@
             
             <div class="p-6">
               <span class="text-[11px] font-bold text-km-turquesa uppercase tracking-wider block">José Menino • 50m da Praia • Santos/SP</span>
-              <h3 class="font-serif font-bold text-lg text-km-petroleo mt-1 mb-2">Apartamento com Varanda</h3>
+              <h3 class="font-serif font-bold text-lg text-km-petroleo mt-1 mb-2">Apartamento 2 Dormitórios c/ Varanda</h3>
               <p class="text-xs text-gray-500 mb-3 leading-relaxed">
-                Excelente apartamento com varanda, localizado a 50m da praia. Ótima oportunidade para morar ou investir em ponto nobre, com portaria 24h e total comodidade.
+                Excelente apartamento com 57 m², varanda e localizado a apenas 50 metros da Praia do José Menino, em Santos. Uma ótima oportunidade para morar ou investir em uma localização privilegiada, com portaria 24h e total infraestrutura.
               </p>
 
-              <p class="text-[11px] text-km-petroleo font-semibold mb-3">
-                <i class="fas fa-check-circle text-km-turquesa mr-1"></i> Condomínio: Piscina, Academia, Salão de festas e Área gourmet.
-              </p>
+              <div class="text-[11px] text-km-petroleo font-semibold mb-3 bg-teal-50/70 p-2.5 rounded-xl border border-teal-100">
+                <span class="block text-km-petroleo mb-1"><i class="fas fa-building text-km-turquesa mr-1"></i> <strong>O condomínio oferece:</strong></span>
+                <span class="text-gray-600 font-normal block">• Piscina • Academia • Salão de festas • Área gourmet</span>
+              </div>
               
               <div class="grid grid-cols-3 gap-2 text-center text-xs text-gray-600 py-3 border-y border-gray-100 mb-4 bg-km-claro/60 rounded-xl">
                 <div><i class="fas fa-ruler-combined text-km-petroleo block mb-1"></i> 57 m²</div>
                 <div><i class="fas fa-bed text-km-petroleo block mb-1"></i> 2 Dorms.</div>
-                <div><i class="fas fa-car text-km-petroleo block mb-1"></i> Garagem</div>
+                <div><i class="fas fa-car text-km-petroleo block mb-1"></i> Vaga Garagem</div>
               </div>
             </div>
           </div>
@@ -443,8 +455,8 @@
                 <span class="text-[10px] text-gray-400 block font-medium">Cond: R$ 664,00 | IPTU: R$ 200,00</span>
                 <span class="font-bold text-xl text-km-petroleo">R$ 430.000,00</span>
               </div>
-              <a href="https://wa.me/5513974250913?text=Ol%C3%A1%2C%20Kelli!%20Tenho%20interesse%20no%20Apartamento%20de%202%20Dormit%C3%B3rios%20com%20Varanda%20no%20Jos%C3%A9%20Menino%20(R%24%20430.000%2C00)." target="_blank" class="text-xs font-bold bg-km-laranja hover:bg-orange-600 text-white px-4 py-2.5 rounded-xl transition shadow-sm flex items-center gap-1.5">
-                <i class="fab fa-whatsapp"></i> Visitar
+              <a href="https://wa.me/5513974250913?text=Ol%C3%A1%2C%20Kelli!%20Gostaria%20de%20agendar%20uma%20visita%20no%20Apartamento%20de%202%20Dormit%C3%B3rios%20com%20Varanda%20no%20Jos%C3%A9%20Menino%20(R%24%20430%20mil)." target="_blank" rel="noopener noreferrer" class="text-xs font-bold bg-km-laranja hover:bg-orange-600 text-white px-4 py-2.5 rounded-xl transition shadow-sm flex items-center gap-1.5">
+                <i class="fab fa-whatsapp"></i> Agendar Visita
               </a>
             </div>
           </div>
@@ -461,7 +473,7 @@
         <p class="text-sm text-gray-600 max-w-md mx-auto mb-6">
           A Kelli possui acesso a opções exclusivas fora da vitrine pública. Conte o que você procura que ela busca para você!
         </p>
-        <a href="https://wa.me/5513974250913?text=Ol%C3%A1%2C%20Kelli!%20Procurei%20um%20im%C3%B3vel%20espec%C3%ADfico%20no%20site%20e%20gostaria%20de%20saber%20se%20voc%C3%AA%20tem%20outras%20op%C3%A7%C3%B5es." target="_blank" class="inline-flex items-center gap-2 bg-km-laranja hover:bg-orange-600 text-white px-6 py-3 rounded-full font-bold text-xs shadow-md transition">
+        <a href="https://wa.me/5513974250913?text=Ol%C3%A1%2C%20Kelli!%20Procurei%20um%20im%C3%B3vel%20espec%C3%ADfico%20no%20site%20e%20gostaria%20de%20saber%20se%20voc%C3%AA%20tem%20outras%20op%C3%A7%C3%B5es." target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-km-laranja hover:bg-orange-600 text-white px-6 py-3 rounded-full font-bold text-xs shadow-md transition">
           <i class="fab fa-whatsapp"></i> Encomendar Imóvel no WhatsApp
         </a>
       </div>
@@ -484,7 +496,7 @@
           </p>
 
           <div class="space-y-4 pt-4">
-            <a href="https://wa.me/5513974250913" target="_blank" class="flex items-center gap-4 p-4 rounded-2xl bg-white/5 border border-km-turquesa/30 hover:bg-white/10 transition">
+            <a href="https://wa.me/5513974250913" target="_blank" rel="noopener noreferrer" class="flex items-center gap-4 p-4 rounded-2xl bg-white/5 border border-km-turquesa/30 hover:bg-white/10 transition">
               <div class="w-12 h-12 rounded-xl bg-km-turquesa text-km-escuro flex items-center justify-center text-xl font-bold">
                 <i class="fab fa-whatsapp"></i>
               </div>
@@ -494,7 +506,7 @@
               </div>
             </a>
 
-            <a href="https://www.instagram.com/kellimartins014" target="_blank" class="flex items-center gap-4 p-4 rounded-2xl bg-white/5 border border-km-turquesa/30 hover:bg-white/10 transition">
+            <a href="https://www.instagram.com/kellimartins014" target="_blank" rel="noopener noreferrer" class="flex items-center gap-4 p-4 rounded-2xl bg-white/5 border border-km-turquesa/30 hover:bg-white/10 transition">
               <div class="w-12 h-12 rounded-xl bg-km-laranja text-white flex items-center justify-center text-xl">
                 <i class="fab fa-instagram"></i>
               </div>
@@ -504,10 +516,21 @@
               </div>
             </a>
           </div>
+
+          <!-- SELO DE SEGURANÇA E PRIVACIDADE -->
+          <div class="pt-4 flex items-center gap-3 text-xs text-km-ceu/80 border-t border-white/10">
+            <i class="fas fa-shield-alt text-km-turquesa text-lg"></i>
+            <span>Seus dados são protegidos conforme a LGPD e utilizados exclusivamente para o seu atendimento com a corretora.</span>
+          </div>
         </div>
 
         <div class="lg:col-span-7 bg-white text-gray-800 p-8 sm:p-10 rounded-3xl shadow-2xl border border-km-ceu">
-          <h3 class="font-serif text-2xl font-bold text-km-petroleo mb-1">Iniciar Atendimento</h3>
+          <div class="flex items-center justify-between mb-1">
+            <h3 class="font-serif text-2xl font-bold text-km-petroleo">Iniciar Atendimento</h3>
+            <span class="inline-flex items-center gap-1 text-[11px] text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full font-medium border border-emerald-200">
+              <i class="fas fa-lock text-[10px]"></i> Conexão Segura
+            </span>
+          </div>
           <p class="text-xs text-gray-500 mb-6">Preencha os campos abaixo e inicie a conversa no WhatsApp da corretora.</p>
           
           <form onsubmit="enviarParaWhatsApp(event)" class="space-y-4">
@@ -526,7 +549,7 @@
                 <select id="lead-interesse" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-km-petroleo text-sm bg-white">
                   <option value="Cobertura Duplex no José Menino (R$ 430.000,00)">Cobertura Duplex no José Menino (R$ 430.000,00)</option>
                   <option value="Ap 1 Dormitório no José Menino (R$ 320.000,00)">Ap 1 Dormitório no José Menino (R$ 320.000,00)</option>
-                  <option value="Ap 2 Dormitórios com Varanda no José Menino (R$ 430.000,00)">Ap 2 Dormitórios com Varanda no José Menino (R$ 430.000,00)</option>
+                  <option value="Ap 2 Dormitórios com Varanda no José Menino (R$ 430 mil)">Ap 2 Dormitórios com Varanda no José Menino (R$ 430 mil)</option>
                   <option value="Comprar outro Imóvel em Santos">Comprar outro Imóvel em Santos</option>
                   <option value="Vender meu Imóvel">Vender meu Imóvel</option>
                   <option value="Aluguel Anual">Aluguel Anual</option>
@@ -542,6 +565,15 @@
               <textarea id="lead-mensagem" rows="3" placeholder="Conte mais detalhes sobre sua busca ou se quer agendar uma visita..." class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-km-petroleo text-sm"></textarea>
             </div>
 
+            <!-- TERMOS E PRIVACIDADE NO FORMULÁRIO -->
+            <div class="flex items-start gap-2 pt-1 text-[11px] text-gray-500 leading-snug">
+              <input type="checkbox" id="aceite-termos" required checked class="mt-0.5 rounded border-gray-300 text-km-petroleo focus:ring-km-petroleo" />
+              <label for="aceite-termos">
+                Concordo com o envio dos dados para contato comercial exclusivo via WhatsApp, respeitando as 
+                <button type="button" onclick="abrirModalPrivacidade()" class="text-km-petroleo font-bold underline hover:text-km-laranja">diretrizes de privacidade e LGPD</button>.
+              </label>
+            </div>
+
             <button type="submit" class="w-full bg-km-laranja hover:bg-orange-600 text-white font-bold py-4 rounded-xl shadow-lg shadow-orange-500/30 transition transform active:scale-98 flex items-center justify-center gap-2">
               <i class="fab fa-whatsapp text-lg"></i> Enviar Mensagem para a Kelli
             </button>
@@ -552,24 +584,153 @@
     </div>
   </section>
 
-  <!-- RODAPÉ COMPLETO -->
-  <footer class="bg-km-escuro text-white/70 py-12 text-sm border-t border-white/10">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col md:flex-row justify-between items-center gap-6 text-center md:text-left">
-      <div>
-        <span class="font-serif text-xl font-bold text-white block">Kelli Martins</span>
-        <p class="text-xs text-km-ceu mt-1">Corretora e Avaliadora de Imóveis • Santos - SP</p>
-        <p class="text-xs text-white/50 mt-0.5">CRECI-SP: 323425 | CNAI: 58458</p>
-        <p class="text-xs font-serif italic text-km-turquesa mt-3">"Sinta a brisa. Vista-se de mar."</p>
+  <!-- RODAPÉ COMPLETO COM GOOGLE MAPS E DIRETRIZES DE PRIVACIDADE E SEGURANÇA -->
+  <footer class="bg-km-escuro text-white/70 pt-16 pb-12 text-sm border-t border-white/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 space-y-12">
+      
+      <!-- SEÇÃO SUPERIOR DO RODAPÉ: INFORMAÇÕES + MAPA DO LOCAL -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+        
+        <!-- Bloco de Informações do Rodapé -->
+        <div class="lg:col-span-5 space-y-4">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-km-petroleo flex items-center justify-center text-white font-serif text-xl font-bold border border-km-turquesa">
+              K
+            </div>
+            <div>
+              <span class="font-serif text-2xl font-bold text-white block leading-none">Kelli Martins</span>
+              <span class="text-[11px] text-km-turquesa font-semibold uppercase tracking-wider">Corretora & Avaliadora de Imóveis</span>
+            </div>
+          </div>
+          
+          <p class="text-xs text-km-ceu leading-relaxed">
+            Atendimento presencial e consultivo em toda a cidade de <strong>Santos - SP</strong>, com foco nas melhores oportunidades da orla, especialmente na Praia do José Menino, Gonzaga, Boqueirão e Ponta da Praia.
+          </p>
+
+          <div class="space-y-1.5 text-xs text-white/60">
+            <p><i class="fas fa-id-card text-km-turquesa mr-1.5 w-4"></i> CRECI-SP: <strong>323425</strong></p>
+            <p><i class="fas fa-stamp text-km-turquesa mr-1.5 w-4"></i> CNAI: <strong>58458</strong> (Cadastro Nacional de Avaliadores de Imóveis)</p>
+            <p><i class="fas fa-map-marker-alt text-km-turquesa mr-1.5 w-4"></i> José Menino / Orla de Santos - SP</p>
+            <p><i class="fas fa-phone-alt text-km-turquesa mr-1.5 w-4"></i> (13) 97425-0913</p>
+          </div>
+
+          <p class="text-xs font-serif italic text-km-turquesa pt-2">"Sinta a brisa. Vista-se de mar."</p>
+        </div>
+
+        <!-- Bloco do Google Maps Integrado do Local (José Menino - Santos/SP) -->
+        <div class="lg:col-span-7">
+          <div class="rounded-3xl overflow-hidden shadow-2xl border-2 border-km-petroleo bg-km-petroleo/30">
+            <div class="bg-km-petroleo px-4 py-2.5 flex items-center justify-between text-xs text-km-ceu">
+              <span class="flex items-center gap-2 font-medium">
+                <i class="fas fa-map-pin text-km-laranja"></i> Localização de Atuação: Praia do José Menino • Santos / SP
+              </span>
+              <a href="https://maps.google.com/?q=Praia+do+Jose+Menino+Santos+SP" target="_blank" rel="noopener noreferrer" class="hover:text-white underline text-[11px]">
+                Abrir no Google Maps &rarr;
+              </a>
+            </div>
+            <!-- Iframe Oficial Responsivo do Google Maps -->
+            <div class="aspect-[16/9] sm:aspect-[21/9] w-full">
+              <iframe 
+                title="Google Maps - Praia do José Menino, Santos SP"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14582.477028169974!2d-46.3571249764516!3d-23.97394982601726!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce031ab7d020e9%3A0x868cb4fa39cb0ce5!2sJos%C3%A9%20Menino%2C%20Santos%20-%20SP!5e0!3m2!1spt-BR!2sbr!4v1715000000000!5m2!1spt-BR!2sbr" 
+                class="w-full h-full border-0" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade">
+              </iframe>
+            </div>
+          </div>
+        </div>
+
       </div>
 
-      <div class="text-xs space-y-1 text-white/50">
-        <p>© 2026 Kelli Martins. Todos os direitos reservados.</p>
-        <p>Atendimento especializado no Litoral Paulista.</p>
+      <!-- SEÇÃO INFERIOR DO RODAPÉ: LINKS DE PRIVACIDADE, SEGURANÇA E COPYRIGHT -->
+      <div class="pt-8 border-t border-white/10 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-white/50 text-center sm:text-left">
+        <div>
+          <p>© 2026 Kelli Martins. Todos os direitos reservados.</p>
+          <p class="text-[11px] text-white/40 mt-0.5">CRECI-SP 323425 | CNAI 58458 • Atendimento Imobiliário Especializado em Santos/SP.</p>
+        </div>
+
+        <!-- Links e Botões de Diretrizes de Segurança e Privacidade -->
+        <div class="flex flex-wrap justify-center sm:justify-end items-center gap-4 text-xs font-medium">
+          <button type="button" onclick="abrirModalPrivacidade()" class="hover:text-km-turquesa transition underline">
+            Diretrizes de Privacidade & LGPD
+          </button>
+          <span>•</span>
+          <button type="button" onclick="abrirModalSeguranca()" class="hover:text-km-turquesa transition underline">
+            Segurança da Informação
+          </button>
+        </div>
       </div>
+
     </div>
   </footer>
 
-  <!-- SCRIPTS: FORMULÁRIO, MENU E BUSCA DINÂMICA -->
+  <!-- MODAL DE DIRETRIZES DE PRIVACIDADE (LGPD) -->
+  <div id="modalPrivacidade" class="fixed inset-0 z-50 hidden bg-black/70 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-white text-gray-800 rounded-3xl max-w-2xl w-full max-h-[85vh] overflow-y-auto p-6 sm:p-8 shadow-2xl relative border border-km-ceu">
+      <button onclick="fecharModalPrivacidade()" class="absolute top-5 right-5 text-gray-400 hover:text-gray-700 text-xl font-bold p-1">
+        <i class="fas fa-times"></i>
+      </button>
+
+      <div class="flex items-center gap-3 mb-4">
+        <div class="w-10 h-10 rounded-xl bg-km-claro text-km-petroleo flex items-center justify-center text-lg">
+          <i class="fas fa-user-shield"></i>
+        </div>
+        <div>
+          <h3 class="font-serif text-xl font-bold text-km-petroleo">Diretrizes de Privacidade (LGPD)</h3>
+          <p class="text-xs text-gray-500">Transparência e respeito aos seus dados pessoais</p>
+        </div>
+      </div>
+
+      <div class="text-xs text-gray-600 space-y-3 leading-relaxed border-t border-gray-100 pt-4">
+        <p><strong>1. Coleta de Dados:</strong> Coletamos exclusivamente nome, telefone (WhatsApp) e interesse imobiliário voluntariamente informados através do nosso formulário de atendimento.</p>
+        <p><strong>2. Finalidade:</strong> As informações são utilizadas estritamente para que a corretora <strong>Kelli Martins (CRECI-SP 323425)</strong> entre em contato comercial, apresente os imóveis solicitados e esclareça dúvidas de negociação ou avaliação imobiliária.</p>
+        <p><strong>3. Não Compartilhamento:</strong> Seus dados não são vendidos, alugados ou compartilhados com quaisquer terceiros, agências de publicidade ou bancos de dados externos sem sua expressa autorização.</p>
+        <p><strong>4. Seus Direitos:</strong> Conforme a Lei Geral de Proteção de Dados (Lei nº 13.709/2018), você pode a qualquer momento solicitar a confirmação, correção ou exclusão dos seus dados entrando em contato direto pelo WhatsApp <strong>(13) 97425-0913</strong>.</p>
+      </div>
+
+      <div class="mt-6 pt-4 border-t border-gray-100 text-right">
+        <button onclick="fecharModalPrivacidade()" class="bg-km-petroleo text-white text-xs font-bold px-6 py-2.5 rounded-xl hover:bg-km-escuro transition">
+          Entendido e Fechar
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL DE DIRETRIZES DE SEGURANÇA -->
+  <div id="modalSeguranca" class="fixed inset-0 z-50 hidden bg-black/70 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-white text-gray-800 rounded-3xl max-w-2xl w-full max-h-[85vh] overflow-y-auto p-6 sm:p-8 shadow-2xl relative border border-km-ceu">
+      <button onclick="fecharModalSeguranca()" class="absolute top-5 right-5 text-gray-400 hover:text-gray-700 text-xl font-bold p-1">
+        <i class="fas fa-times"></i>
+      </button>
+
+      <div class="flex items-center gap-3 mb-4">
+        <div class="w-10 h-10 rounded-xl bg-km-claro text-km-petroleo flex items-center justify-center text-lg">
+          <i class="fas fa-lock"></i>
+        </div>
+        <div>
+          <h3 class="font-serif text-xl font-bold text-km-petroleo">Segurança da Informação e Transações</h3>
+          <p class="text-xs text-gray-500">Garantias de segurança para compradores, vendedores e locatários</p>
+        </div>
+      </div>
+
+      <div class="text-xs text-gray-600 space-y-3 leading-relaxed border-t border-gray-100 pt-4">
+        <p><strong>1. Credenciamento Oficial:</strong> Todas as intermediações são realizadas sob responsabilidade técnica de <strong>Kelli Martins</strong>, inscrita no Conselho Regional de Corretores de Imóveis sob o <strong>CRECI-SP 323425</strong> e no Cadastro Nacional de Avaliadores de Imóveis <strong>CNAI 58458</strong>.</p>
+        <p><strong>2. Segurança Jurídica:</strong> Antes de qualquer assinatura ou sinal financeiro, todos os documentos do imóvel e das partes envolvidas passam por análise jurídica detalhada (certidões negativas cíveis, criminais, trabalhistas e de débitos condominiais/tributários).</p>
+        <p><strong>3. Navegação e Links:</strong> Todos os links externos possuem proteção contra ataques de redirecionamento (`rel="noopener noreferrer"`) e os formulários direcionam diretamente ao canal oficial criptografado da corretora.</p>
+        <p><strong>4. Prevenção a Fraudes:</strong> Não realizamos solicitações de transferências bancárias ou PIX sem prévia emissão de proposta formal com anuência escrita entre vendedor e comprador.</p>
+      </div>
+
+      <div class="mt-6 pt-4 border-t border-gray-100 text-right">
+        <button onclick="fecharModalSeguranca()" class="bg-km-petroleo text-white text-xs font-bold px-6 py-2.5 rounded-xl hover:bg-km-escuro transition">
+          Fechar
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCRIPTS: FORMULÁRIO, MENU, FILTROS E MODAIS -->
   <script>
     // Menu mobile toggle
     const menuBtn = document.getElementById('menu-btn');
@@ -578,7 +739,30 @@
       mobileMenu.classList.toggle('hidden');
     });
 
-    // Envio do formulário formatado para o WhatsApp
+    // Modais de Privacidade e Segurança
+    function abrirModalPrivacidade() {
+      document.getElementById('modalPrivacidade').classList.remove('hidden');
+    }
+    function fecharModalPrivacidade() {
+      document.getElementById('modalPrivacidade').classList.add('hidden');
+    }
+
+    function abrirModalSeguranca() {
+      document.getElementById('modalSeguranca').classList.remove('hidden');
+    }
+    function fecharModalSeguranca() {
+      document.getElementById('modalSeguranca').classList.add('hidden');
+    }
+
+    // Fechar modais ao clicar no fundo
+    window.addEventListener('click', (e) => {
+      const modalPriv = document.getElementById('modalPrivacidade');
+      const modalSeg = document.getElementById('modalSeguranca');
+      if (e.target === modalPriv) modalPriv.classList.add('hidden');
+      if (e.target === modalSeg) modalSeg.classList.add('hidden');
+    });
+
+    // Envio do formulário formatado para o WhatsApp da Kelli
     function enviarParaWhatsApp(e) {
       e.preventDefault();
       const nome = document.getElementById('lead-nome').value;
@@ -595,13 +779,12 @@
       window.open(`https://wa.me/5513974250913?text=${texto}`, '_blank');
     }
 
-    // Variável para guardar a categoria selecionada nos botões
+    // Filtros e busca de imóveis
     let categoriaAtual = 'todos';
 
     function filtrarCategoria(cat, botao) {
       categoriaAtual = cat;
       
-      // Atualiza estilo visual dos botões
       document.querySelectorAll('.btn-filtro').forEach(btn => {
         btn.classList.remove('bg-km-petroleo', 'text-white', 'shadow');
         btn.classList.add('bg-km-claro', 'text-km-petroleo');
@@ -623,11 +806,8 @@
         const categoriaCard = card.getAttribute('data-categoria');
         const quartosCard = card.getAttribute('data-quartos');
 
-        // Valida texto digitado
         const bateTexto = termoBusca === '' || textoCard.includes(termoBusca);
-        // Valida categoria do botão
         const bateCategoria = categoriaAtual === 'todos' || categoriaCard === categoriaAtual;
-        // Valida filtro de quartos
         const bateQuartos = filtroQuartos === '' || quartosCard === filtroQuartos;
 
         if (bateTexto && bateCategoria && bateQuartos) {
@@ -638,7 +818,6 @@
         }
       });
 
-      // Exibe ou esconde o aviso de sem resultados
       const semResultados = document.getElementById('semResultados');
       if (visiveis === 0) {
         semResultados.classList.remove('hidden');
