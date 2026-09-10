@@ -46,13 +46,19 @@
   </script>
 
   <style>
+    /* FUNDO GERAL DO SITE COM A IMAGEM DO MAR E AREIA (COM CAMADA SUAVE DE LEITURA) */
+    body {
+      background: linear-gradient(rgba(248, 252, 253, 0.92), rgba(248, 252, 253, 0.94)),
+                  url('https://res.cloudinary.com/oactqmgs/image/upload/v1789079117/fundo_mar_kelli_martins.jpg') center/cover fixed no-repeat;
+    }
+
     .bg-santos-hero {
-      background: linear-gradient(135deg, rgba(0, 88, 94, 0.82) 0%, rgba(0, 58, 62, 0.72) 100%),
-                  url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+      background: linear-gradient(135deg, rgba(0, 88, 94, 0.70) 0%, rgba(0, 58, 62, 0.60) 100%),
+                  url('https://res.cloudinary.com/oactqmgs/image/upload/v1789079117/fundo_mar_kelli_martins.jpg') center/cover no-repeat;
     }
   </style>
 </head>
-<body class="font-sans text-gray-800 bg-km-claro antialiased selection:bg-km-laranja selection:text-white">
+<body class="font-sans text-gray-800 antialiased selection:bg-km-laranja selection:text-white">
 
   <!-- BARRA DE TOPO COM CRECI, CNAI E LOCALIZAÇÃO JOSÉ MENINO / SANTOS -->
   <div class="bg-km-escuro text-white text-xs py-2 px-4 border-b border-km-petroleo">
@@ -119,7 +125,7 @@
     </div>
   </header>
 
-  <!-- HERO SECTION: JOSÉ MENINO & VIBE PRAIANA -->
+  <!-- HERO SECTION COM A IMAGEM DE FUNDO -->
   <section class="bg-santos-hero text-white py-24 sm:py-32 px-4 relative flex items-center">
     <div class="max-w-4xl mx-auto text-center space-y-6">
       <div class="inline-flex items-center gap-2 bg-km-turquesa/20 border border-km-turquesa/40 backdrop-blur-md px-4 py-1.5 rounded-full text-xs font-semibold text-km-ceu uppercase tracking-wider">
@@ -146,7 +152,7 @@
   </section>
 
   <!-- SOBRE KELLI MARTINS -->
-  <section id="sobre" class="py-20 bg-white">
+  <section id="sobre" class="py-20 bg-white/90 backdrop-blur-sm">
     <div class="max-w-6xl mx-auto px-4 sm:px-6">
       <div class="grid md:grid-cols-12 gap-12 items-center">
         
@@ -196,7 +202,7 @@
   </section>
 
   <!-- SERVIÇOS PRESTADOS -->
-  <section id="servicos" class="py-20 bg-km-claro border-y border-km-ceu/40">
+  <section id="servicos" class="py-20 bg-white/60 backdrop-blur-sm border-y border-km-ceu/40">
     <div class="max-w-7xl mx-auto px-4 sm:px-6">
       <div class="text-center max-w-2xl mx-auto mb-16 space-y-3">
         <span class="text-xs font-bold uppercase tracking-widest text-km-laranja">Soluções Imobiliárias</span>
@@ -265,7 +271,7 @@
   </section>
 
   <!-- IMÓVEIS (COM FILTROS: TODOS, VENDA, ANUAL, TEMPORADA) -->
-  <section id="imoveis" class="py-20 bg-white">
+  <section id="imoveis" class="py-20 bg-white/90 backdrop-blur-sm">
     <div class="max-w-7xl mx-auto px-4 sm:px-6">
       
       <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
