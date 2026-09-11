@@ -74,6 +74,20 @@
       -webkit-backdrop-filter: blur(12px);
       border: 1px solid rgba(192, 232, 244, 0.6);
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s ease, border-color 0.4s ease;
+    }
+
+    .secao-header-interativa:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 35px -5px rgba(0, 88, 94, 0.18), 0 10px 15px -5px rgba(0, 0, 0, 0.05);
+      border-color: #33D1D4;
+    }
+    .secao-header-interativa:hover .icone-praia-bg {
+      transform: scale(1.15) rotate(6deg);
+      opacity: 0.25;
+    }
+    .icone-praia-bg {
+      transition: transform 0.5s ease, opacity 0.5s ease;
     }
 
     .card-interativo {
@@ -94,7 +108,7 @@
       display: inline-block;
     }
 
-    /* === EFEITO TOUCH ONDA (RIPPLE EFFECT) GLOBAL === */
+    /* RIPPLE TOUCH EFFECT */
     .btn-ripple {
       position: relative;
       overflow: hidden;
@@ -116,7 +130,6 @@
       }
     }
 
-    /* Tag clicável para ver foto de área */
     .tag-area-foto {
       cursor: pointer;
       transition: all 0.2s ease;
@@ -134,7 +147,6 @@
       transform: translateY(-1px);
     }
 
-    /* Destaque ao rolar até o formulário */
     .destaque-formulario {
       animation: pulso-form 1.2s ease-in-out;
       box-shadow: 0 0 0 4px #33D1D4, 0 20px 30px rgba(0,0,0,0.2) !important;
@@ -164,7 +176,6 @@
         <span>CNAI: <strong class="text-km-turquesa">58458</strong> (Avaliadora de Imóveis)</span>
       </div>
       <div class="flex items-center gap-4">
-        <!-- INSTAGRAM ATUALIZADO CORRETAMENTE -->
         <a href="https://www.instagram.com/kellimartins014?stkn=NWptdXVzOXg2dnI5" target="_blank" rel="noopener noreferrer" class="hover:text-km-turquesa transition flex items-center gap-1.5">
           <i class="fab fa-instagram"></i> @kellimartins014
         </a>
@@ -207,7 +218,6 @@
       </div>
     </div>
 
-    <!-- Dropdown Mobile -->
     <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 px-6 py-5 space-y-4 text-sm font-medium shadow-xl">
       <a href="#sobre" class="block text-gray-700 hover:text-km-petroleo py-1">Sobre Kelli</a>
       <a href="#servicos" class="block text-gray-700 hover:text-km-petroleo py-1">Serviços Oferecidos</a>
@@ -221,7 +231,6 @@
   <!-- HERO SECTION -->
   <section class="text-white py-24 sm:py-32 px-4 relative flex items-center min-h-[85vh]">
     <div class="max-w-4xl mx-auto text-center space-y-6 hero-texto-legivel">
-      
       <div class="inline-flex items-center gap-2 bg-km-turquesa/30 border border-km-turquesa/50 backdrop-blur-md px-4 py-1.5 rounded-full text-xs font-bold text-white uppercase tracking-wider shadow-sm">
         <i class="fas fa-sun text-km-laranja icone-praia"></i> Especialista na Orla do José Menino • Santos/SP
       </div>
@@ -249,7 +258,6 @@
   <section id="sobre" class="py-20">
     <div class="max-w-6xl mx-auto px-4 sm:px-6">
       <div class="grid md:grid-cols-12 gap-12 items-center">
-        
         <div class="md:col-span-5">
           <div class="relative mx-auto max-w-sm">
             <div class="aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl border-4 border-white bg-km-ceu/30 card-interativo">
@@ -292,27 +300,30 @@
             </div>
           </div>
         </div>
-
       </div>
     </div>
   </section>
 
-  <!-- SERVIÇOS COMPLETOS (TODOS OS ITENS FORNECIDOS) -->
+  <!-- SERVIÇOS -->
   <section id="servicos" class="py-20">
     <div class="max-w-7xl mx-auto px-4 sm:px-6">
-      <div class="text-center max-w-2xl mx-auto mb-16 space-y-3 vidro-claro-leitura p-8 rounded-[2rem] relative overflow-hidden">
-        <i class="fas fa-water absolute -bottom-4 -left-4 text-7xl text-km-turquesa/10 icone-praia"></i>
-        <i class="fas fa-water absolute -top-4 -right-4 text-7xl text-km-turquesa/10 icone-praia" style="animation-delay: 1.5s;"></i>
+      
+      <div class="text-center max-w-2xl mx-auto mb-16 space-y-3 vidro-claro-leitura p-8 rounded-[2rem] relative overflow-hidden secao-header-interativa group">
+        <i class="fas fa-water absolute -bottom-4 -left-4 text-7xl text-km-turquesa/10 icone-praia icone-praia-bg"></i>
+        <i class="fas fa-water absolute -top-4 -right-4 text-7xl text-km-turquesa/10 icone-praia icone-praia-bg" style="animation-delay: 1.5s;"></i>
         
-        <span class="text-xs font-bold uppercase tracking-widest text-km-laranja flex items-center justify-center gap-2 relative z-10">
+        <span class="text-xs font-bold uppercase tracking-widest text-km-laranja flex items-center justify-center gap-2 relative z-10 group-hover:scale-105 transition-transform duration-300">
           ⭐ Soluções Imobiliárias Completas ⭐
         </span>
-        <h2 class="font-serif text-3xl sm:text-4xl font-bold text-km-petroleo relative z-10">O que faço por você</h2>
-        <p class="text-sm text-gray-800 font-semibold relative z-10">Assessoria completa do início do processo até a entrega das chaves.</p>
+        <h2 class="font-serif text-3xl sm:text-4xl font-bold text-km-petroleo relative z-10 group-hover:text-km-laranja transition-colors duration-300">
+          O que faço por você
+        </h2>
+        <p class="text-sm text-gray-800 font-semibold relative z-10">
+          Assessoria completa do início do processo até a entrega das chaves.
+        </p>
       </div>
 
       <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        <!-- 1 -->
         <div class="bg-white/95 p-6 rounded-2xl border border-km-ceu/80 card-interativo">
           <div class="w-12 h-12 rounded-xl bg-km-ceu/40 text-km-petroleo flex items-center justify-center text-xl mb-4">
             <i class="fas fa-handshake"></i>
@@ -321,7 +332,6 @@
           <p class="text-xs text-gray-700 font-medium leading-relaxed">Intermediação segura de imóveis com total assessoria jurídica e documental.</p>
         </div>
 
-        <!-- 2 -->
         <div class="bg-white/95 p-6 rounded-2xl border border-km-ceu/80 card-interativo">
           <div class="w-12 h-12 rounded-xl bg-km-ceu/40 text-km-petroleo flex items-center justify-center text-xl mb-4">
             <i class="fas fa-key"></i>
@@ -330,7 +340,6 @@
           <p class="text-xs text-gray-700 font-medium leading-relaxed">Locações residenciais seguras e opções selecionadas para curtir o mar em Santos.</p>
         </div>
 
-        <!-- 3 -->
         <div class="bg-white/95 p-6 rounded-2xl border border-km-ceu/80 card-interativo">
           <div class="w-12 h-12 rounded-xl bg-km-ceu/40 text-km-petroleo flex items-center justify-center text-xl mb-4">
             <i class="fas fa-calculator"></i>
@@ -339,7 +348,6 @@
           <p class="text-xs text-gray-700 font-medium leading-relaxed">Avaliadora credenciada (CNAI 58458) emitindo Parecer Técnico (PTAM) com validade legal.</p>
         </div>
 
-        <!-- 4 -->
         <div class="bg-white/95 p-6 rounded-2xl border border-km-ceu/80 card-interativo">
           <div class="w-12 h-12 rounded-xl bg-km-ceu/40 text-km-petroleo flex items-center justify-center text-xl mb-4">
             <i class="fas fa-file-invoice-dollar"></i>
@@ -348,7 +356,6 @@
           <p class="text-xs text-gray-700 font-medium leading-relaxed">Simulação e suporte para aprovação do seu crédito nos principais bancos.</p>
         </div>
 
-        <!-- 5 -->
         <div class="bg-white/95 p-6 rounded-2xl border border-km-ceu/80 card-interativo">
           <div class="w-12 h-12 rounded-xl bg-km-ceu/40 text-km-petroleo flex items-center justify-center text-xl mb-4">
             <i class="fas fa-shield-alt"></i>
@@ -357,7 +364,6 @@
           <p class="text-xs text-gray-700 font-medium leading-relaxed">Acompanhamento pessoal e transparente do início do processo até a entrega das chaves.</p>
         </div>
 
-        <!-- 6 -->
         <div class="bg-white/95 p-6 rounded-2xl border border-km-ceu/80 card-interativo">
           <div class="w-12 h-12 rounded-xl bg-km-ceu/40 text-km-petroleo flex items-center justify-center text-xl mb-4">
             <i class="fas fa-landmark"></i>
@@ -366,7 +372,6 @@
           <p class="text-xs text-gray-700 font-medium leading-relaxed">Crédito com garantia de imóvel (Home Equity) com menores taxas de juros.</p>
         </div>
 
-        <!-- 7 & 8 Combinados de forma limpa -->
         <div class="bg-white/95 p-6 rounded-2xl border border-km-ceu/80 card-interativo sm:col-span-2">
           <div class="w-12 h-12 rounded-xl bg-km-ceu/40 text-km-petroleo flex items-center justify-center text-xl mb-4">
             <i class="fas fa-hammer"></i>
@@ -378,20 +383,24 @@
     </div>
   </section>
 
-  <!-- IMÓVEIS (DADOS 100% REVISADOS E VALIDADOS) -->
+  <!-- IMÓVEIS (ORDEM ESTRATÉGICA DE CORRETOR & CLIENTE: 1 DORM ➔ 2 DORMS ➔ COBERTURA) -->
   <section id="imoveis" class="py-20">
     <div class="max-w-7xl mx-auto px-4 sm:px-6">
       
-      <div class="vidro-claro-leitura p-6 sm:p-8 rounded-[2rem] mb-10 relative overflow-hidden">
-        <i class="fas fa-umbrella-beach absolute -bottom-4 -right-2 text-7xl text-km-turquesa/10 icone-praia" style="animation-delay: 0.5s;"></i>
+      <div class="vidro-claro-leitura p-6 sm:p-8 rounded-[2rem] mb-10 relative overflow-hidden secao-header-interativa group">
+        <i class="fas fa-umbrella-beach absolute -bottom-4 -right-2 text-7xl text-km-turquesa/10 icone-praia icone-praia-bg" style="animation-delay: 0.5s;"></i>
         
         <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 relative z-10">
           <div>
-            <span class="text-xs font-bold uppercase tracking-widest text-km-laranja flex items-center gap-2">
-              🐚 Portfólio Exclusivo na Praia
+            <span class="text-xs font-bold uppercase tracking-widest text-km-laranja flex items-center gap-2 group-hover:scale-105 transition-transform duration-300">
+              🐚 Portfólio Exclusivo • 50m da Praia do José Menino
             </span>
-            <h2 class="font-serif text-3xl sm:text-4xl font-bold text-km-petroleo mt-1">Imóveis no José Menino</h2>
-            <p class="text-sm text-gray-800 font-semibold mt-2">Oportunidades a apenas 50m da orla. Todos os condomínios contam com lazer e aceitam financiamento.</p>
+            <h2 class="font-serif text-3xl sm:text-4xl font-bold text-km-petroleo mt-1 group-hover:text-km-laranja transition-colors duration-300">
+              Imóveis no José Menino
+            </h2>
+            <p class="text-sm text-gray-800 font-semibold mt-2">
+              Três opções individuais no <strong>mesmo edifício</strong> com lazer completo, Sea Market 24h e portaria monitorada. Todos aceitam financiamento!
+            </p>
           </div>
           
           <div class="flex flex-wrap gap-2">
@@ -413,7 +422,7 @@
               id="campoBusca" 
               maxlength="80"
               oninput="filtrarImoveis()" 
-              placeholder="Pesquise por nome, quartos, piscina, área gourmet, vagas..." 
+              placeholder="Pesquise por dormitórios, metragem, piscina, varanda, cobertura..." 
               class="w-full pl-11 pr-10 py-3 rounded-2xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-km-turquesa text-sm bg-white shadow-inner font-medium text-gray-700"
             />
             <button id="btnLimparBusca" onclick="limparBusca()" class="hidden absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 p-1">
@@ -439,99 +448,48 @@
         </div>
       </div>
 
-      <!-- GRID DOS IMÓVEIS -->
+      <!-- GRID DOS IMÓVEIS (ORDEM ESTRATÉGICA) -->
       <div id="gridImoveis" class="grid md:grid-cols-3 gap-8">
         
-        <!-- 1. COBERTURA DUPLEX -->
+        <!-- 1º: APARTAMENTO DE 1 DORMITÓRIO (PORTA DE ENTRADA / MENOR TICKET) -->
         <div class="card-interativo bg-white rounded-3xl overflow-hidden border border-km-ceu/80 flex flex-col justify-between card-imovel"
              data-categoria="venda" data-quartos="1"
-             data-texto="cobertura duplex a venda jose menino santos sp 72,25 m2 50 metros praia conforto praticidade 1 suite 2 vagas privativas piscina academia salao de festas area gourmet mercados padarias farmacias 430.000,00 430 mil cond 1.200 iptu 285 aceita financiamento kelli martins">
+             data-texto="apartamento de 1 dormitorio a venda jose menino santos sp 36,6 m2 50 metros praia garagem portaria 24 horas area de lazer completa piscina academia salao de festas area gourmet sea market mercado 320.000,00 320 mil aceita financiamento cond 474,05 iptu 137,64 kelli martins">
           <div>
             <div class="relative aspect-[16/10] overflow-hidden">
               <span class="absolute top-3 left-3 bg-km-laranja text-white text-[11px] font-bold uppercase px-3 py-1 rounded-full z-10 shadow">À Venda</span>
               <span class="absolute top-3 right-3 bg-km-petroleo text-white text-[10px] font-semibold uppercase px-2.5 py-1 rounded-full z-10 shadow flex items-center gap-1">
                 <i class="fas fa-check-circle"></i> Aceita Financiamento
               </span>
-              <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80" alt="Cobertura Duplex José Menino" class="w-full h-full object-cover transition duration-500 hover:scale-105" loading="lazy" />
-            </div>
-            
-            <div class="p-6">
-              <span class="text-[11px] font-bold text-km-turquesa uppercase tracking-wider block">José Menino • 50m da Praia • Santos/SP</span>
-              <h3 class="font-serif font-bold text-lg text-km-petroleo mt-1 mb-2">Cobertura Duplex à Venda</h3>
-              <p class="text-xs text-gray-600 font-medium mb-3 leading-relaxed">
-                Linda cobertura duplex, super bem localizada, a só 50 metros da praia do José Menino, em Santos — perfeita para quem quer conforto, praticidade e uma localização incrível, pertinho de mercados, padarias e farmácias.
-              </p>
-
-              <!-- ÁREAS COMUNS -->
-              <div class="text-[11px] text-km-petroleo font-semibold mb-3 bg-teal-50/70 p-2.5 rounded-xl border border-teal-100">
-                <span class="block text-km-petroleo mb-1.5"><i class="fas fa-camera text-km-turquesa mr-1"></i> <strong>Condomínio com ótima infraestrutura:</strong></span>
-                <div class="flex flex-wrap gap-1.5 mt-1">
-                  <span onclick="abrirFotoArea('Piscina Panorâmica', 'https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?auto=format&fit=crop&w=1000&q=80', 'Piscina ampla e ensolarada')" class="tag-area-foto"><i class="fas fa-eye text-[10px]"></i> Piscina</span>
-                  <span onclick="abrirFotoArea('Academia Fitness', 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1000&q=80', 'Aparelhos modernos para o dia a dia')" class="tag-area-foto"><i class="fas fa-eye text-[10px]"></i> Academia</span>
-                  <span onclick="abrirFotoArea('Salão de Festas', 'https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=1000&q=80', 'Espaço climatizado e equipado')" class="tag-area-foto"><i class="fas fa-eye text-[10px]"></i> Salão de festas</span>
-                  <span onclick="abrirFotoArea('Área Gourmet', 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1000&q=80', 'Espaço gourmet para churrasco e confraternizações')" class="tag-area-foto"><i class="fas fa-eye text-[10px]"></i> Área gourmet</span>
-                </div>
-              </div>
+              <img id="fotoCard-ap1dorm" src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=800&q=80" alt="Apartamento 1 dormitório José Menino" class="w-full h-full object-cover transition duration-500 hover:scale-105" loading="lazy" />
               
-              <div class="grid grid-cols-3 gap-2 text-center text-xs text-gray-700 font-medium py-3 border-y border-gray-100 mb-4 bg-km-claro/60 rounded-xl">
-                <div><i class="fas fa-ruler-combined text-km-petroleo block mb-1"></i> 72,25 m² útil</div>
-                <div><i class="fas fa-bed text-km-petroleo block mb-1"></i> 1 Suíte</div>
-                <div><i class="fas fa-car text-km-petroleo block mb-1"></i> 2 Vagas priv.</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="px-6 pb-6 pt-0 space-y-3">
-            <div>
-              <span class="text-[10px] text-gray-500 block font-semibold">Condomínio: R$ 1.200,00 | IPTU: R$ 285,00/mês</span>
-              <span class="font-bold text-xl text-km-petroleo">R$ 430.000,00</span>
-            </div>
-            
-            <div class="grid grid-cols-2 gap-2">
-              <a href="https://wa.me/5513974250913?text=Ol%C3%A1%2C%20Kelli!%20Gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20a%20Cobertura%20Duplex%20no%20Jos%C3%A9%20Menino%20(R%24%20430.000%2C00)." target="_blank" rel="noopener noreferrer" class="btn-ripple text-xs font-bold bg-emerald-600 hover:bg-emerald-700 text-white py-2.5 px-3 rounded-xl shadow-sm flex items-center justify-center gap-1.5 text-center">
-                <i class="fab fa-whatsapp text-sm"></i> WhatsApp
-              </a>
-              <button onclick="conectarFormulario('Cobertura Duplex no José Menino (R$ 430.000,00)')" class="btn-ripple text-xs font-bold bg-km-petroleo hover:bg-km-escuro text-white py-2.5 px-3 rounded-xl shadow-sm flex items-center justify-center gap-1.5 text-center">
-                <i class="fas fa-file-signature text-sm"></i> Proposta
+              <button onclick="abrirModalVideo('Tour: Ap. 1 Dormitório no José Menino', 'ap1dorm')" class="btn-ripple absolute bottom-3 left-3 bg-black/75 hover:bg-km-petroleo text-white text-[11px] font-bold px-3 py-1.5 rounded-full backdrop-blur-sm border border-white/30 flex items-center gap-1.5 shadow transition">
+                <i class="fas fa-play text-km-turquesa text-[10px]"></i> Assistir Vídeo
               </button>
-            </div>
-          </div>
-        </div>
-
-        <!-- 2. APARTAMENTO DE 1 DORMITÓRIO -->
-        <div class="card-interativo bg-white rounded-3xl overflow-hidden border border-km-ceu/80 flex flex-col justify-between card-imovel"
-             data-categoria="venda" data-quartos="1"
-             data-texto="apartamento de 1 dormitorio a venda jose menino santos sp 36,6 m2 50 metros praia garagem portaria 24 horas area de lazer completa piscina academia salao de festas area gourmet 320.000,00 320 mil aceita financiamento cond 474,05 iptu 137,64 kelli martins">
-          <div>
-            <div class="relative aspect-[16/10] overflow-hidden">
-              <span class="absolute top-3 left-3 bg-km-laranja text-white text-[11px] font-bold uppercase px-3 py-1 rounded-full z-10 shadow">À Venda</span>
-              <span class="absolute top-3 right-3 bg-km-petroleo text-white text-[10px] font-semibold uppercase px-2.5 py-1 rounded-full z-10 shadow flex items-center gap-1">
-                <i class="fas fa-check-circle"></i> Aceita Financiamento
-              </span>
-              <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=800&q=80" alt="Apartamento 1 dormitório José Menino" class="w-full h-full object-cover transition duration-500 hover:scale-105" loading="lazy" />
             </div>
             
             <div class="p-6">
               <span class="text-[11px] font-bold text-km-turquesa uppercase tracking-wider block">José Menino • 50m da Praia • Santos/SP</span>
               <h3 class="font-serif font-bold text-lg text-km-petroleo mt-1 mb-2">Ap. de 1 Dormitório à Venda</h3>
               <p class="text-xs text-gray-600 font-medium mb-3 leading-relaxed">
-                Excelente apartamento com 36,6 m² de área útil, a apenas 50 metros da Praia do José Menino. Garagem, portaria 24 horas e área de lazer completa. Uma ótima oportunidade para morar, investir ou curtir a praia!
+                Excelente apartamento com 36,6 m² de área útil, localizado a apenas 50 metros da Praia do José Menino, em Santos. Conta com garagem, portaria 24 horas e lazer completo. Uma ótima oportunidade para morar, investir ou ter seu imóvel pertinho da praia!
               </p>
 
-              <!-- ÁREAS COMUNS -->
+              <!-- ÁREAS DO CONDOMÍNIO -->
               <div class="text-[11px] text-km-petroleo font-semibold mb-3 bg-teal-50/70 p-2.5 rounded-xl border border-teal-100">
-                <span class="block text-km-petroleo mb-1.5"><i class="fas fa-building text-km-turquesa mr-1"></i> <strong>Condomínio com lazer completo & portaria 24h:</strong></span>
+                <span class="block text-km-petroleo mb-1.5"><i class="fas fa-camera text-km-turquesa mr-1"></i> <strong>O condomínio oferece (toque para ver fotos):</strong></span>
                 <div class="flex flex-wrap gap-1.5 mt-1">
-                  <span onclick="abrirFotoArea('Piscina do Condomínio', 'https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?auto=format&fit=crop&w=1000&q=80', 'Piscina para curtir os dias de calor')" class="tag-area-foto"><i class="fas fa-eye text-[10px]"></i> Piscina</span>
-                  <span onclick="abrirFotoArea('Academia Equipada', 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1000&q=80', 'Academia com aparelhos completos')" class="tag-area-foto"><i class="fas fa-eye text-[10px]"></i> Academia</span>
-                  <span onclick="abrirFotoArea('Salão de Festas', 'https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=1000&q=80', 'Salão de festas decorado')" class="tag-area-foto"><i class="fas fa-eye text-[10px]"></i> Salão de festas</span>
-                  <span onclick="abrirFotoArea('Área Gourmet', 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1000&q=80', 'Área gourmet com churrasqueira')" class="tag-area-foto"><i class="fas fa-eye text-[10px]"></i> Área gourmet</span>
+                  <span onclick="abrirFotoArea('Piscina do Condomínio', 'piscina', 'Piscina com raia de natação no terraço do edifício.')" class="tag-area-foto"><i class="fas fa-swimming-pool text-[10px]"></i> Piscina</span>
+                  <span onclick="abrirFotoArea('Academia do Condomínio', 'academia', 'Espaço fitness com esteira, bikes e aparelhos de treino.')" class="tag-area-foto"><i class="fas fa-dumbbell text-[10px]"></i> Academia</span>
+                  <span onclick="abrirFotoArea('Salão de Festas', 'salao', 'Salão social para eventos com mesas e iluminação planejada.')" class="tag-area-foto"><i class="fas fa-glass-cheers text-[10px]"></i> Salão</span>
+                  <span onclick="abrirFotoArea('Área Gourmet', 'gourmet', 'Espaço gourmet equipado com bancada em granito e cooktop.')" class="tag-area-foto"><i class="fas fa-utensils text-[10px]"></i> Gourmet</span>
+                  <span onclick="abrirFotoArea('Portaria 24 Horas & Acessibilidade', 'portaria', 'Portaria 24 horas estruturada com plataforma de acessibilidade.')" class="tag-area-foto"><i class="fas fa-shield-alt text-[10px]"></i> Portaria 24h</span>
                 </div>
               </div>
               
               <div class="grid grid-cols-3 gap-2 text-center text-xs text-gray-700 font-medium py-3 border-y border-gray-100 mb-4 bg-km-claro/60 rounded-xl">
                 <div><i class="fas fa-ruler-combined text-km-petroleo block mb-1"></i> 36,6 m² útil</div>
-                <div><i class="fas fa-bed text-km-petroleo block mb-1"></i> 1 Dormitório</div>
+                <div><i class="fas fa-bed text-km-petroleo block mb-1"></i> 1 Dorm.</div>
                 <div><i class="fas fa-car text-km-petroleo block mb-1"></i> Garagem</div>
               </div>
             </div>
@@ -554,40 +512,45 @@
           </div>
         </div>
 
-        <!-- 3. APARTAMENTO DE 2 DORMITÓRIOS COM VARANDA -->
+        <!-- 2º: APARTAMENTO DE 2 DORMITÓRIOS COM VARANDA (MAIOR PROCURA PARA FAMÍLIAS/CASAL) -->
         <div class="card-interativo bg-white rounded-3xl overflow-hidden border border-km-ceu/80 flex flex-col justify-between card-imovel"
              data-categoria="venda" data-quartos="2"
-             data-texto="apartamento de 2 dormitorios com varanda a venda jose menino santos sp 57 m2 varanda 50 metros praia vaga de garagem portaria 24 horas area de lazer completa piscina academia salao de festas area gourmet valor 430 mil 430.000 aceita financiamento cond 664,00 iptu 200,00 kelli martins">
+             data-texto="apartamento de 2 dormitorios com varanda a venda jose menino santos sp 57 m2 varanda 50 metros praia vaga de garagem portaria 24 horas area de lazer completa piscina academia salao de festas area gourmet sea market mercado valor 430 mil 430.000 aceita financiamento cond 664,00 iptu 200,00 kelli martins">
           <div>
             <div class="relative aspect-[16/10] overflow-hidden">
               <span class="absolute top-3 left-3 bg-km-laranja text-white text-[11px] font-bold uppercase px-3 py-1 rounded-full z-10 shadow">À Venda</span>
               <span class="absolute top-3 right-3 bg-km-petroleo text-white text-[10px] font-semibold uppercase px-2.5 py-1 rounded-full z-10 shadow flex items-center gap-1">
                 <i class="fas fa-check-circle"></i> Aceita Financiamento
               </span>
-              <img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=800&q=80" alt="Apartamento 2 dormitórios Varanda Santos" class="w-full h-full object-cover transition duration-500 hover:scale-105" loading="lazy" />
+              <img id="fotoCard-ap2dorms" src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=800&q=80" alt="Apartamento 2 dormitórios Varanda Santos" class="w-full h-full object-cover transition duration-500 hover:scale-105" loading="lazy" />
+              
+              <button onclick="abrirModalVideo('Tour: Ap. 2 Dormitórios com Varanda', 'ap2dorms')" class="btn-ripple absolute bottom-3 left-3 bg-black/75 hover:bg-km-petroleo text-white text-[11px] font-bold px-3 py-1.5 rounded-full backdrop-blur-sm border border-white/30 flex items-center gap-1.5 shadow transition">
+                <i class="fas fa-play text-km-turquesa text-[10px]"></i> Assistir Vídeo
+              </button>
             </div>
             
             <div class="p-6">
               <span class="text-[11px] font-bold text-km-turquesa uppercase tracking-wider block">José Menino • 50m da Praia • Santos/SP</span>
               <h3 class="font-serif font-bold text-lg text-km-petroleo mt-1 mb-2">Ap. 2 Dormitórios com Varanda</h3>
               <p class="text-xs text-gray-600 font-medium mb-3 leading-relaxed">
-                Excelente apartamento com 57 m², varanda e localizado a apenas 50 metros da Praia do José Menino. Possui vaga de garagem, portaria 24 horas e área de lazer completa em localização privilegiada!
+                Excelente apartamento com 57 m², varanda e localizado a apenas 50 metros da Praia do José Menino, em Santos. Conta com vaga de garagem, portaria 24 horas e área de lazer completa. Uma ótima oportunidade em localização privilegiada!
               </p>
 
-              <!-- ÁREAS COMUNS -->
+              <!-- ÁREAS DO CONDOMÍNIO -->
               <div class="text-[11px] text-km-petroleo font-semibold mb-3 bg-teal-50/70 p-2.5 rounded-xl border border-teal-100">
-                <span class="block text-km-petroleo mb-1.5"><i class="fas fa-building text-km-turquesa mr-1"></i> <strong>Condomínio com lazer completo & portaria 24h:</strong></span>
+                <span class="block text-km-petroleo mb-1.5"><i class="fas fa-camera text-km-turquesa mr-1"></i> <strong>O condomínio oferece (toque para ver fotos):</strong></span>
                 <div class="flex flex-wrap gap-1.5 mt-1">
-                  <span onclick="abrirFotoArea('Piscina e Solarium', 'https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?auto=format&fit=crop&w=1000&q=80', 'Piscina com espreguiçadeiras')" class="tag-area-foto"><i class="fas fa-eye text-[10px]"></i> Piscina</span>
-                  <span onclick="abrirFotoArea('Academia Completa', 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1000&q=80', 'Academia completa para exercícios')" class="tag-area-foto"><i class="fas fa-eye text-[10px]"></i> Academia</span>
-                  <span onclick="abrirFotoArea('Salão de Festas', 'https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=1000&q=80', 'Salão para festas e recepções')" class="tag-area-foto"><i class="fas fa-eye text-[10px]"></i> Salão de festas</span>
-                  <span onclick="abrirFotoArea('Área Gourmet & Churrasqueira', 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1000&q=80', 'Área gourmet com churrasqueira')" class="tag-area-foto"><i class="fas fa-eye text-[10px]"></i> Área gourmet</span>
+                  <span onclick="abrirFotoArea('Piscina do Condomínio', 'piscina', 'Piscina com raia de natação no terraço do edifício.')" class="tag-area-foto"><i class="fas fa-swimming-pool text-[10px]"></i> Piscina</span>
+                  <span onclick="abrirFotoArea('Academia do Condomínio', 'academia', 'Espaço fitness com aparelhos para cardio e treino com vista para a piscina.')" class="tag-area-foto"><i class="fas fa-dumbbell text-[10px]"></i> Academia</span>
+                  <span onclick="abrirFotoArea('Salão de Festas', 'salao', 'Salão social com iluminação de teto planejada e mesas de apoio.')" class="tag-area-foto"><i class="fas fa-glass-cheers text-[10px]"></i> Salão</span>
+                  <span onclick="abrirFotoArea('Área Gourmet', 'gourmet', 'Bancada gourmet em granito, cooktop, geladeira e pia inox.')" class="tag-area-foto"><i class="fas fa-utensils text-[10px]"></i> Gourmet</span>
+                  <span onclick="abrirFotoArea('Portaria 24 Horas & Acessibilidade', 'portaria', 'Portaria 24 horas monitorada e plataforma de acessibilidade.')" class="tag-area-foto"><i class="fas fa-shield-alt text-[10px]"></i> Portaria 24h</span>
                 </div>
               </div>
               
               <div class="grid grid-cols-3 gap-2 text-center text-xs text-gray-700 font-medium py-3 border-y border-gray-100 mb-4 bg-km-claro/60 rounded-xl">
                 <div><i class="fas fa-ruler-combined text-km-petroleo block mb-1"></i> 57 m² útil</div>
-                <div><i class="fas fa-bed text-km-petroleo block mb-1"></i> 2 Dormitórios</div>
+                <div><i class="fas fa-bed text-km-petroleo block mb-1"></i> 2 Dorms.</div>
                 <div><i class="fas fa-car text-km-petroleo block mb-1"></i> Vaga Garagem</div>
               </div>
             </div>
@@ -604,6 +567,67 @@
                 <i class="fab fa-whatsapp text-sm"></i> WhatsApp
               </a>
               <button onclick="conectarFormulario('Ap 2 Dormitórios com Varanda no José Menino (R$ 430.000,00)')" class="btn-ripple text-xs font-bold bg-km-petroleo hover:bg-km-escuro text-white py-2.5 px-3 rounded-xl shadow-sm flex items-center justify-center gap-1.5 text-center">
+                <i class="fas fa-file-signature text-sm"></i> Proposta
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3º: COBERTURA DUPLEX (EXCLUSIVIDADE / MAIOR METRAGEM E 2 VAGAS) -->
+        <div class="card-interativo bg-white rounded-3xl overflow-hidden border border-km-ceu/80 flex flex-col justify-between card-imovel"
+             data-categoria="venda" data-quartos="1"
+             data-texto="cobertura duplex a venda jose menino santos sp 72,25 m2 50 metros praia conforto praticidade 1 suite 2 vagas privativas piscina academia salao de festas area gourmet sea market mercado mercados padarias farmacias 430.000,00 430 mil cond 1.200 iptu 285 aceita financiamento kelli martins">
+          <div>
+            <div class="relative aspect-[16/10] overflow-hidden">
+              <span class="absolute top-3 left-3 bg-km-laranja text-white text-[11px] font-bold uppercase px-3 py-1 rounded-full z-10 shadow">À Venda</span>
+              <span class="absolute top-3 right-3 bg-km-petroleo text-white text-[10px] font-semibold uppercase px-2.5 py-1 rounded-full z-10 shadow flex items-center gap-1">
+                <i class="fas fa-check-circle"></i> Aceita Financiamento
+              </span>
+              <img id="fotoCard-cobertura" src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80" alt="Cobertura Duplex José Menino" class="w-full h-full object-cover transition duration-500 hover:scale-105" loading="lazy" />
+              
+              <button onclick="abrirModalVideo('Tour: Cobertura Duplex no José Menino', 'cobertura')" class="btn-ripple absolute bottom-3 left-3 bg-black/75 hover:bg-km-petroleo text-white text-[11px] font-bold px-3 py-1.5 rounded-full backdrop-blur-sm border border-white/30 flex items-center gap-1.5 shadow transition">
+                <i class="fas fa-play text-km-turquesa text-[10px]"></i> Assistir Vídeo
+              </button>
+            </div>
+            
+            <div class="p-6">
+              <span class="text-[11px] font-bold text-km-turquesa uppercase tracking-wider block">José Menino • 50m da Praia • Santos/SP</span>
+              <h3 class="font-serif font-bold text-lg text-km-petroleo mt-1 mb-2">Cobertura Duplex à Venda</h3>
+              <p class="text-xs text-gray-600 font-medium mb-3 leading-relaxed">
+                Linda cobertura duplex, super bem localizada, a só 50 metros da praia do José Menino, em Santos — perfeita para quem quer conforto, praticidade e uma localização incrível, pertinho de mercados, padarias, farmácias e tudo o que você precisa no dia a dia.
+              </p>
+
+              <!-- ÁREAS DO CONDOMÍNIO -->
+              <div class="text-[11px] text-km-petroleo font-semibold mb-3 bg-teal-50/70 p-2.5 rounded-xl border border-teal-100">
+                <span class="block text-km-petroleo mb-1.5"><i class="fas fa-camera text-km-turquesa mr-1"></i> <strong>Condomínio com ótima infraestrutura:</strong></span>
+                <div class="flex flex-wrap gap-1.5 mt-1">
+                  <span onclick="abrirFotoArea('Piscina do Condomínio', 'piscina', 'Piscina com raia privativa no rooftop cercada por parapeito panorâmico.')" class="tag-area-foto"><i class="fas fa-swimming-pool text-[10px]"></i> Piscina</span>
+                  <span onclick="abrirFotoArea('Academia do Condomínio', 'academia', 'Espaço fitness com esteira elétrica, bikes ergométricas e elíptico.')" class="tag-area-foto"><i class="fas fa-dumbbell text-[10px]"></i> Academia</span>
+                  <span onclick="abrirFotoArea('Salão de Festas', 'salao', 'Salão social amplo, climatizado e equipado com jogos de mesas.')" class="tag-area-foto"><i class="fas fa-glass-cheers text-[10px]"></i> Salão</span>
+                  <span onclick="abrirFotoArea('Área Gourmet', 'gourmet', 'Cozinha gourmet com bancada em granito, cooktop com depurador e pia inox.')" class="tag-area-foto"><i class="fas fa-utensils text-[10px]"></i> Gourmet</span>
+                  <span onclick="abrirFotoArea('Portaria 24 Horas & Acessibilidade', 'portaria', 'Portaria 24 horas estruturada com guarita e elevador acessível.')" class="tag-area-foto"><i class="fas fa-shield-alt text-[10px]"></i> Portaria 24h</span>
+                </div>
+              </div>
+              
+              <div class="grid grid-cols-3 gap-2 text-center text-xs text-gray-700 font-medium py-3 border-y border-gray-100 mb-4 bg-km-claro/60 rounded-xl">
+                <div><i class="fas fa-ruler-combined text-km-petroleo block mb-1"></i> 72,25 m² útil</div>
+                <div><i class="fas fa-bed text-km-petroleo block mb-1"></i> 1 Suíte</div>
+                <div><i class="fas fa-car text-km-petroleo block mb-1"></i> 2 Vagas priv.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="px-6 pb-6 pt-0 space-y-3">
+            <div>
+              <span class="text-[10px] text-gray-500 block font-semibold">Condomínio: R$ 1.200,00 | IPTU: R$ 285,00/mês</span>
+              <span class="font-bold text-xl text-km-petroleo">R$ 430.000,00</span>
+            </div>
+            
+            <div class="grid grid-cols-2 gap-2">
+              <a href="https://wa.me/5513974250913?text=Ol%C3%A1%2C%20Kelli!%20Gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20a%20Cobertura%20Duplex%20no%20Jos%C3%A9%20Menino%20(R%24%20430.000%2C00)." target="_blank" rel="noopener noreferrer" class="btn-ripple text-xs font-bold bg-emerald-600 hover:bg-emerald-700 text-white py-2.5 px-3 rounded-xl shadow-sm flex items-center justify-center gap-1.5 text-center">
+                <i class="fab fa-whatsapp text-sm"></i> WhatsApp
+              </a>
+              <button onclick="conectarFormulario('Cobertura Duplex no José Menino (R$ 430.000,00)')" class="btn-ripple text-xs font-bold bg-km-petroleo hover:bg-km-escuro text-white py-2.5 px-3 rounded-xl shadow-sm flex items-center justify-center gap-1.5 text-center">
                 <i class="fas fa-file-signature text-sm"></i> Proposta
               </button>
             </div>
@@ -681,15 +705,15 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
                 <label for="lead-telefone" class="block text-xs font-bold text-gray-800 uppercase mb-1">WhatsApp com DDD *</label>
-                <!-- COM MÁSCARA AUTOMÁTICA -->
                 <input type="tel" id="lead-telefone" required maxlength="15" oninput="mascaraTelefone(this)" placeholder="(13) 97425-0913" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-km-turquesa text-sm shadow-sm font-medium" />
               </div>
               <div>
                 <label for="lead-interesse" class="block text-xs font-bold text-gray-800 uppercase mb-1">Interesse Principal</label>
+                <!-- ORDEM DE SELEÇÃO AJUSTADA -->
                 <select id="lead-interesse" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-km-turquesa text-sm bg-white shadow-sm font-medium cursor-pointer">
-                  <option value="Cobertura Duplex no José Menino (R$ 430.000,00)">Cobertura Duplex no José Menino (R$ 430.000,00)</option>
                   <option value="Ap 1 Dormitório no José Menino (R$ 320.000,00)">Ap 1 Dormitório no José Menino (R$ 320.000,00)</option>
                   <option value="Ap 2 Dormitórios com Varanda no José Menino (R$ 430.000,00)">Ap 2 Dormitórios com Varanda no José Menino (R$ 430.000,00)</option>
+                  <option value="Cobertura Duplex no José Menino (R$ 430.000,00)">Cobertura Duplex no José Menino (R$ 430.000,00)</option>
                   <option value="Compra e Venda de Imóveis">Compra e Venda de Imóveis</option>
                   <option value="Aluguel Anual">Aluguel Anual</option>
                   <option value="Aluguel de Temporada">Aluguel de Temporada</option>
@@ -725,10 +749,11 @@
     </div>
   </section>
 
-  <!-- RODAPÉ -->
+  <!-- RODAPÉ 100% CLICÁVEL & INTERATIVO -->
   <footer class="bg-km-escuro text-white/80 pt-16 pb-12 text-sm border-t-2 border-km-petroleo font-medium">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 space-y-12">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+        
         <div class="lg:col-span-5 space-y-4">
           <div class="flex items-center gap-3">
             <div class="w-10 h-10 rounded-xl bg-km-petroleo flex items-center justify-center text-white font-serif text-xl font-bold border border-km-turquesa shadow-lg">K</div>
@@ -738,9 +763,61 @@
             </div>
           </div>
           <p class="text-xs text-km-ceu leading-relaxed">Atendimento presencial e consultivo no José Menino e em toda a cidade de Santos - SP.</p>
-          <p class="text-xs text-white/70"><i class="fas fa-phone-alt text-km-turquesa mr-1"></i> (13) 97425-0913 | <i class="fab fa-instagram text-km-turquesa ml-2 mr-1"></i> @kellimartins014</p>
+          
+          <div class="space-y-2 text-xs">
+            <p>
+              <button type="button" onclick="abrirModal('modalSeguranca')" class="text-white/80 hover:text-km-turquesa transition flex items-center text-left">
+                <i class="fas fa-id-card text-km-turquesa mr-2 w-4"></i> CRECI-SP: <strong class="text-white ml-1 underline decoration-dotted">323425</strong>
+              </button>
+            </p>
+            <p>
+              <button type="button" onclick="abrirModal('modalSeguranca')" class="text-white/80 hover:text-km-turquesa transition flex items-center text-left">
+                <i class="fas fa-stamp text-km-turquesa mr-2 w-4"></i> CNAI: <strong class="text-white ml-1 underline decoration-dotted">58458</strong>
+              </button>
+            </p>
+            <p>
+              <a href="https://maps.google.com/?q=Praia+do+Jose+Menino+Santos+SP" target="_blank" rel="noopener noreferrer" class="text-white/80 hover:text-km-turquesa transition flex items-center">
+                <i class="fas fa-map-marker-alt text-km-turquesa mr-2 w-4"></i> Praia do José Menino / Santos - SP <i class="fas fa-external-link-alt text-[9px] ml-1.5 opacity-60"></i>
+              </a>
+            </p>
+            <p>
+              <a href="tel:5513974250913" class="text-white/80 hover:text-km-turquesa transition flex items-center">
+                <i class="fas fa-phone-alt text-km-turquesa mr-2 w-4"></i> (13) 97425-0913 <span class="text-[10px] text-emerald-400 ml-2 font-normal">(Clique para ligar)</span>
+              </a>
+            </p>
+            <p>
+              <a href="https://www.instagram.com/kellimartins014?stkn=NWptdXVzOXg2dnI5" target="_blank" rel="noopener noreferrer" class="text-white/80 hover:text-km-turquesa transition flex items-center">
+                <i class="fab fa-instagram text-km-turquesa mr-2 w-4"></i> @kellimartins014
+              </a>
+            </p>
+          </div>
         </div>
+
+        <div class="lg:col-span-7">
+          <div class="rounded-3xl overflow-hidden shadow-2xl border-2 border-km-petroleo bg-km-petroleo/30 card-interativo">
+            <div class="bg-km-petroleo px-4 py-2.5 flex items-center justify-between text-xs text-km-ceu">
+              <span class="flex items-center gap-2 font-bold">
+                <i class="fas fa-map-pin text-km-laranja"></i> Praia do José Menino • Santos / SP
+              </span>
+              <a href="https://maps.google.com/?q=Praia+do+Jose+Menino+Santos+SP" target="_blank" rel="noopener noreferrer" class="hover:text-white underline text-[11px] font-bold flex items-center gap-1">
+                Abrir Rota no Google Maps <i class="fas fa-external-link-alt text-[9px]"></i>
+              </a>
+            </div>
+            <div class="aspect-[16/9] sm:aspect-[21/9] w-full">
+              <iframe 
+                title="Google Maps - Praia do José Menino, Santos SP"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14582.477028169974!2d-46.3571249764516!3d-23.97394982601726!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce031ab7d020e9%3A0x868cb4fa39cb0ce5!2sJos%C3%A9%20Menino%2C%20Santos%20-%20SP!5e0!3m2!1spt-BR!2sbr!4v1715000000000!5m2!1spt-BR!2sbr" 
+                class="w-full h-full border-0" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade">
+              </iframe>
+            </div>
+          </div>
+        </div>
+
       </div>
+
       <div class="pt-8 border-t border-white/20 flex flex-col sm:flex-row justify-between items-center text-xs text-white/60 gap-4">
         <p>© 2026 Kelli Martins. CRECI-SP: 323425 | CNAI: 58458. Todos os direitos reservados.</p>
         <div class="flex gap-4">
@@ -751,7 +828,7 @@
     </div>
   </footer>
 
-  <!-- ================= BOTÃO FLUTUANTE DE WHATSAPP (CTA FIXO MOBILE & DESKTOP) ================= -->
+  <!-- BOTÃO FLUTUANTE DE WHATSAPP -->
   <a href="https://wa.me/5513974250913?text=Ol%C3%A1%2C%20Kelli!%20Vim%20pelo%20site%20e%20gostaria%20de%20tirar%20uma%20d%C3%BAvida." target="_blank" rel="noopener noreferrer" aria-label="Falar no WhatsApp com Kelli Martins" class="btn-ripple fixed bottom-6 right-6 z-40 w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-emerald-500 hover:bg-emerald-600 text-white flex items-center justify-center text-2xl sm:text-3xl shadow-2xl hover:scale-110 transition-transform">
     <i class="fab fa-whatsapp"></i>
     <span class="absolute -top-1 -right-1 flex h-4 w-4">
@@ -759,6 +836,29 @@
       <span class="relative inline-flex rounded-full h-4 w-4 bg-km-laranja"></span>
     </span>
   </a>
+
+  <!-- MODAL DE VÍDEO / TOUR VIRTUAL -->
+  <div id="modalVideoImovel" class="fixed inset-0 z-50 hidden bg-black/90 backdrop-blur-md flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-2xl w-full overflow-hidden shadow-2xl relative border-2 border-km-turquesa">
+      <button onclick="fecharModalVideo()" class="btn-ripple absolute top-4 right-4 bg-white/90 hover:bg-white text-gray-800 rounded-full w-9 h-9 flex items-center justify-center z-10 shadow">
+        <i class="fas fa-times"></i>
+      </button>
+
+      <div class="p-4 sm:p-5 border-b border-gray-100 flex items-center gap-2">
+        <i class="fas fa-video text-km-laranja"></i>
+        <h4 id="tituloModalVideo" class="font-serif font-bold text-km-petroleo text-base">Tour Virtual</h4>
+      </div>
+
+      <div class="relative aspect-video bg-gray-950 flex items-center justify-center text-center p-6 text-white" id="containerVideoPlayer"></div>
+
+      <div class="p-4 bg-gray-50 flex justify-between items-center text-xs">
+        <span class="text-gray-500"><i class="fas fa-info-circle text-km-turquesa mr-1"></i> Vídeo exclusivo gravado no local</span>
+        <button onclick="fecharModalVideo()" class="btn-ripple bg-km-petroleo text-white font-bold px-4 py-2 rounded-lg">
+          Fechar
+        </button>
+      </div>
+    </div>
+  </div>
 
   <!-- MODAL FOTOS DAS DEPENDÊNCIAS -->
   <div id="modalFotoArea" class="fixed inset-0 z-50 hidden bg-black/85 backdrop-blur-md flex items-center justify-center p-4">
@@ -773,13 +873,13 @@
 
       <div class="p-5 bg-white text-left">
         <div class="flex items-center gap-2 text-xs font-bold text-km-laranja uppercase tracking-wider mb-1">
-          <i class="fas fa-building text-km-turquesa"></i> Dependências do Condomínio
+          <i class="fas fa-building text-km-turquesa"></i> Dependências do Edifício
         </div>
         <h4 id="tituloFotoArea" class="font-serif text-lg font-bold text-km-petroleo">Título da Área</h4>
-        <p id="descFotoArea" class="text-xs text-gray-600 mt-1">Descrição do ambiente.</p>
+        <p id="descFotoArea" class="text-xs text-gray-600 mt-1 leading-relaxed">Descrição do ambiente.</p>
         
         <div class="mt-4 pt-3 border-t border-gray-100 flex justify-between items-center">
-          <span class="text-[11px] text-gray-500 font-medium"><i class="fas fa-shield-alt text-km-turquesa mr-1"></i> Fotos ilustrativas das áreas de lazer</span>
+          <span class="text-[11px] text-gray-500 font-medium"><i class="fas fa-check-circle text-emerald-500 mr-1"></i> Estrutura real compartilhada pelos 3 apartamentos</span>
           <button onclick="fecharModal('modalFotoArea')" class="btn-ripple text-xs font-bold bg-km-petroleo text-white px-4 py-2 rounded-lg">
             Fechar
           </button>
@@ -804,14 +904,34 @@
       <button onclick="fecharModal('modalSeguranca')" class="btn-ripple absolute top-5 right-5 text-gray-400 hover:text-red-500 text-2xl p-1">
         <i class="fas fa-times-circle"></i>
       </button>
-      <h3 class="font-serif text-xl font-bold text-km-petroleo mb-3">Segurança Imobiliária</h3>
-      <p class="text-sm text-gray-700 leading-relaxed">Todas as transações, intermediações e emissões de Pareceres Técnicos de Avaliação Mercadológica (PTAM) possuem total cobertura e validade legal perante o CRECI-SP e CNAI.</p>
+      <h3 class="font-serif text-xl font-bold text-km-petroleo mb-3">Segurança Imobiliária & Credenciamento</h3>
+      <p class="text-sm text-gray-700 leading-relaxed">Todas as transações, intermediações e emissões de Pareceres Técnicos de Avaliação Mercadológica (PTAM) possuem total cobertura e validade legal perante o CRECI-SP (Registro: 323425) e CNAI (Registro: 58458).</p>
     </div>
   </div>
 
   <!-- JAVASCRIPT GLOBAL -->
   <script>
-    // Ripple touch em todos os botões e links principais
+    /* ==========================================================================
+       1. CONFIGURAÇÃO DE LINKS (PREPARADO PARA QUANDO SUBIR VÍDEOS / FOTOS)
+       ========================================================================== */
+    const linksVideos = {
+      ap1dorm: '',   // Ex: 'https://www.youtube.com/embed/SEU_ID_AQUI'
+      ap2dorms: '',  // Ex: 'https://www.youtube.com/embed/SEU_ID_AQUI'
+      cobertura: ''  // Ex: 'https://www.youtube.com/embed/SEU_ID_AQUI'
+    };
+
+    const bancoFotosAreas = {
+      piscina:  'https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?auto=format&fit=crop&w=1200&q=80',
+      academia: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1200&q=80',
+      salao:    'https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=1200&q=80',
+      gourmet:  'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1200&q=80',
+      market:   'https://images.unsplash.com/photo-1578916171728-46686eac8d58?auto=format&fit=crop&w=1200&q=80',
+      portaria: 'https://images.unsplash.com/photo-1541888946425-d0fbb18086f6?auto=format&fit=crop&w=1200&q=80'
+    };
+
+    /* ==========================================================================
+       2. RECURSOS INTERATIVOS, RIPPLE EFFECT & SANITIZAÇÃO
+       ========================================================================== */
     document.addEventListener('pointerdown', function (e) {
       const target = e.target.closest('.btn-ripple, button, .tag-area-foto');
       if (!target) return;
@@ -832,7 +952,6 @@
       target.appendChild(circle);
     });
 
-    // Máscara automática de WhatsApp enquanto digita
     function mascaraTelefone(input) {
       let v = input.value.replace(/\D/g, "");
       if (v.length > 11) v = v.substring(0, 11);
@@ -848,7 +967,10 @@
       input.value = v;
     }
 
-    // Conectar card ao formulário com animação e foco
+    function sanitizarTexto(str) {
+      return String(str || '').replace(/[<>"{}]/g, '').trim();
+    }
+
     function conectarFormulario(nomeImovel) {
       const select = document.getElementById('lead-interesse');
       let encontrou = false;
@@ -876,7 +998,6 @@
       }, 600);
     }
 
-    // Controle de Modais
     function abrirModal(id) {
       const m = document.getElementById(id);
       if (m) {
@@ -895,7 +1016,8 @@
 
     window.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') {
-        ['modalFotoArea', 'modalPrivacidade', 'modalSeguranca'].forEach(fecharModal);
+        ['modalFotoArea', 'modalPrivacidade', 'modalSeguranca', 'modalVideoImovel'].forEach(fecharModal);
+        fecharModalVideo();
       }
     });
 
@@ -905,25 +1027,59 @@
       }
     });
 
-    // Fotos das Dependências
-    function abrirFotoArea(titulo, urlFoto, desc) {
+    function abrirFotoArea(titulo, chaveFoto, desc) {
       document.getElementById('tituloFotoArea').innerText = titulo;
       document.getElementById('descFotoArea').innerText = desc;
       const img = document.getElementById('imgFotoArea');
-      img.src = urlFoto;
+      img.src = bancoFotosAreas[chaveFoto] || chaveFoto;
       img.alt = titulo;
       abrirModal('modalFotoArea');
     }
 
-    // Envio para WhatsApp com Feedback
+    function abrirModalVideo(titulo, chaveImovel) {
+      document.getElementById('tituloModalVideo').innerText = titulo;
+      const container = document.getElementById('containerVideoPlayer');
+      const urlVideo = linksVideos[chaveImovel] || '';
+      
+      if (urlVideo && urlVideo.trim() !== '') {
+        if (urlVideo.includes('youtube') || urlVideo.includes('youtu.be')) {
+          container.innerHTML = `<iframe class="w-full h-full" src="${urlVideo}" title="${titulo}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+        } else {
+          container.innerHTML = `<video class="w-full h-full object-contain" controls autoplay><source src="${urlVideo}" type="video/mp4">Seu navegador não suporta vídeos.</video>`;
+        }
+      } else {
+        container.innerHTML = `
+          <div class="space-y-3">
+            <div class="w-14 h-14 rounded-2xl bg-km-turquesa/20 text-km-turquesa flex items-center justify-center mx-auto text-2xl">
+              <i class="fas fa-video"></i>
+            </div>
+            <h5 class="font-serif font-bold text-lg">Vídeo em Edição</h5>
+            <p class="text-xs text-gray-300 max-w-sm mx-auto">
+              O tour em vídeo deste imóvel está sendo finalizado. Solicite pelo WhatsApp para receber em primeira mão!
+            </p>
+            <a href="https://wa.me/5513974250913?text=Ol%C3%A1%2C%20Kelli!%20Gostaria%20de%20receber%20o%20v%C3%ADdeo%20do%20im%C3%B3vel%20${encodeURIComponent(titulo)}." target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold px-5 py-2.5 rounded-full shadow transition">
+              <i class="fab fa-whatsapp"></i> Pedir Vídeo no WhatsApp
+            </a>
+          </div>
+        `;
+      }
+      abrirModal('modalVideoImovel');
+    }
+
+    function fecharModalVideo() {
+      const container = document.getElementById('containerVideoPlayer');
+      container.innerHTML = '';
+      fecharModal('modalVideoImovel');
+    }
+
     function enviarParaWhatsApp(e) {
       e.preventDefault();
       const btn = document.getElementById('btnSubmitForm');
       const textoBtn = document.getElementById('btnSubmitTexto');
-      const nome = document.getElementById('lead-nome').value.trim();
-      const tel = document.getElementById('lead-telefone').value.trim();
-      const interesse = document.getElementById('lead-interesse').value;
-      const msg = document.getElementById('lead-mensagem').value.trim();
+      const nome = sanitizarTexto(document.getElementById('lead-nome').value);
+      const tel = sanitizarTexto(document.getElementById('lead-telefone').value);
+      const interesse = sanitizarTexto(document.getElementById('lead-interesse').value);
+      const msg = sanitizarTexto(document.getElementById('lead-mensagem').value);
 
       if (!nome || !tel) return;
 
@@ -939,7 +1095,6 @@
       }, 500);
     }
 
-    // Filtros e Busca
     let categoriaAtual = 'todos';
 
     function filtrarCategoria(cat, botao) {
@@ -996,7 +1151,6 @@
       else semResultados.classList.add('hidden');
     }
 
-    // Menu Mobile
     const menuBtn = document.getElementById('menu-btn');
     const mobileMenu = document.getElementById('mobile-menu');
     menuBtn.addEventListener('click', () => {
