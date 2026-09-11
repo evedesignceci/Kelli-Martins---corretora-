@@ -5,21 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   
-  <!-- DIRETRIZES DE SEGURANÇA E PRIVACIDADE -->
+  <!-- SEGURANÇA E PRIVACIDADE -->
   <meta name="referrer" content="strict-origin-when-cross-origin" />
   <meta http-equiv="X-Content-Type-Options" content="nosniff" />
   <meta http-equiv="X-Frame-Options" content="SAMEORIGIN" />
-  <meta name="description" content="Kelli Martins - Corretora e Avaliadora Mercadológica de Imóveis na Orla da Praia do José Menino em Santos/SP. CRECI-SP 323425, CNAI 58458. Compra, venda, aluguel e avaliações com total segurança e conformidade com a LGPD." />
+  <meta name="description" content="Kelli Martins - Corretora e Avaliadora Mercadológica de Imóveis no José Menino em Santos/SP. CRECI-SP 323425, CNAI 58458." />
 
-  <title>Kelli Martins | Corretora & Avaliadora Mercadológica de Imóveis no José Menino, Santos - SP</title>
+  <title>Kelli Martins | Corretora & Avaliadora no José Menino, Santos - SP</title>
   
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   
-  <!-- FontAwesome Ícones -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   
-  <!-- Google Fonts: Montserrat & Playfair Display -->
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
@@ -30,13 +30,13 @@
         extend: {
           colors: {
             km: {
-              laranja: '#F57C00',       // Laranja Sol
-              petroleo: '#00585E',      // Verde Petróleo
-              turquesa: '#33D1D4',      // Azul Turquesa
-              ceu: '#C0E8F4',           // Azul Claro Suave
-              claro: '#F8FCFD',         // Areia / Fundo Claro
-              areiaPraia: '#EED9C4',    // Tom de Areia
-              escuro: '#003A3E'         // Petróleo Profundo
+              laranja: '#F57C00',
+              petroleo: '#00585E',
+              turquesa: '#33D1D4',
+              ceu: '#C0E8F4',
+              claro: '#F8FCFD',
+              areiaPraia: '#EED9C4',
+              escuro: '#003A3E'
             }
           },
           fontFamily: {
@@ -81,7 +81,7 @@
     }
     .card-interativo:hover {
       transform: translateY(-6px);
-      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.15), 0 10px 10px -5px rgba(0, 0, 0, 0.05);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.15);
       border-color: #33D1D4;
     }
 
@@ -94,17 +94,57 @@
       display: inline-block;
     }
 
-    .bg-km-laranja, .btn-filtro {
-      transition: transform 0.2s ease, filter 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+    /* === EFEITO TOUCH ONDA (RIPPLE EFFECT) GLOBAL === */
+    .btn-ripple {
+      position: relative;
+      overflow: hidden;
+      transform: translate3d(0, 0, 0);
+      user-select: none;
     }
-    .bg-km-laranja:hover {
-      filter: brightness(1.08);
-      transform: translateY(-2px);
+    .ripple-wave {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.55);
+      transform: scale(0);
+      animation: ripple-anim 0.6s linear;
+      pointer-events: none;
     }
-    .bg-km-laranja:active, .btn-filtro:active {
-      transform: translateY(0) scale(0.97);
+    @keyframes ripple-anim {
+      to {
+        transform: scale(4);
+        opacity: 0;
+      }
     }
-    
+
+    /* Tag clicável para ver foto de área */
+    .tag-area-foto {
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 2px 8px;
+      border-radius: 9999px;
+      background: rgba(51, 209, 212, 0.15);
+      border: 1px solid rgba(51, 209, 212, 0.4);
+    }
+    .tag-area-foto:hover {
+      background: #33D1D4;
+      color: #003A3E;
+      transform: translateY(-1px);
+    }
+
+    /* Efeito de destaque quando rolar para o formulário */
+    .destaque-formulario {
+      animation: pulso-form 1.2s ease-in-out;
+      box-shadow: 0 0 0 4px #33D1D4, 0 20px 30px rgba(0,0,0,0.2) !important;
+    }
+    @keyframes pulso-form {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.02); }
+      100% { transform: scale(1); }
+    }
+
     *:focus-visible {
       outline: 2px solid #33D1D4;
       outline-offset: 3px;
@@ -113,22 +153,22 @@
 </head>
 <body class="font-sans text-gray-800 antialiased selection:bg-km-laranja selection:text-white">
 
-  <!-- BARRA DE TOPO COM CRECI, CNAI E CONTATOS -->
+  <!-- BARRA DE TOPO -->
   <header class="bg-km-escuro text-white text-xs py-2 px-4 border-b border-km-petroleo">
     <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-2">
       <div class="flex items-center gap-3 sm:gap-6 font-medium">
-        <span><i class="fas fa-map-marker-alt text-km-turquesa mr-1" aria-hidden="true"></i> José Menino • Santos - SP</span>
+        <span><i class="fas fa-map-marker-alt text-km-turquesa mr-1"></i> José Menino • Santos - SP</span>
         <span class="text-gray-400">|</span>
         <span>CRECI-SP: <strong class="text-km-turquesa">323425</strong></span>
         <span class="text-gray-400">|</span>
         <span>CNAI: <strong class="text-km-turquesa">58458</strong> (Avaliadora Mercadológica)</span>
       </div>
       <div class="flex items-center gap-4">
-        <a href="https://www.instagram.com/kellimartins.imoveis" target="_blank" rel="noopener noreferrer" class="hover:text-km-turquesa transition flex items-center gap-1.5 focus-visible:outline-none">
-          <i class="fab fa-instagram" aria-hidden="true"></i> @kellimartins.imoveis
+        <a href="https://www.instagram.com/kellimartins.imoveis" target="_blank" rel="noopener noreferrer" class="hover:text-km-turquesa transition flex items-center gap-1.5">
+          <i class="fab fa-instagram"></i> @kellimartins.imoveis
         </a>
-        <a href="https://wa.me/5513974250913" target="_blank" rel="noopener noreferrer" class="hover:text-km-turquesa transition flex items-center gap-1.5 focus-visible:outline-none">
-          <i class="fab fa-whatsapp" aria-hidden="true"></i> (13) 97425-0913
+        <a href="https://wa.me/5513974250913" target="_blank" rel="noopener noreferrer" class="hover:text-km-turquesa transition flex items-center gap-1.5">
+          <i class="fab fa-whatsapp"></i> (13) 97425-0913
         </a>
       </div>
     </div>
@@ -139,32 +179,29 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex justify-between items-center h-20">
         
-        <!-- Logo e Slogan -->
-        <a href="#" class="flex items-center gap-3 group focus-visible:outline-none">
+        <a href="#" class="flex items-center gap-3 group">
           <div class="w-12 h-12 rounded-2xl bg-km-petroleo flex items-center justify-center text-white font-serif text-2xl font-bold shadow-md group-hover:bg-km-laranja transition duration-300">
             K
           </div>
           <div>
             <span class="font-serif text-2xl font-bold text-km-petroleo tracking-tight block leading-none">Kelli Martins</span>
             <span class="text-[11px] font-semibold tracking-wider text-km-laranja uppercase flex items-center gap-1">
-              Sinta a brisa. Vista-se de mar. <i class="fas fa-water text-km-turquesa icone-praia text-[10px]" aria-hidden="true"></i>
+              Sinta a brisa. Vista-se de mar. <i class="fas fa-water text-km-turquesa icone-praia text-[10px]"></i>
             </span>
           </div>
         </a>
 
-        <!-- Links Desktop -->
         <div class="hidden md:flex items-center space-x-8 text-sm font-medium text-gray-700">
           <a href="#sobre" class="hover:text-km-petroleo transition relative group py-1">Sobre <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-km-turquesa transition-all duration-300 group-hover:w-full"></span></a>
           <a href="#servicos" class="hover:text-km-petroleo transition relative group py-1">Serviços <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-km-turquesa transition-all duration-300 group-hover:w-full"></span></a>
           <a href="#imoveis" class="hover:text-km-petroleo transition relative group py-1">Imóveis <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-km-turquesa transition-all duration-300 group-hover:w-full"></span></a>
-          <a href="#contato" class="bg-km-laranja text-white font-semibold px-6 py-2.5 rounded-full shadow-md hover:shadow-orange-500/30 flex items-center gap-2">
-            <i class="fab fa-whatsapp" aria-hidden="true"></i> Falar com a Kelli
+          <a href="#contato" class="btn-ripple bg-km-laranja text-white font-semibold px-6 py-2.5 rounded-full shadow-md hover:shadow-orange-500/30 flex items-center gap-2">
+            <i class="fab fa-whatsapp"></i> Falar com a Kelli
           </a>
         </div>
 
-        <!-- Botão Mobile -->
-        <button id="menu-btn" aria-label="Abrir menu" aria-expanded="false" class="md:hidden text-km-petroleo text-2xl p-2 focus-visible:outline-none">
-          <i class="fas fa-bars" aria-hidden="true"></i>
+        <button id="menu-btn" aria-label="Abrir menu" class="btn-ripple md:hidden text-km-petroleo text-2xl p-2 rounded-xl">
+          <i class="fas fa-bars"></i>
         </button>
       </div>
     </div>
@@ -174,8 +211,8 @@
       <a href="#sobre" class="block text-gray-700 hover:text-km-petroleo py-1">Sobre Kelli</a>
       <a href="#servicos" class="block text-gray-700 hover:text-km-petroleo py-1">Serviços Oferecidos</a>
       <a href="#imoveis" class="block text-gray-700 hover:text-km-petroleo py-1">Imóveis</a>
-      <a href="#contato" class="block text-center bg-km-laranja text-white py-3 rounded-xl font-bold shadow">
-        <i class="fab fa-whatsapp mr-1" aria-hidden="true"></i> Iniciar Atendimento
+      <a href="#contato" class="btn-ripple block text-center bg-km-laranja text-white py-3 rounded-xl font-bold shadow">
+        <i class="fab fa-whatsapp mr-1"></i> Iniciar Atendimento
       </a>
     </div>
   </nav>
@@ -185,7 +222,7 @@
     <div class="max-w-4xl mx-auto text-center space-y-6 hero-texto-legivel">
       
       <div class="inline-flex items-center gap-2 bg-km-turquesa/30 border border-km-turquesa/50 backdrop-blur-md px-4 py-1.5 rounded-full text-xs font-bold text-white uppercase tracking-wider shadow-sm">
-        <i class="fas fa-sun text-km-laranja icone-praia" aria-hidden="true"></i> Especialista na Orla do José Menino • Santos/SP
+        <i class="fas fa-sun text-km-laranja icone-praia"></i> Especialista na Orla do José Menino • Santos/SP
       </div>
       
       <h1 class="font-serif text-3xl sm:text-5xl md:text-6xl font-bold leading-tight texto-com-sombra">
@@ -197,10 +234,10 @@
       </p>
 
       <div class="pt-6 flex flex-col sm:flex-row gap-4 justify-center">
-        <a href="#contato" class="bg-km-laranja text-white font-bold px-8 py-4 rounded-full shadow-lg shadow-orange-500/30 flex items-center justify-center gap-2">
-          <i class="fab fa-whatsapp text-lg" aria-hidden="true"></i> Iniciar Atendimento VIP
+        <a href="#contato" class="btn-ripple bg-km-laranja text-white font-bold px-8 py-4 rounded-full shadow-lg shadow-orange-500/30 flex items-center justify-center gap-2">
+          <i class="fab fa-whatsapp text-lg"></i> Iniciar Atendimento VIP
         </a>
-        <a href="#imoveis" class="bg-km-petroleo/80 hover:bg-km-petroleo border border-km-turquesa/40 backdrop-blur-md text-white font-semibold px-8 py-4 rounded-full transition flex items-center justify-center shadow-md">
+        <a href="#imoveis" class="btn-ripple bg-km-petroleo/80 hover:bg-km-petroleo border border-km-turquesa/40 backdrop-blur-md text-white font-semibold px-8 py-4 rounded-full transition flex items-center justify-center shadow-md">
           Ver Imóveis Disponíveis
         </a>
       </div>
@@ -215,7 +252,7 @@
         <div class="md:col-span-5">
           <div class="relative mx-auto max-w-sm">
             <div class="aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl border-4 border-white bg-km-ceu/30 card-interativo">
-              <img src="https://res.cloudinary.com/oactqmgs/image/upload/v1789076809/FOTO_DO_SITE_DA_KELLI_ELA.jpg" alt="Kelli Martins - Corretora de Imóveis" class="w-full h-full object-cover object-top" loading="lazy" />
+              <img src="https://res.cloudinary.com/oactqmgs/image/upload/v1789076809/FOTO_DO_SITE_DA_KELLI_ELA.jpg" alt="Kelli Martins" class="w-full h-full object-cover object-top" loading="lazy" />
             </div>
             <div class="absolute -bottom-6 -right-2 bg-km-petroleo text-white p-5 rounded-2xl shadow-xl max-w-[240px] border-l-4 border-km-laranja">
               <p class="text-xs uppercase font-bold text-km-turquesa tracking-wider">José Menino • Santos/SP</p>
@@ -227,18 +264,18 @@
         <div class="md:col-span-7 space-y-6 text-gray-800 vidro-claro-leitura p-8 rounded-3xl">
           <div>
             <span class="text-xs font-bold uppercase tracking-widest text-km-laranja flex items-center gap-2">
-              <i class="fas fa-anchor text-km-turquesa icone-praia" aria-hidden="true"></i> Sobre a Profissional
+              <i class="fas fa-anchor text-km-turquesa icone-praia"></i> Sobre a Profissional
             </span>
             <h2 class="font-serif text-3xl sm:text-4xl font-bold text-km-petroleo mt-1">Kelli Martins</h2>
             <p class="text-sm font-medium text-km-petroleo/80">Corretora e Avaliadora Mercadológica de Imóveis no José Menino, Santos - SP</p>
           </div>
 
           <p class="text-base font-medium leading-relaxed">
-            Com atuação forte e especializada na orla da praia do <strong>José Menino, em Santos</strong>, ofereço uma consultoria imobiliária completa, humana e personalizada para quem deseja comprar, vender, alugar ou avaliar imóveis com total segurança jurídica.
+            Com atuação forte e especializada na orla da praia do <strong>José Menino, em Santos</strong>, ofereço consultoria completa, humana e personalizada para quem deseja comprar, vender, alugar ou avaliar imóveis com total segurança jurídica.
           </p>
 
           <p class="text-base font-medium leading-relaxed">
-            Meu compromisso é eliminar burocracias com ética e máxima transparência para que você realize o seu objetivo no litoral sem preocupações.
+            Meu compromisso é eliminar burocracias com ética e máxima transparência para você realizar o seu objetivo sem preocupações.
           </p>
 
           <div class="grid grid-cols-2 gap-4 pt-2">
@@ -262,10 +299,9 @@
   <!-- SERVIÇOS -->
   <section id="servicos" class="py-20">
     <div class="max-w-7xl mx-auto px-4 sm:px-6">
-      
       <div class="text-center max-w-2xl mx-auto mb-16 space-y-3 vidro-claro-leitura p-8 rounded-[2rem] relative overflow-hidden">
-        <i class="fas fa-water absolute -bottom-4 -left-4 text-7xl text-km-turquesa/10 icone-praia" aria-hidden="true"></i>
-        <i class="fas fa-water absolute -top-4 -right-4 text-7xl text-km-turquesa/10 icone-praia" style="animation-delay: 1.5s;" aria-hidden="true"></i>
+        <i class="fas fa-water absolute -bottom-4 -left-4 text-7xl text-km-turquesa/10 icone-praia"></i>
+        <i class="fas fa-water absolute -top-4 -right-4 text-7xl text-km-turquesa/10 icone-praia" style="animation-delay: 1.5s;"></i>
         
         <span class="text-xs font-bold uppercase tracking-widest text-km-laranja flex items-center justify-center gap-2 relative z-10">
           ⭐ Soluções Imobiliárias ⭐
@@ -277,7 +313,7 @@
       <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
         <div class="bg-white/95 p-6 rounded-2xl border border-km-ceu/80 card-interativo">
           <div class="w-12 h-12 rounded-xl bg-km-ceu/40 text-km-petroleo flex items-center justify-center text-xl mb-4">
-            <i class="fas fa-handshake" aria-hidden="true"></i>
+            <i class="fas fa-handshake"></i>
           </div>
           <h3 class="font-bold text-lg text-km-petroleo mb-2">Compra e Venda</h3>
           <p class="text-xs text-gray-700 font-medium leading-relaxed">
@@ -287,7 +323,7 @@
 
         <div class="bg-white/95 p-6 rounded-2xl border border-km-ceu/80 card-interativo">
           <div class="w-12 h-12 rounded-xl bg-km-ceu/40 text-km-petroleo flex items-center justify-center text-xl mb-4">
-            <i class="fas fa-key" aria-hidden="true"></i>
+            <i class="fas fa-key"></i>
           </div>
           <h3 class="font-bold text-lg text-km-petroleo mb-2">Aluguel Anual & Temporada</h3>
           <p class="text-xs text-gray-700 font-medium leading-relaxed">
@@ -297,7 +333,7 @@
 
         <div class="bg-white/95 p-6 rounded-2xl border border-km-ceu/80 card-interativo">
           <div class="w-12 h-12 rounded-xl bg-km-ceu/40 text-km-petroleo flex items-center justify-center text-xl mb-4">
-            <i class="fas fa-calculator" aria-hidden="true"></i>
+            <i class="fas fa-calculator"></i>
           </div>
           <h3 class="font-bold text-lg text-km-petroleo mb-2">Avaliação Mercadológica</h3>
           <p class="text-xs text-gray-700 font-medium leading-relaxed">
@@ -307,33 +343,23 @@
 
         <div class="bg-white/95 p-6 rounded-2xl border border-km-ceu/80 card-interativo">
           <div class="w-12 h-12 rounded-xl bg-km-ceu/40 text-km-petroleo flex items-center justify-center text-xl mb-4">
-            <i class="fas fa-file-invoice-dollar" aria-hidden="true"></i>
+            <i class="fas fa-file-invoice-dollar"></i>
           </div>
           <h3 class="font-bold text-lg text-km-petroleo mb-2">Financiamento & Crédito</h3>
           <p class="text-xs text-gray-700 font-medium leading-relaxed">
-            Crédito imobiliário, Home Equity (com garantia de imóvel) e recursos para construção e reforma.
+            Crédito imobiliário, Home Equity e recursos para reforma ou aquisição com tranquilidade.
           </p>
-        </div>
-      </div>
-
-      <div class="mt-10 bg-white/95 p-6 rounded-2xl border-l-4 border-km-laranja shadow-lg max-w-3xl mx-auto flex items-center gap-4 card-interativo">
-        <div class="text-km-laranja text-2xl icone-praia">
-          <i class="fas fa-shield-alt" aria-hidden="true"></i>
-        </div>
-        <div>
-          <h4 class="font-bold text-km-petroleo text-sm">Assessoria completa do início ao fim (Compra Segura)</h4>
-          <p class="text-xs text-gray-700 font-medium">Acompanhamento especializado e seguro desde o primeiro atendimento até a entrega das chaves.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- IMÓVEIS (COM FILTROS E FEEDBACK VISUAL REFINADO) -->
+  <!-- IMÓVEIS -->
   <section id="imoveis" class="py-20">
     <div class="max-w-7xl mx-auto px-4 sm:px-6">
       
       <div class="vidro-claro-leitura p-6 sm:p-8 rounded-[2rem] mb-10 relative overflow-hidden">
-        <i class="fas fa-umbrella-beach absolute -bottom-4 -right-2 text-7xl text-km-turquesa/10 icone-praia" style="animation-delay: 0.5s;" aria-hidden="true"></i>
+        <i class="fas fa-umbrella-beach absolute -bottom-4 -right-2 text-7xl text-km-turquesa/10 icone-praia" style="animation-delay: 0.5s;"></i>
         
         <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 relative z-10">
           <div>
@@ -341,36 +367,33 @@
               🐚 Portfólio Exclusivo
             </span>
             <h2 class="font-serif text-3xl sm:text-4xl font-bold text-km-petroleo mt-1">Imóveis no José Menino</h2>
-            <p class="text-sm text-gray-800 font-semibold mt-2">Oportunidades a apenas 50 metros da praia em Santos.</p>
+            <p class="text-sm text-gray-800 font-semibold mt-2">Toque nos itens destacados para fotos das áreas de lazer e escolha como deseja ser atendido.</p>
           </div>
           
-          <!-- Filtros de Categoria -->
-          <div class="flex flex-wrap gap-2" role="group" aria-label="Filtrar por finalidade">
-            <button onclick="filtrarCategoria('todos', this)" class="btn-filtro px-4 py-1.5 rounded-full text-xs font-bold bg-km-petroleo text-white shadow focus-visible:ring-2 focus-visible:ring-km-turquesa">Todos</button>
-            <button onclick="filtrarCategoria('venda', this)" class="btn-filtro px-4 py-1.5 rounded-full text-xs font-bold bg-white text-km-petroleo hover:bg-km-ceu transition focus-visible:ring-2 focus-visible:ring-km-turquesa">Venda</button>
-            <button onclick="filtrarCategoria('anual', this)" class="btn-filtro px-4 py-1.5 rounded-full text-xs font-bold bg-white text-km-petroleo hover:bg-km-ceu transition focus-visible:ring-2 focus-visible:ring-km-turquesa">Aluguel Anual</button>
-            <button onclick="filtrarCategoria('temporada', this)" class="btn-filtro px-4 py-1.5 rounded-full text-xs font-bold bg-white text-km-petroleo hover:bg-km-ceu transition focus-visible:ring-2 focus-visible:ring-km-turquesa">Temporada</button>
+          <div class="flex flex-wrap gap-2">
+            <button onclick="filtrarCategoria('todos', this)" class="btn-ripple px-4 py-1.5 rounded-full text-xs font-bold bg-km-petroleo text-white shadow">Todos</button>
+            <button onclick="filtrarCategoria('venda', this)" class="btn-ripple px-4 py-1.5 rounded-full text-xs font-bold bg-white text-km-petroleo hover:bg-km-ceu transition">Venda</button>
+            <button onclick="filtrarCategoria('anual', this)" class="btn-ripple px-4 py-1.5 rounded-full text-xs font-bold bg-white text-km-petroleo hover:bg-km-ceu transition">Aluguel Anual</button>
+            <button onclick="filtrarCategoria('temporada', this)" class="btn-ripple px-4 py-1.5 rounded-full text-xs font-bold bg-white text-km-petroleo hover:bg-km-ceu transition">Temporada</button>
           </div>
         </div>
       </div>
 
-      <!-- BARRA DE PESQUISA COM BOTÃO LIMPAR E FEEDBACK DE CONTAGEM -->
+      <!-- BARRA DE BUSCA COM BOTÃO DE LIMPEZA -->
       <div class="bg-white/95 backdrop-blur-md p-4 sm:p-5 rounded-3xl border border-km-ceu/80 shadow-lg mb-6 card-interativo">
         <div class="grid grid-cols-1 sm:grid-cols-12 gap-3 items-center">
-          
           <div class="sm:col-span-8 relative">
-            <i class="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-km-petroleo/50" aria-hidden="true"></i>
+            <i class="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-km-petroleo/50"></i>
             <input 
               type="text" 
               id="campoBusca" 
               maxlength="80"
               oninput="filtrarImoveis()" 
-              placeholder="Pesquise por nome, tamanho, quartos ou valor..." 
-              class="w-full pl-11 pr-10 py-3 rounded-2xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-km-turquesa text-sm bg-white shadow-inner font-medium text-gray-700 transition"
+              placeholder="Pesquise por nome, quartos, piscina, lazer..." 
+              class="w-full pl-11 pr-10 py-3 rounded-2xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-km-turquesa text-sm bg-white shadow-inner font-medium text-gray-700"
             />
-            <!-- Botão de Limpar Busca (Feedback Visual Rápido) -->
             <button id="btnLimparBusca" onclick="limparBusca()" class="hidden absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 p-1">
-              <i class="fas fa-times-circle" aria-hidden="true"></i>
+              <i class="fas fa-times-circle"></i>
             </button>
           </div>
 
@@ -385,10 +408,8 @@
               <option value="2">2 Dormitórios</option>
             </select>
           </div>
-
         </div>
 
-        <!-- Feedback de Quantidade de Imóveis Encontrados -->
         <div class="mt-3 px-2 flex justify-between items-center text-xs font-semibold text-gray-500">
           <span id="contadorResultados"><i class="fas fa-home text-km-petroleo mr-1"></i> Mostrando todos os 3 imóveis</span>
         </div>
@@ -405,40 +426,52 @@
             <div class="relative aspect-[16/10] overflow-hidden">
               <span class="absolute top-3 left-3 bg-km-laranja text-white text-[11px] font-bold uppercase px-3 py-1 rounded-full z-10 shadow">À Venda</span>
               <span class="absolute top-3 right-3 bg-km-petroleo text-white text-[10px] font-semibold uppercase px-2.5 py-1 rounded-full z-10 shadow flex items-center gap-1">
-                <i class="fas fa-lock" aria-hidden="true"></i> Compra Segura
+                <i class="fas fa-lock"></i> Compra Segura
               </span>
-              <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80" alt="Cobertura Duplex José Menino Santos" class="w-full h-full object-cover transition duration-500 hover:scale-105" loading="lazy" />
+              <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80" alt="Cobertura Duplex" class="w-full h-full object-cover transition duration-500 hover:scale-105" loading="lazy" />
             </div>
             
             <div class="p-6">
               <span class="text-[11px] font-bold text-km-turquesa uppercase tracking-wider block">José Menino • 50m da Praia • Santos/SP</span>
               <h3 class="font-serif font-bold text-lg text-km-petroleo mt-1 mb-2">Cobertura Duplex à Venda</h3>
               <p class="text-xs text-gray-600 font-medium mb-3 leading-relaxed">
-                Linda cobertura duplex, super bem localizada, a só 50 metros da praia do José Menino, em Santos — perfeita para quem quer conforto.
+                Linda cobertura duplex, super bem localizada, a só 50 metros da praia do José Menino, em Santos.
               </p>
 
+              <!-- ÁREAS CLICÁVEIS -->
               <div class="text-[11px] text-km-petroleo font-semibold mb-3 bg-teal-50/70 p-2.5 rounded-xl border border-teal-100">
-                <span class="block text-km-petroleo mb-1"><i class="fas fa-building text-km-turquesa mr-1" aria-hidden="true"></i> <strong>Condomínio com infraestrutura:</strong></span>
-                <span class="text-gray-700 font-medium block">• Piscina • Academia • Salão de festas</span>
+                <span class="block text-km-petroleo mb-1.5"><i class="fas fa-camera text-km-turquesa mr-1"></i> <strong>Toque para ver fotos do condomínio:</strong></span>
+                <div class="flex flex-wrap gap-1.5 mt-1">
+                  <span onclick="abrirFotoArea('Piscina Panorâmica', 'https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?auto=format&fit=crop&w=1000&q=80', 'Piscina aquecida e ensolarada')" class="tag-area-foto"><i class="fas fa-eye text-[10px]"></i> Piscina</span>
+                  <span onclick="abrirFotoArea('Academia Fitness', 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1000&q=80', 'Aparelhos modernos para treino diário')" class="tag-area-foto"><i class="fas fa-eye text-[10px]"></i> Academia</span>
+                  <span onclick="abrirFotoArea('Salão de Festas & Gourmet', 'https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=1000&q=80', 'Espaço climatizado e equipado')" class="tag-area-foto"><i class="fas fa-eye text-[10px]"></i> Salão de festas</span>
+                </div>
               </div>
               
               <div class="grid grid-cols-3 gap-2 text-center text-xs text-gray-700 font-medium py-3 border-y border-gray-100 mb-4 bg-km-claro/60 rounded-xl">
-                <div><i class="fas fa-ruler-combined text-km-petroleo block mb-1" aria-hidden="true"></i> 72,25 m²</div>
-                <div><i class="fas fa-bed text-km-petroleo block mb-1" aria-hidden="true"></i> 1 Suíte</div>
-                <div><i class="fas fa-car text-km-petroleo block mb-1" aria-hidden="true"></i> 2 Vagas</div>
+                <div><i class="fas fa-ruler-combined text-km-petroleo block mb-1"></i> 72,25 m²</div>
+                <div><i class="fas fa-bed text-km-petroleo block mb-1"></i> 1 Suíte</div>
+                <div><i class="fas fa-car text-km-petroleo block mb-1"></i> 2 Vagas</div>
               </div>
             </div>
           </div>
 
-          <div class="px-6 pb-6 pt-0">
-            <div class="flex items-center justify-between">
-              <div>
-                <span class="text-[10px] text-gray-500 block font-semibold">Cond: R$ 1.200 | IPTU: R$ 285</span>
-                <span class="font-bold text-xl text-km-petroleo">R$ 430.000</span>
-              </div>
-              <a href="https://wa.me/5513974250913?text=Ol%C3%A1%2C%20Kelli!%20Gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20a%20Cobertura%20Duplex%20no%20Jos%C3%A9%20Menino." target="_blank" rel="noopener noreferrer" class="text-xs font-bold bg-km-laranja text-white px-4 py-2.5 rounded-xl shadow-sm flex items-center gap-1.5 btn-filtro focus-visible:ring-2 focus-visible:ring-km-turquesa">
-                <i class="fab fa-whatsapp" aria-hidden="true"></i> Agendar
+          <!-- BOTÕES DE AÇÃO: ZAP DIRETO E PREENCHIMENTO -->
+          <div class="px-6 pb-6 pt-0 space-y-3">
+            <div>
+              <span class="text-[10px] text-gray-500 block font-semibold">Cond: R$ 1.200 | IPTU: R$ 285</span>
+              <span class="font-bold text-xl text-km-petroleo">R$ 430.000</span>
+            </div>
+            
+            <div class="grid grid-cols-2 gap-2">
+              <!-- Botão 1: Direto no WhatsApp -->
+              <a href="https://wa.me/5513974250913?text=Ol%C3%A1%2C%20Kelli!%20Gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20a%20Cobertura%20Duplex%20no%20Jos%C3%A9%20Menino." target="_blank" rel="noopener noreferrer" class="btn-ripple text-xs font-bold bg-emerald-600 hover:bg-emerald-700 text-white py-2.5 px-3 rounded-xl shadow-sm flex items-center justify-center gap-1.5 text-center">
+                <i class="fab fa-whatsapp text-sm"></i> WhatsApp
               </a>
+              <!-- Botão 2: Conectar ao Formulário -->
+              <button onclick="conectarFormulario('Cobertura Duplex no José Menino (R$ 430.000,00)')" class="btn-ripple text-xs font-bold bg-km-petroleo hover:bg-km-escuro text-white py-2.5 px-3 rounded-xl shadow-sm flex items-center justify-center gap-1.5 text-center">
+                <i class="fas fa-file-signature text-sm"></i> Proposta
+              </button>
             </div>
           </div>
         </div>
@@ -451,40 +484,52 @@
             <div class="relative aspect-[16/10] overflow-hidden">
               <span class="absolute top-3 left-3 bg-km-laranja text-white text-[11px] font-bold uppercase px-3 py-1 rounded-full z-10 shadow">À Venda</span>
               <span class="absolute top-3 right-3 bg-km-petroleo text-white text-[10px] font-semibold uppercase px-2.5 py-1 rounded-full z-10 shadow flex items-center gap-1">
-                <i class="fas fa-lock" aria-hidden="true"></i> Compra Segura
+                <i class="fas fa-lock"></i> Compra Segura
               </span>
-              <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=800&q=80" alt="Apartamento 1 dormitório Santos" class="w-full h-full object-cover transition duration-500 hover:scale-105" loading="lazy" />
+              <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=800&q=80" alt="Apartamento 1 dormitório" class="w-full h-full object-cover transition duration-500 hover:scale-105" loading="lazy" />
             </div>
             
             <div class="p-6">
               <span class="text-[11px] font-bold text-km-turquesa uppercase tracking-wider block">José Menino • 50m da Praia • Santos/SP</span>
               <h3 class="font-serif font-bold text-lg text-km-petroleo mt-1 mb-2">Ap. de 1 Dormitório à Venda</h3>
               <p class="text-xs text-gray-600 font-medium mb-3 leading-relaxed">
-                Excelente apartamento com 36,6 m² de área útil, localizado a apenas 50 metros da Praia do José Menino. Uma ótima oportunidade!
+                Excelente apartamento de 36,6 m² a apenas 50 metros da orla da praia do José Menino.
               </p>
 
+              <!-- ÁREAS CLICÁVEIS -->
               <div class="text-[11px] text-km-petroleo font-semibold mb-3 bg-teal-50/70 p-2.5 rounded-xl border border-teal-100">
-                <span class="block text-km-petroleo mb-1"><i class="fas fa-building text-km-turquesa mr-1" aria-hidden="true"></i> <strong>O condomínio oferece:</strong></span>
-                <span class="text-gray-700 font-medium block">• Piscina • Academia • Portaria 24h</span>
+                <span class="block text-km-petroleo mb-1.5"><i class="fas fa-camera text-km-turquesa mr-1"></i> <strong>Toque para ver fotos do condomínio:</strong></span>
+                <div class="flex flex-wrap gap-1.5 mt-1">
+                  <span onclick="abrirFotoArea('Piscina do Condomínio', 'https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?auto=format&fit=crop&w=1000&q=80', 'Deck com piscina')" class="tag-area-foto"><i class="fas fa-eye text-[10px]"></i> Piscina</span>
+                  <span onclick="abrirFotoArea('Portaria 24 Horas Segura', 'https://images.unsplash.com/photo-1541888946425-d0fbb18086f6?auto=format&fit=crop&w=1000&q=80', 'Portaria monitorada 24 horas por dia')" class="tag-area-foto"><i class="fas fa-eye text-[10px]"></i> Portaria 24h</span>
+                  <span onclick="abrirFotoArea('Academia Equipada', 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1000&q=80', 'Ambiente climatizado')" class="tag-area-foto"><i class="fas fa-eye text-[10px]"></i> Academia</span>
+                </div>
               </div>
               
               <div class="grid grid-cols-3 gap-2 text-center text-xs text-gray-700 font-medium py-3 border-y border-gray-100 mb-4 bg-km-claro/60 rounded-xl">
-                <div><i class="fas fa-ruler-combined text-km-petroleo block mb-1" aria-hidden="true"></i> 36,6 m²</div>
-                <div><i class="fas fa-bed text-km-petroleo block mb-1" aria-hidden="true"></i> 1 Dorm.</div>
-                <div><i class="fas fa-car text-km-petroleo block mb-1" aria-hidden="true"></i> Garagem</div>
+                <div><i class="fas fa-ruler-combined text-km-petroleo block mb-1"></i> 36,6 m²</div>
+                <div><i class="fas fa-bed text-km-petroleo block mb-1"></i> 1 Dorm.</div>
+                <div><i class="fas fa-car text-km-petroleo block mb-1"></i> Garagem</div>
               </div>
             </div>
           </div>
 
-          <div class="px-6 pb-6 pt-0">
-            <div class="flex items-center justify-between">
-              <div>
-                <span class="text-[10px] text-gray-500 block font-semibold">Cond: R$ 474 | IPTU: R$ 137</span>
-                <span class="font-bold text-xl text-km-petroleo">R$ 320.000</span>
-              </div>
-              <a href="https://wa.me/5513974250913?text=Ol%C3%A1%2C%20Kelli!%20Gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20o%20Ap%201%20Dormit%C3%B3rio%20no%20Jos%C3%A9%20Menino." target="_blank" rel="noopener noreferrer" class="text-xs font-bold bg-km-laranja text-white px-4 py-2.5 rounded-xl shadow-sm flex items-center gap-1.5 btn-filtro focus-visible:ring-2 focus-visible:ring-km-turquesa">
-                <i class="fab fa-whatsapp" aria-hidden="true"></i> Agendar
+          <!-- BOTÕES DE AÇÃO: ZAP DIRETO E PREENCHIMENTO -->
+          <div class="px-6 pb-6 pt-0 space-y-3">
+            <div>
+              <span class="text-[10px] text-gray-500 block font-semibold">Cond: R$ 474 | IPTU: R$ 137</span>
+              <span class="font-bold text-xl text-km-petroleo">R$ 320.000</span>
+            </div>
+
+            <div class="grid grid-cols-2 gap-2">
+              <!-- Botão 1: Direto no WhatsApp -->
+              <a href="https://wa.me/5513974250913?text=Ol%C3%A1%2C%20Kelli!%20Gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20o%20Ap%201%20Dormit%C3%B3rio%20no%20Jos%C3%A9%20Menino." target="_blank" rel="noopener noreferrer" class="btn-ripple text-xs font-bold bg-emerald-600 hover:bg-emerald-700 text-white py-2.5 px-3 rounded-xl shadow-sm flex items-center justify-center gap-1.5 text-center">
+                <i class="fab fa-whatsapp text-sm"></i> WhatsApp
               </a>
+              <!-- Botão 2: Conectar ao Formulário -->
+              <button onclick="conectarFormulario('Ap 1 Dormitório no José Menino (R$ 320.000,00)')" class="btn-ripple text-xs font-bold bg-km-petroleo hover:bg-km-escuro text-white py-2.5 px-3 rounded-xl shadow-sm flex items-center justify-center gap-1.5 text-center">
+                <i class="fas fa-file-signature text-sm"></i> Proposta
+              </button>
             </div>
           </div>
         </div>
@@ -497,61 +542,70 @@
             <div class="relative aspect-[16/10] overflow-hidden">
               <span class="absolute top-3 left-3 bg-km-laranja text-white text-[11px] font-bold uppercase px-3 py-1 rounded-full z-10 shadow">À Venda</span>
               <span class="absolute top-3 right-3 bg-km-petroleo text-white text-[10px] font-semibold uppercase px-2.5 py-1 rounded-full z-10 shadow flex items-center gap-1">
-                <i class="fas fa-lock" aria-hidden="true"></i> Compra Segura
+                <i class="fas fa-lock"></i> Compra Segura
               </span>
-              <img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=800&q=80" alt="Apartamento 2 dormitórios Varanda Santos" class="w-full h-full object-cover transition duration-500 hover:scale-105" loading="lazy" />
+              <img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=800&q=80" alt="Apartamento com Varanda" class="w-full h-full object-cover transition duration-500 hover:scale-105" loading="lazy" />
             </div>
             
             <div class="p-6">
               <span class="text-[11px] font-bold text-km-turquesa uppercase tracking-wider block">José Menino • 50m da Praia • Santos/SP</span>
               <h3 class="font-serif font-bold text-lg text-km-petroleo mt-1 mb-2">Ap. com Varanda à Venda</h3>
               <p class="text-xs text-gray-600 font-medium mb-3 leading-relaxed">
-                Excelente apartamento com 57 m², varanda e localizado a apenas 50 metros da Praia do José Menino. Área de lazer completa.
+                Excelente apartamento com 57 m², varanda espaçosa e ótima ventilação a 50m do mar.
               </p>
 
+              <!-- ÁREAS CLICÁVEIS -->
               <div class="text-[11px] text-km-petroleo font-semibold mb-3 bg-teal-50/70 p-2.5 rounded-xl border border-teal-100">
-                <span class="block text-km-petroleo mb-1"><i class="fas fa-building text-km-turquesa mr-1" aria-hidden="true"></i> <strong>O condomínio oferece:</strong></span>
-                <span class="text-gray-700 font-medium block">• Piscina • Academia • Área gourmet</span>
+                <span class="block text-km-petroleo mb-1.5"><i class="fas fa-camera text-km-turquesa mr-1"></i> <strong>Toque para ver fotos do condomínio:</strong></span>
+                <div class="flex flex-wrap gap-1.5 mt-1">
+                  <span onclick="abrirFotoArea('Área Gourmet & Churrasqueira', 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1000&q=80', 'Espaço gourmet com churrasqueira para confraternizações')" class="tag-area-foto"><i class="fas fa-eye text-[10px]"></i> Área gourmet</span>
+                  <span onclick="abrirFotoArea('Piscina e Solarium', 'https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?auto=format&fit=crop&w=1000&q=80', 'Piscina com espreguiçadeiras')" class="tag-area-foto"><i class="fas fa-eye text-[10px]"></i> Piscina</span>
+                  <span onclick="abrirFotoArea('Academia Completa', 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1000&q=80', 'Equipamentos novos')" class="tag-area-foto"><i class="fas fa-eye text-[10px]"></i> Academia</span>
+                </div>
               </div>
               
               <div class="grid grid-cols-3 gap-2 text-center text-xs text-gray-700 font-medium py-3 border-y border-gray-100 mb-4 bg-km-claro/60 rounded-xl">
-                <div><i class="fas fa-ruler-combined text-km-petroleo block mb-1" aria-hidden="true"></i> 57 m²</div>
-                <div><i class="fas fa-bed text-km-petroleo block mb-1" aria-hidden="true"></i> 2 Dorms.</div>
-                <div><i class="fas fa-car text-km-petroleo block mb-1" aria-hidden="true"></i> Vaga</div>
+                <div><i class="fas fa-ruler-combined text-km-petroleo block mb-1"></i> 57 m²</div>
+                <div><i class="fas fa-bed text-km-petroleo block mb-1"></i> 2 Dorms.</div>
+                <div><i class="fas fa-car text-km-petroleo block mb-1"></i> Vaga</div>
               </div>
             </div>
           </div>
 
-          <div class="px-6 pb-6 pt-0">
-            <div class="flex items-center justify-between">
-              <div>
-                <span class="text-[10px] text-gray-500 block font-semibold">Cond: R$ 664 | IPTU: R$ 200</span>
-                <span class="font-bold text-xl text-km-petroleo">R$ 430.000</span>
-              </div>
-              <a href="https://wa.me/5513974250913?text=Ol%C3%A1%2C%20Kelli!%20Gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20o%20Ap%202%20Dormit%C3%B3rios%20no%20Jos%C3%A9%20Menino." target="_blank" rel="noopener noreferrer" class="text-xs font-bold bg-km-laranja text-white px-4 py-2.5 rounded-xl shadow-sm flex items-center gap-1.5 btn-filtro focus-visible:ring-2 focus-visible:ring-km-turquesa">
-                <i class="fab fa-whatsapp" aria-hidden="true"></i> Agendar
+          <!-- BOTÕES DE AÇÃO: ZAP DIRETO E PREENCHIMENTO -->
+          <div class="px-6 pb-6 pt-0 space-y-3">
+            <div>
+              <span class="text-[10px] text-gray-500 block font-semibold">Cond: R$ 664 | IPTU: R$ 200</span>
+              <span class="font-bold text-xl text-km-petroleo">R$ 430.000</span>
+            </div>
+
+            <div class="grid grid-cols-2 gap-2">
+              <!-- Botão 1: Direto no WhatsApp -->
+              <a href="https://wa.me/5513974250913?text=Ol%C3%A1%2C%20Kelli!%20Gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20o%20Ap%202%20Dormit%C3%B3rios%20no%20Jos%C3%A9%20Menino." target="_blank" rel="noopener noreferrer" class="btn-ripple text-xs font-bold bg-emerald-600 hover:bg-emerald-700 text-white py-2.5 px-3 rounded-xl shadow-sm flex items-center justify-center gap-1.5 text-center">
+                <i class="fab fa-whatsapp text-sm"></i> WhatsApp
               </a>
+              <!-- Botão 2: Conectar ao Formulário -->
+              <button onclick="conectarFormulario('Ap 2 Dormitórios com Varanda no José Menino (R$ 430.000,00)')" class="btn-ripple text-xs font-bold bg-km-petroleo hover:bg-km-escuro text-white py-2.5 px-3 rounded-xl shadow-sm flex items-center justify-center gap-1.5 text-center">
+                <i class="fas fa-file-signature text-sm"></i> Proposta
+              </button>
             </div>
           </div>
         </div>
 
       </div>
 
-      <!-- ESTADO VAZIO (NENHUM RESULTADO) -->
+      <!-- SEM RESULTADOS -->
       <div id="semResultados" class="hidden text-center py-14 px-4 bg-white/95 backdrop-blur-md rounded-3xl border border-dashed border-km-petroleo/50 shadow-lg my-8">
         <div class="w-16 h-16 rounded-full bg-km-claro flex items-center justify-center mx-auto text-2xl text-km-laranja shadow-sm mb-4">
-          <i class="fas fa-search" aria-hidden="true"></i>
+          <i class="fas fa-search"></i>
         </div>
-        <h3 class="font-serif text-xl font-bold text-km-petroleo mb-2">Nenhum imóvel encontrado para os filtros atuais</h3>
+        <h3 class="font-serif text-xl font-bold text-km-petroleo mb-2">Nenhum imóvel encontrado para essa busca</h3>
         <p class="text-sm text-gray-700 font-medium max-w-md mx-auto mb-6">
-          A Kelli possui acesso a opções fora da vitrine pública. Diga o que procura no WhatsApp que ela localiza para você!
+          A Kelli possui acesso a opções fora da vitrine pública.
         </p>
-        <button onclick="limparBusca()" class="inline-flex items-center gap-2 bg-km-petroleo text-white px-6 py-2.5 rounded-full font-bold text-xs shadow-md mr-3 hover:bg-km-escuro transition">
-          <i class="fas fa-redo" aria-hidden="true"></i> Limpar Filtros
+        <button onclick="limparBusca()" class="btn-ripple inline-flex items-center gap-2 bg-km-petroleo text-white px-6 py-2.5 rounded-full font-bold text-xs shadow-md mr-3">
+          <i class="fas fa-redo"></i> Limpar Filtros
         </button>
-        <a href="https://wa.me/5513974250913?text=Ol%C3%A1%2C%20Kelli!%20Procuro%20um%20im%C3%B3vel%20com%20caracter%C3%ADsticas%20espec%C3%ADficas." target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-km-laranja text-white px-6 py-2.5 rounded-full font-bold text-xs shadow-md btn-filtro">
-          <i class="fab fa-whatsapp" aria-hidden="true"></i> Falar no WhatsApp
-        </a>
       </div>
 
     </div>
@@ -564,82 +618,57 @@
         
         <div class="lg:col-span-5 space-y-6">
           <span class="text-xs font-bold uppercase tracking-widest text-km-turquesa flex items-center gap-2">
-            <i class="fas fa-lock text-white" aria-hidden="true"></i> Atendimento Seguro
+            <i class="fas fa-lock text-white"></i> Atendimento Seguro
           </span>
           <h2 class="font-serif text-3xl sm:text-4xl font-bold leading-tight">
             Pronto para encontrar seu espaço no litoral?
           </h2>
           <p class="text-km-ceu text-sm leading-relaxed font-medium">
-            Seja para investir, morar, alugar ou avaliar imóveis em Santos/SP, preencha o formulário seguro ou entre em contato diretamente.
+            Seja para investir, morar, alugar ou avaliar imóveis em Santos/SP, preencha o formulário ou fale direto pelo WhatsApp.
           </p>
 
           <div class="space-y-4 pt-4">
-            <a href="https://wa.me/5513974250913" target="_blank" rel="noopener noreferrer" class="flex items-center gap-4 p-4 rounded-2xl bg-white/10 border border-km-turquesa/40 card-interativo">
+            <a href="https://wa.me/5513974250913" target="_blank" rel="noopener noreferrer" class="btn-ripple flex items-center gap-4 p-4 rounded-2xl bg-white/10 border border-km-turquesa/40 card-interativo">
               <div class="w-12 h-12 rounded-xl bg-km-turquesa text-km-escuro flex items-center justify-center text-xl font-bold">
-                <i class="fab fa-whatsapp" aria-hidden="true"></i>
+                <i class="fab fa-whatsapp"></i>
               </div>
               <div>
                 <p class="text-xs text-km-ceu font-medium">WhatsApp Direto</p>
                 <p class="font-bold text-base">(13) 97425-0913</p>
               </div>
             </a>
-
-            <a href="https://www.instagram.com/kellimartins.imoveis" target="_blank" rel="noopener noreferrer" class="flex items-center gap-4 p-4 rounded-2xl bg-white/10 border border-km-turquesa/40 card-interativo">
-              <div class="w-12 h-12 rounded-xl bg-km-laranja text-white flex items-center justify-center text-xl">
-                <i class="fab fa-instagram" aria-hidden="true"></i>
-              </div>
-              <div>
-                <p class="text-xs text-km-ceu font-medium">Instagram Oficial</p>
-                <p class="font-bold text-base">@kellimartins.imoveis</p>
-              </div>
-            </a>
           </div>
 
-          <!-- SELO DE SEGURANÇA E PRIVACIDADE -->
           <div class="pt-4 flex items-center gap-3 text-xs text-km-ceu/90 border-t border-white/20 font-medium">
-            <i class="fas fa-shield-alt text-km-turquesa text-2xl icone-praia" aria-hidden="true"></i>
+            <i class="fas fa-shield-alt text-km-turquesa text-2xl icone-praia"></i>
             <span>Seus dados são protegidos conforme a LGPD e toda a intermediação é credenciada pelo CRECI-SP e CNAI.</span>
           </div>
         </div>
 
-        <div class="lg:col-span-7 bg-white text-gray-800 p-8 sm:p-10 rounded-3xl shadow-2xl border border-km-ceu card-interativo">
+        <!-- CAIXA DO FORMULÁRIO COM ID PARA FEEDBACK DE FOCO -->
+        <div id="caixaFormularioLead" class="lg:col-span-7 bg-white text-gray-800 p-8 sm:p-10 rounded-3xl shadow-2xl border border-km-ceu card-interativo transition-all duration-500">
           <div class="flex items-center justify-between mb-1">
             <h3 class="font-serif text-2xl font-bold text-km-petroleo">Iniciar Atendimento</h3>
             <span class="inline-flex items-center gap-1.5 text-[11px] text-emerald-800 bg-emerald-100 px-3 py-1.5 rounded-full font-bold border border-emerald-300">
-              <i class="fas fa-shield-alt text-[11px]" aria-hidden="true"></i> Conexão Segura
+              <i class="fas fa-shield-alt text-[11px]"></i> Conexão Segura
             </span>
           </div>
-          <p class="text-xs text-gray-600 font-medium mb-6">Preencha os campos abaixo para ser atendido sem compromisso.</p>
+          <p class="text-xs text-gray-600 font-medium mb-6">Preencha os campos e receba atendimento personalizado.</p>
           
           <form id="formContato" onsubmit="enviarParaWhatsApp(event)" class="space-y-4">
             <div>
               <label for="lead-nome" class="block text-xs font-bold text-gray-800 uppercase mb-1">Seu Nome *</label>
-              <input 
-                type="text" 
-                id="lead-nome" 
-                required 
-                maxlength="60"
-                placeholder="Como podemos te chamar?" 
-                class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-km-turquesa text-sm shadow-sm font-medium transition" 
-              />
+              <input type="text" id="lead-nome" required maxlength="60" placeholder="Como podemos te chamar?" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-km-turquesa text-sm shadow-sm font-medium" />
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
                 <label for="lead-telefone" class="block text-xs font-bold text-gray-800 uppercase mb-1">WhatsApp com DDD *</label>
-                <input 
-                  type="tel" 
-                  id="lead-telefone" 
-                  required 
-                  maxlength="16"
-                  placeholder="(13) 99999-9999" 
-                  pattern="[\d\s\(\)\-+]{8,16}"
-                  class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-km-turquesa text-sm shadow-sm font-medium transition" 
-                />
+                <input type="tel" id="lead-telefone" required maxlength="16" placeholder="(13) 99999-9999" pattern="[\d\s\(\)\-+]{8,16}" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-km-turquesa text-sm shadow-sm font-medium" />
               </div>
               <div>
                 <label for="lead-interesse" class="block text-xs font-bold text-gray-800 uppercase mb-1">Interesse Principal</label>
-                <select id="lead-interesse" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-km-turquesa text-sm bg-white shadow-sm font-medium cursor-pointer transition">
+                <select id="lead-interesse" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-km-turquesa text-sm bg-white shadow-sm font-medium cursor-pointer">
                   <option value="Cobertura Duplex no José Menino (R$ 430.000,00)">Cobertura Duplex no José Menino</option>
                   <option value="Ap 1 Dormitório no José Menino (R$ 320.000,00)">Ap 1 Dormitório no José Menino</option>
                   <option value="Ap 2 Dormitórios com Varanda no José Menino (R$ 430.000,00)">Ap 2 Dormitórios no José Menino</option>
@@ -653,16 +682,9 @@
 
             <div>
               <label for="lead-mensagem" class="block text-xs font-bold text-gray-800 uppercase mb-1">Mensagem (opcional)</label>
-              <textarea 
-                id="lead-mensagem" 
-                rows="3" 
-                maxlength="500"
-                placeholder="Conte o que você busca ou melhor horário para contato..." 
-                class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-km-turquesa text-sm shadow-sm font-medium transition"
-              ></textarea>
+              <textarea id="lead-mensagem" rows="3" maxlength="500" placeholder="Conte mais detalhes ou horários que prefere conversar..." class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-km-turquesa text-sm shadow-sm font-medium"></textarea>
             </div>
 
-            <!-- TERMOS E PRIVACIDADE -->
             <div class="flex items-start gap-2 pt-1 text-[11px] text-gray-600 font-medium leading-snug">
               <input type="checkbox" id="aceite-termos" required checked class="mt-0.5 rounded border-gray-400 text-km-petroleo focus:ring-km-turquesa cursor-pointer w-4 h-4" />
               <label for="aceite-termos" class="cursor-pointer">
@@ -671,12 +693,8 @@
               </label>
             </div>
 
-            <button 
-              type="submit" 
-              id="btnSubmitForm"
-              class="w-full bg-km-laranja text-white font-bold py-4 rounded-xl shadow-lg flex items-center justify-center gap-2 btn-filtro focus-visible:ring-4 focus-visible:ring-orange-300 disabled:opacity-75 disabled:cursor-not-allowed"
-            >
-              <i class="fab fa-whatsapp text-lg" aria-hidden="true"></i> 
+            <button type="submit" id="btnSubmitForm" class="btn-ripple w-full bg-km-laranja text-white font-bold py-4 rounded-xl shadow-lg flex items-center justify-center gap-2">
+              <i class="fab fa-whatsapp text-lg"></i> 
               <span id="btnSubmitTexto">Enviar Mensagem para a Kelli</span>
             </button>
           </form>
@@ -689,223 +707,204 @@
   <!-- RODAPÉ -->
   <footer class="bg-km-escuro text-white/80 pt-16 pb-12 text-sm border-t-2 border-km-petroleo font-medium">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 space-y-12">
-      
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-        
         <div class="lg:col-span-5 space-y-4">
           <div class="flex items-center gap-3">
-            <div class="w-10 h-10 rounded-xl bg-km-petroleo flex items-center justify-center text-white font-serif text-xl font-bold border border-km-turquesa shadow-lg">
-              K
-            </div>
+            <div class="w-10 h-10 rounded-xl bg-km-petroleo flex items-center justify-center text-white font-serif text-xl font-bold border border-km-turquesa shadow-lg">K</div>
             <div>
               <span class="font-serif text-2xl font-bold text-white block leading-none">Kelli Martins</span>
               <span class="text-[11px] text-km-turquesa font-bold uppercase tracking-wider">Corretora & Avaliadora Mercadológica</span>
             </div>
           </div>
-          
-          <p class="text-xs text-km-ceu leading-relaxed">
-            Atendimento presencial e consultivo em toda a cidade de <strong>Santos - SP</strong>, com foco nas melhores oportunidades da orla.
-          </p>
-
-          <div class="space-y-1.5 text-xs text-white/70">
-            <p><i class="fas fa-id-card text-km-turquesa mr-1.5 w-4" aria-hidden="true"></i> CRECI-SP: <strong class="text-white">323425</strong></p>
-            <p><i class="fas fa-stamp text-km-turquesa mr-1.5 w-4" aria-hidden="true"></i> CNAI: <strong class="text-white">58458</strong></p>
-            <p><i class="fas fa-map-marker-alt text-km-turquesa mr-1.5 w-4" aria-hidden="true"></i> Praia do José Menino / Santos - SP</p>
-            <p><i class="fas fa-phone-alt text-km-turquesa mr-1.5 w-4" aria-hidden="true"></i> (13) 97425-0913</p>
-          </div>
-
-          <p class="text-xs font-serif italic text-km-turquesa pt-2">"Sinta a brisa. Vista-se de mar." 🌊</p>
-        </div>
-
-        <div class="lg:col-span-7">
-          <div class="rounded-3xl overflow-hidden shadow-2xl border-2 border-km-petroleo bg-km-petroleo/30 card-interativo">
-            <div class="bg-km-petroleo px-4 py-2.5 flex items-center justify-between text-xs text-km-ceu">
-              <span class="flex items-center gap-2 font-bold">
-                <i class="fas fa-map-pin text-km-laranja" aria-hidden="true"></i> Praia do José Menino • Santos / SP
-              </span>
-              <a href="https://maps.google.com/?q=Praia+do+Jose+Menino+Santos+SP" target="_blank" rel="noopener noreferrer" class="hover:text-white underline text-[11px] font-bold flex items-center gap-1">
-                Google Maps <i class="fas fa-external-link-alt text-[9px]" aria-hidden="true"></i>
-              </a>
-            </div>
-            <div class="aspect-[16/9] sm:aspect-[21/9] w-full">
-              <iframe 
-                title="Google Maps - Praia do José Menino, Santos SP"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14582.477028169974!2d-46.3571249764516!3d-23.97394982601726!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce031ab7d020e9%3A0x868cb4fa39cb0ce5!2sJos%C3%A9%20Menino%2C%20Santos%20-%20SP!5e0!3m2!1spt-BR!2sbr!4v1715000000000!5m2!1spt-BR!2sbr" 
-                class="w-full h-full border-0" 
-                allowfullscreen="" 
-                loading="lazy" 
-                referrerpolicy="no-referrer-when-downgrade">
-              </iframe>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-      <div class="pt-8 border-t border-white/20 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-white/60 text-center sm:text-left">
-        <div>
-          <p class="font-bold">© 2026 Kelli Martins. Todos os direitos reservados.</p>
-          <p class="text-[10px] text-white/50 mt-1">Ambiente 100% Seguro e Protegido.</p>
-        </div>
-
-        <div class="flex flex-wrap justify-center sm:justify-end items-center gap-4 text-xs font-bold">
-          <button type="button" onclick="abrirModal('modalPrivacidade')" class="hover:text-km-turquesa transition underline flex items-center gap-1">
-            <i class="fas fa-user-shield" aria-hidden="true"></i> LGPD & Privacidade
-          </button>
-          <span class="text-white/30">•</span>
-          <button type="button" onclick="abrirModal('modalSeguranca')" class="hover:text-km-turquesa transition underline flex items-center gap-1">
-            <i class="fas fa-lock" aria-hidden="true"></i> Segurança
-          </button>
+          <p class="text-xs text-km-ceu leading-relaxed">Atendimento presencial e consultivo em Santos - SP.</p>
         </div>
       </div>
-
+      <div class="pt-8 border-t border-white/20 flex justify-between items-center text-xs text-white/60">
+        <p>© 2026 Kelli Martins. Todos os direitos reservados.</p>
+        <div class="flex gap-4">
+          <button type="button" onclick="abrirModal('modalPrivacidade')" class="hover:text-km-turquesa transition underline">LGPD & Privacidade</button>
+          <button type="button" onclick="abrirModal('modalSeguranca')" class="hover:text-km-turquesa transition underline">Segurança</button>
+        </div>
+      </div>
     </div>
   </footer>
 
-  <!-- MODAL DE PRIVACIDADE (LGPD) -->
-  <div id="modalPrivacidade" role="dialog" aria-modal="true" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
-    <div class="bg-white text-gray-800 rounded-3xl max-w-2xl w-full max-h-[85vh] overflow-y-auto p-6 sm:p-8 shadow-2xl relative border-2 border-km-turquesa">
-      <button onclick="fecharModal('modalPrivacidade')" aria-label="Fechar modal" class="absolute top-5 right-5 text-gray-400 hover:text-red-500 text-2xl font-bold p-1 transition btn-filtro">
-        <i class="fas fa-times-circle" aria-hidden="true"></i>
+  <!-- MODAL VISUALIZADOR DE FOTOS DAS DEPENDÊNCIAS -->
+  <div id="modalFotoArea" class="fixed inset-0 z-50 hidden bg-black/85 backdrop-blur-md flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-xl w-full overflow-hidden shadow-2xl relative border-2 border-km-turquesa">
+      <button onclick="fecharModal('modalFotoArea')" class="btn-ripple absolute top-4 right-4 bg-white/80 hover:bg-white text-gray-800 rounded-full w-9 h-9 flex items-center justify-center z-10 shadow">
+        <i class="fas fa-times"></i>
       </button>
 
-      <div class="flex items-center gap-3 mb-4">
-        <div class="w-12 h-12 rounded-xl bg-km-claro text-km-petroleo flex items-center justify-center text-xl shadow-inner">
-          <i class="fas fa-user-shield text-km-turquesa" aria-hidden="true"></i>
-        </div>
-        <div>
-          <h3 class="font-serif text-xl font-bold text-km-petroleo">Diretrizes de Privacidade (LGPD)</h3>
-          <p class="text-xs text-gray-500 font-bold uppercase tracking-wide">Transparência Protegida</p>
-        </div>
+      <div class="relative aspect-[16/10] bg-gray-900 overflow-hidden">
+        <img id="imgFotoArea" src="" alt="Área do condomínio" class="w-full h-full object-cover" />
       </div>
 
-      <div class="text-sm text-gray-700 space-y-4 font-medium leading-relaxed border-t border-gray-200 pt-5">
-        <p><strong class="text-km-petroleo"><i class="fas fa-check-circle text-emerald-500 mr-1" aria-hidden="true"></i> Coleta Segura:</strong> Coletamos apenas nome, telefone e o interesse especificado no formulário de contato.</p>
-        <p><strong class="text-km-petroleo"><i class="fas fa-check-circle text-emerald-500 mr-1" aria-hidden="true"></i> Finalidade Específica:</strong> As informações são usadas para retorno comercial pela corretora <strong>Kelli Martins (CRECI 323425)</strong>.</p>
-        <p><strong class="text-km-petroleo"><i class="fas fa-check-circle text-emerald-500 mr-1" aria-hidden="true"></i> Não Compartilhamento:</strong> Seus dados não são repassados nem vendidos a terceiros ou disparadores de spam.</p>
-      </div>
-
-      <div class="mt-8 pt-4 border-t border-gray-200 text-right">
-        <button onclick="fecharModal('modalPrivacidade')" class="bg-km-petroleo text-white text-sm font-bold px-8 py-3 rounded-xl shadow-lg hover:bg-km-escuro transition ml-auto">
-          Entendido
-        </button>
+      <div class="p-5 bg-white text-left">
+        <div class="flex items-center gap-2 text-xs font-bold text-km-laranja uppercase tracking-wider mb-1">
+          <i class="fas fa-building text-km-turquesa"></i> Dependências do Condomínio
+        </div>
+        <h4 id="tituloFotoArea" class="font-serif text-lg font-bold text-km-petroleo">Título da Área</h4>
+        <p id="descFotoArea" class="text-xs text-gray-600 mt-1">Descrição do ambiente.</p>
+        
+        <div class="mt-4 pt-3 border-t border-gray-100 flex justify-between items-center">
+          <span class="text-[11px] text-gray-500 font-medium"><i class="fas fa-shield-alt text-km-turquesa mr-1"></i> Fotos ilustrativas das áreas comuns</span>
+          <button onclick="fecharModal('modalFotoArea')" class="btn-ripple text-xs font-bold bg-km-petroleo text-white px-4 py-2 rounded-lg">
+            Fechar
+          </button>
+        </div>
       </div>
     </div>
   </div>
 
-  <!-- MODAL DE SEGURANÇA -->
-  <div id="modalSeguranca" role="dialog" aria-modal="true" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
+  <!-- MODAL PRIVACIDADE -->
+  <div id="modalPrivacidade" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
     <div class="bg-white text-gray-800 rounded-3xl max-w-2xl w-full max-h-[85vh] overflow-y-auto p-6 sm:p-8 shadow-2xl relative border-2 border-km-turquesa">
-      <button onclick="fecharModal('modalSeguranca')" aria-label="Fechar modal" class="absolute top-5 right-5 text-gray-400 hover:text-red-500 text-2xl font-bold p-1 transition btn-filtro">
-        <i class="fas fa-times-circle" aria-hidden="true"></i>
+      <button onclick="fecharModal('modalPrivacidade')" class="btn-ripple absolute top-5 right-5 text-gray-400 hover:text-red-500 text-2xl p-1">
+        <i class="fas fa-times-circle"></i>
       </button>
-
-      <div class="flex items-center gap-3 mb-4">
-        <div class="w-12 h-12 rounded-xl bg-km-claro text-km-petroleo flex items-center justify-center text-xl shadow-inner">
-          <i class="fas fa-lock text-km-turquesa" aria-hidden="true"></i>
-        </div>
-        <div>
-          <h3 class="font-serif text-xl font-bold text-km-petroleo">Segurança da Informação e Transações</h3>
-          <p class="text-xs text-gray-500 font-bold uppercase tracking-wide">Ambiente 100% Verificado</p>
-        </div>
-      </div>
-
-      <div class="text-sm text-gray-700 space-y-4 font-medium leading-relaxed border-t border-gray-200 pt-5">
-        <p><strong class="text-km-petroleo"><i class="fas fa-id-badge text-km-laranja mr-1" aria-hidden="true"></i> Credenciamento Oficial:</strong> Intermediações sob responsabilidade técnica de <strong>Kelli Martins</strong> (CRECI-SP 323425 | CNAI 58458).</p>
-        <p><strong class="text-km-petroleo"><i class="fas fa-file-contract text-km-laranja mr-1" aria-hidden="true"></i> Segurança Jurídica:</strong> Análise documental detalhada (certidões negativas cíveis, criminais e tributárias) antes de qualquer sinal financeiro.</p>
-        <p><strong class="text-km-petroleo"><i class="fas fa-ban text-km-laranja mr-1" aria-hidden="true"></i> Prevenção a Fraudes:</strong> Não solicitamos depósitos ou PIX sem proposta formal com anuência prévia e expressa entre as partes.</p>
-      </div>
-
-      <div class="mt-8 pt-4 border-t border-gray-200 text-right">
-        <button onclick="fecharModal('modalSeguranca')" class="bg-km-petroleo text-white text-sm font-bold px-8 py-3 rounded-xl shadow-lg hover:bg-km-escuro transition ml-auto">
-          Fechar
-        </button>
-      </div>
+      <h3 class="font-serif text-xl font-bold text-km-petroleo mb-3">Diretrizes de Privacidade (LGPD)</h3>
+      <p class="text-sm text-gray-700 leading-relaxed">Coletamos exclusivamente nome, telefone e interesse com o único fim de prestar assessoria técnica imobiliária personalizada através da corretora <strong>Kelli Martins (CRECI 323425)</strong>.</p>
     </div>
   </div>
 
-  <!-- JAVASCRIPT OTIMIZADO -->
+  <!-- MODAL SEGURANÇA -->
+  <div id="modalSeguranca" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
+    <div class="bg-white text-gray-800 rounded-3xl max-w-2xl w-full max-h-[85vh] overflow-y-auto p-6 sm:p-8 shadow-2xl relative border-2 border-km-turquesa">
+      <button onclick="fecharModal('modalSeguranca')" class="btn-ripple absolute top-5 right-5 text-gray-400 hover:text-red-500 text-2xl p-1">
+        <i class="fas fa-times-circle"></i>
+      </button>
+      <h3 class="font-serif text-xl font-bold text-km-petroleo mb-3">Segurança Imobiliária</h3>
+      <p class="text-sm text-gray-700 leading-relaxed">Todas as transações e laudos mercadológicos possuem validade sob o registro CRECI-SP 323425 e CNAI 58458.</p>
+    </div>
+  </div>
+
+  <!-- JAVASCRIPT GLOBAL -->
   <script>
-    // Menu Mobile
-    const menuBtn = document.getElementById('menu-btn');
-    const mobileMenu = document.getElementById('mobile-menu');
-    menuBtn.addEventListener('click', () => {
-      const isOpen = !mobileMenu.classList.contains('hidden');
-      mobileMenu.classList.toggle('hidden');
-      menuBtn.setAttribute('aria-expanded', !isOpen);
+    // ================= 1. EFEITO TOUCH / ONDA (RIPPLE EFFECT) EM TODOS OS BOTÕES =================
+    document.addEventListener('pointerdown', function (e) {
+      const target = e.target.closest('.btn-ripple, button, .tag-area-foto');
+      if (!target) return;
+
+      const rect = target.getBoundingClientRect();
+      const circle = document.createElement('span');
+      const diameter = Math.max(rect.width, rect.height);
+      const radius = diameter / 2;
+
+      circle.style.width = circle.style.height = `${diameter}px`;
+      circle.style.left = `${e.clientX - rect.left - radius}px`;
+      circle.style.top = `${e.clientY - rect.top - radius}px`;
+      circle.classList.add('ripple-wave');
+
+      const ripple = target.getElementsByClassName('ripple-wave')[0];
+      if (ripple) ripple.remove();
+
+      target.appendChild(circle);
     });
 
-    // Gestão de Modais Acessíveis
-    function abrirModal(idModal) {
-      const modal = document.getElementById(idModal);
-      if (modal) {
-        modal.classList.remove('hidden');
+    // ================= 2. CONEXÃO DIRETA ENTRE O IMÓVEL E O FORMULÁRIO =================
+    function conectarFormulario(nomeImovel) {
+      const select = document.getElementById('lead-interesse');
+      let encontrou = false;
+      
+      for (let i = 0; i < select.options.length; i++) {
+        if (select.options[i].value === nomeImovel) {
+          select.selectedIndex = i;
+          encontrou = true;
+          break;
+        }
+      }
+      if (!encontrou) select.selectedIndex = 0;
+
+      // Rolagem suave até a seção de contato
+      const contatoSec = document.getElementById('contato');
+      contatoSec.scrollIntoView({ behavior: 'smooth' });
+
+      // Efeito de destaque visual no formulário para guiar o olhar
+      const caixaForm = document.getElementById('caixaFormularioLead');
+      caixaForm.classList.add('destaque-formulario');
+      setTimeout(() => {
+        caixaForm.classList.remove('destaque-formulario');
+      }, 1300);
+
+      // Foca automaticamente no campo do nome
+      setTimeout(() => {
+        const campoNome = document.getElementById('lead-nome');
+        campoNome.focus();
+      }, 600);
+    }
+
+    // ================= 3. MODAIS =================
+    function abrirModal(id) {
+      const m = document.getElementById(id);
+      if (m) {
+        m.classList.remove('hidden');
         document.body.classList.add('overflow-hidden');
       }
     }
 
-    function fecharModal(idModal) {
-      const modal = document.getElementById(idModal);
-      if (modal) {
-        modal.classList.add('hidden');
+    function fecharModal(id) {
+      const m = document.getElementById(id);
+      if (m) {
+        m.classList.add('hidden');
         document.body.classList.remove('overflow-hidden');
       }
     }
 
-    window.addEventListener('click', (e) => {
-      if (e.target.id === 'modalPrivacidade') fecharModal('modalPrivacidade');
-      if (e.target.id === 'modalSeguranca') fecharModal('modalSeguranca');
-    });
-
     window.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') {
-        fecharModal('modalPrivacidade');
-        fecharModal('modalSeguranca');
+        ['modalFotoArea', 'modalPrivacidade', 'modalSeguranca'].forEach(fecharModal);
       }
     });
 
-    // Sanitização de String contra injeção em URL
-    function sanitizarTexto(str) {
-      return String(str || '').replace(/[<>"{}]/g, '').trim();
+    window.addEventListener('click', (e) => {
+      if (e.target.classList.contains('fixed') && !e.target.classList.contains('hidden')) {
+        fecharModal(e.target.id);
+      }
+    });
+
+    // ================= 4. VISUALIZADOR DE FOTOS DAS DEPENDÊNCIAS =================
+    function abrirFotoArea(titulo, urlFoto, desc) {
+      document.getElementById('tituloFotoArea').innerText = titulo;
+      document.getElementById('descFotoArea').innerText = desc;
+      const img = document.getElementById('imgFotoArea');
+      img.src = urlFoto;
+      img.alt = titulo;
+      abrirModal('modalFotoArea');
     }
 
-    // Formulário com Feedback de Envio e Prevenção de Duplo Clique
+    // ================= 5. FORMULÁRIO COM FEEDBACK =================
     function enviarParaWhatsApp(e) {
       e.preventDefault();
-      
-      const submitBtn = document.getElementById('btnSubmitForm');
-      const submitTexto = document.getElementById('btnSubmitTexto');
-      
-      const nome = sanitizarTexto(document.getElementById('lead-nome').value);
-      const tel = sanitizarTexto(document.getElementById('lead-telefone').value);
-      const interesse = sanitizarTexto(document.getElementById('lead-interesse').value);
-      const msg = sanitizarTexto(document.getElementById('lead-mensagem').value);
+      const btn = document.getElementById('btnSubmitForm');
+      const textoBtn = document.getElementById('btnSubmitTexto');
+      const nome = document.getElementById('lead-nome').value.trim();
+      const tel = document.getElementById('lead-telefone').value.trim();
+      const interesse = document.getElementById('lead-interesse').value;
+      const msg = document.getElementById('lead-mensagem').value.trim();
 
       if (!nome || !tel) return;
 
-      // Feedback Visual: estado de carregando
-      submitBtn.disabled = true;
-      submitTexto.textContent = 'Abrindo WhatsApp...';
-      submitBtn.classList.add('brightness-90');
+      btn.disabled = true;
+      textoBtn.textContent = 'Abrindo WhatsApp...';
 
       const texto = `Olá, Kelli! Vim pelo seu site.%0A%0A*Nome:* ${encodeURIComponent(nome)}%0A*Telefone:* ${encodeURIComponent(tel)}%0A*Interesse:* ${encodeURIComponent(interesse)}${msg ? `%0A*Detalhes:* ${encodeURIComponent(msg)}` : ''}`;
       
       setTimeout(() => {
         window.open(`https://wa.me/5513974250913?text=${texto}`, '_blank', 'noopener,noreferrer');
-        submitBtn.disabled = false;
-        submitTexto.textContent = 'Enviar Mensagem para a Kelli';
-        submitBtn.classList.remove('brightness-90');
+        btn.disabled = false;
+        textoBtn.textContent = 'Enviar Mensagem para a Kelli';
       }, 500);
     }
 
-    // Filtros e Pesquisa com Feedback de Contagem
+    // ================= 6. FILTROS & BUSCA =================
     let categoriaAtual = 'todos';
 
     function filtrarCategoria(cat, botao) {
       categoriaAtual = cat;
-      document.querySelectorAll('.btn-filtro').forEach(btn => {
-        const texto = btn.innerText.trim();
-        if (['Todos', 'Venda', 'Aluguel Anual', 'Temporada'].includes(texto)) {
+      document.querySelectorAll('.btn-ripple').forEach(btn => {
+        const t = btn.innerText.trim();
+        if (['Todos', 'Venda', 'Aluguel Anual', 'Temporada'].includes(t)) {
           btn.classList.remove('bg-km-petroleo', 'text-white', 'shadow');
           btn.classList.add('bg-white', 'text-km-petroleo');
         }
@@ -922,20 +921,15 @@
     }
 
     function filtrarImoveis() {
-      const campoBusca = document.getElementById('campoBusca');
-      const termoBusca = campoBusca.value.toLowerCase().trim();
+      const termoBusca = document.getElementById('campoBusca').value.toLowerCase().trim();
       const filtroQuartos = document.getElementById('filtroQuartos').value;
       const btnLimpar = document.getElementById('btnLimparBusca');
       const cards = document.querySelectorAll('.card-imovel');
       const contador = document.getElementById('contadorResultados');
       let visiveis = 0;
 
-      // Exibe ou esconde o botão de 'X' na busca
-      if (termoBusca.length > 0) {
-        btnLimpar.classList.remove('hidden');
-      } else {
-        btnLimpar.classList.add('hidden');
-      }
+      if (termoBusca.length > 0) btnLimpar.classList.remove('hidden');
+      else btnLimpar.classList.add('hidden');
 
       cards.forEach(card => {
         const textoCard = card.getAttribute('data-texto').toLowerCase();
@@ -954,16 +948,18 @@
         }
       });
 
-      // Feedback textual do total encontrado
       contador.innerHTML = `<i class="fas fa-home text-km-petroleo mr-1"></i> Mostrando ${visiveis} de ${cards.length} imóvel(is)`;
-
       const semResultados = document.getElementById('semResultados');
-      if (visiveis === 0) {
-        semResultados.classList.remove('hidden');
-      } else {
-        semResultados.classList.add('hidden');
-      }
+      if (visiveis === 0) semResultados.classList.remove('hidden');
+      else semResultados.classList.add('hidden');
     }
+
+    // Menu Mobile
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
   </script>
 </body>
 </html>
