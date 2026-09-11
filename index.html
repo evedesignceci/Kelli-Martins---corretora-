@@ -47,15 +47,29 @@
   </script>
 
   <style>
-    /* Fundo padrão do site corrigido */
+    /* 1. Fundo limpo, apenas a imagem da praia sem gradiente escuro */
     body {
-      background-image: 
-        linear-gradient(180deg, rgba(0, 58, 62, 0.85) 0%, rgba(0, 88, 94, 0.95) 100%), 
-        url('https://res.cloudinary.com/oactqmgs/image/upload/v1789085165/body_-_site_kelli.jpg');
+      background-image: url('https://res.cloudinary.com/oactqmgs/image/upload/v1789085165/body_-_site_kelli.jpg');
       background-size: cover;
       background-position: center center;
       background-repeat: no-repeat;
       background-attachment: fixed;
+    }
+
+    /* 2. Efeito Glassmorphism (Vidro Fosco) para proteger o texto */
+    .hero-texto-legivel {
+      background: rgba(0, 58, 62, 0.45); /* Cor Petróleo da sua paleta transparente */
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      padding: 2.5rem 2rem;
+      border-radius: 2rem;
+      border: 1px solid rgba(192, 232, 244, 0.2); /* Borda sutil cor Céu */
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    }
+
+    /* 3. Sombra extra nos textos brancos para não sumirem nas nuvens claras */
+    .texto-com-sombra {
+      text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
     }
 
     /* Efeito de UX nos Cards de Imóveis */
@@ -65,10 +79,10 @@
     .card-imovel:hover {
       transform: translateY(-6px);
       box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.1);
-      border-color: #33D1D4; /* Borda acende com a cor turquesa da marca */
+      border-color: #33D1D4;
     }
 
-    /* Microinteração nos botões principais da marca */
+    /* Microinteração nos botões principais */
     .bg-km-laranja {
       transition: transform 0.2s ease, filter 0.2s ease, box-shadow 0.2s ease;
     }
@@ -125,7 +139,7 @@
           <a href="#sobre" class="hover:text-km-petroleo transition">Sobre</a>
           <a href="#servicos" class="hover:text-km-petroleo transition">Serviços</a>
           <a href="#imoveis" class="hover:text-km-petroleo transition">Imóveis</a>
-          <a href="#contato" class="bg-km-laranja hover:bg-orange-600 text-white font-semibold px-6 py-2.5 rounded-full shadow-md shadow-orange-500/20 transition flex items-center gap-2">
+          <a href="#contato" class="bg-km-laranja hover:bg-orange-600 text-white font-semibold px-6 py-2.5 rounded-full shadow-md shadow-orange-500/20 transition transform active:scale-95 flex items-center gap-2">
             <i class="fab fa-whatsapp"></i> Falar com a Kelli
           </a>
         </nav>
@@ -149,25 +163,26 @@
   </header>
 
   <!-- HERO SECTION (INÍCIO / CÉU) -->
-  <section class="bg-santos-hero text-white py-24 sm:py-32 px-4 relative flex items-center">
-    <div class="max-w-4xl mx-auto text-center space-y-6">
-      <div class="inline-flex items-center gap-2 bg-km-turquesa/20 border border-km-turquesa/40 backdrop-blur-md px-4 py-1.5 rounded-full text-xs font-semibold text-km-ceu uppercase tracking-wider">
+  <section class="text-white py-24 sm:py-32 px-4 relative flex items-center min-h-[85vh]">
+    <div class="max-w-4xl mx-auto text-center space-y-6 hero-texto-legivel">
+      
+      <div class="inline-flex items-center gap-2 bg-km-turquesa/30 border border-km-turquesa/50 backdrop-blur-md px-4 py-1.5 rounded-full text-xs font-bold text-white uppercase tracking-wider shadow-sm">
         <i class="fas fa-sun text-km-laranja"></i> Especialista na Orla do José Menino • Santos/SP
       </div>
       
-      <h1 class="font-serif text-3xl sm:text-5xl md:text-6xl font-bold leading-tight drop-shadow-md">
+      <h1 class="font-serif text-3xl sm:text-5xl md:text-6xl font-bold leading-tight texto-com-sombra">
         Seu Imóvel no José Menino com <span class="text-km-turquesa">Segurança</span>, <span class="text-km-laranja">Leveza</span> e Exclusividade.
       </h1>
 
-      <p class="text-base sm:text-lg text-gray-100 font-light max-w-2xl mx-auto leading-relaxed">
+      <p class="text-base sm:text-lg text-white font-medium max-w-2xl mx-auto leading-relaxed texto-com-sombra">
         Faço o possível para tornar mais fácil e seguro o processo de comprar, vender ou alugar seu imóvel.
       </p>
 
-      <div class="pt-4 flex flex-col sm:flex-row gap-4 justify-center">
-        <a href="#contato" class="bg-km-laranja hover:bg-orange-600 text-white font-bold px-8 py-4 rounded-full shadow-lg shadow-orange-500/30 transition flex items-center justify-center gap-2">
+      <div class="pt-6 flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="#contato" class="bg-km-laranja text-white font-bold px-8 py-4 rounded-full shadow-lg shadow-orange-500/40 flex items-center justify-center gap-2">
           <i class="fab fa-whatsapp text-lg"></i> Iniciar Atendimento VIP
         </a>
-        <a href="#imoveis" class="bg-white/10 hover:bg-white/20 border border-white/40 backdrop-blur-md text-white font-semibold px-8 py-4 rounded-full transition flex items-center justify-center">
+        <a href="#imoveis" class="bg-km-petroleo/80 hover:bg-km-petroleo border border-km-turquesa/40 backdrop-blur-md text-white font-semibold px-8 py-4 rounded-full transition flex items-center justify-center shadow-md">
           Ver Imóveis Disponíveis
         </a>
       </div>
@@ -347,7 +362,7 @@
       <div id="gridImoveis" class="grid md:grid-cols-3 gap-8">
         
         <!-- 1. COBERTURA DUPLEX À VENDA -->
-        <div class="card-imovel bg-white rounded-3xl overflow-hidden border border-km-ceu/80 shadow-md transition group flex flex-col justify-between"
+        <div class="card-imovel bg-white rounded-3xl overflow-hidden border border-km-ceu/80 shadow-md hover:shadow-xl transition group flex flex-col justify-between"
              data-categoria="venda"
              data-quartos="1"
              data-texto="cobertura duplex a venda jose menino santos sp 72,25 m2 50 metros praia conforto praticidade 1 suite 2 vagas privativas piscina academia salao de festas area gourmet mercados padarias farmacias 430.000,00 430 mil cond 1.200 iptu 285 aceita financiamento kelli martins">
@@ -388,15 +403,15 @@
                 <span class="text-[10px] text-gray-400 block font-medium">Cond: R$ 1.200,00 | IPTU: R$ 285,00/mês</span>
                 <span class="font-bold text-xl text-km-petroleo">R$ 430.000,00</span>
               </div>
-              <a href="https://wa.me/5513974250913?text=Ol%C3%A1%2C%20Kelli!%20Gostaria%20de%20agendar%20uma%20visita%20na%20Cobertura%20Duplex%20no%20Jos%C3%A9%20Menino%20(R%24%20430.000%2C00)." target="_blank" rel="noopener noreferrer" class="text-xs font-bold bg-km-laranja text-white px-4 py-2.5 rounded-xl transition shadow-sm flex items-center gap-1.5">
-                <i class="fab fa-whatsapp"></i> Agendar
+              <a href="https://wa.me/5513974250913?text=Ol%C3%A1%2C%20Kelli!%20Gostaria%20de%20agendar%20uma%20visita%20na%20Cobertura%20Duplex%20no%20Jos%C3%A9%20Menino%20(R%24%20430.000%2C00)." target="_blank" rel="noopener noreferrer" class="text-xs font-bold bg-km-laranja hover:bg-orange-600 text-white px-4 py-2.5 rounded-xl transition shadow-sm flex items-center gap-1.5">
+                <i class="fab fa-whatsapp"></i> Agendar Visita
               </a>
             </div>
           </div>
         </div>
 
         <!-- 2. APARTAMENTO DE 1 DORMITÓRIO À VENDA -->
-        <div class="card-imovel bg-white rounded-3xl overflow-hidden border border-km-ceu/80 shadow-md transition group flex flex-col justify-between"
+        <div class="card-imovel bg-white rounded-3xl overflow-hidden border border-km-ceu/80 shadow-md hover:shadow-xl transition group flex flex-col justify-between"
              data-categoria="venda"
              data-quartos="1"
              data-texto="apartamento de 1 dormitorio a venda jose menino santos sp 36,6 m2 50 metros praia garagem portaria 24 horas area de lazer completa piscina academia salao de festas area gourmet 320.000,00 320 mil aceita financiamento cond 474,05 iptu 137,64 kelli martins">
@@ -437,15 +452,15 @@
                 <span class="text-[10px] text-gray-400 block font-medium">Cond: R$ 474,05 | IPTU: R$ 137,64</span>
                 <span class="font-bold text-xl text-km-petroleo">R$ 320.000,00</span>
               </div>
-              <a href="https://wa.me/5513974250913?text=Ol%C3%A1%2C%20Kelli!%20Gostaria%20de%20agendar%20uma%20visita%20no%20Apartamento%20de%201%20Dormit%C3%B3rio%20no%20Jos%C3%A9%20Menino%20(R%24%20320.000%2C00)." target="_blank" rel="noopener noreferrer" class="text-xs font-bold bg-km-laranja text-white px-4 py-2.5 rounded-xl transition shadow-sm flex items-center gap-1.5">
-                <i class="fab fa-whatsapp"></i> Agendar
+              <a href="https://wa.me/5513974250913?text=Ol%C3%A1%2C%20Kelli!%20Gostaria%20de%20agendar%20uma%20visita%20no%20Apartamento%20de%201%20Dormit%C3%B3rio%20no%20Jos%C3%A9%20Menino%20(R%24%20320.000%2C00)." target="_blank" rel="noopener noreferrer" class="text-xs font-bold bg-km-laranja hover:bg-orange-600 text-white px-4 py-2.5 rounded-xl transition shadow-sm flex items-center gap-1.5">
+                <i class="fab fa-whatsapp"></i> Agendar Visita
               </a>
             </div>
           </div>
         </div>
 
         <!-- 3. APARTAMENTO DE 2 DORMITÓRIOS COM VARANDA À VENDA -->
-        <div class="card-imovel bg-white rounded-3xl overflow-hidden border border-km-ceu/80 shadow-md transition group flex flex-col justify-between"
+        <div class="card-imovel bg-white rounded-3xl overflow-hidden border border-km-ceu/80 shadow-md hover:shadow-xl transition group flex flex-col justify-between"
              data-categoria="venda"
              data-quartos="2"
              data-texto="apartamento de 2 dormitorios com varanda a venda jose menino santos sp 57 m2 varanda 50 metros praia vaga de garagem portaria 24 horas area de lazer completa piscina academia salao de festas area gourmet valor 430 mil 430.000 aceita financiamento cond 664,00 iptu 200,00 kelli martins">
@@ -486,8 +501,8 @@
                 <span class="text-[10px] text-gray-400 block font-medium">Cond: R$ 664,00 | IPTU: R$ 200,00</span>
                 <span class="font-bold text-xl text-km-petroleo">R$ 430.000,00</span>
               </div>
-              <a href="https://wa.me/5513974250913?text=Ol%C3%A1%2C%20Kelli!%20Gostaria%20de%20agendar%20uma%20visita%20no%20Apartamento%20de%202%20Dormit%C3%B3rios%20com%20Varanda%20no%20Jos%C3%A9%20Menino%20(R%24%20430%20mil)." target="_blank" rel="noopener noreferrer" class="text-xs font-bold bg-km-laranja text-white px-4 py-2.5 rounded-xl transition shadow-sm flex items-center gap-1.5">
-                <i class="fab fa-whatsapp"></i> Agendar
+              <a href="https://wa.me/5513974250913?text=Ol%C3%A1%2C%20Kelli!%20Gostaria%20de%20agendar%20uma%20visita%20no%20Apartamento%20de%202%20Dormit%C3%B3rios%20com%20Varanda%20no%20Jos%C3%A9%20Menino%20(R%24%20430%20mil)." target="_blank" rel="noopener noreferrer" class="text-xs font-bold bg-km-laranja hover:bg-orange-600 text-white px-4 py-2.5 rounded-xl transition shadow-sm flex items-center gap-1.5">
+                <i class="fab fa-whatsapp"></i> Agendar Visita
               </a>
             </div>
           </div>
@@ -504,7 +519,7 @@
         <p class="text-sm text-gray-600 max-w-md mx-auto mb-6">
           A Kelli possui acesso a opções exclusivas fora da vitrine pública. Conte o que você procura que ela busca para você!
         </p>
-        <a href="https://wa.me/5513974250913?text=Ol%C3%A1%2C%20Kelli!%20Procurei%20um%20im%C3%B3vel%20espec%C3%ADfico%20no%20site%20e%20gostaria%20de%20saber%20se%20voc%C3%AA%20tem%20outras%20op%C3%A7%C3%B5es." target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-km-laranja text-white px-6 py-3 rounded-full font-bold text-xs shadow-md transition">
+        <a href="https://wa.me/5513974250913?text=Ol%C3%A1%2C%20Kelli!%20Procurei%20um%20im%C3%B3vel%20espec%C3%ADfico%20no%20site%20e%20gostaria%20de%20saber%20se%20voc%C3%AA%20tem%20outras%20op%C3%A7%C3%B5es." target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-km-laranja hover:bg-orange-600 text-white px-6 py-3 rounded-full font-bold text-xs shadow-md transition">
           <i class="fab fa-whatsapp"></i> Encomendar Imóvel no WhatsApp
         </a>
       </div>
@@ -604,7 +619,7 @@
               </label>
             </div>
 
-            <button type="submit" class="w-full bg-km-laranja text-white font-bold py-4 rounded-xl shadow-lg shadow-orange-500/30 flex items-center justify-center gap-2">
+            <button type="submit" class="w-full bg-km-laranja hover:bg-orange-600 text-white font-bold py-4 rounded-xl shadow-lg shadow-orange-500/30 transition transform active:scale-98 flex items-center justify-center gap-2">
               <i class="fab fa-whatsapp text-lg"></i> Enviar Mensagem para a Kelli
             </button>
           </form>
