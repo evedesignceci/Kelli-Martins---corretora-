@@ -8,7 +8,7 @@
   <meta name="referrer" content="strict-origin-when-cross-origin" />
   <meta http-equiv="X-Content-Type-Options" content="nosniff" />
   <meta http-equiv="X-Frame-Options" content="SAMEORIGIN" />
-  <meta name="description" content="Kelli Martins - Corretora e Avaliadora de Imóveis na Baixada Santista. CRECI-SP 323425, CNAI 58458. Compra, venda, aluguel, financiamento e avaliação mercadológica." />
+  <meta name="description" content="Kelli Martins - Corretora e Avaliadora de Imóveis na Baixada Santista. CRECI-SP 323425, CNAI 58458." />
 
   <title>Kelli Martins | Corretora & Avaliadora de Imóveis na Baixada Santista</title>
   
@@ -51,7 +51,6 @@
   </script>
 
   <style>
-    /* Fundo fixo com profundidade elegante */
     body {
       background-image: url('https://res.cloudinary.com/oactqmgs/image/upload/v1789085165/body_-_site_kelli.jpg');
       background-size: cover;
@@ -96,7 +95,6 @@
       border-color: #33D1D4;
     }
 
-    /* Dinâmica de Cards: Micro-zoom suave */
     .card-interativo {
       transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease, border-color 0.4s ease;
       will-change: transform, box-shadow;
@@ -117,7 +115,6 @@
       display: inline-block;
     }
 
-    /* Dinâmica de Botões */
     .btn-ripple {
       position: relative;
       overflow: hidden;
@@ -146,7 +143,36 @@
       to { transform: scale(4); opacity: 0; }
     }
 
-    /* Tags limpas que não clicam (Usadas para Características Universais) */
+    .tag-area-foto {
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 4px 10px;
+      border-radius: 9999px;
+      background: rgba(0, 88, 94, 0.08);
+      border: 1px solid rgba(0, 88, 94, 0.2);
+      font-size: 11px;
+      font-weight: 600;
+    }
+    .tag-area-foto:hover {
+      background: #33D1D4;
+      color: #003A3E;
+      transform: translateY(-2px) scale(1.05);
+      box-shadow: 0 4px 8px rgba(51, 209, 212, 0.4);
+    }
+    .tag-area-destaque {
+      background: rgba(245, 124, 0, 0.12);
+      border-color: rgba(245, 124, 0, 0.4);
+      color: #C05600;
+    }
+    .tag-area-destaque:hover {
+      background: #F57C00;
+      color: #fff;
+      box-shadow: 0 4px 8px rgba(245, 124, 0, 0.4);
+    }
+
     .tag-sem-clique {
       cursor: default !important;
       background: rgba(243, 244, 246, 0.8) !important;
@@ -185,18 +211,12 @@
         <span class="text-gray-400">|</span>
         <span>CRECI-SP: <strong class="text-km-turquesa">323425</strong></span>
         <span class="text-gray-400">|</span>
-        <span>CNAI: <strong class="text-km-turquesa">58458</strong> (Avaliadora Oficial)</span>
+        <span>CNAI: <strong class="text-km-turquesa">58458</strong></span>
       </div>
       <div class="flex items-center gap-4">
-        <a href="https://www.instagram.com/kellimartins.imoveis/" target="_blank" rel="noopener noreferrer" class="hover:text-km-turquesa transition flex items-center gap-1.5 font-medium">
-          <i class="fab fa-instagram"></i> @kellimartins.imoveis
-        </a>
-        <a href="https://www.facebook.com/kellimartins.imoveis/" target="_blank" rel="noopener noreferrer" class="hover:text-km-turquesa transition flex items-center gap-1.5 font-medium">
-          <i class="fab fa-facebook"></i> Facebook
-        </a>
-        <a href="https://wa.me/5513974250913" target="_blank" rel="noopener noreferrer" class="hover:text-km-turquesa transition flex items-center gap-1.5 font-medium">
-          <i class="fab fa-whatsapp"></i> (13) 97425-0913
-        </a>
+        <a href="https://www.instagram.com/kellimartins.imoveis/" target="_blank" rel="noopener noreferrer" class="hover:text-km-turquesa transition flex items-center gap-1.5 font-medium"><i class="fab fa-instagram"></i> @kellimartins.imoveis</a>
+        <a href="https://www.facebook.com/kellimartins.imoveis/" target="_blank" rel="noopener noreferrer" class="hover:text-km-turquesa transition flex items-center gap-1.5 font-medium"><i class="fab fa-facebook"></i> Facebook</a>
+        <a href="https://wa.me/5513974250913" target="_blank" rel="noopener noreferrer" class="hover:text-km-turquesa transition flex items-center gap-1.5 font-medium"><i class="fab fa-whatsapp"></i> (13) 97425-0913</a>
       </div>
     </div>
   </header>
@@ -206,14 +226,10 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex justify-between items-center h-20">
         <a href="#" class="flex items-center gap-3 group">
-          <div class="w-12 h-12 rounded-2xl bg-km-petroleo flex items-center justify-center text-white font-serif text-2xl font-bold shadow-md group-hover:bg-km-laranja transition duration-300">
-            K
-          </div>
+          <div class="w-12 h-12 rounded-2xl bg-km-petroleo flex items-center justify-center text-white font-serif text-2xl font-bold shadow-md group-hover:bg-km-laranja transition duration-300">K</div>
           <div>
             <span class="font-serif text-2xl font-bold text-km-petroleo tracking-tight block leading-none">Kelli Martins</span>
-            <span class="text-[11px] font-semibold tracking-wider text-km-laranja uppercase flex items-center gap-1">
-              Sinta a brisa. Vista-se de mar. <i class="fas fa-water text-km-turquesa icone-praia text-[10px]"></i>
-            </span>
+            <span class="text-[11px] font-semibold tracking-wider text-km-laranja uppercase flex items-center gap-1">Sinta a brisa. Vista-se de mar. <i class="fas fa-water text-km-turquesa icone-praia text-[10px]"></i></span>
           </div>
         </a>
 
@@ -226,9 +242,7 @@
           </a>
         </div>
 
-        <button id="menu-btn" aria-label="Abrir menu" class="btn-ripple md:hidden text-km-petroleo text-2xl p-2 rounded-xl">
-          <i class="fas fa-bars"></i>
-        </button>
+        <button id="menu-btn" aria-label="Abrir menu" class="btn-ripple md:hidden text-km-petroleo text-2xl p-2 rounded-xl"><i class="fas fa-bars"></i></button>
       </div>
     </div>
 
@@ -236,9 +250,7 @@
       <a href="#sobre" class="block text-gray-700 hover:text-km-petroleo py-1">Sobre Kelli Martins</a>
       <a href="#servicos" class="block text-gray-700 hover:text-km-petroleo py-1">Serviços Especializados</a>
       <a href="#imoveis" class="block text-gray-700 hover:text-km-petroleo py-1">Catálogo de Imóveis</a>
-      <a href="#contato" class="btn-ripple block text-center bg-km-laranja text-white py-3 rounded-xl font-bold shadow">
-        <i class="fab fa-whatsapp mr-1"></i> Iniciar Atendimento
-      </a>
+      <a href="#contato" class="btn-ripple block text-center bg-km-laranja text-white py-3 rounded-xl font-bold shadow"><i class="fab fa-whatsapp mr-1"></i> Iniciar Atendimento</a>
     </div>
   </nav>
 
@@ -248,15 +260,12 @@
       <div class="inline-flex items-center gap-2 bg-km-turquesa/30 border border-km-turquesa/50 backdrop-blur-md px-4 py-1.5 rounded-full text-xs font-bold text-white uppercase tracking-wider shadow-sm">
         <i class="fas fa-sun text-km-laranja icone-praia"></i> Corretora e Avaliadora em Toda a Baixada Santista
       </div>
-      
       <h1 class="font-serif text-3xl sm:text-5xl md:text-6xl font-bold leading-tight texto-com-sombra">
         Seu Imóvel com <span class="text-km-turquesa">Segurança</span>, <span class="text-km-laranja">Leveza</span> e Exclusividade.
       </h1>
-
       <p class="text-base sm:text-lg text-white font-medium max-w-2xl mx-auto leading-relaxed texto-com-sombra">
         Faço o possível para tornar mais fácil e seguro o processo de comprar, vender ou alugar seu imóvel.
       </p>
-
       <div class="pt-6 flex flex-col sm:flex-row gap-4 justify-center">
         <a href="#contato" class="btn-ripple bg-km-laranja hover:bg-orange-600 text-white font-bold px-8 py-4 rounded-full shadow-lg shadow-orange-500/30 flex items-center justify-center gap-2 text-base transition">
           <i class="fab fa-whatsapp text-lg"></i> Iniciar Atendimento VIP
@@ -292,11 +301,9 @@
             <h2 class="font-serif text-3xl sm:text-4xl font-bold text-km-petroleo mt-1">Kelli Martins</h2>
             <p class="text-sm font-semibold text-km-petroleo/80">Corretora e Avaliadora de Imóveis na Baixada Santista</p>
           </div>
-
           <p class="text-base font-medium leading-relaxed">
             Com atendimento dedicado em <strong>toda a Baixada Santista</strong> (Santos, São Vicente, Praia Grande e região), ofereço consultoria imobiliária completa, ética e personalizada para quem deseja comprar, vender, alugar ou avaliar imóveis com total segurança jurídica.
           </p>
-
           <p class="text-base font-semibold text-km-petroleo leading-relaxed border-l-4 border-km-laranja pl-4 bg-km-claro py-2">
             “Faço o possível para tornar mais fácil e seguro o processo de comprar, vender ou alugar seu imóvel.”
           </p>
@@ -321,98 +328,68 @@
   <!-- SERVIÇOS -->
   <section id="servicos" class="py-20">
     <div class="max-w-7xl mx-auto px-4 sm:px-6">
-      
       <div class="text-center max-w-2xl mx-auto mb-16 space-y-3 vidro-claro-leitura p-8 rounded-[2rem] relative overflow-hidden secao-header-interativa group">
-        <span class="text-xs font-bold uppercase tracking-widest text-km-laranja flex items-center justify-center gap-2 relative z-10">
-          ⭐ Soluções Imobiliárias Completas ⭐
-        </span>
-        <h2 class="font-serif text-3xl sm:text-4xl font-bold text-km-petroleo relative z-10 group-hover:text-km-laranja transition-colors duration-300">
-          Como posso te ajudar hoje?
-        </h2>
-        <p class="text-sm text-gray-800 font-semibold relative z-10">
-          Suporte profissional de ponta a ponta em toda a Baixada Santista.
-        </p>
+        <span class="text-xs font-bold uppercase tracking-widest text-km-laranja flex items-center justify-center gap-2 relative z-10">⭐ Soluções Imobiliárias Completas ⭐</span>
+        <h2 class="font-serif text-3xl sm:text-4xl font-bold text-km-petroleo relative z-10 group-hover:text-km-laranja transition-colors duration-300">Como posso te ajudar hoje?</h2>
+        <p class="text-sm text-gray-800 font-semibold relative z-10">Suporte profissional de ponta a ponta em toda a Baixada Santista.</p>
       </div>
 
       <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
         <div class="bg-white/95 p-6 rounded-2xl border border-km-ceu/80 card-interativo">
-          <div class="w-12 h-12 rounded-xl bg-km-ceu/40 text-km-petroleo flex items-center justify-center text-xl mb-4 transition-transform group-hover:scale-110">
-            <i class="fas fa-handshake"></i>
-          </div>
-          <h3 class="font-bold text-base text-km-petroleo mb-2">Compra e Venda de Imóveis</h3>
-          <p class="text-xs text-gray-700 font-medium leading-relaxed">Intermediação segura em toda a Baixada Santista com total suporte documental e certidões.</p>
+          <div class="w-12 h-12 rounded-xl bg-km-ceu/40 text-km-petroleo flex items-center justify-center text-xl mb-4 transition-transform group-hover:scale-110"><i class="fas fa-handshake"></i></div>
+          <h3 class="font-bold text-base text-km-petroleo mb-2">Compra e Venda</h3>
+          <p class="text-xs text-gray-700 font-medium leading-relaxed">Intermediação segura com total suporte documental e certidões.</p>
         </div>
         <div class="bg-white/95 p-6 rounded-2xl border border-km-ceu/80 card-interativo">
-          <div class="w-12 h-12 rounded-xl bg-km-ceu/40 text-km-petroleo flex items-center justify-center text-xl mb-4">
-            <i class="fas fa-key"></i>
-          </div>
+          <div class="w-12 h-12 rounded-xl bg-km-ceu/40 text-km-petroleo flex items-center justify-center text-xl mb-4"><i class="fas fa-key"></i></div>
           <h3 class="font-bold text-base text-km-petroleo mb-2">Aluguel Anual</h3>
-          <p class="text-xs text-gray-700 font-medium leading-relaxed">Locações residenciais seguras, contratos claros e tranquilidade para proprietários e inquilinos.</p>
+          <p class="text-xs text-gray-700 font-medium leading-relaxed">Locações seguras, contratos claros e tranquilidade.</p>
         </div>
         <div class="bg-white/95 p-6 rounded-2xl border border-km-ceu/80 card-interativo">
-          <div class="w-12 h-12 rounded-xl bg-km-ceu/40 text-km-petroleo flex items-center justify-center text-xl mb-4">
-            <i class="fas fa-umbrella-beach"></i>
-          </div>
-          <h3 class="font-bold text-base text-km-petroleo mb-2">Aluguel de Temporada</h3>
-          <p class="text-xs text-gray-700 font-medium leading-relaxed">Opções selecionadas perto da praia para descansar e curtir o litoral com conforto.</p>
+          <div class="w-12 h-12 rounded-xl bg-km-ceu/40 text-km-petroleo flex items-center justify-center text-xl mb-4"><i class="fas fa-umbrella-beach"></i></div>
+          <h3 class="font-bold text-base text-km-petroleo mb-2">Temporada</h3>
+          <p class="text-xs text-gray-700 font-medium leading-relaxed">Opções selecionadas perto da praia para descansar e curtir o litoral.</p>
         </div>
         <div class="bg-white/95 p-6 rounded-2xl border border-km-ceu/80 card-interativo">
-          <div class="w-12 h-12 rounded-xl bg-km-ceu/40 text-km-petroleo flex items-center justify-center text-xl mb-4">
-            <i class="fas fa-file-invoice-dollar"></i>
-          </div>
-          <h3 class="font-bold text-base text-km-petroleo mb-2">Financiamento Imobiliário</h3>
-          <p class="text-xs text-gray-700 font-medium leading-relaxed">Simulação e suporte completo para aprovação do seu crédito imobiliário nos principais bancos.</p>
+          <div class="w-12 h-12 rounded-xl bg-km-ceu/40 text-km-petroleo flex items-center justify-center text-xl mb-4"><i class="fas fa-file-invoice-dollar"></i></div>
+          <h3 class="font-bold text-base text-km-petroleo mb-2">Financiamento</h3>
+          <p class="text-xs text-gray-700 font-medium leading-relaxed">Simulação e suporte completo para aprovação do seu crédito.</p>
         </div>
         <div class="bg-white/95 p-6 rounded-2xl border border-km-ceu/80 card-interativo">
-          <div class="w-12 h-12 rounded-xl bg-km-ceu/40 text-km-petroleo flex items-center justify-center text-xl mb-4">
-            <i class="fas fa-route"></i>
-          </div>
-          <h3 class="font-bold text-base text-km-petroleo mb-2">Assessoria Completa</h3>
-          <p class="text-xs text-gray-700 font-medium leading-relaxed">Assessoria do início do processo até a entrega das chaves, cuidando de cada detalhe por você.</p>
+          <div class="w-12 h-12 rounded-xl bg-km-ceu/40 text-km-petroleo flex items-center justify-center text-xl mb-4"><i class="fas fa-route"></i></div>
+          <h3 class="font-bold text-base text-km-petroleo mb-2">Assessoria</h3>
+          <p class="text-xs text-gray-700 font-medium leading-relaxed">Assessoria do início do processo até a entrega das chaves.</p>
         </div>
         <div class="bg-white/95 p-6 rounded-2xl border border-km-ceu/80 card-interativo">
-          <div class="w-12 h-12 rounded-xl bg-km-ceu/40 text-km-petroleo flex items-center justify-center text-xl mb-4">
-            <i class="fas fa-calculator"></i>
-          </div>
-          <h3 class="font-bold text-base text-km-petroleo mb-2">Avaliação de Imóveis</h3>
-          <p class="text-xs text-gray-700 font-medium leading-relaxed">Avaliadora credenciada (CNAI 58458) emitindo Parecer Técnico Mercadológico (PTAM) com validade legal.</p>
+          <div class="w-12 h-12 rounded-xl bg-km-ceu/40 text-km-petroleo flex items-center justify-center text-xl mb-4"><i class="fas fa-calculator"></i></div>
+          <h3 class="font-bold text-base text-km-petroleo mb-2">Avaliação Imobiliária</h3>
+          <p class="text-xs text-gray-700 font-medium leading-relaxed">Avaliadora credenciada emitindo Parecer Técnico (PTAM) com validade legal.</p>
         </div>
         <div class="bg-white/95 p-6 rounded-2xl border border-km-ceu/80 card-interativo">
-          <div class="w-12 h-12 rounded-xl bg-km-ceu/40 text-km-petroleo flex items-center justify-center text-xl mb-4">
-            <i class="fas fa-landmark"></i>
-          </div>
+          <div class="w-12 h-12 rounded-xl bg-km-ceu/40 text-km-petroleo flex items-center justify-center text-xl mb-4"><i class="fas fa-landmark"></i></div>
           <h3 class="font-bold text-base text-km-petroleo mb-2">Crédito com Garantia</h3>
-          <p class="text-xs text-gray-700 font-medium leading-relaxed">Linhas de crédito inteligente (Home Equity) utilizando seu patrimônio com as menores taxas.</p>
+          <p class="text-xs text-gray-700 font-medium leading-relaxed">Linhas de crédito inteligente utilizando seu patrimônio com as menores taxas.</p>
         </div>
         <div class="bg-white/95 p-6 rounded-2xl border border-km-ceu/80 card-interativo">
-          <div class="w-12 h-12 rounded-xl bg-km-ceu/40 text-km-petroleo flex items-center justify-center text-xl mb-4">
-            <i class="fas fa-hammer"></i>
-          </div>
-          <h3 class="font-bold text-base text-km-petroleo mb-2">Crédito para Reforma</h3>
-          <p class="text-xs text-gray-700 font-medium leading-relaxed">Recursos sob medida para modernizar, reformar ou construir o seu imóvel no litoral.</p>
+          <div class="w-12 h-12 rounded-xl bg-km-ceu/40 text-km-petroleo flex items-center justify-center text-xl mb-4"><i class="fas fa-hammer"></i></div>
+          <h3 class="font-bold text-base text-km-petroleo mb-2">Construção e Reforma</h3>
+          <p class="text-xs text-gray-700 font-medium leading-relaxed">Recursos sob medida para modernizar, reformar ou construir.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- CATÁLOGO DE IMÓVEIS (GERADO AUTOMATICAMENTE PELO GOOGLE SHEETS COM CARROSSEL AIRBNB) -->
+  <!-- CATÁLOGO DE IMÓVEIS DINÂMICO (COM BANCO DE DADOS RELACIONAL) -->
   <section id="imoveis" class="py-20">
     <div class="max-w-7xl mx-auto px-4 sm:px-6">
       
       <div class="vidro-claro-leitura p-6 sm:p-8 rounded-[2rem] mb-10 relative overflow-hidden secao-header-interativa group">
         <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 relative z-10">
           <div>
-            <span class="text-xs font-bold uppercase tracking-widest text-km-laranja flex items-center gap-2">
-              🐚 Portfólio Atualizado
-            </span>
-            <h2 class="font-serif text-3xl sm:text-4xl font-bold text-km-petroleo mt-1 group-hover:text-km-laranja transition-colors duration-300">
-              Catálogo de Imóveis
-            </h2>
-            <p class="text-sm text-gray-800 font-semibold mt-2">
-              Explore as melhores opções, de apartamentos na praia a casas de alto padrão.
-            </p>
+            <span class="text-xs font-bold uppercase tracking-widest text-km-laranja flex items-center gap-2">🐚 Portfólio Atualizado</span>
+            <h2 class="font-serif text-3xl sm:text-4xl font-bold text-km-petroleo mt-1 group-hover:text-km-laranja transition-colors duration-300">Catálogo de Imóveis</h2>
+            <p class="text-sm text-gray-800 font-semibold mt-2">Explore as melhores opções na Baixada Santista, em tempo real.</p>
           </div>
-          
           <div class="flex flex-wrap gap-2">
             <button onclick="filtrarCategoria('todos', this)" class="btn-ripple px-4 py-2 rounded-full text-xs font-bold bg-km-petroleo text-white shadow">Todos</button>
             <button onclick="filtrarCategoria('venda', this)" class="btn-ripple px-4 py-2 rounded-full text-xs font-bold bg-white text-km-petroleo hover:bg-km-ceu transition">Venda</button>
@@ -427,25 +404,11 @@
         <div class="grid grid-cols-1 sm:grid-cols-12 gap-3 items-center">
           <div class="sm:col-span-8 relative">
             <i class="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-km-petroleo/50"></i>
-            <input 
-              type="text" 
-              id="campoBusca" 
-              maxlength="80"
-              oninput="filtrarImoveis()" 
-              placeholder="Pesquisar por localização, tipo do imóvel, preço..." 
-              class="w-full pl-11 pr-10 py-3 rounded-2xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-km-turquesa text-sm bg-white font-medium text-gray-700 transition"
-            />
-            <button id="btnLimparBusca" onclick="limparBusca()" class="hidden absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 p-1">
-              <i class="fas fa-times-circle"></i>
-            </button>
+            <input type="text" id="campoBusca" maxlength="80" oninput="filtrarImoveis()" placeholder="Pesquisar por localização, condomínio, preço..." class="w-full pl-11 pr-10 py-3 rounded-2xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-km-turquesa text-sm bg-white font-medium text-gray-700 transition" />
+            <button id="btnLimparBusca" onclick="limparBusca()" class="hidden absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 p-1"><i class="fas fa-times-circle"></i></button>
           </div>
-
           <div class="sm:col-span-4">
-            <select 
-              id="filtroQuartos" 
-              onchange="filtrarImoveis()" 
-              class="w-full px-4 py-3 rounded-2xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-km-turquesa text-sm bg-white text-gray-700 font-medium cursor-pointer transition"
-            >
+            <select id="filtroQuartos" onchange="filtrarImoveis()" class="w-full px-4 py-3 rounded-2xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-km-turquesa text-sm bg-white text-gray-700 font-medium cursor-pointer transition">
               <option value="">Todos os dormitórios</option>
               <option value="1">1 Quarto / 1 Suíte</option>
               <option value="2">2 Dormitórios</option>
@@ -453,34 +416,26 @@
             </select>
           </div>
         </div>
-
         <div class="mt-3 px-2 flex justify-between items-center text-xs font-semibold text-gray-600">
-          <span id="contadorResultados"><i class="fas fa-sync fa-spin text-km-petroleo mr-1"></i> Carregando catálogo...</span>
+          <span id="contadorResultados"><i class="fas fa-sync fa-spin text-km-petroleo mr-1"></i> Carregando catálogo inteligente...</span>
         </div>
       </div>
 
-      <!-- GRID DE IMÓVEIS (CARDS CARROSSEL AIRBNB STYLE) -->
+      <!-- GRID DE IMÓVEIS -->
       <div id="gridImoveis" class="grid md:grid-cols-3 gap-8">
-        <!-- Loader inicial -->
         <div class="col-span-3 py-16 text-center flex flex-col items-center justify-center text-km-petroleo bg-white/50 backdrop-blur-sm rounded-3xl border border-dashed border-km-petroleo/30">
           <i class="fas fa-spinner fa-spin text-4xl mb-4 text-km-turquesa"></i>
           <p class="font-bold text-lg font-serif">Sincronizando imóveis...</p>
-          <p class="text-sm text-gray-600 mt-2">Lendo catálogo diretamente da base de dados.</p>
+          <p class="text-sm text-gray-600 mt-2">Conectando direto com a base de dados central.</p>
         </div>
       </div>
 
       <!-- SEM RESULTADOS -->
       <div id="semResultados" class="hidden text-center py-14 px-4 bg-white/95 backdrop-blur-md rounded-3xl border border-dashed border-km-petroleo/50 shadow-lg my-8">
-        <div class="w-16 h-16 rounded-full bg-km-claro flex items-center justify-center mx-auto text-2xl text-km-laranja shadow-sm mb-4">
-          <i class="fas fa-search"></i>
-        </div>
+        <div class="w-16 h-16 rounded-full bg-km-claro flex items-center justify-center mx-auto text-2xl text-km-laranja shadow-sm mb-4"><i class="fas fa-search"></i></div>
         <h3 class="font-serif text-xl font-bold text-km-petroleo mb-2">Nenhum imóvel encontrado para essa busca</h3>
-        <p class="text-sm text-gray-700 font-medium max-w-md mx-auto mb-6">
-          A corretora Kelli possui opções exclusivas fora do site. Fale com ela!
-        </p>
-        <button onclick="limparBusca()" class="btn-ripple inline-flex items-center gap-2 bg-km-petroleo text-white px-6 py-2.5 rounded-full font-bold text-xs shadow-md transition">
-          <i class="fas fa-redo"></i> Limpar Filtros
-        </button>
+        <p class="text-sm text-gray-700 font-medium max-w-md mx-auto mb-6">A corretora Kelli possui opções exclusivas fora do site. Fale com ela!</p>
+        <button onclick="limparBusca()" class="btn-ripple inline-flex items-center gap-2 bg-km-petroleo text-white px-6 py-2.5 rounded-full font-bold text-xs shadow-md transition"><i class="fas fa-redo"></i> Limpar Filtros</button>
       </div>
 
     </div>
@@ -490,27 +445,16 @@
   <section id="contato" class="py-20 bg-km-petroleo/95 text-white backdrop-blur-md relative border-t-4 border-km-turquesa">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
       <div class="grid lg:grid-cols-12 gap-12 items-center">
-        
         <div class="lg:col-span-5 space-y-6">
           <span class="text-xs font-bold uppercase tracking-widest text-km-turquesa flex items-center gap-2">
             <i class="fas fa-lock text-white"></i> Atendimento Direto e Seguro
           </span>
-          <h2 class="font-serif text-3xl sm:text-4xl font-bold leading-tight">
-            Pronto para encontrar seu imóvel ideal na Baixada Santista?
-          </h2>
-          <p class="text-km-ceu text-sm leading-relaxed font-medium">
-            Fale diretamente com a corretora Kelli Martins. Obtenha atendimento personalizado, agende uma visita presencial ou tire suas dúvidas sobre financiamento e avaliação mercadológica.
-          </p>
-
+          <h2 class="font-serif text-3xl sm:text-4xl font-bold leading-tight">Pronto para encontrar seu imóvel ideal na Baixada Santista?</h2>
+          <p class="text-km-ceu text-sm leading-relaxed font-medium">Fale diretamente com a corretora Kelli Martins. Obtenha atendimento personalizado, agende uma visita presencial ou tire suas dúvidas.</p>
           <div class="space-y-4 pt-4">
             <a href="https://wa.me/5513974250913" target="_blank" rel="noopener noreferrer" class="btn-ripple flex items-center gap-4 p-4 rounded-2xl bg-white/10 border border-km-turquesa/40 card-interativo">
-              <div class="w-12 h-12 rounded-xl bg-km-turquesa text-km-escuro flex items-center justify-center text-xl font-bold">
-                <i class="fab fa-whatsapp"></i>
-              </div>
-              <div>
-                <p class="text-xs text-km-ceu font-medium">WhatsApp Profissional</p>
-                <p class="font-bold text-base">(13) 97425-0913</p>
-              </div>
+              <div class="w-12 h-12 rounded-xl bg-km-turquesa text-km-escuro flex items-center justify-center text-xl font-bold"><i class="fab fa-whatsapp"></i></div>
+              <div><p class="text-xs text-km-ceu font-medium">WhatsApp Profissional</p><p class="font-bold text-base">(13) 97425-0913</p></div>
             </a>
           </div>
         </div>
@@ -518,9 +462,7 @@
         <div id="caixaFormularioLead" class="lg:col-span-7 bg-white text-gray-800 p-8 sm:p-10 rounded-3xl shadow-2xl border border-km-ceu card-interativo transition-all duration-500">
           <div class="flex items-center justify-between mb-1">
             <h3 class="font-serif text-2xl font-bold text-km-petroleo">Mensagem para a Kelli</h3>
-            <span class="inline-flex items-center gap-1.5 text-[11px] text-emerald-800 bg-emerald-100 px-3 py-1.5 rounded-full font-bold border border-emerald-300">
-              <i class="fas fa-shield-alt text-[11px]"></i> Ambiente Seguro
-            </span>
+            <span class="inline-flex items-center gap-1.5 text-[11px] text-emerald-800 bg-emerald-100 px-3 py-1.5 rounded-full font-bold border border-emerald-300"><i class="fas fa-shield-alt text-[11px]"></i> Ambiente Seguro</span>
           </div>
           <p class="text-xs text-gray-600 font-medium mb-6">Preencha abaixo para receber retorno prioritário.</p>
           
@@ -529,7 +471,6 @@
               <label for="lead-nome" class="block text-xs font-bold text-gray-800 uppercase mb-1">Seu Nome Completo *</label>
               <input type="text" id="lead-nome" required maxlength="60" placeholder="Como a Kelli pode te chamar?" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-km-turquesa text-sm shadow-sm font-medium transition" />
             </div>
-
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
                 <label for="lead-telefone" class="block text-xs font-bold text-gray-800 uppercase mb-1">WhatsApp com DDD *</label>
@@ -539,7 +480,7 @@
                 <label for="lead-interesse" class="block text-xs font-bold text-gray-800 uppercase mb-1">Imóvel ou Serviço</label>
                 <select id="lead-interesse" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-km-turquesa text-sm bg-white shadow-sm font-medium cursor-pointer transition">
                   <option value="" disabled selected>Selecione um item...</option>
-                  <!-- Opções inseridas automaticamente pelo JS -->
+                  <!-- Opções inseridas automaticamente -->
                   <option value="Compra e Venda de Imóveis">Consultoria: Compra e Venda</option>
                   <option value="Aluguel Anual">Consultoria: Aluguel Anual</option>
                   <option value="Aluguel de Temporada">Consultoria: Aluguel de Temporada</option>
@@ -549,41 +490,31 @@
                 </select>
               </div>
             </div>
-
             <div>
               <label for="lead-mensagem" class="block text-xs font-bold text-gray-800 uppercase mb-1">Dúvida ou Mensagem (opcional)</label>
               <textarea id="lead-mensagem" rows="3" maxlength="500" placeholder="Ex: Gostaria de saber horários para visitação ou detalhes da documentação..." class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-km-turquesa text-sm shadow-sm font-medium transition"></textarea>
             </div>
-
             <div class="flex items-start gap-2 pt-1 text-[11px] text-gray-600 font-medium leading-snug">
               <input type="checkbox" id="aceite-termos" required checked class="mt-0.5 rounded border-gray-400 text-km-petroleo focus:ring-km-turquesa cursor-pointer w-4 h-4 transition" />
-              <label for="aceite-termos" class="cursor-pointer">
-                Concordo em compartilhar meus dados com a corretora, conforme <button type="button" onclick="abrirModal('modalPrivacidade')" class="text-km-petroleo font-bold underline hover:text-km-laranja transition">diretrizes da LGPD</button>.
-              </label>
+              <label for="aceite-termos" class="cursor-pointer">Concordo em compartilhar meus dados com a corretora, conforme <button type="button" onclick="abrirModal('modalPrivacidade')" class="text-km-petroleo font-bold underline hover:text-km-laranja transition">diretrizes da LGPD</button>.</label>
             </div>
-
             <button type="submit" id="btnSubmitForm" class="btn-ripple w-full bg-km-laranja hover:bg-orange-600 text-white font-bold py-4 rounded-xl shadow-lg flex items-center justify-center gap-2 transition">
-              <i class="fab fa-whatsapp text-lg"></i> 
-              <span id="btnSubmitTexto">Conversar com a Kelli Martins</span>
+              <i class="fab fa-whatsapp text-lg"></i> <span id="btnSubmitTexto">Conversar com a Kelli Martins</span>
             </button>
           </form>
         </div>
-
       </div>
     </div>
   </section>
 
-  <!-- RODAPÉ E MODAIS MANTIDOS INTACTOS -->
+  <!-- RODAPÉ E MODAIS -->
   <footer class="bg-km-escuro text-white/80 pt-16 pb-12 text-sm border-t-2 border-km-petroleo font-medium">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 space-y-12">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
         <div class="lg:col-span-5 space-y-4">
           <div class="flex items-center gap-3">
             <div class="w-10 h-10 rounded-xl bg-km-petroleo flex items-center justify-center text-white font-serif text-xl font-bold border border-km-turquesa shadow-lg">K</div>
-            <div>
-              <span class="font-serif text-2xl font-bold text-white block leading-none">Kelli Martins</span>
-              <span class="text-[11px] text-km-turquesa font-bold uppercase tracking-wider">Corretora & Avaliadora Imobiliária</span>
-            </div>
+            <div><span class="font-serif text-2xl font-bold text-white block leading-none">Kelli Martins</span><span class="text-[11px] text-km-turquesa font-bold uppercase tracking-wider">Corretora & Avaliadora Imobiliária</span></div>
           </div>
           <p class="text-xs text-km-ceu leading-relaxed">Atendimento humanizado e focado em toda a Baixada Santista / SP.</p>
           <div class="space-y-2 text-xs">
@@ -598,15 +529,11 @@
     </div>
   </footer>
 
-  <a href="https://wa.me/5513974250913?text=Ol%C3%A1%2C%20Kelli!%20Vim%20pelo%20site%20e%20gostaria%20de%20tirar%20uma%20d%C3%BAvida." target="_blank" rel="noopener noreferrer" aria-label="Falar no WhatsApp com Kelli Martins" class="btn-ripple fixed bottom-6 right-6 z-40 w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-emerald-500 hover:bg-emerald-600 text-white flex items-center justify-center text-2xl sm:text-3xl shadow-2xl hover:scale-110 transition-transform">
-    <i class="fab fa-whatsapp"></i>
-    <span class="absolute -top-1 -right-1 flex h-4 w-4">
-      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
-      <span class="relative inline-flex rounded-full h-4 w-4 bg-km-laranja"></span>
-    </span>
+  <a href="https://wa.me/5513974250913?text=Ol%C3%A1%2C%20Kelli!%20Vim%20pelo%20site%20e%20gostaria%20de%20tirar%20uma%20d%C3%BAvida." target="_blank" rel="noopener noreferrer" class="btn-ripple fixed bottom-6 right-6 z-40 w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-emerald-500 hover:bg-emerald-600 text-white flex items-center justify-center text-2xl sm:text-3xl shadow-2xl hover:scale-110 transition-transform">
+    <i class="fab fa-whatsapp"></i><span class="absolute -top-1 -right-1 flex h-4 w-4"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span><span class="relative inline-flex rounded-full h-4 w-4 bg-km-laranja"></span></span>
   </a>
 
-  <!-- MODAL DE VÍDEO -->
+  <!-- MODAIS DE VÍDEO E FOTOS -->
   <div id="modalVideoImovel" class="fixed inset-0 z-50 hidden bg-black/90 backdrop-blur-md flex items-center justify-center p-4">
     <div class="bg-white rounded-3xl max-w-2xl w-full overflow-hidden shadow-2xl relative border-2 border-km-turquesa">
       <button onclick="fecharModalVideo()" class="btn-ripple absolute top-4 right-4 bg-white/90 hover:bg-white text-gray-800 rounded-full w-9 h-9 flex items-center justify-center z-10 shadow transition"><i class="fas fa-times"></i></button>
@@ -614,11 +541,14 @@
     </div>
   </div>
 
-  <!-- MODAL FOTOS EXTRAS -->
   <div id="modalFotoArea" class="fixed inset-0 z-50 hidden bg-black/85 backdrop-blur-md flex items-center justify-center p-4">
     <div class="bg-white rounded-3xl max-w-xl w-full overflow-hidden shadow-2xl relative border-2 border-km-turquesa">
       <button onclick="fecharModal('modalFotoArea')" class="btn-ripple absolute top-4 right-4 bg-white/80 hover:bg-white text-gray-800 rounded-full w-9 h-9 flex items-center justify-center z-10 shadow transition"><i class="fas fa-times"></i></button>
       <div class="relative aspect-[16/10] bg-gray-900 overflow-hidden"><img id="imgFotoArea" src="" alt="Foto" class="w-full h-full object-contain" /></div>
+      <div class="p-5 bg-white text-left">
+        <h4 id="tituloFotoArea" class="font-serif text-lg font-bold text-km-petroleo">Título</h4>
+        <p id="descFotoArea" class="text-xs text-gray-600 mt-1 leading-relaxed">Descrição</p>
+      </div>
     </div>
   </div>
 
@@ -626,217 +556,265 @@
     let linksVideos = {};
 
     /* ==========================================================================
-       LÓGICA DA PLANILHA GOOGLE COM CARROSSEL AIRBNB STYLE
+       LÓGICA DO BANCO DE DADOS RELACIONAL (CONDOMÍNIOS + IMÓVEIS)
        ========================================================================== */
-    const linkPlanilhaCSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTpXfABQC7PV2smtCMZR_lZohuOlY5WprbbOA0AIe3G7pEm-wrZOldZQh23St-pkIr5MVdN3E5YRIHs/pub?output=csv&_v=" + new Date().getTime();
-    
-    document.addEventListener("DOMContentLoaded", () => { carregarImoveisDaPlanilha(); });
+    // Adicionamos um timestamp no final das URLs para garantir que o site baixe dados frescos
+    const timestamp = new Date().getTime();
+    const urlCondominios = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTpXfABQC7PV2smtCMZR_lZohuOlY5WprbbOA0AIe3G7pEm-wrZOldZQh23St-pkIr5MVdN3E5YRIHs/pub?gid=1001&single=true&output=csv&_v=" + timestamp;
+    const urlImoveis = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTpXfABQC7PV2smtCMZR_lZohuOlY5WprbbOA0AIe3G7pEm-wrZOldZQh23St-pkIr5MVdN3E5YRIHs/pub?gid=0&single=true&output=csv&_v=" + timestamp;
 
-    function carregarImoveisDaPlanilha() {
-      Papa.parse(linkPlanilhaCSV, {
-        download: true,
-        header: true,
-        complete: function(results) {
-          const imoveis = results.data;
-          const grid = document.getElementById('gridImoveis');
-          const selectInteresse = document.getElementById('lead-interesse');
-          
-          grid.innerHTML = ''; 
-          let visiveis = 0;
+    document.addEventListener("DOMContentLoaded", () => { 
+      // Busca os dois links ao mesmo tempo usando Promises
+      Promise.all([fetchCSV(urlCondominios), fetchCSV(urlImoveis)])
+        .then(([condominiosData, imoveisData]) => {
+           renderizarCatalogo(imoveisData, condominiosData);
+        })
+        .catch(err => {
+           console.error("Erro ao carregar base de dados:", err);
+           document.getElementById('gridImoveis').innerHTML = '<div class="col-span-3 text-center py-12 text-red-500 font-bold">Erro ao conectar com a base central da corretora. Tente recarregar a página.</div>';
+        });
+    });
 
-          imoveis.forEach((imovel, index) => {
-            if (!imovel.Titulo_Imovel || imovel.Titulo_Imovel.trim() === '') return;
-            visiveis++;
-
-            // STATUS
-            let status = imovel.Status_Venda ? imovel.Status_Venda.trim() : 'Disponível';
-            let isVendidoOuAlugado = status.toLowerCase().includes('vendid') || status.toLowerCase().includes('alugad');
-            let corTagStatus = isVendidoOuAlugado ? 'bg-red-600' : 'bg-km-laranja';
-            
-            let overlayVendido = isVendidoOuAlugado ? `
-                <div class="absolute inset-0 bg-black/40 z-30 flex items-center justify-center backdrop-blur-[2px]">
-                  <span class="bg-red-600 text-white font-black text-2xl px-8 py-3 rounded-2xl transform -rotate-12 border-4 border-white shadow-2xl tracking-widest uppercase">${status}</span>
-                </div>
-            ` : '';
-
-            // FINANCIAMENTO OK
-            let tagFinanciamentoHTML = '';
-            let aceitaFinan = imovel.Aceita_Financiamento ? imovel.Aceita_Financiamento.toLowerCase().trim() : '';
-            if (aceitaFinan === 'sim' || aceitaFinan === 'ok' || aceitaFinan === 'aceita') {
-              tagFinanciamentoHTML = `<span class="absolute top-3 right-3 bg-km-petroleo text-white text-[10px] font-semibold uppercase px-2.5 py-1 rounded-full z-20 shadow flex items-center gap-1"><i class="fas fa-check-circle"></i> Financiamento OK</span>`;
-            }
-
-            // EXCLUSIVIDADE
-            let destaqueHTML = '';
-            if (imovel.Destaque_Tag && imovel.Destaque_Tag.trim() !== '') {
-              destaqueHTML = `<span class="absolute top-10 left-3 bg-km-petroleo text-white text-[10px] font-semibold uppercase px-2.5 py-1 rounded-full z-20 shadow flex items-center gap-1"><i class="fas fa-star text-km-laranja"></i> ${imovel.Destaque_Tag}</span>`;
-            }
-
-            // === A MÁGICA DO CARROSSEL (LENDO TODAS AS FOTOS) ===
-            let fotos = [];
-            if (imovel.Link_Foto_Principal && imovel.Link_Foto_Principal.trim() !== '') fotos.push(imovel.Link_Foto_Principal.trim());
-            if (imovel.Link_Foto_Varanda && imovel.Link_Foto_Varanda.trim() !== '') fotos.push(imovel.Link_Foto_Varanda.trim());
-            if (imovel.Link_Foto_Sala && imovel.Link_Foto_Sala.trim() !== '') fotos.push(imovel.Link_Foto_Sala.trim());
-            if (imovel.Link_Foto_Quarto && imovel.Link_Foto_Quarto.trim() !== '') fotos.push(imovel.Link_Foto_Quarto.trim());
-            if (imovel.Link_Foto_Cozinha && imovel.Link_Foto_Cozinha.trim() !== '') fotos.push(imovel.Link_Foto_Cozinha.trim());
-            if (imovel.Link_Foto_Banheiro && imovel.Link_Foto_Banheiro.trim() !== '') fotos.push(imovel.Link_Foto_Banheiro.trim());
-
-            // Lê possíveis fotos genéricas (se tiver colunas Link_Foto_Extra_1, Link_Foto_Extra_2...)
-            for(let i=1; i<=10; i++) {
-               if (imovel['Link_Foto_Extra_' + i] && imovel['Link_Foto_Extra_' + i].trim() !== '') {
-                   fotos.push(imovel['Link_Foto_Extra_' + i].trim());
-               }
-            }
-
-            if(fotos.length === 0) fotos.push('https://via.placeholder.com/800x500?text=Sem+Foto');
-
-            let carouselId = `carousel_${index}`;
-            let slidesHTML = fotos.map((f, i) => `
-                <div class="w-full h-full flex-shrink-0 relative">
-                   <img src="${f}" alt="${imovel.Titulo_Imovel}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
-                </div>
-            `).join('');
-            
-            let arrowsHTML = '';
-            let dotsHTML = '';
-            if(fotos.length > 1 && !isVendidoOuAlugado) {
-                arrowsHTML = `
-                    <button onclick="mudarSlide('${carouselId}', -1, event)" class="absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-km-petroleo w-8 h-8 flex items-center justify-center rounded-full shadow transition z-20 opacity-0 group-hover:opacity-100 hover:scale-110"><i class="fas fa-chevron-left text-[12px]"></i></button>
-                    <button onclick="mudarSlide('${carouselId}', 1, event)" class="absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-km-petroleo w-8 h-8 flex items-center justify-center rounded-full shadow transition z-20 opacity-0 group-hover:opacity-100 hover:scale-110"><i class="fas fa-chevron-right text-[12px]"></i></button>
-                `;
-                dotsHTML = `<div class="absolute bottom-10 left-0 w-full flex justify-center gap-1.5 z-20">` + 
-                           fotos.map((_, i) => `<span id="dot_${carouselId}_${i}" class="w-1.5 h-1.5 rounded-full ${i===0 ? 'bg-white shadow' : 'bg-white/50'} transition-all"></span>`).join('') +
-                           `</div>`;
-            }
-
-            // === FIM DO CARROSSEL ===
-
-            // LER AS COMODIDADES/DIFERENCIAIS PARA AS TAGS UNIVERSAIS
-            let diferenciaisHTML = '';
-            let diffs = imovel.Diferenciais ? imovel.Diferenciais : (imovel.Comodidades ? imovel.Comodidades : '');
-            if(diffs.trim() !== '') {
-               let lista = diffs.split(',');
-               lista.forEach(item => {
-                  let nome = item.trim();
-                  if(nome === '') return;
-                  let nomeMin = nome.toLowerCase();
-                  let icone = 'fas fa-check text-km-turquesa';
-                  if(nomeMin.includes('piscina')) icone = 'fas fa-swimming-pool text-km-turquesa';
-                  else if(nomeMin.includes('academia') || nomeMin.includes('fitness')) icone = 'fas fa-dumbbell text-km-turquesa';
-                  else if(nomeMin.includes('portaria') || nomeMin.includes('segurança')) icone = 'fas fa-user-shield text-km-turquesa';
-                  else if(nomeMin.includes('salão') || nomeMin.includes('salao') || nomeMin.includes('festa')) icone = 'fas fa-glass-cheers text-km-turquesa';
-                  else if(nomeMin.includes('gourmet') || nomeMin.includes('churrasqueira')) icone = 'fas fa-utensils text-km-turquesa';
-                  else if(nomeMin.includes('elevador')) icone = 'fas fa-arrows-alt-v text-km-turquesa';
-                  else if(nomeMin.includes('varanda') || nomeMin.includes('sacada')) icone = 'fas fa-sun text-km-turquesa';
-                  else if(nomeMin.includes('suíte') || nomeMin.includes('suite')) icone = 'fas fa-bed text-km-turquesa';
-                  
-                  diferenciaisHTML += `<span class="tag-sem-clique"><i class="${icone}"></i> ${nome}</span>`;
-               });
-            }
-
-            let containerDestaques = '';
-            if (diferenciaisHTML !== '') {
-               containerDestaques = `
-                 <div class="text-[11px] text-km-petroleo font-semibold mb-3 bg-gray-50/80 p-3 rounded-2xl border border-gray-100">
-                    <span class="block text-km-petroleo mb-2"><i class="fas fa-star text-km-laranja mr-1"></i> <strong>Características:</strong></span>
-                    <div class="flex flex-wrap gap-1.5">
-                      ${diferenciaisHTML}
-                    </div>
-                 </div>
-               `;
-            }
-
-            let idVideo = 'imovel_' + index;
-            linksVideos[idVideo] = imovel.Link_Video_Tour ? imovel.Link_Video_Tour.trim() : '';
-
-            let categoria = imovel.Categoria_Filtro ? imovel.Categoria_Filtro.toLowerCase().trim() : 'venda';
-            let quartos = imovel.Quartos ? imovel.Quartos.trim() : '';
-            let textoBusca = `${imovel.Titulo_Imovel} ${imovel.Descricao} ${imovel.Valor_Imovel} ${status} ${categoria}`.toLowerCase();
-
-            let botoesAcao = '';
-            if (isVendidoOuAlugado) {
-              botoesAcao = `<div class="col-span-2 text-center py-2.5 bg-gray-100 text-gray-400 font-bold rounded-xl text-xs uppercase tracking-widest border border-gray-200">Indisponível no Momento</div>`;
-            } else {
-              botoesAcao = `
-                <a href="https://wa.me/5513974250913?text=${encodeURIComponent(`Olá, Kelli! Gostaria de informações sobre: ${imovel.Titulo_Imovel} (R$ ${imovel.Valor_Imovel}).`)}" target="_blank" rel="noopener noreferrer" class="btn-ripple text-xs font-bold bg-emerald-600 hover:bg-emerald-700 text-white py-2.5 px-3 rounded-xl shadow-sm flex items-center justify-center gap-1.5 text-center transition">
-                  <i class="fab fa-whatsapp text-sm"></i> Falar com Kelli
-                </a>
-                <button onclick="conectarFormulario('${imovel.Titulo_Imovel}')" class="btn-ripple text-xs font-bold bg-km-petroleo hover:bg-km-escuro text-white py-2.5 px-3 rounded-xl shadow-sm flex items-center justify-center gap-1.5 text-center transition">
-                  <i class="fas fa-envelope text-sm"></i> Proposta
-                </button>
-              `;
-            }
-
-            let cardHTML = `
-              <div class="card-interativo bg-white rounded-3xl overflow-hidden border border-km-ceu/80 flex flex-col justify-between card-imovel relative"
-                   data-categoria="${categoria}" data-quartos="${quartos}" data-texto="${textoBusca}">
-                
-                ${overlayVendido}
-
-                <div>
-                  <div class="relative aspect-[16/10] overflow-hidden group">
-                    <span class="absolute top-3 left-3 ${corTagStatus} text-white text-[11px] font-bold uppercase px-3 py-1 rounded-full z-20 shadow">${status}</span>
-                    ${destaqueHTML}
-                    ${tagFinanciamentoHTML}
-                    
-                    <div id="${carouselId}" class="flex w-full h-full transition-transform duration-500 ease-out" data-slide="0" data-total="${fotos.length}">
-                        ${slidesHTML}
-                    </div>
-                    ${arrowsHTML}
-                    ${dotsHTML}
-                    
-                    <button onclick="abrirModalVideo('Tour: ${imovel.Titulo_Imovel}', '${idVideo}')" class="btn-ripple absolute bottom-3 left-3 bg-black/75 hover:bg-km-petroleo text-white text-[11px] font-bold px-3 py-1.5 rounded-full backdrop-blur-sm border border-white/30 flex items-center gap-1.5 shadow transition z-20">
-                      <i class="fas fa-play text-km-turquesa text-[10px]"></i> Tour
-                    </button>
-                  </div>
-                  
-                  <div class="p-6">
-                    <span class="text-[11px] font-bold text-km-turquesa uppercase tracking-wider block">Baixada Santista • SP</span>
-                    <h3 class="font-serif font-bold text-lg text-km-petroleo mt-1 mb-2">${imovel.Titulo_Imovel}</h3>
-                    <p class="text-xs text-gray-600 font-medium mb-3 leading-relaxed" style="display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;">
-                      ${imovel.Descricao || ''}
-                    </p>
-
-                    ${containerDestaques}
-                    
-                    <div class="grid grid-cols-3 gap-2 text-center text-xs text-gray-700 font-medium py-3 border-y border-gray-100 mb-4 bg-km-claro/60 rounded-xl">
-                      <div><i class="fas fa-ruler-combined text-km-petroleo block mb-1"></i> ${imovel.Area_m2 || '-'} m²</div>
-                      <div><i class="fas fa-bed text-km-petroleo block mb-1"></i> ${imovel.Quartos || '-'} Dorm.</div>
-                      <div><i class="fas fa-car text-km-petroleo block mb-1"></i> ${imovel.Vagas || '-'} Vaga(s)</div>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="px-6 pb-6 pt-0 space-y-3">
-                  <div>
-                    <span class="text-[10px] text-gray-500 block font-semibold">Condomínio: R$ ${imovel.Valor_Condominio || '-'} | IPTU: R$ ${imovel.Valor_IPTU || '-'}</span>
-                    <span class="font-bold text-2xl text-km-petroleo">R$ ${imovel.Valor_Imovel || '-'}</span>
-                  </div>
-
-                  <div class="grid grid-cols-2 gap-2 relative z-10">
-                    ${botoesAcao}
-                  </div>
-                </div>
-              </div>
-            `;
-            grid.innerHTML += cardHTML;
-
-            if (!isVendidoOuAlugado) {
-              let opcaoText = `${imovel.Titulo_Imovel} (R$ ${imovel.Valor_Imovel})`;
-              let optionElement = document.createElement("option");
-              optionElement.value = opcaoText;
-              optionElement.textContent = `Imóvel: ${opcaoText}`;
-              selectInteresse.insertBefore(optionElement, selectInteresse.children[1]);
-            }
-          });
-
-          if (visiveis === 0) { grid.innerHTML = `<div class="col-span-3 text-center py-12"><p>Nenhum imóvel disponível no momento.</p></div>`; }
-          document.getElementById('contadorResultados').innerHTML = `<i class="fas fa-home text-km-petroleo mr-1"></i> Mostrando ${visiveis} imóvel(is)`;
-        }
+    function fetchCSV(url) {
+      return new Promise((resolve, reject) => {
+        Papa.parse(url, {
+          download: true,
+          header: true,
+          complete: (results) => resolve(results.data),
+          error: (err) => reject(err)
+        });
       });
     }
 
-    // Lógica do Carrossel de Imagens Estilo Airbnb
+    function renderizarCatalogo(imoveis, condominios) {
+      const grid = document.getElementById('gridImoveis');
+      const selectInteresse = document.getElementById('lead-interesse');
+      grid.innerHTML = ''; 
+      let visiveis = 0;
+
+      imoveis.forEach((imovel, index) => {
+        if (!imovel.Titulo_Imovel || imovel.Titulo_Imovel.trim() === '') return;
+        visiveis++;
+
+        // 1. DADOS DE STATUS E VENDIDO
+        let status = imovel.Status_Venda ? imovel.Status_Venda.trim() : 'Disponível';
+        let isVendidoOuAlugado = status.toLowerCase().includes('vendid') || status.toLowerCase().includes('alugad');
+        let corTagStatus = isVendidoOuAlugado ? 'bg-red-600' : 'bg-km-laranja';
+        
+        let overlayVendido = isVendidoOuAlugado ? `
+            <div class="absolute inset-0 bg-black/40 z-30 flex items-center justify-center backdrop-blur-[2px]">
+              <span class="bg-red-600 text-white font-black text-2xl px-8 py-3 rounded-2xl transform -rotate-12 border-4 border-white shadow-2xl tracking-widest uppercase">${status}</span>
+            </div>
+        ` : '';
+
+        // 2. TAGS: FINANCIAMENTO E EXCLUSIVIDADE
+        let tagFinanciamentoHTML = '';
+        let aceitaFinan = imovel.Aceita_Financiamento ? imovel.Aceita_Financiamento.toLowerCase().trim() : '';
+        if (aceitaFinan === 'sim' || aceitaFinan === 'ok' || aceitaFinan === 'aceita') {
+          tagFinanciamentoHTML = `<span class="absolute top-3 right-3 bg-km-petroleo text-white text-[10px] font-semibold uppercase px-2.5 py-1 rounded-full z-20 shadow flex items-center gap-1"><i class="fas fa-check-circle"></i> Financiamento OK</span>`;
+        }
+
+        let destaqueHTML = '';
+        if (imovel.Destaque_Tag && imovel.Destaque_Tag.trim() !== '') {
+          destaqueHTML = `<span class="absolute top-10 left-3 bg-km-petroleo text-white text-[10px] font-semibold uppercase px-2.5 py-1 rounded-full z-20 shadow flex items-center gap-1"><i class="fas fa-star text-km-laranja"></i> ${imovel.Destaque_Tag}</span>`;
+        }
+
+        // 3. LÓGICA RELACIONAL: BUSCA O CONDOMÍNIO NA ABA 1
+        let btnCondominioHTML = '';
+        let condData = null;
+        if (imovel.Condominio_Vinculo && imovel.Condominio_Vinculo.trim() !== '') {
+            condData = condominios.find(c => c.Nome_Condominio && c.Nome_Condominio.trim().toLowerCase() === imovel.Condominio_Vinculo.trim().toLowerCase());
+        }
+
+        if (condData) {
+            // Gera botões para as até 5 áreas preenchidas na Aba 1
+            for(let i=1; i<=5; i++) {
+                let linkFotoArea = condData['Link_Foto_Area_' + i];
+                if (linkFotoArea && linkFotoArea.trim() !== '') {
+                    let nomeArea = condData['Nome_Area_' + i] ? condData['Nome_Area_' + i].trim() : 'Área Comum';
+                    let descArea = condData['Desc_Area_' + i] ? condData['Desc_Area_' + i].trim() : 'Detalhes do condomínio.';
+                    btnCondominioHTML += `<span onclick="abrirFotoArea('${nomeArea}', '${linkFotoArea}', '${descArea}')" class="tag-area-foto tag-area-destaque cursor-pointer"><i class="fas fa-building text-[10px]"></i> 📸 ${nomeArea}</span>`;
+                }
+            }
+
+            // Puxa as comodidades gerais escritas em texto na Aba 1
+            if (condData.Comodidades_Gerais && condData.Comodidades_Gerais.trim() !== '') {
+              let listaComodidades = condData.Comodidades_Gerais.split(',');
+              listaComodidades.forEach(item => {
+                let nome = item.trim();
+                if(nome === '') return;
+                let nomeMin = nome.toLowerCase();
+                let icone = 'fas fa-check text-km-turquesa';
+                if(nomeMin.includes('piscina')) icone = 'fas fa-swimming-pool text-km-turquesa';
+                else if(nomeMin.includes('academia') || nomeMin.includes('fitness')) icone = 'fas fa-dumbbell text-km-turquesa';
+                else if(nomeMin.includes('portaria') || nomeMin.includes('segurança') || nomeMin.includes('seguranca')) icone = 'fas fa-user-shield text-km-turquesa';
+                else if(nomeMin.includes('salão') || nomeMin.includes('salao') || nomeMin.includes('festa')) icone = 'fas fa-glass-cheers text-km-turquesa';
+                else if(nomeMin.includes('gourmet') || nomeMin.includes('churrasqueira')) icone = 'fas fa-utensils text-km-turquesa';
+                else if(nomeMin.includes('elevador')) icone = 'fas fa-arrows-alt-v text-km-turquesa';
+                else if(nomeMin.includes('market') || nomeMin.includes('mercado')) icone = 'fas fa-store text-km-turquesa';
+                
+                btnCondominioHTML += `<span class="tag-sem-clique"><i class="${icone}"></i> ${nome}</span>`;
+              });
+            }
+        }
+
+        // 4. BOTÕES DE FOTOS DOS CÔMODOS INTERNOS (Aba 2)
+        let botoesFotosInternas = '';
+        if (imovel.Link_Foto_Varanda && imovel.Link_Foto_Varanda.trim() !== '') {
+          let desc = imovel.Descricao_Foto_Varanda ? imovel.Descricao_Foto_Varanda.trim() : 'Vista da varanda.';
+          botoesFotosInternas += `<span onclick="abrirFotoArea('Varanda', '${imovel.Link_Foto_Varanda}', '${desc}')" class="tag-area-foto tag-area-destaque cursor-pointer"><i class="fas fa-camera text-[10px]"></i> 📸 Varanda</span>`;
+        }
+        if (imovel.Link_Foto_Sala && imovel.Link_Foto_Sala.trim() !== '') {
+          let desc = imovel.Descricao_Foto_Sala ? imovel.Descricao_Foto_Sala.trim() : 'Ambiente da sala.';
+          botoesFotosInternas += `<span onclick="abrirFotoArea('Sala de Estar', '${imovel.Link_Foto_Sala}', '${desc}')" class="tag-area-foto tag-area-destaque cursor-pointer"><i class="fas fa-couch text-[10px]"></i> 🛋️ Sala</span>`;
+        }
+        if (imovel.Link_Foto_Quarto && imovel.Link_Foto_Quarto.trim() !== '') {
+          let desc = imovel.Descricao_Foto_Quarto ? imovel.Descricao_Foto_Quarto.trim() : 'Detalhes do quarto.';
+          botoesFotosInternas += `<span onclick="abrirFotoArea('Dormitório', '${imovel.Link_Foto_Quarto}', '${desc}')" class="tag-area-foto tag-area-destaque cursor-pointer"><i class="fas fa-bed text-[10px]"></i> 🛏️ Quarto</span>`;
+        }
+        if (imovel.Link_Foto_Cozinha && imovel.Link_Foto_Cozinha.trim() !== '') {
+          let desc = imovel.Descricao_Foto_Cozinha ? imovel.Descricao_Foto_Cozinha.trim() : 'Detalhes da cozinha.';
+          botoesFotosInternas += `<span onclick="abrirFotoArea('Cozinha', '${imovel.Link_Foto_Cozinha}', '${desc}')" class="tag-area-foto tag-area-destaque cursor-pointer"><i class="fas fa-utensils text-[10px]"></i> 🍳 Cozinha</span>`;
+        }
+        if (imovel.Link_Foto_Banheiro && imovel.Link_Foto_Banheiro.trim() !== '') {
+          let desc = imovel.Descricao_Foto_Banheiro ? imovel.Descricao_Foto_Banheiro.trim() : 'Detalhes do banheiro.';
+          botoesFotosInternas += `<span onclick="abrirFotoArea('Banheiro', '${imovel.Link_Foto_Banheiro}', '${desc}')" class="tag-area-foto tag-area-destaque cursor-pointer"><i class="fas fa-bath text-[10px]"></i> 🚿 Banheiro</span>`;
+        }
+
+        // 5. O CARROSSEL AIRBNB (Junta todas as fotos do Imóvel)
+        let fotos = [];
+        if (imovel.Link_Foto_Principal && imovel.Link_Foto_Principal.trim() !== '') fotos.push(imovel.Link_Foto_Principal.trim());
+        if (imovel.Link_Foto_Varanda && imovel.Link_Foto_Varanda.trim() !== '') fotos.push(imovel.Link_Foto_Varanda.trim());
+        if (imovel.Link_Foto_Sala && imovel.Link_Foto_Sala.trim() !== '') fotos.push(imovel.Link_Foto_Sala.trim());
+        if (imovel.Link_Foto_Quarto && imovel.Link_Foto_Quarto.trim() !== '') fotos.push(imovel.Link_Foto_Quarto.trim());
+        if (imovel.Link_Foto_Cozinha && imovel.Link_Foto_Cozinha.trim() !== '') fotos.push(imovel.Link_Foto_Cozinha.trim());
+        if (imovel.Link_Foto_Banheiro && imovel.Link_Foto_Banheiro.trim() !== '') fotos.push(imovel.Link_Foto_Banheiro.trim());
+
+        // Caso exista fotos extras dinâmicas na planilha de Imóveis (Link_Foto_Extra_1...)
+        for(let i=1; i<=10; i++) {
+           if (imovel['Link_Foto_Extra_' + i] && imovel['Link_Foto_Extra_' + i].trim() !== '') {
+               fotos.push(imovel['Link_Foto_Extra_' + i].trim());
+           }
+        }
+        if(fotos.length === 0) fotos.push('https://via.placeholder.com/800x500?text=Sem+Foto');
+
+        let carouselId = `carousel_${index}`;
+        let slidesHTML = fotos.map((f, i) => `
+            <div class="w-full h-full flex-shrink-0 relative">
+               <img src="${f}" alt="${imovel.Titulo_Imovel}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
+            </div>
+        `).join('');
+        
+        let arrowsHTML = ''; let dotsHTML = '';
+        if(fotos.length > 1 && !isVendidoOuAlugado) {
+            arrowsHTML = `
+                <button onclick="mudarSlide('${carouselId}', -1, event)" class="absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-km-petroleo w-8 h-8 flex items-center justify-center rounded-full shadow transition z-20 opacity-0 group-hover:opacity-100 hover:scale-110"><i class="fas fa-chevron-left text-[12px]"></i></button>
+                <button onclick="mudarSlide('${carouselId}', 1, event)" class="absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-km-petroleo w-8 h-8 flex items-center justify-center rounded-full shadow transition z-20 opacity-0 group-hover:opacity-100 hover:scale-110"><i class="fas fa-chevron-right text-[12px]"></i></button>
+            `;
+            dotsHTML = `<div class="absolute bottom-10 left-0 w-full flex justify-center gap-1.5 z-20">` + 
+                       fotos.map((_, i) => `<span id="dot_${carouselId}_${i}" class="w-1.5 h-1.5 rounded-full ${i===0 ? 'bg-white shadow' : 'bg-white/50'} transition-all"></span>`).join('') + `</div>`;
+        }
+
+        // Caixinha de destaques (condomínio + internos)
+        let containerDestaques = '';
+        if (botoesFotosInternas !== '' || btnCondominioHTML !== '') {
+           containerDestaques = `
+             <div class="text-[11px] text-km-petroleo font-semibold mb-3 bg-gray-50/80 p-3 rounded-2xl border border-gray-100">
+                <span class="block text-km-petroleo mb-2"><i class="fas fa-camera text-km-turquesa mr-1"></i> <strong>Fotos & Destaques:</strong></span>
+                <div class="flex flex-wrap gap-1.5">
+                  ${botoesFotosInternas}
+                  ${btnCondominioHTML}
+                </div>
+             </div>
+           `;
+        }
+
+        let idVideo = 'imovel_' + index;
+        linksVideos[idVideo] = imovel.Link_Video_Tour ? imovel.Link_Video_Tour.trim() : '';
+
+        let categoria = imovel.Categoria_Filtro ? imovel.Categoria_Filtro.toLowerCase().trim() : 'venda';
+        let quartos = imovel.Quartos ? imovel.Quartos.trim() : '';
+        let textoBusca = `${imovel.Titulo_Imovel} ${imovel.Descricao} ${imovel.Valor_Imovel} ${imovel.Condominio_Vinculo || ''} ${status} ${categoria}`.toLowerCase();
+
+        // Botões de Ação Final
+        let botoesAcao = '';
+        if (isVendidoOuAlugado) {
+          botoesAcao = `<div class="col-span-2 text-center py-2.5 bg-gray-100 text-gray-400 font-bold rounded-xl text-xs uppercase tracking-widest border border-gray-200">Indisponível no Momento</div>`;
+        } else {
+          botoesAcao = `
+            <a href="https://wa.me/5513974250913?text=${encodeURIComponent(`Olá, Kelli! Gostaria de informações sobre: ${imovel.Titulo_Imovel} (R$ ${imovel.Valor_Imovel}).`)}" target="_blank" rel="noopener noreferrer" class="btn-ripple text-xs font-bold bg-emerald-600 hover:bg-emerald-700 text-white py-2.5 px-3 rounded-xl shadow-sm flex items-center justify-center gap-1.5 text-center transition">
+              <i class="fab fa-whatsapp text-sm"></i> Falar com Kelli
+            </a>
+            <button onclick="conectarFormulario('${imovel.Titulo_Imovel}')" class="btn-ripple text-xs font-bold bg-km-petroleo hover:bg-km-escuro text-white py-2.5 px-3 rounded-xl shadow-sm flex items-center justify-center gap-1.5 text-center transition">
+              <i class="fas fa-envelope text-sm"></i> Proposta
+            </button>
+          `;
+        }
+
+        let cardHTML = `
+          <div class="card-interativo bg-white rounded-3xl overflow-hidden border border-km-ceu/80 flex flex-col justify-between card-imovel relative"
+               data-categoria="${categoria}" data-quartos="${quartos}" data-texto="${textoBusca}">
+            ${overlayVendido}
+            <div>
+              <div class="relative aspect-[16/10] overflow-hidden group">
+                <span class="absolute top-3 left-3 ${corTagStatus} text-white text-[11px] font-bold uppercase px-3 py-1 rounded-full z-20 shadow">${status}</span>
+                ${destaqueHTML}
+                ${tagFinanciamentoHTML}
+                
+                <div id="${carouselId}" class="flex w-full h-full transition-transform duration-500 ease-out" data-slide="0" data-total="${fotos.length}">
+                    ${slidesHTML}
+                </div>
+                ${arrowsHTML}
+                ${dotsHTML}
+                
+                <button onclick="abrirModalVideo('Tour: ${imovel.Titulo_Imovel}', '${idVideo}', event)" class="btn-ripple absolute bottom-3 left-3 bg-black/75 hover:bg-km-petroleo text-white text-[11px] font-bold px-3 py-1.5 rounded-full backdrop-blur-sm border border-white/30 flex items-center gap-1.5 shadow transition z-20">
+                  <i class="fas fa-play text-km-turquesa text-[10px]"></i> Tour
+                </button>
+              </div>
+              
+              <div class="p-6">
+                <span class="text-[11px] font-bold text-km-turquesa uppercase tracking-wider block">${imovel.Condominio_Vinculo ? imovel.Condominio_Vinculo : 'Baixada Santista • SP'}</span>
+                <h3 class="font-serif font-bold text-lg text-km-petroleo mt-1 mb-2">${imovel.Titulo_Imovel}</h3>
+                <p class="text-xs text-gray-600 font-medium mb-3 leading-relaxed" style="display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;">
+                  ${imovel.Descricao || ''}
+                </p>
+
+                ${containerDestaques}
+                
+                <div class="grid grid-cols-3 gap-2 text-center text-xs text-gray-700 font-medium py-3 border-y border-gray-100 mb-4 bg-km-claro/60 rounded-xl">
+                  <div><i class="fas fa-ruler-combined text-km-petroleo block mb-1"></i> ${imovel.Area_m2 || '-'} m²</div>
+                  <div><i class="fas fa-bed text-km-petroleo block mb-1"></i> ${imovel.Quartos || '-'} Dorm.</div>
+                  <div><i class="fas fa-car text-km-petroleo block mb-1"></i> ${imovel.Vagas || '-'} Vaga(s)</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="px-6 pb-6 pt-0 space-y-3">
+              <div>
+                <span class="text-[10px] text-gray-500 block font-semibold">Condomínio: R$ ${imovel.Valor_Condominio || '-'} | IPTU: R$ ${imovel.Valor_IPTU || '-'}</span>
+                <span class="font-bold text-2xl text-km-petroleo">R$ ${imovel.Valor_Imovel || '-'}</span>
+              </div>
+              <div class="grid grid-cols-2 gap-2 relative z-10">${botoesAcao}</div>
+            </div>
+          </div>
+        `;
+        grid.innerHTML += cardHTML;
+
+        // Anexa ao formulário se não estiver vendido
+        if (!isVendidoOuAlugado) {
+          let opcaoText = `${imovel.Titulo_Imovel} (R$ ${imovel.Valor_Imovel})`;
+          let optionElement = document.createElement("option");
+          optionElement.value = opcaoText;
+          optionElement.textContent = `Imóvel: ${opcaoText}`;
+          selectInteresse.insertBefore(optionElement, selectInteresse.children[1]);
+        }
+      });
+
+      if (visiveis === 0) { grid.innerHTML = `<div class="col-span-3 text-center py-12"><p class="text-km-petroleo font-bold">Nenhum imóvel disponível no momento.</p></div>`; }
+      document.getElementById('contadorResultados').innerHTML = `<i class="fas fa-home text-km-petroleo mr-1"></i> Mostrando ${visiveis} imóvel(is)`;
+    }
+
+    // Funcionalidade do Carrossel Airbnb
     window.mudarSlide = function(id, dir, event) {
       event.preventDefault(); 
       event.stopPropagation(); 
@@ -865,7 +843,7 @@
     }
 
     /* ==========================================================================
-       UX/UI: RIPPLE, MODAIS, BUSCA E FORMULÁRIO
+       UX/UI: RIPPLE, MODAIS E BUSCA
        ========================================================================== */
     document.addEventListener('pointerdown', function (e) {
       const target = e.target.closest('.btn-ripple, button');
@@ -926,6 +904,13 @@
       if (e.target.classList.contains('fixed') && !e.target.classList.contains('hidden')) { fecharModal(e.target.id); }
     });
 
+    function abrirFotoArea(titulo, chaveFoto, desc) {
+      document.getElementById('tituloFotoArea').innerText = titulo;
+      document.getElementById('descFotoArea').innerText = desc;
+      document.getElementById('imgFotoArea').src = chaveFoto;
+      abrirModal('modalFotoArea');
+    }
+
     function abrirModalVideo(titulo, chaveImovel, event) {
       if(event) { event.preventDefault(); event.stopPropagation(); }
       document.getElementById('tituloModalVideo').innerText = titulo;
@@ -942,7 +927,7 @@
           <div class="space-y-3">
             <div class="w-14 h-14 rounded-2xl bg-km-turquesa/20 text-km-turquesa flex items-center justify-center mx-auto text-2xl"><i class="fas fa-video"></i></div>
             <h5 class="font-serif font-bold text-lg">Tour em Gravação</h5>
-            <p class="text-xs text-gray-300 max-w-sm mx-auto">O vídeo deste imóvel está em produção. Solicite à corretora Kelli pelo WhatsApp!</p>
+            <p class="text-xs text-gray-300 max-w-sm mx-auto">O vídeo deste imóvel está em produção. Solicite à corretora pelo WhatsApp!</p>
           </div>
         `;
       }
