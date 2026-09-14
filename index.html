@@ -48,12 +48,23 @@
   </script>
 
   <style>
+    /* O fundo se mantém fixo, mas a camada ::before cria uma profundidade que melhora a rolagem */
     body {
       background-image: url('https://res.cloudinary.com/oactqmgs/image/upload/v1789085165/body_-_site_kelli.jpg');
       background-size: cover;
       background-position: center center;
       background-repeat: no-repeat;
       background-attachment: fixed;
+      position: relative;
+      z-index: 0;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: linear-gradient(to bottom, rgba(0, 58, 62, 0.15), rgba(0, 0, 0, 0.45));
+      z-index: -1;
+      pointer-events: none;
     }
 
     .hero-texto-legivel {
@@ -82,12 +93,13 @@
       border-color: #33D1D4;
     }
 
+    /* Dinâmica de Cards Aprimorada: Micro-zoom e brilho sutil */
     .card-interativo {
       transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease, border-color 0.3s ease;
     }
     .card-interativo:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.15);
+      transform: translateY(-6px) scale(1.01);
+      box-shadow: 0 25px 35px -5px rgba(0, 0, 0, 0.15), 0 0 15px rgba(51, 209, 212, 0.25);
       border-color: #33D1D4;
     }
 
@@ -100,12 +112,18 @@
       display: inline-block;
     }
 
+    /* Dinâmica de Botões Aprimorada: Efeito de afundar no clique */
     .btn-ripple {
       position: relative;
       overflow: hidden;
       transform: translate3d(0, 0, 0);
       user-select: none;
+      transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s, box-shadow 0.3s;
     }
+    .btn-ripple:active {
+      transform: scale(0.96) !important;
+    }
+    
     .ripple-wave-orange {
       position: absolute;
       border-radius: 50%;
@@ -137,7 +155,8 @@
     .tag-area-foto:hover {
       background: #33D1D4;
       color: #003A3E;
-      transform: translateY(-1px);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
     }
     .tag-area-destaque {
       background: rgba(245, 124, 0, 0.12);
@@ -171,16 +190,22 @@
   <header class="bg-km-escuro text-white text-xs py-2.5 px-4 border-b border-km-petroleo">
     <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-2">
       <div class="flex items-center gap-3 sm:gap-6 font-medium">
-        <span><i class="fas fa-map-marker-alt text-km-turquesa mr-1"></i> José Menino • Santos - SP</span>
+        <span><i class="fas fa-map-marker-alt text-km-turquesa mr-1"></i> Baixada Santista - SP</span>
         <span class="text-gray-400">|</span>
         <span>CRECI-SP: <strong class="text-km-turquesa">323425</strong></span>
         <span class="text-gray-400">|</span>
         <span>CNAI: <strong class="text-km-turquesa">58458</strong> (Avaliadora Oficial)</span>
       </div>
       <div class="flex items-center gap-4">
-        <a href="https://www.instagram.com/kellimartins.imoveis?stkn=NWptdXVzOXg2dnI5" target="_blank" rel="noopener noreferrer" class="hover:text-km-turquesa transition flex items-center gap-1.5 font-medium">
+        <!-- INSTAGRAM -->
+        <a href="https://www.instagram.com/kellimartins.imoveis/" target="_blank" rel="noopener noreferrer" class="hover:text-km-turquesa transition flex items-center gap-1.5 font-medium">
           <i class="fab fa-instagram"></i> @kellimartins.imoveis
         </a>
+        <!-- FACEBOOK -->
+        <a href="https://www.facebook.com/kellimartins.imoveis/" target="_blank" rel="noopener noreferrer" class="hover:text-km-turquesa transition flex items-center gap-1.5 font-medium">
+          <i class="fab fa-facebook"></i> Facebook
+        </a>
+        <!-- WHATSAPP -->
         <a href="https://wa.me/5513974250913" target="_blank" rel="noopener noreferrer" class="hover:text-km-turquesa transition flex items-center gap-1.5 font-medium">
           <i class="fab fa-whatsapp"></i> (13) 97425-0913
         </a>
@@ -208,7 +233,7 @@
         <div class="hidden md:flex items-center space-x-8 text-sm font-medium text-gray-700">
           <a href="#sobre" class="hover:text-km-petroleo transition relative group py-1">Sobre a Kelli <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-km-turquesa transition-all duration-300 group-hover:w-full"></span></a>
           <a href="#servicos" class="hover:text-km-petroleo transition relative group py-1">Serviços <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-km-turquesa transition-all duration-300 group-hover:w-full"></span></a>
-          <a href="#imoveis" class="hover:text-km-petroleo transition relative group py-1">Imóveis Selecionados <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-km-turquesa transition-all duration-300 group-hover:w-full"></span></a>
+          <a href="#imoveis" class="hover:text-km-petroleo transition relative group py-1">Imóveis <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-km-turquesa transition-all duration-300 group-hover:w-full"></span></a>
           <a href="#contato" class="btn-ripple bg-km-laranja hover:bg-orange-600 text-white font-semibold px-6 py-2.5 rounded-full shadow-md hover:shadow-orange-500/30 flex items-center gap-2 transition">
             <i class="fab fa-whatsapp"></i> Falar com a Kelli
           </a>
@@ -223,7 +248,7 @@
     <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 px-6 py-5 space-y-4 text-sm font-medium shadow-xl">
       <a href="#sobre" class="block text-gray-700 hover:text-km-petroleo py-1">Sobre Kelli Martins</a>
       <a href="#servicos" class="block text-gray-700 hover:text-km-petroleo py-1">Serviços Especializados</a>
-      <a href="#imoveis" class="block text-gray-700 hover:text-km-petroleo py-1">Imóveis no José Menino</a>
+      <a href="#imoveis" class="block text-gray-700 hover:text-km-petroleo py-1">Imóveis na Região</a>
       <a href="#contato" class="btn-ripple block text-center bg-km-laranja text-white py-3 rounded-xl font-bold shadow">
         <i class="fab fa-whatsapp mr-1"></i> Iniciar Atendimento
       </a>
@@ -234,15 +259,15 @@
   <section class="text-white py-20 sm:py-28 px-4 relative flex items-center min-h-[85vh]">
     <div class="max-w-4xl mx-auto text-center space-y-6 hero-texto-legivel">
       <div class="inline-flex items-center gap-2 bg-km-turquesa/30 border border-km-turquesa/50 backdrop-blur-md px-4 py-1.5 rounded-full text-xs font-bold text-white uppercase tracking-wider shadow-sm">
-        <i class="fas fa-sun text-km-laranja icone-praia"></i> Especialista na Orla do José Menino • Santos/SP
+        <i class="fas fa-sun text-km-laranja icone-praia"></i> Corretora e Avaliadora em Toda a Baixada Santista
       </div>
       
       <h1 class="font-serif text-3xl sm:text-5xl md:text-6xl font-bold leading-tight texto-com-sombra">
-        Seu Imóvel no José Menino com <span class="text-km-turquesa">Segurança</span>, <span class="text-km-laranja">Leveza</span> e Exclusividade.
+        Seu Imóvel com <span class="text-km-turquesa">Segurança</span>, <span class="text-km-laranja">Leveza</span> e Exclusividade.
       </h1>
 
       <p class="text-base sm:text-lg text-white font-medium max-w-2xl mx-auto leading-relaxed texto-com-sombra">
-        Assessoria completa e humanizada com a corretora Kelli Martins. Facilitamos a compra, venda, locação e avaliação com agilidade e total respaldo jurídico.
+        Faço o possível para tornar mais fácil e seguro o processo de comprar, vender ou alugar seu imóvel.
       </p>
 
       <div class="pt-6 flex flex-col sm:flex-row gap-4 justify-center">
@@ -267,8 +292,8 @@
               <img src="https://res.cloudinary.com/oactqmgs/image/upload/v1789076809/FOTO_DO_SITE_DA_KELLI_ELA.jpg" alt="Kelli Martins Corretora" class="w-full h-full object-cover object-top" loading="lazy" />
             </div>
             <div class="absolute -bottom-6 -right-2 bg-km-petroleo text-white p-5 rounded-2xl shadow-xl max-w-[240px] border-l-4 border-km-laranja">
-              <p class="text-xs uppercase font-bold text-km-turquesa tracking-wider">Kelli Martins</p>
-              <p class="font-serif text-sm font-semibold mt-1">Assessoria do primeiro café até a entrega das chaves.</p>
+              <p class="text-xs uppercase font-bold text-km-turquesa tracking-wider">Toda a Baixada Santista</p>
+              <p class="font-serif text-sm font-semibold mt-1">Assessoria do início do processo até a entrega das chaves.</p>
             </div>
           </div>
         </div>
@@ -279,15 +304,15 @@
               <i class="fas fa-anchor text-km-turquesa icone-praia"></i> Sobre a Corretora
             </span>
             <h2 class="font-serif text-3xl sm:text-4xl font-bold text-km-petroleo mt-1">Kelli Martins</h2>
-            <p class="text-sm font-semibold text-km-petroleo/80">Corretora & Avaliadora Imobiliária Especialista em Santos</p>
+            <p class="text-sm font-semibold text-km-petroleo/80">Corretora e Avaliadora de Imóveis na Baixada Santista</p>
           </div>
 
           <p class="text-base font-medium leading-relaxed">
-            Com presença consolidada e foco absoluto na orla do <strong>José Menino, em Santos</strong>, presto uma consultoria próxima, empática e descomplicada. 
+            Com atendimento dedicado em <strong>toda a Baixada Santista</strong> (Santos, São Vicente, Praia Grande e região), ofereço consultoria imobiliária completa, ética e personalizada para quem deseja comprar, vender, alugar ou avaliar imóveis com total segurança jurídica.
           </p>
 
-          <p class="text-base font-medium leading-relaxed">
-            Meu compromisso é eliminar a burocracia documental, intermediando negociações justas com total clareza, proteção jurídica e dedicação exclusiva para você e sua família.
+          <p class="text-base font-semibold text-km-petroleo leading-relaxed border-l-4 border-km-laranja pl-4 bg-km-claro py-2">
+            “Faço o possível para tornar mais fácil e seguro o processo de comprar, vender ou alugar seu imóvel.”
           </p>
 
           <div class="grid grid-cols-2 gap-4 pt-2">
@@ -299,7 +324,7 @@
             <div class="bg-white p-4 rounded-2xl border border-km-ceu card-interativo">
               <span class="block text-xs uppercase font-bold text-km-petroleo">CNAI</span>
               <span class="text-xl font-bold text-km-laranja">58458</span>
-              <p class="text-xs text-gray-500 mt-0.5 font-medium">Avaliadora Mercadológica (PTAM)</p>
+              <p class="text-xs text-gray-500 mt-0.5 font-medium">Avaliadora de Imóveis (PTAM)</p>
             </div>
           </div>
         </div>
@@ -307,7 +332,7 @@
     </div>
   </section>
 
-  <!-- SERVIÇOS -->
+  <!-- SERVIÇOS (8 ITENS OFICIAIS) -->
   <section id="servicos" class="py-20">
     <div class="max-w-7xl mx-auto px-4 sm:px-6">
       
@@ -319,41 +344,73 @@
           Como posso te ajudar hoje?
         </h2>
         <p class="text-sm text-gray-800 font-semibold relative z-10">
-          Suporte profissional de ponta a ponta na Baixada Santista.
+          Suporte profissional de ponta a ponta em toda a Baixada Santista.
         </p>
       </div>
 
       <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
         <div class="bg-white/95 p-6 rounded-2xl border border-km-ceu/80 card-interativo">
-          <div class="w-12 h-12 rounded-xl bg-km-ceu/40 text-km-petroleo flex items-center justify-center text-xl mb-4">
+          <div class="w-12 h-12 rounded-xl bg-km-ceu/40 text-km-petroleo flex items-center justify-center text-xl mb-4 transition-transform group-hover:scale-110">
             <i class="fas fa-handshake"></i>
           </div>
-          <h3 class="font-bold text-base text-km-petroleo mb-2">Compra e Venda</h3>
-          <p class="text-xs text-gray-700 font-medium leading-relaxed">Intermediação segura de imóveis com suporte documental e análise de certidões.</p>
+          <h3 class="font-bold text-base text-km-petroleo mb-2">Compra e Venda de Imóveis</h3>
+          <p class="text-xs text-gray-700 font-medium leading-relaxed">Intermediação segura em toda a Baixada Santista com total suporte documental e certidões.</p>
         </div>
 
         <div class="bg-white/95 p-6 rounded-2xl border border-km-ceu/80 card-interativo">
           <div class="w-12 h-12 rounded-xl bg-km-ceu/40 text-km-petroleo flex items-center justify-center text-xl mb-4">
             <i class="fas fa-key"></i>
           </div>
-          <h3 class="font-bold text-base text-km-petroleo mb-2">Locação Anual e Temporada</h3>
-          <p class="text-xs text-gray-700 font-medium leading-relaxed">Contratos sólidos para aluguel residencial e opções selecionadas a passos do mar.</p>
+          <h3 class="font-bold text-base text-km-petroleo mb-2">Aluguel Anual</h3>
+          <p class="text-xs text-gray-700 font-medium leading-relaxed">Locações residenciais seguras, contratos claros e tranquilidade para proprietários e inquilinos.</p>
         </div>
 
         <div class="bg-white/95 p-6 rounded-2xl border border-km-ceu/80 card-interativo">
           <div class="w-12 h-12 rounded-xl bg-km-ceu/40 text-km-petroleo flex items-center justify-center text-xl mb-4">
-            <i class="fas fa-calculator"></i>
+            <i class="fas fa-umbrella-beach"></i>
           </div>
-          <h3 class="font-bold text-base text-km-petroleo mb-2">Avaliação Imobiliária</h3>
-          <p class="text-xs text-gray-700 font-medium leading-relaxed">Pareceres Técnicos de Avaliação Mercadológica (PTAM) com respaldo legal e CNAI 58458.</p>
+          <h3 class="font-bold text-base text-km-petroleo mb-2">Aluguel de Temporada</h3>
+          <p class="text-xs text-gray-700 font-medium leading-relaxed">Opções selecionadas perto da praia para descansar e curtir o litoral com conforto.</p>
         </div>
 
         <div class="bg-white/95 p-6 rounded-2xl border border-km-ceu/80 card-interativo">
           <div class="w-12 h-12 rounded-xl bg-km-ceu/40 text-km-petroleo flex items-center justify-center text-xl mb-4">
             <i class="fas fa-file-invoice-dollar"></i>
           </div>
-          <h3 class="font-bold text-base text-km-petroleo mb-2">Financiamento Bancário</h3>
-          <p class="text-xs text-gray-700 font-medium leading-relaxed">Simulações nos principais bancos para encontrar a taxa mais vantajosa para você.</p>
+          <h3 class="font-bold text-base text-km-petroleo mb-2">Financiamento Imobiliário</h3>
+          <p class="text-xs text-gray-700 font-medium leading-relaxed">Simulação e suporte completo para aprovação do seu crédito imobiliário nos principais bancos.</p>
+        </div>
+
+        <div class="bg-white/95 p-6 rounded-2xl border border-km-ceu/80 card-interativo">
+          <div class="w-12 h-12 rounded-xl bg-km-ceu/40 text-km-petroleo flex items-center justify-center text-xl mb-4">
+            <i class="fas fa-route"></i>
+          </div>
+          <h3 class="font-bold text-base text-km-petroleo mb-2">Assessoria Completa</h3>
+          <p class="text-xs text-gray-700 font-medium leading-relaxed">Assessoria do início do processo até a entrega das chaves, cuidando de cada detalhe por você.</p>
+        </div>
+
+        <div class="bg-white/95 p-6 rounded-2xl border border-km-ceu/80 card-interativo">
+          <div class="w-12 h-12 rounded-xl bg-km-ceu/40 text-km-petroleo flex items-center justify-center text-xl mb-4">
+            <i class="fas fa-calculator"></i>
+          </div>
+          <h3 class="font-bold text-base text-km-petroleo mb-2">Avaliação de Imóveis</h3>
+          <p class="text-xs text-gray-700 font-medium leading-relaxed">Avaliadora credenciada (CNAI 58458) emitindo Parecer Técnico Mercadológico (PTAM) com validade legal.</p>
+        </div>
+
+        <div class="bg-white/95 p-6 rounded-2xl border border-km-ceu/80 card-interativo">
+          <div class="w-12 h-12 rounded-xl bg-km-ceu/40 text-km-petroleo flex items-center justify-center text-xl mb-4">
+            <i class="fas fa-landmark"></i>
+          </div>
+          <h3 class="font-bold text-base text-km-petroleo mb-2">Crédito com Garantia de Imóvel</h3>
+          <p class="text-xs text-gray-700 font-medium leading-relaxed">Linhas de crédito inteligente (Home Equity) utilizando seu patrimônio com as menores taxas.</p>
+        </div>
+
+        <div class="bg-white/95 p-6 rounded-2xl border border-km-ceu/80 card-interativo">
+          <div class="w-12 h-12 rounded-xl bg-km-ceu/40 text-km-petroleo flex items-center justify-center text-xl mb-4">
+            <i class="fas fa-hammer"></i>
+          </div>
+          <h3 class="font-bold text-base text-km-petroleo mb-2">Crédito para Construção e Reforma</h3>
+          <p class="text-xs text-gray-700 font-medium leading-relaxed">Recursos sob medida para modernizar, reformar ou construir o seu imóvel no litoral.</p>
         </div>
       </div>
     </div>
@@ -395,7 +452,7 @@
               maxlength="80"
               oninput="filtrarImoveis()" 
               placeholder="Pesquisar por dormitório, preço ou palavra-chave..." 
-              class="w-full pl-11 pr-10 py-3 rounded-2xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-km-turquesa text-sm bg-white font-medium text-gray-700"
+              class="w-full pl-11 pr-10 py-3 rounded-2xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-km-turquesa text-sm bg-white font-medium text-gray-700 transition"
             />
             <button id="btnLimparBusca" onclick="limparBusca()" class="hidden absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 p-1">
               <i class="fas fa-times-circle"></i>
@@ -406,7 +463,7 @@
             <select 
               id="filtroQuartos" 
               onchange="filtrarImoveis()" 
-              class="w-full px-4 py-3 rounded-2xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-km-turquesa text-sm bg-white text-gray-700 font-medium cursor-pointer"
+              class="w-full px-4 py-3 rounded-2xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-km-turquesa text-sm bg-white text-gray-700 font-medium cursor-pointer transition"
             >
               <option value="">Todos os dormitórios</option>
               <option value="1">1 Quarto / 1 Suíte</option>
@@ -426,14 +483,14 @@
         <!-- CARD 1: APARTAMENTO 1 DORMITÓRIO -->
         <div class="card-interativo bg-white rounded-3xl overflow-hidden border border-km-ceu/80 flex flex-col justify-between card-imovel"
              data-categoria="venda" data-quartos="1"
-             data-texto="apartamento 1 dormitorio jose menino santos praia lazer piscina sea market mercado 320 mil">
+             data-texto="apartamento 1 dormitorio jose menino santos praia lazer piscina sea market mercado portaria 320 mil">
           <div>
-            <div class="relative aspect-[16/10] overflow-hidden">
+            <div class="relative aspect-[16/10] overflow-hidden group">
               <span class="absolute top-3 left-3 bg-km-laranja text-white text-[11px] font-bold uppercase px-3 py-1 rounded-full z-10 shadow">À Venda</span>
               <span class="absolute top-3 right-3 bg-km-petroleo text-white text-[10px] font-semibold uppercase px-2.5 py-1 rounded-full z-10 shadow flex items-center gap-1">
                 <i class="fas fa-check-circle"></i> Financiamento OK
               </span>
-              <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=800&q=80" alt="Apartamento 1 dormitório Santos" class="w-full h-full object-cover transition duration-500 hover:scale-105" loading="lazy" />
+              <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=800&q=80" alt="Apartamento 1 dormitório Santos" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy" />
               
               <button onclick="abrirModalVideo('Tour: Ap. 1 Dormitório no José Menino', 'ap1dorm')" class="btn-ripple absolute bottom-3 left-3 bg-black/75 hover:bg-km-petroleo text-white text-[11px] font-bold px-3 py-1.5 rounded-full backdrop-blur-sm border border-white/30 flex items-center gap-1.5 shadow transition">
                 <i class="fas fa-play text-km-turquesa text-[10px]"></i> Tour em Vídeo
@@ -447,11 +504,13 @@
                 Apartamento funcional com 36,6 m² de área útil, apenas 50m da praia. Conta com vaga de garagem, portaria 24h e lazer completo na cobertura.
               </p>
 
-              <!-- ÁREAS DO CONDOMÍNIO + SEA MARKET -->
+              <!-- ÁREAS DO CONDOMÍNIO + SEA MARKET + PORTARIA -->
               <div class="text-[11px] text-km-petroleo font-semibold mb-3 bg-teal-50/70 p-3 rounded-2xl border border-teal-100">
                 <span class="block text-km-petroleo mb-2"><i class="fas fa-building text-km-turquesa mr-1"></i> <strong>Lazer & Conveniência no Prédio:</strong></span>
                 <div class="flex flex-wrap gap-1.5">
-                  <span onclick="abrirFotoArea('Sea Market 24 Horas', 'market', 'Mercadinho autônomo 24 horas dentro do próprio edifício, com bebidas, snacks e conveniências práticas sem sair de casa.')" class="tag-area-foto tag-area-destaque"><i class="fas fa-store text-[10px]"></i> 🛒 Sea Market 24h</span>
+                  <span onclick="abrirFotoArea('Sea Market 24 Horas', 'market', 'Mercadinho autônomo 24 horas dentro do próprio edifício.')" class="tag-area-foto tag-area-destaque"><i class="fas fa-store text-[10px]"></i> 🛒 Sea Market (Loja)</span>
+                  <span onclick="abrirFotoArea('Recepção Sea Market', 'market_placa', 'Design moderno e ambiente agradável logo na entrada do minimercado.')" class="tag-area-foto tag-area-destaque"><i class="fas fa-leaf text-[10px]"></i> 🌿 Sea Market (Detalhe)</span>
+                  <span onclick="abrirFotoArea('Portaria 24 Horas', 'portaria', 'Segurança e comodidade com portaria presencial 24 horas no condomínio.')" class="tag-area-foto"><i class="fas fa-user-shield text-[10px]"></i> Portaria 24h</span>
                   <span onclick="abrirFotoArea('Piscina Raia no Rooftop', 'piscina', 'Piscina com raia de natação no terraço do edifício com vista panorâmica.')" class="tag-area-foto"><i class="fas fa-swimming-pool text-[10px]"></i> Piscina</span>
                   <span onclick="abrirFotoArea('Academia Equipada', 'academia', 'Espaço fitness com aparelhos para cardio e treino com vista livre.')" class="tag-area-foto"><i class="fas fa-dumbbell text-[10px]"></i> Academia</span>
                   <span onclick="abrirFotoArea('Área Gourmet', 'gourmet', 'Cozinha gourmet com churrasqueira e bancada em granito para receber amigos.')" class="tag-area-foto"><i class="fas fa-utensils text-[10px]"></i> Gourmet</span>
@@ -486,14 +545,14 @@
         <!-- CARD 2: APARTAMENTO 2 DORMITÓRIOS COM VARANDA -->
         <div class="card-interativo bg-white rounded-3xl overflow-hidden border border-km-ceu/80 flex flex-col justify-between card-imovel"
              data-categoria="venda" data-quartos="2"
-             data-texto="apartamento 2 dormitorios varanda jose menino santos 57 m2 vaga lazer piscina sea market mercado 430 mil">
+             data-texto="apartamento 2 dormitorios varanda jose menino santos 57 m2 vaga lazer piscina sea market mercado portaria 430 mil">
           <div>
-            <div class="relative aspect-[16/10] overflow-hidden">
+            <div class="relative aspect-[16/10] overflow-hidden group">
               <span class="absolute top-3 left-3 bg-km-laranja text-white text-[11px] font-bold uppercase px-3 py-1 rounded-full z-10 shadow">À Venda</span>
               <span class="absolute top-3 right-3 bg-km-petroleo text-white text-[10px] font-semibold uppercase px-2.5 py-1 rounded-full z-10 shadow flex items-center gap-1">
                 <i class="fas fa-check-circle"></i> Financiamento OK
               </span>
-              <img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=800&q=80" alt="Apartamento 2 dormitórios Varanda Santos" class="w-full h-full object-cover transition duration-500 hover:scale-105" loading="lazy" />
+              <img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=800&q=80" alt="Apartamento 2 dormitórios Varanda Santos" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy" />
               
               <button onclick="abrirModalVideo('Tour: Ap. 2 Dormitórios com Varanda', 'ap2dorms')" class="btn-ripple absolute bottom-3 left-3 bg-black/75 hover:bg-km-petroleo text-white text-[11px] font-bold px-3 py-1.5 rounded-full backdrop-blur-sm border border-white/30 flex items-center gap-1.5 shadow transition">
                 <i class="fas fa-play text-km-turquesa text-[10px]"></i> Tour em Vídeo
@@ -507,11 +566,13 @@
                 Planta espaçosa de 57 m² com varanda privativa e ótima iluminação natural. A 50m da orla, com vaga na garagem e infraestrutura impecável.
               </p>
 
-              <!-- ÁREAS DO CONDOMÍNIO + SEA MARKET -->
+              <!-- ÁREAS DO CONDOMÍNIO + SEA MARKET + PORTARIA -->
               <div class="text-[11px] text-km-petroleo font-semibold mb-3 bg-teal-50/70 p-3 rounded-2xl border border-teal-100">
                 <span class="block text-km-petroleo mb-2"><i class="fas fa-building text-km-turquesa mr-1"></i> <strong>Lazer & Conveniência no Prédio:</strong></span>
                 <div class="flex flex-wrap gap-1.5">
-                  <span onclick="abrirFotoArea('Sea Market 24 Horas', 'market', 'Mercadinho autônomo 24 horas dentro do próprio condomínio, com bebidas geladas, lanches rápidos e compras de emergência.')" class="tag-area-foto tag-area-destaque"><i class="fas fa-store text-[10px]"></i> 🛒 Sea Market 24h</span>
+                  <span onclick="abrirFotoArea('Sea Market 24 Horas', 'market', 'Mercadinho autônomo 24 horas dentro do próprio condomínio, com bebidas e lanches.')" class="tag-area-foto tag-area-destaque"><i class="fas fa-store text-[10px]"></i> 🛒 Sea Market (Loja)</span>
+                  <span onclick="abrirFotoArea('Recepção Sea Market', 'market_placa', 'Design moderno e ambiente agradável logo na entrada do minimercado.')" class="tag-area-foto tag-area-destaque"><i class="fas fa-leaf text-[10px]"></i> 🌿 Sea Market (Detalhe)</span>
+                  <span onclick="abrirFotoArea('Portaria 24 Horas', 'portaria', 'Segurança e comodidade com portaria presencial 24 horas no condomínio.')" class="tag-area-foto"><i class="fas fa-user-shield text-[10px]"></i> Portaria 24h</span>
                   <span onclick="abrirFotoArea('Piscina Raia no Rooftop', 'piscina', 'Piscina com raia de natação no terraço do edifício com deck e solarium.')" class="tag-area-foto"><i class="fas fa-swimming-pool text-[10px]"></i> Piscina</span>
                   <span onclick="abrirFotoArea('Academia Completa', 'academia', 'Espaço fitness com aparelhos aeróbicos modernos.')" class="tag-area-foto"><i class="fas fa-dumbbell text-[10px]"></i> Academia</span>
                   <span onclick="abrirFotoArea('Salão de Festas', 'salao', 'Salão social climatizado para eventos e celebrações.')" class="tag-area-foto"><i class="fas fa-glass-cheers text-[10px]"></i> Salão Festas</span>
@@ -543,17 +604,17 @@
           </div>
         </div>
 
-        <!-- CARD 3: COBERTURA DUPLEX -->
+        <!-- CARD 3: COBERTURA DUPLEX (INCLUI VISTA DA VARANDA) -->
         <div class="card-interativo bg-white rounded-3xl overflow-hidden border border-km-ceu/80 flex flex-col justify-between card-imovel"
              data-categoria="venda" data-quartos="1"
-             data-texto="cobertura duplex jose menino santos 72 m2 2 vagas suite sea market piscina 430 mil">
+             data-texto="cobertura duplex jose menino santos 72 m2 2 vagas suite sea market piscina portaria vista 430 mil">
           <div>
-            <div class="relative aspect-[16/10] overflow-hidden">
+            <div class="relative aspect-[16/10] overflow-hidden group">
               <span class="absolute top-3 left-3 bg-km-laranja text-white text-[11px] font-bold uppercase px-3 py-1 rounded-full z-10 shadow">Exclusividade</span>
               <span class="absolute top-3 right-3 bg-km-petroleo text-white text-[10px] font-semibold uppercase px-2.5 py-1 rounded-full z-10 shadow flex items-center gap-1">
                 <i class="fas fa-check-circle"></i> Financiamento OK
               </span>
-              <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80" alt="Cobertura Duplex Santos" class="w-full h-full object-cover transition duration-500 hover:scale-105" loading="lazy" />
+              <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80" alt="Cobertura Duplex Santos" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy" />
               
               <button onclick="abrirModalVideo('Tour: Cobertura Duplex no José Menino', 'cobertura')" class="btn-ripple absolute bottom-3 left-3 bg-black/75 hover:bg-km-petroleo text-white text-[11px] font-bold px-3 py-1.5 rounded-full backdrop-blur-sm border border-white/30 flex items-center gap-1.5 shadow transition">
                 <i class="fas fa-play text-km-turquesa text-[10px]"></i> Tour em Vídeo
@@ -567,11 +628,14 @@
                 72,25 m² com 1 suíte e 2 vagas privativas de garagem. Conforto e sofisticação a poucos passos da orla, cercada por conveniências.
               </p>
 
-              <!-- ÁREAS DO CONDOMÍNIO + SEA MARKET -->
+              <!-- ÁREAS DO CONDOMÍNIO + SEA MARKET + PORTARIA + VISTA DA VARANDA -->
               <div class="text-[11px] text-km-petroleo font-semibold mb-3 bg-teal-50/70 p-3 rounded-2xl border border-teal-100">
-                <span class="block text-km-petroleo mb-2"><i class="fas fa-building text-km-turquesa mr-1"></i> <strong>Lazer & Conveniência no Prédio:</strong></span>
+                <span class="block text-km-petroleo mb-2"><i class="fas fa-star text-km-turquesa mr-1"></i> <strong>Destaques & Lazer:</strong></span>
                 <div class="flex flex-wrap gap-1.5">
-                  <span onclick="abrirFotoArea('Sea Market 24 Horas', 'market', 'Mercadinho autônomo 24 horas dentro do próprio condomínio, com bebidas, frios e congelados a qualquer hora do dia ou da noite.')" class="tag-area-foto tag-area-destaque"><i class="fas fa-store text-[10px]"></i> 🛒 Sea Market 24h</span>
+                  <span onclick="abrirFotoArea('Vista da Varanda', 'vista_cobertura', 'Vista incrível e panorâmica direto da varanda da cobertura duplex.')" class="tag-area-foto tag-area-destaque"><i class="fas fa-camera text-[10px]"></i> 📸 Vista da Varanda</span>
+                  <span onclick="abrirFotoArea('Sea Market 24 Horas', 'market', 'Mercadinho autônomo 24 horas dentro do próprio condomínio.')" class="tag-area-foto tag-area-destaque"><i class="fas fa-store text-[10px]"></i> 🛒 Sea Market (Loja)</span>
+                  <span onclick="abrirFotoArea('Recepção Sea Market', 'market_placa', 'Design moderno e ambiente agradável logo na entrada do minimercado.')" class="tag-area-foto tag-area-destaque"><i class="fas fa-leaf text-[10px]"></i> 🌿 Sea Market (Detalhe)</span>
+                  <span onclick="abrirFotoArea('Portaria 24 Horas', 'portaria', 'Segurança e comodidade com portaria presencial 24 horas no condomínio.')" class="tag-area-foto"><i class="fas fa-user-shield text-[10px]"></i> Portaria 24h</span>
                   <span onclick="abrirFotoArea('Piscina Raia no Rooftop', 'piscina', 'Piscina com raia privativa no rooftop cercada por parapeito panorâmico.')" class="tag-area-foto"><i class="fas fa-swimming-pool text-[10px]"></i> Piscina</span>
                   <span onclick="abrirFotoArea('Academia do Condomínio', 'academia', 'Espaço fitness completo para musculação e treinos aeróbicos.')" class="tag-area-foto"><i class="fas fa-dumbbell text-[10px]"></i> Academia</span>
                   <span onclick="abrirFotoArea('Área Gourmet', 'gourmet', 'Cozinha gourmet planejada para momentos únicos com convidados.')" class="tag-area-foto"><i class="fas fa-utensils text-[10px]"></i> Gourmet</span>
@@ -614,7 +678,7 @@
         <p class="text-sm text-gray-700 font-medium max-w-md mx-auto mb-6">
           A corretora Kelli possui outras opções exclusivas fora da vitrine pública.
         </p>
-        <button onclick="limparBusca()" class="btn-ripple inline-flex items-center gap-2 bg-km-petroleo text-white px-6 py-2.5 rounded-full font-bold text-xs shadow-md">
+        <button onclick="limparBusca()" class="btn-ripple inline-flex items-center gap-2 bg-km-petroleo text-white px-6 py-2.5 rounded-full font-bold text-xs shadow-md transition">
           <i class="fas fa-redo"></i> Limpar Filtros
         </button>
       </div>
@@ -632,7 +696,7 @@
             <i class="fas fa-lock text-white"></i> Atendimento Direto e Seguro
           </span>
           <h2 class="font-serif text-3xl sm:text-4xl font-bold leading-tight">
-            Pronto para encontrar seu imóvel ideal em Santos?
+            Pronto para encontrar seu imóvel ideal na Baixada Santista?
           </h2>
           <p class="text-km-ceu text-sm leading-relaxed font-medium">
             Fale diretamente com a corretora Kelli Martins. Obtenha atendimento personalizado, agende uma visita presencial ou tire suas dúvidas sobre financiamento e avaliação mercadológica.
@@ -668,37 +732,42 @@
           <form id="formContato" onsubmit="enviarParaWhatsApp(event)" class="space-y-4">
             <div>
               <label for="lead-nome" class="block text-xs font-bold text-gray-800 uppercase mb-1">Seu Nome Completo *</label>
-              <input type="text" id="lead-nome" required maxlength="60" placeholder="Como a Kelli pode te chamar?" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-km-turquesa text-sm shadow-sm font-medium" />
+              <input type="text" id="lead-nome" required maxlength="60" placeholder="Como a Kelli pode te chamar?" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-km-turquesa text-sm shadow-sm font-medium transition" />
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
                 <label for="lead-telefone" class="block text-xs font-bold text-gray-800 uppercase mb-1">WhatsApp com DDD *</label>
-                <input type="tel" id="lead-telefone" required maxlength="15" oninput="mascaraTelefone(this)" placeholder="(13) 97425-0913" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-km-turquesa text-sm shadow-sm font-medium" />
+                <input type="tel" id="lead-telefone" required maxlength="15" oninput="mascaraTelefone(this)" placeholder="(13) 97425-0913" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-km-turquesa text-sm shadow-sm font-medium transition" />
               </div>
               <div>
-                <label for="lead-interesse" class="block text-xs font-bold text-gray-800 uppercase mb-1">Imóvel de Interesse</label>
-                <select id="lead-interesse" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-km-turquesa text-sm bg-white shadow-sm font-medium cursor-pointer">
+                <label for="lead-interesse" class="block text-xs font-bold text-gray-800 uppercase mb-1">Imóvel ou Serviço</label>
+                <select id="lead-interesse" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-km-turquesa text-sm bg-white shadow-sm font-medium cursor-pointer transition">
                   <option value="Ap 1 Dormitório no José Menino (R$ 320.000,00)">Ap 1 Dormitório no José Menino (R$ 320.000,00)</option>
                   <option value="Ap 2 Dormitórios com Varanda no José Menino (R$ 430.000,00)">Ap 2 Dormitórios com Varanda no José Menino (R$ 430.000,00)</option>
                   <option value="Cobertura Duplex no José Menino (R$ 430.000,00)">Cobertura Duplex no José Menino (R$ 430.000,00)</option>
-                  <option value="Avaliação de Imóvel com PTAM (CNAI 58458)">Avaliação com PTAM (CNAI 58458)</option>
-                  <option value="Consultoria para Financiamento Imobiliário">Consultoria para Financiamento</option>
-                  <option value="Outras Oportunidades em Santos">Outras Oportunidades em Santos</option>
+                  <option value="Compra e Venda de Imóveis">Compra e Venda de Imóveis</option>
+                  <option value="Aluguel Anual">Aluguel Anual</option>
+                  <option value="Aluguel de Temporada">Aluguel de Temporada</option>
+                  <option value="Financiamento Imobiliário">Financiamento Imobiliário</option>
+                  <option value="Assessoria até a Entrega das Chaves">Assessoria até a Entrega das Chaves</option>
+                  <option value="Avaliação de Imóveis (CNAI 58458)">Avaliação de Imóveis (CNAI 58458)</option>
+                  <option value="Crédito com Garantia de Imóvel">Crédito com Garantia de Imóvel</option>
+                  <option value="Crédito para Construção e Reforma">Crédito para Construção e Reforma</option>
                 </select>
               </div>
             </div>
 
             <div>
               <label for="lead-mensagem" class="block text-xs font-bold text-gray-800 uppercase mb-1">Dúvida ou Mensagem (opcional)</label>
-              <textarea id="lead-mensagem" rows="3" maxlength="500" placeholder="Ex: Gostaria de saber horários para visitação ou detalhes da documentação..." class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-km-turquesa text-sm shadow-sm font-medium"></textarea>
+              <textarea id="lead-mensagem" rows="3" maxlength="500" placeholder="Ex: Gostaria de saber horários para visitação ou detalhes da documentação..." class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-km-turquesa text-sm shadow-sm font-medium transition"></textarea>
             </div>
 
             <div class="flex items-start gap-2 pt-1 text-[11px] text-gray-600 font-medium leading-snug">
-              <input type="checkbox" id="aceite-termos" required checked class="mt-0.5 rounded border-gray-400 text-km-petroleo focus:ring-km-turquesa cursor-pointer w-4 h-4" />
+              <input type="checkbox" id="aceite-termos" required checked class="mt-0.5 rounded border-gray-400 text-km-petroleo focus:ring-km-turquesa cursor-pointer w-4 h-4 transition" />
               <label for="aceite-termos" class="cursor-pointer">
                 Concordo em compartilhar meus dados para contato da corretora, de acordo com as 
-                <button type="button" onclick="abrirModal('modalPrivacidade')" class="text-km-petroleo font-bold underline hover:text-km-laranja">diretrizes da LGPD</button>.
+                <button type="button" onclick="abrirModal('modalPrivacidade')" class="text-km-petroleo font-bold underline hover:text-km-laranja transition">diretrizes da LGPD</button>.
               </label>
             </div>
 
@@ -726,7 +795,7 @@
               <span class="text-[11px] text-km-turquesa font-bold uppercase tracking-wider">Corretora & Avaliadora Imobiliária</span>
             </div>
           </div>
-          <p class="text-xs text-km-ceu leading-relaxed">Atendimento humanizado e focado na orla da praia de Santos/SP.</p>
+          <p class="text-xs text-km-ceu leading-relaxed">Atendimento humanizado e focado em toda a Baixada Santista / SP.</p>
           
           <div class="space-y-2 text-xs">
             <p>
@@ -740,8 +809,8 @@
               </button>
             </p>
             <p>
-              <a href="https://maps.google.com/?q=Praia+do+Jose+Menino+Santos+SP" target="_blank" rel="noopener noreferrer" class="text-white/80 hover:text-km-turquesa transition flex items-center">
-                <i class="fas fa-map-marker-alt text-km-turquesa mr-2 w-4"></i> Praia do José Menino / Santos - SP <i class="fas fa-external-link-alt text-[9px] ml-1.5 opacity-60"></i>
+              <a href="https://maps.google.com/?q=Baixada+Santista+SP" target="_blank" rel="noopener noreferrer" class="text-white/80 hover:text-km-turquesa transition flex items-center">
+                <i class="fas fa-map-marker-alt text-km-turquesa mr-2 w-4"></i> Baixada Santista - SP <i class="fas fa-external-link-alt text-[9px] ml-1.5 opacity-60"></i>
               </a>
             </p>
             <p>
@@ -750,8 +819,15 @@
               </a>
             </p>
             <p>
-              <a href="https://www.instagram.com/kellimartins.imoveis?stkn=NWptdXVzOXg2dnI5" target="_blank" rel="noopener noreferrer" class="text-white/80 hover:text-km-turquesa transition flex items-center">
+              <!-- INSTAGRAM -->
+              <a href="https://www.instagram.com/kellimartins.imoveis/" target="_blank" rel="noopener noreferrer" class="text-white/80 hover:text-km-turquesa transition flex items-center">
                 <i class="fab fa-instagram text-km-turquesa mr-2 w-4"></i> @kellimartins.imoveis
+              </a>
+            </p>
+            <p>
+              <!-- FACEBOOK -->
+              <a href="https://www.facebook.com/kellimartins.imoveis/" target="_blank" rel="noopener noreferrer" class="text-white/80 hover:text-km-turquesa transition flex items-center">
+                <i class="fab fa-facebook text-km-turquesa mr-2 w-4"></i> /kellimartins.imoveis
               </a>
             </p>
           </div>
@@ -804,7 +880,7 @@
   <!-- MODAL DE VÍDEO -->
   <div id="modalVideoImovel" class="fixed inset-0 z-50 hidden bg-black/90 backdrop-blur-md flex items-center justify-center p-4">
     <div class="bg-white rounded-3xl max-w-2xl w-full overflow-hidden shadow-2xl relative border-2 border-km-turquesa">
-      <button onclick="fecharModalVideo()" class="btn-ripple absolute top-4 right-4 bg-white/90 hover:bg-white text-gray-800 rounded-full w-9 h-9 flex items-center justify-center z-10 shadow">
+      <button onclick="fecharModalVideo()" class="btn-ripple absolute top-4 right-4 bg-white/90 hover:bg-white text-gray-800 rounded-full w-9 h-9 flex items-center justify-center z-10 shadow transition">
         <i class="fas fa-times"></i>
       </button>
 
@@ -817,17 +893,17 @@
 
       <div class="p-4 bg-gray-50 flex justify-between items-center text-xs">
         <span class="text-gray-500"><i class="fas fa-info-circle text-km-turquesa mr-1"></i> Vídeo exclusivo gravado no local</span>
-        <button onclick="fecharModalVideo()" class="btn-ripple bg-km-petroleo text-white font-bold px-4 py-2 rounded-lg">
+        <button onclick="fecharModalVideo()" class="btn-ripple bg-km-petroleo text-white font-bold px-4 py-2 rounded-lg transition">
           Fechar
         </button>
       </div>
     </div>
   </div>
 
-  <!-- MODAL FOTOS DAS DEPENDÊNCIAS (INCLUI SEA MARKET) -->
+  <!-- MODAL FOTOS DAS DEPENDÊNCIAS -->
   <div id="modalFotoArea" class="fixed inset-0 z-50 hidden bg-black/85 backdrop-blur-md flex items-center justify-center p-4">
     <div class="bg-white rounded-3xl max-w-xl w-full overflow-hidden shadow-2xl relative border-2 border-km-turquesa">
-      <button onclick="fecharModal('modalFotoArea')" class="btn-ripple absolute top-4 right-4 bg-white/80 hover:bg-white text-gray-800 rounded-full w-9 h-9 flex items-center justify-center z-10 shadow">
+      <button onclick="fecharModal('modalFotoArea')" class="btn-ripple absolute top-4 right-4 bg-white/80 hover:bg-white text-gray-800 rounded-full w-9 h-9 flex items-center justify-center z-10 shadow transition">
         <i class="fas fa-times"></i>
       </button>
 
@@ -844,7 +920,7 @@
         
         <div class="mt-4 pt-3 border-t border-gray-100 flex justify-between items-center">
           <span class="text-[11px] text-gray-500 font-medium"><i class="fas fa-check-circle text-emerald-500 mr-1"></i> Fotos reais das instalações</span>
-          <button onclick="fecharModal('modalFotoArea')" class="btn-ripple text-xs font-bold bg-km-petroleo text-white px-4 py-2 rounded-lg">
+          <button onclick="fecharModal('modalFotoArea')" class="btn-ripple text-xs font-bold bg-km-petroleo text-white px-4 py-2 rounded-lg transition">
             Fechar
           </button>
         </div>
@@ -855,7 +931,7 @@
   <!-- MODAIS PRIVACIDADE E SEGURANÇA -->
   <div id="modalPrivacidade" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
     <div class="bg-white text-gray-800 rounded-3xl max-w-2xl w-full max-h-[85vh] overflow-y-auto p-6 sm:p-8 shadow-2xl relative border-2 border-km-turquesa">
-      <button onclick="fecharModal('modalPrivacidade')" class="btn-ripple absolute top-5 right-5 text-gray-400 hover:text-red-500 text-2xl p-1">
+      <button onclick="fecharModal('modalPrivacidade')" class="btn-ripple absolute top-5 right-5 text-gray-400 hover:text-red-500 text-2xl p-1 transition">
         <i class="fas fa-times-circle"></i>
       </button>
       <h3 class="font-serif text-xl font-bold text-km-petroleo mb-3">Diretrizes de Privacidade (LGPD)</h3>
@@ -865,7 +941,7 @@
 
   <div id="modalSeguranca" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
     <div class="bg-white text-gray-800 rounded-3xl max-w-2xl w-full max-h-[85vh] overflow-y-auto p-6 sm:p-8 shadow-2xl relative border-2 border-km-turquesa">
-      <button onclick="fecharModal('modalSeguranca')" class="btn-ripple absolute top-5 right-5 text-gray-400 hover:text-red-500 text-2xl p-1">
+      <button onclick="fecharModal('modalSeguranca')" class="btn-ripple absolute top-5 right-5 text-gray-400 hover:text-red-500 text-2xl p-1 transition">
         <i class="fas fa-times-circle"></i>
       </button>
       <h3 class="font-serif text-xl font-bold text-km-petroleo mb-3">Segurança e Credenciamento Oficial</h3>
@@ -875,7 +951,7 @@
 
   <script>
     /* ==========================================================================
-       LINKS E BANCO DE FOTOS (COM O LINK REAL DO SEA MARKET)
+       LINKS E BANCO DE FOTOS
        ========================================================================== */
     const linksVideos = {
       ap1dorm: '',
@@ -888,8 +964,10 @@
       academia: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1200&q=80',
       salao:    'https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=1200&q=80',
       gourmet:  'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1200&q=80',
-      // FOTO REAL ENVIADA DO SEA MARKET:
-      market:   'https://res.cloudinary.com/oactqmgs/image/upload/v1789347154/WhatsApp_Image_2026-09-10_at_16.35.08_1.jpg'
+      market:   'https://res.cloudinary.com/oactqmgs/image/upload/v1789347762/sea_market_frente_da_conveniencia.jpg',
+      market_placa: 'https://res.cloudinary.com/oactqmgs/image/upload/v1789348234/sea_market_placa_na_parde_com_planta.jpg',
+      portaria: 'https://res.cloudinary.com/oactqmgs/image/upload/v1789348530/portaria_24h.jpg',
+      vista_cobertura: 'https://res.cloudinary.com/oactqmgs/image/upload/v1789349053/COBERTURA_DUPLEX_%C3%80_VENDA_vista_da_varanda.jpg'
     };
 
     /* ==========================================================================
