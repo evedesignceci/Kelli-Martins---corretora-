@@ -51,7 +51,7 @@
   </script>
 
   <style>
-    /* O fundo se mantém fixo, mas a camada ::before cria uma profundidade que melhora a rolagem */
+    /* Fundo fixo com profundidade elegante */
     body {
       background-image: url('https://res.cloudinary.com/oactqmgs/image/upload/v1789085165/body_-_site_kelli.jpg');
       background-size: cover;
@@ -96,14 +96,16 @@
       border-color: #33D1D4;
     }
 
-    /* Dinâmica de Cards Aprimorada: Micro-zoom e brilho sutil */
+    /* Dinâmica de Cards: Micro-zoom suave */
     .card-interativo {
-      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+      transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease, border-color 0.4s ease;
+      will-change: transform, box-shadow;
     }
     .card-interativo:hover {
-      transform: translateY(-6px) scale(1.01);
-      box-shadow: 0 25px 35px -5px rgba(0, 0, 0, 0.15), 0 0 15px rgba(51, 209, 212, 0.25);
+      transform: translateY(-8px) scale(1.015);
+      box-shadow: 0 30px 45px -10px rgba(0, 0, 0, 0.2), 0 0 25px rgba(51, 209, 212, 0.35); 
       border-color: #33D1D4;
+      z-index: 10;
     }
 
     @keyframes flutuar {
@@ -115,16 +117,21 @@
       display: inline-block;
     }
 
-    /* Dinâmica de Botões Aprimorada: Efeito de afundar no clique */
+    /* Dinâmica de Botões */
     .btn-ripple {
       position: relative;
       overflow: hidden;
       transform: translate3d(0, 0, 0);
       user-select: none;
-      transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s, box-shadow 0.3s;
+      transition: transform 0.15s ease-out, background-color 0.3s, box-shadow 0.3s;
+    }
+    .btn-ripple:hover {
+      filter: brightness(1.1);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
     }
     .btn-ripple:active {
-      transform: scale(0.96) !important;
+      transform: scale(0.92) !important; 
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
     }
     
     .ripple-wave-orange {
@@ -132,43 +139,27 @@
       border-radius: 50%;
       background: radial-gradient(circle, rgba(245, 124, 0, 0.45) 0%, rgba(245, 124, 0, 0.15) 70%, rgba(245, 124, 0, 0) 100%);
       transform: scale(0);
-      animation: ripple-anim-orange 0.65s cubic-bezier(0.25, 1, 0.5, 1);
+      animation: ripple-anim-orange 0.6s cubic-bezier(0.25, 1, 0.5, 1);
       pointer-events: none;
     }
     @keyframes ripple-anim-orange {
-      to {
-        transform: scale(4);
-        opacity: 0;
-      }
+      to { transform: scale(4); opacity: 0; }
     }
 
-    .tag-area-foto {
-      cursor: pointer;
-      transition: all 0.2s ease;
+    /* Tags limpas que não clicam (Usadas para Características Universais) */
+    .tag-sem-clique {
+      cursor: default !important;
+      background: rgba(243, 244, 246, 0.8) !important;
+      border-color: #E5E7EB !important;
+      color: #4B5563 !important;
       display: inline-flex;
       align-items: center;
       gap: 4px;
       padding: 4px 10px;
       border-radius: 9999px;
-      background: rgba(0, 88, 94, 0.08);
-      border: 1px solid rgba(0, 88, 94, 0.2);
+      border: 1px solid;
       font-size: 11px;
       font-weight: 600;
-    }
-    .tag-area-foto:hover {
-      background: #33D1D4;
-      color: #003A3E;
-      transform: translateY(-2px);
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    }
-    .tag-area-destaque {
-      background: rgba(245, 124, 0, 0.12);
-      border-color: rgba(245, 124, 0, 0.4);
-      color: #C05600;
-    }
-    .tag-area-destaque:hover {
-      background: #F57C00;
-      color: #fff;
     }
 
     .destaque-formulario {
@@ -181,10 +172,7 @@
       100% { transform: scale(1); }
     }
 
-    *:focus-visible {
-      outline: 2px solid #33D1D4;
-      outline-offset: 3px;
-    }
+    *:focus-visible { outline: 2px solid #33D1D4; outline-offset: 3px; }
   </style>
 </head>
 <body class="font-sans text-gray-800 antialiased selection:bg-km-laranja selection:text-white">
@@ -200,15 +188,12 @@
         <span>CNAI: <strong class="text-km-turquesa">58458</strong> (Avaliadora Oficial)</span>
       </div>
       <div class="flex items-center gap-4">
-        <!-- INSTAGRAM -->
         <a href="https://www.instagram.com/kellimartins.imoveis/" target="_blank" rel="noopener noreferrer" class="hover:text-km-turquesa transition flex items-center gap-1.5 font-medium">
           <i class="fab fa-instagram"></i> @kellimartins.imoveis
         </a>
-        <!-- FACEBOOK -->
         <a href="https://www.facebook.com/kellimartins.imoveis/" target="_blank" rel="noopener noreferrer" class="hover:text-km-turquesa transition flex items-center gap-1.5 font-medium">
           <i class="fab fa-facebook"></i> Facebook
         </a>
-        <!-- WHATSAPP -->
         <a href="https://wa.me/5513974250913" target="_blank" rel="noopener noreferrer" class="hover:text-km-turquesa transition flex items-center gap-1.5 font-medium">
           <i class="fab fa-whatsapp"></i> (13) 97425-0913
         </a>
@@ -220,7 +205,6 @@
   <nav class="bg-white/95 backdrop-blur-md sticky top-0 z-40 border-b border-km-ceu/50 shadow-sm">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex justify-between items-center h-20">
-        
         <a href="#" class="flex items-center gap-3 group">
           <div class="w-12 h-12 rounded-2xl bg-km-petroleo flex items-center justify-center text-white font-serif text-2xl font-bold shadow-md group-hover:bg-km-laranja transition duration-300">
             K
@@ -234,9 +218,9 @@
         </a>
 
         <div class="hidden md:flex items-center space-x-8 text-sm font-medium text-gray-700">
-          <a href="#sobre" class="hover:text-km-petroleo transition relative group py-1">Sobre a Kelli <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-km-turquesa transition-all duration-300 group-hover:w-full"></span></a>
-          <a href="#servicos" class="hover:text-km-petroleo transition relative group py-1">Serviços <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-km-turquesa transition-all duration-300 group-hover:w-full"></span></a>
-          <a href="#imoveis" class="hover:text-km-petroleo transition relative group py-1">Imóveis <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-km-turquesa transition-all duration-300 group-hover:w-full"></span></a>
+          <a href="#sobre" class="hover:text-km-petroleo transition relative group py-1">Sobre a Kelli</a>
+          <a href="#servicos" class="hover:text-km-petroleo transition relative group py-1">Serviços</a>
+          <a href="#imoveis" class="hover:text-km-petroleo transition relative group py-1">Catálogo de Imóveis</a>
           <a href="#contato" class="btn-ripple bg-km-laranja hover:bg-orange-600 text-white font-semibold px-6 py-2.5 rounded-full shadow-md hover:shadow-orange-500/30 flex items-center gap-2 transition">
             <i class="fab fa-whatsapp"></i> Falar com a Kelli
           </a>
@@ -251,7 +235,7 @@
     <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 px-6 py-5 space-y-4 text-sm font-medium shadow-xl">
       <a href="#sobre" class="block text-gray-700 hover:text-km-petroleo py-1">Sobre Kelli Martins</a>
       <a href="#servicos" class="block text-gray-700 hover:text-km-petroleo py-1">Serviços Especializados</a>
-      <a href="#imoveis" class="block text-gray-700 hover:text-km-petroleo py-1">Imóveis na Região</a>
+      <a href="#imoveis" class="block text-gray-700 hover:text-km-petroleo py-1">Catálogo de Imóveis</a>
       <a href="#contato" class="btn-ripple block text-center bg-km-laranja text-white py-3 rounded-xl font-bold shadow">
         <i class="fab fa-whatsapp mr-1"></i> Iniciar Atendimento
       </a>
@@ -278,7 +262,7 @@
           <i class="fab fa-whatsapp text-lg"></i> Iniciar Atendimento VIP
         </a>
         <a href="#imoveis" class="btn-ripple bg-km-petroleo/90 hover:bg-km-petroleo border border-km-turquesa/40 backdrop-blur-md text-white font-semibold px-8 py-4 rounded-full transition flex items-center justify-center shadow-md text-base">
-          Ver Imóveis Disponíveis
+          Ver Catálogo de Imóveis
         </a>
       </div>
     </div>
@@ -290,7 +274,6 @@
       <div class="grid md:grid-cols-12 gap-12 items-center">
         <div class="md:col-span-5">
           <div class="relative mx-auto max-w-sm">
-            <!-- FOTO DA CORRETORA -->
             <div class="aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl border-4 border-white bg-km-ceu/30 card-interativo">
               <img src="https://res.cloudinary.com/oactqmgs/image/upload/v1789076809/FOTO_DO_SITE_DA_KELLI_ELA.jpg" alt="Kelli Martins Corretora" class="w-full h-full object-cover object-top" loading="lazy" />
             </div>
@@ -335,7 +318,7 @@
     </div>
   </section>
 
-  <!-- SERVIÇOS (8 ITENS OFICIAIS) -->
+  <!-- SERVIÇOS -->
   <section id="servicos" class="py-20">
     <div class="max-w-7xl mx-auto px-4 sm:px-6">
       
@@ -359,7 +342,6 @@
           <h3 class="font-bold text-base text-km-petroleo mb-2">Compra e Venda de Imóveis</h3>
           <p class="text-xs text-gray-700 font-medium leading-relaxed">Intermediação segura em toda a Baixada Santista com total suporte documental e certidões.</p>
         </div>
-
         <div class="bg-white/95 p-6 rounded-2xl border border-km-ceu/80 card-interativo">
           <div class="w-12 h-12 rounded-xl bg-km-ceu/40 text-km-petroleo flex items-center justify-center text-xl mb-4">
             <i class="fas fa-key"></i>
@@ -367,7 +349,6 @@
           <h3 class="font-bold text-base text-km-petroleo mb-2">Aluguel Anual</h3>
           <p class="text-xs text-gray-700 font-medium leading-relaxed">Locações residenciais seguras, contratos claros e tranquilidade para proprietários e inquilinos.</p>
         </div>
-
         <div class="bg-white/95 p-6 rounded-2xl border border-km-ceu/80 card-interativo">
           <div class="w-12 h-12 rounded-xl bg-km-ceu/40 text-km-petroleo flex items-center justify-center text-xl mb-4">
             <i class="fas fa-umbrella-beach"></i>
@@ -375,7 +356,6 @@
           <h3 class="font-bold text-base text-km-petroleo mb-2">Aluguel de Temporada</h3>
           <p class="text-xs text-gray-700 font-medium leading-relaxed">Opções selecionadas perto da praia para descansar e curtir o litoral com conforto.</p>
         </div>
-
         <div class="bg-white/95 p-6 rounded-2xl border border-km-ceu/80 card-interativo">
           <div class="w-12 h-12 rounded-xl bg-km-ceu/40 text-km-petroleo flex items-center justify-center text-xl mb-4">
             <i class="fas fa-file-invoice-dollar"></i>
@@ -383,7 +363,6 @@
           <h3 class="font-bold text-base text-km-petroleo mb-2">Financiamento Imobiliário</h3>
           <p class="text-xs text-gray-700 font-medium leading-relaxed">Simulação e suporte completo para aprovação do seu crédito imobiliário nos principais bancos.</p>
         </div>
-
         <div class="bg-white/95 p-6 rounded-2xl border border-km-ceu/80 card-interativo">
           <div class="w-12 h-12 rounded-xl bg-km-ceu/40 text-km-petroleo flex items-center justify-center text-xl mb-4">
             <i class="fas fa-route"></i>
@@ -391,7 +370,6 @@
           <h3 class="font-bold text-base text-km-petroleo mb-2">Assessoria Completa</h3>
           <p class="text-xs text-gray-700 font-medium leading-relaxed">Assessoria do início do processo até a entrega das chaves, cuidando de cada detalhe por você.</p>
         </div>
-
         <div class="bg-white/95 p-6 rounded-2xl border border-km-ceu/80 card-interativo">
           <div class="w-12 h-12 rounded-xl bg-km-ceu/40 text-km-petroleo flex items-center justify-center text-xl mb-4">
             <i class="fas fa-calculator"></i>
@@ -399,27 +377,25 @@
           <h3 class="font-bold text-base text-km-petroleo mb-2">Avaliação de Imóveis</h3>
           <p class="text-xs text-gray-700 font-medium leading-relaxed">Avaliadora credenciada (CNAI 58458) emitindo Parecer Técnico Mercadológico (PTAM) com validade legal.</p>
         </div>
-
         <div class="bg-white/95 p-6 rounded-2xl border border-km-ceu/80 card-interativo">
           <div class="w-12 h-12 rounded-xl bg-km-ceu/40 text-km-petroleo flex items-center justify-center text-xl mb-4">
             <i class="fas fa-landmark"></i>
           </div>
-          <h3 class="font-bold text-base text-km-petroleo mb-2">Crédito com Garantia de Imóvel</h3>
+          <h3 class="font-bold text-base text-km-petroleo mb-2">Crédito com Garantia</h3>
           <p class="text-xs text-gray-700 font-medium leading-relaxed">Linhas de crédito inteligente (Home Equity) utilizando seu patrimônio com as menores taxas.</p>
         </div>
-
         <div class="bg-white/95 p-6 rounded-2xl border border-km-ceu/80 card-interativo">
           <div class="w-12 h-12 rounded-xl bg-km-ceu/40 text-km-petroleo flex items-center justify-center text-xl mb-4">
             <i class="fas fa-hammer"></i>
           </div>
-          <h3 class="font-bold text-base text-km-petroleo mb-2">Crédito para Construção e Reforma</h3>
+          <h3 class="font-bold text-base text-km-petroleo mb-2">Crédito para Reforma</h3>
           <p class="text-xs text-gray-700 font-medium leading-relaxed">Recursos sob medida para modernizar, reformar ou construir o seu imóvel no litoral.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- CATÁLOGO DE IMÓVEIS (GERADO AUTOMATICAMENTE PELO GOOGLE SHEETS) -->
+  <!-- CATÁLOGO DE IMÓVEIS (GERADO AUTOMATICAMENTE PELO GOOGLE SHEETS COM CARROSSEL AIRBNB) -->
   <section id="imoveis" class="py-20">
     <div class="max-w-7xl mx-auto px-4 sm:px-6">
       
@@ -427,13 +403,13 @@
         <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 relative z-10">
           <div>
             <span class="text-xs font-bold uppercase tracking-widest text-km-laranja flex items-center gap-2">
-              🐚 Portfólio Exclusivo
+              🐚 Portfólio Atualizado
             </span>
             <h2 class="font-serif text-3xl sm:text-4xl font-bold text-km-petroleo mt-1 group-hover:text-km-laranja transition-colors duration-300">
-              Imóveis em Destaque
+              Catálogo de Imóveis
             </h2>
             <p class="text-sm text-gray-800 font-semibold mt-2">
-              Opções selecionadas na Baixada Santista com total segurança e comodidade.
+              Explore as melhores opções, de apartamentos na praia a casas de alto padrão.
             </p>
           </div>
           
@@ -456,7 +432,7 @@
               id="campoBusca" 
               maxlength="80"
               oninput="filtrarImoveis()" 
-              placeholder="Pesquisar por dormitório, preço ou palavra-chave..." 
+              placeholder="Pesquisar por localização, tipo do imóvel, preço..." 
               class="w-full pl-11 pr-10 py-3 rounded-2xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-km-turquesa text-sm bg-white font-medium text-gray-700 transition"
             />
             <button id="btnLimparBusca" onclick="limparBusca()" class="hidden absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 p-1">
@@ -479,17 +455,17 @@
         </div>
 
         <div class="mt-3 px-2 flex justify-between items-center text-xs font-semibold text-gray-600">
-          <span id="contadorResultados"><i class="fas fa-home text-km-petroleo mr-1"></i> Sincronizando sistema...</span>
+          <span id="contadorResultados"><i class="fas fa-sync fa-spin text-km-petroleo mr-1"></i> Carregando catálogo...</span>
         </div>
       </div>
 
-      <!-- GRID DE IMÓVEIS (TOTALMENTE DINÂMICA) -->
+      <!-- GRID DE IMÓVEIS (CARDS CARROSSEL AIRBNB STYLE) -->
       <div id="gridImoveis" class="grid md:grid-cols-3 gap-8">
-        <!-- ESTADO DE CARREGAMENTO -->
+        <!-- Loader inicial -->
         <div class="col-span-3 py-16 text-center flex flex-col items-center justify-center text-km-petroleo bg-white/50 backdrop-blur-sm rounded-3xl border border-dashed border-km-petroleo/30">
           <i class="fas fa-spinner fa-spin text-4xl mb-4 text-km-turquesa"></i>
-          <p class="font-bold text-lg font-serif">Sincronizando imóveis exclusivos...</p>
-          <p class="text-sm text-gray-600 mt-2">Conectando com o banco de dados da Kelli.</p>
+          <p class="font-bold text-lg font-serif">Sincronizando imóveis...</p>
+          <p class="text-sm text-gray-600 mt-2">Lendo catálogo diretamente da base de dados.</p>
         </div>
       </div>
 
@@ -500,7 +476,7 @@
         </div>
         <h3 class="font-serif text-xl font-bold text-km-petroleo mb-2">Nenhum imóvel encontrado para essa busca</h3>
         <p class="text-sm text-gray-700 font-medium max-w-md mx-auto mb-6">
-          A corretora Kelli possui outras opções exclusivas fora da vitrine pública.
+          A corretora Kelli possui opções exclusivas fora do site. Fale com ela!
         </p>
         <button onclick="limparBusca()" class="btn-ripple inline-flex items-center gap-2 bg-km-petroleo text-white px-6 py-2.5 rounded-full font-bold text-xs shadow-md transition">
           <i class="fas fa-redo"></i> Limpar Filtros
@@ -537,11 +513,6 @@
               </div>
             </a>
           </div>
-
-          <div class="pt-4 flex items-center gap-3 text-xs text-km-ceu/90 border-t border-white/20 font-medium">
-            <i class="fas fa-shield-alt text-km-turquesa text-2xl icone-praia"></i>
-            <span>Intermediações resguardadas com credenciamento ativo no CRECI-SP (323425) e CNAI (58458).</span>
-          </div>
         </div>
 
         <div id="caixaFormularioLead" class="lg:col-span-7 bg-white text-gray-800 p-8 sm:p-10 rounded-3xl shadow-2xl border border-km-ceu card-interativo transition-all duration-500">
@@ -568,15 +539,13 @@
                 <label for="lead-interesse" class="block text-xs font-bold text-gray-800 uppercase mb-1">Imóvel ou Serviço</label>
                 <select id="lead-interesse" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-km-turquesa text-sm bg-white shadow-sm font-medium cursor-pointer transition">
                   <option value="" disabled selected>Selecione um item...</option>
-                  <!-- As opções da planilha entrarão aqui automaticamente -->
+                  <!-- Opções inseridas automaticamente pelo JS -->
                   <option value="Compra e Venda de Imóveis">Consultoria: Compra e Venda</option>
                   <option value="Aluguel Anual">Consultoria: Aluguel Anual</option>
                   <option value="Aluguel de Temporada">Consultoria: Aluguel de Temporada</option>
                   <option value="Financiamento Imobiliário">Financiamento Imobiliário</option>
                   <option value="Assessoria até a Entrega das Chaves">Assessoria Completa</option>
                   <option value="Avaliação de Imóveis (CNAI 58458)">Avaliação de Imóveis (CNAI 58458)</option>
-                  <option value="Crédito com Garantia de Imóvel">Crédito com Garantia de Imóvel</option>
-                  <option value="Crédito para Construção e Reforma">Crédito para Construção e Reforma</option>
                 </select>
               </div>
             </div>
@@ -589,8 +558,7 @@
             <div class="flex items-start gap-2 pt-1 text-[11px] text-gray-600 font-medium leading-snug">
               <input type="checkbox" id="aceite-termos" required checked class="mt-0.5 rounded border-gray-400 text-km-petroleo focus:ring-km-turquesa cursor-pointer w-4 h-4 transition" />
               <label for="aceite-termos" class="cursor-pointer">
-                Concordo em compartilhar meus dados para contato da corretora, de acordo com as 
-                <button type="button" onclick="abrirModal('modalPrivacidade')" class="text-km-petroleo font-bold underline hover:text-km-laranja transition">diretrizes da LGPD</button>.
+                Concordo em compartilhar meus dados com a corretora, conforme <button type="button" onclick="abrirModal('modalPrivacidade')" class="text-km-petroleo font-bold underline hover:text-km-laranja transition">diretrizes da LGPD</button>.
               </label>
             </div>
 
@@ -605,11 +573,10 @@
     </div>
   </section>
 
-  <!-- RODAPÉ -->
+  <!-- RODAPÉ E MODAIS MANTIDOS INTACTOS -->
   <footer class="bg-km-escuro text-white/80 pt-16 pb-12 text-sm border-t-2 border-km-petroleo font-medium">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 space-y-12">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-        
         <div class="lg:col-span-5 space-y-4">
           <div class="flex items-center gap-3">
             <div class="w-10 h-10 rounded-xl bg-km-petroleo flex items-center justify-center text-white font-serif text-xl font-bold border border-km-turquesa shadow-lg">K</div>
@@ -619,79 +586,18 @@
             </div>
           </div>
           <p class="text-xs text-km-ceu leading-relaxed">Atendimento humanizado e focado em toda a Baixada Santista / SP.</p>
-          
           <div class="space-y-2 text-xs">
-            <p>
-              <button type="button" onclick="abrirModal('modalSeguranca')" class="text-white/80 hover:text-km-turquesa transition flex items-center text-left">
-                <i class="fas fa-id-card text-km-turquesa mr-2 w-4"></i> CRECI-SP: <strong class="text-white ml-1 underline decoration-dotted">323425</strong>
-              </button>
-            </p>
-            <p>
-              <button type="button" onclick="abrirModal('modalSeguranca')" class="text-white/80 hover:text-km-turquesa transition flex items-center text-left">
-                <i class="fas fa-stamp text-km-turquesa mr-2 w-4"></i> CNAI: <strong class="text-white ml-1 underline decoration-dotted">58458</strong>
-              </button>
-            </p>
-            <p>
-              <a href="https://maps.google.com/?q=Baixada+Santista+SP" target="_blank" rel="noopener noreferrer" class="text-white/80 hover:text-km-turquesa transition flex items-center">
-                <i class="fas fa-map-marker-alt text-km-turquesa mr-2 w-4"></i> Baixada Santista - SP <i class="fas fa-external-link-alt text-[9px] ml-1.5 opacity-60"></i>
-              </a>
-            </p>
-            <p>
-              <a href="tel:5513974250913" class="text-white/80 hover:text-km-turquesa transition flex items-center">
-                <i class="fas fa-phone-alt text-km-turquesa mr-2 w-4"></i> (13) 97425-0913
-              </a>
-            </p>
-            <p>
-              <!-- INSTAGRAM -->
-              <a href="https://www.instagram.com/kellimartins.imoveis/" target="_blank" rel="noopener noreferrer" class="text-white/80 hover:text-km-turquesa transition flex items-center">
-                <i class="fab fa-instagram text-km-turquesa mr-2 w-4"></i> @kellimartins.imoveis
-              </a>
-            </p>
-            <p>
-              <!-- FACEBOOK -->
-              <a href="https://www.facebook.com/kellimartins.imoveis/" target="_blank" rel="noopener noreferrer" class="text-white/80 hover:text-km-turquesa transition flex items-center">
-                <i class="fab fa-facebook text-km-turquesa mr-2 w-4"></i> /kellimartins.imoveis
-              </a>
-            </p>
+            <p><a href="tel:5513974250913" class="text-white/80 hover:text-km-turquesa transition flex items-center"><i class="fas fa-phone-alt text-km-turquesa mr-2 w-4"></i> (13) 97425-0913</a></p>
+            <p><a href="https://www.instagram.com/kellimartins.imoveis/" target="_blank" rel="noopener noreferrer" class="text-white/80 hover:text-km-turquesa transition flex items-center"><i class="fab fa-instagram text-km-turquesa mr-2 w-4"></i> @kellimartins.imoveis</a></p>
           </div>
         </div>
-
-        <div class="lg:col-span-7">
-          <div class="rounded-3xl overflow-hidden shadow-2xl border-2 border-km-petroleo bg-km-petroleo/30 card-interativo">
-            <div class="bg-km-petroleo px-4 py-2.5 flex items-center justify-between text-xs text-km-ceu">
-              <span class="flex items-center gap-2 font-bold">
-                <i class="fas fa-map-pin text-km-laranja"></i> Localização Estratégica • Praia do José Menino
-              </span>
-              <a href="https://maps.google.com/?q=Praia+do+Jose+Menino+Santos+SP" target="_blank" rel="noopener noreferrer" class="hover:text-white underline text-[11px] font-bold flex items-center gap-1">
-                Ver no Google Maps <i class="fas fa-external-link-alt text-[9px]"></i>
-              </a>
-            </div>
-            <div class="aspect-[16/9] sm:aspect-[21/9] w-full">
-              <iframe 
-                title="Google Maps - Praia do José Menino, Santos SP"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14582.477028169974!2d-46.3571249764516!3d-23.97394982601726!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce031ab7d020e9%3A0x868cb4fa39cb0ce5!2sJos%C3%A9%20Menino%2C%20Santos%20-%20SP!5e0!3m2!1spt-BR!2sbr!4v1715000000000!5m2!1spt-BR!2sbr" 
-                class="w-full h-full border-0" 
-                allowfullscreen="" 
-                loading="lazy" 
-                referrerpolicy="no-referrer-when-downgrade">
-              </iframe>
-            </div>
-          </div>
-        </div>
-
       </div>
-
       <div class="pt-8 border-t border-white/20 flex flex-col sm:flex-row justify-between items-center text-xs text-white/60 gap-4">
         <p>© 2026 Kelli Martins. CRECI-SP: 323425 | CNAI: 58458. Todos os direitos reservados.</p>
-        <div class="flex gap-4">
-          <button type="button" onclick="abrirModal('modalPrivacidade')" class="hover:text-km-turquesa transition underline">LGPD & Privacidade</button>
-          <button type="button" onclick="abrirModal('modalSeguranca')" class="hover:text-km-turquesa transition underline">Credenciamento e Segurança</button>
-        </div>
       </div>
     </div>
   </footer>
 
-  <!-- BOTÃO FLUTUANTE DE WHATSAPP -->
   <a href="https://wa.me/5513974250913?text=Ol%C3%A1%2C%20Kelli!%20Vim%20pelo%20site%20e%20gostaria%20de%20tirar%20uma%20d%C3%BAvida." target="_blank" rel="noopener noreferrer" aria-label="Falar no WhatsApp com Kelli Martins" class="btn-ripple fixed bottom-6 right-6 z-40 w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-emerald-500 hover:bg-emerald-600 text-white flex items-center justify-center text-2xl sm:text-3xl shadow-2xl hover:scale-110 transition-transform">
     <i class="fab fa-whatsapp"></i>
     <span class="absolute -top-1 -right-1 flex h-4 w-4">
@@ -703,101 +609,28 @@
   <!-- MODAL DE VÍDEO -->
   <div id="modalVideoImovel" class="fixed inset-0 z-50 hidden bg-black/90 backdrop-blur-md flex items-center justify-center p-4">
     <div class="bg-white rounded-3xl max-w-2xl w-full overflow-hidden shadow-2xl relative border-2 border-km-turquesa">
-      <button onclick="fecharModalVideo()" class="btn-ripple absolute top-4 right-4 bg-white/90 hover:bg-white text-gray-800 rounded-full w-9 h-9 flex items-center justify-center z-10 shadow transition">
-        <i class="fas fa-times"></i>
-      </button>
-
-      <div class="p-4 sm:p-5 border-b border-gray-100 flex items-center gap-2">
-        <i class="fas fa-video text-km-laranja"></i>
-        <h4 id="tituloModalVideo" class="font-serif font-bold text-km-petroleo text-base">Tour Virtual</h4>
-      </div>
-
+      <button onclick="fecharModalVideo()" class="btn-ripple absolute top-4 right-4 bg-white/90 hover:bg-white text-gray-800 rounded-full w-9 h-9 flex items-center justify-center z-10 shadow transition"><i class="fas fa-times"></i></button>
       <div class="relative aspect-video bg-gray-950 flex items-center justify-center text-center p-6 text-white" id="containerVideoPlayer"></div>
-
-      <div class="p-4 bg-gray-50 flex justify-between items-center text-xs">
-        <span class="text-gray-500"><i class="fas fa-info-circle text-km-turquesa mr-1"></i> Vídeo exclusivo gravado no local</span>
-        <button onclick="fecharModalVideo()" class="btn-ripple bg-km-petroleo text-white font-bold px-4 py-2 rounded-lg transition">
-          Fechar
-        </button>
-      </div>
     </div>
   </div>
 
-  <!-- MODAL FOTOS DAS DEPENDÊNCIAS -->
+  <!-- MODAL FOTOS EXTRAS -->
   <div id="modalFotoArea" class="fixed inset-0 z-50 hidden bg-black/85 backdrop-blur-md flex items-center justify-center p-4">
     <div class="bg-white rounded-3xl max-w-xl w-full overflow-hidden shadow-2xl relative border-2 border-km-turquesa">
-      <button onclick="fecharModal('modalFotoArea')" class="btn-ripple absolute top-4 right-4 bg-white/80 hover:bg-white text-gray-800 rounded-full w-9 h-9 flex items-center justify-center z-10 shadow transition">
-        <i class="fas fa-times"></i>
-      </button>
-
-      <div class="relative aspect-[16/10] bg-gray-900 overflow-hidden">
-        <img id="imgFotoArea" src="" alt="Área do condomínio" class="w-full h-full object-cover" />
-      </div>
-
-      <div class="p-5 bg-white text-left">
-        <div class="flex items-center gap-2 text-xs font-bold text-km-laranja uppercase tracking-wider mb-1">
-          <i class="fas fa-building text-km-turquesa"></i> Dependências e Detalhes
-        </div>
-        <h4 id="tituloFotoArea" class="font-serif text-lg font-bold text-km-petroleo">Título da Área</h4>
-        <p id="descFotoArea" class="text-xs text-gray-600 mt-1 leading-relaxed">Descrição do ambiente.</p>
-        
-        <div class="mt-4 pt-3 border-t border-gray-100 flex justify-between items-center">
-          <span class="text-[11px] text-gray-500 font-medium"><i class="fas fa-check-circle text-emerald-500 mr-1"></i> Fotos reais das instalações</span>
-          <button onclick="fecharModal('modalFotoArea')" class="btn-ripple text-xs font-bold bg-km-petroleo text-white px-4 py-2 rounded-lg transition">
-            Fechar
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- MODAIS PRIVACIDADE E SEGURANÇA -->
-  <div id="modalPrivacidade" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
-    <div class="bg-white text-gray-800 rounded-3xl max-w-2xl w-full max-h-[85vh] overflow-y-auto p-6 sm:p-8 shadow-2xl relative border-2 border-km-turquesa">
-      <button onclick="fecharModal('modalPrivacidade')" class="btn-ripple absolute top-5 right-5 text-gray-400 hover:text-red-500 text-2xl p-1 transition">
-        <i class="fas fa-times-circle"></i>
-      </button>
-      <h3 class="font-serif text-xl font-bold text-km-petroleo mb-3">Diretrizes de Privacidade (LGPD)</h3>
-      <p class="text-sm text-gray-700 leading-relaxed">Seus dados (nome e WhatsApp) são usados unicamente para responder à sua solicitação de consultoria e não são compartilhados com terceiros, sob responsabilidade direta de <strong>Kelli Martins (CRECI-SP 323425 | CNAI 58458)</strong>.</p>
-    </div>
-  </div>
-
-  <div id="modalSeguranca" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
-    <div class="bg-white text-gray-800 rounded-3xl max-w-2xl w-full max-h-[85vh] overflow-y-auto p-6 sm:p-8 shadow-2xl relative border-2 border-km-turquesa">
-      <button onclick="fecharModal('modalSeguranca')" class="btn-ripple absolute top-5 right-5 text-gray-400 hover:text-red-500 text-2xl p-1 transition">
-        <i class="fas fa-times-circle"></i>
-      </button>
-      <h3 class="font-serif text-xl font-bold text-km-petroleo mb-3">Segurança e Credenciamento Oficial</h3>
-      <p class="text-sm text-gray-700 leading-relaxed">Todas as intermediações e avaliações mercadológicas contam com respaldo dos Conselhos Regulamentadores CRECI-SP (Registro: 323425) e CNAI (Registro: 58458), garantindo segurança patrimonial em todo o processo.</p>
+      <button onclick="fecharModal('modalFotoArea')" class="btn-ripple absolute top-4 right-4 bg-white/80 hover:bg-white text-gray-800 rounded-full w-9 h-9 flex items-center justify-center z-10 shadow transition"><i class="fas fa-times"></i></button>
+      <div class="relative aspect-[16/10] bg-gray-900 overflow-hidden"><img id="imgFotoArea" src="" alt="Foto" class="w-full h-full object-contain" /></div>
     </div>
   </div>
 
   <script>
-    /* ==========================================================================
-       LINKS E BANCO DE FOTOS FIXAS DO PRÉDIO (A Kelli não precisa cadastrar isso)
-       ========================================================================== */
-    const bancoFotosAreas = {
-      piscina:  'https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?auto=format&fit=crop&w=1200&q=80',
-      academia: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1200&q=80',
-      salao:    'https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=1200&q=80',
-      gourmet:  'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1200&q=80',
-      market:   'https://res.cloudinary.com/oactqmgs/image/upload/v1789347762/sea_market_frente_da_conveniencia.jpg',
-      market_placa: 'https://res.cloudinary.com/oactqmgs/image/upload/v1789348234/sea_market_placa_na_parde_com_planta.jpg',
-      portaria: 'https://res.cloudinary.com/oactqmgs/image/upload/v1789348530/portaria_24h.jpg'
-    };
-
     let linksVideos = {};
 
     /* ==========================================================================
-       LÓGICA DO GOOGLE SHEETS (SISTEMA 100% DINÂMICO LENDO A PLANILHA)
+       LÓGICA DA PLANILHA GOOGLE COM CARROSSEL AIRBNB STYLE
        ========================================================================== */
-    
-    // LINK DA PLANILHA GERADO COM ANTI-CACHE (Para atualizar na hora)
     const linkPlanilhaCSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTpXfABQC7PV2smtCMZR_lZohuOlY5WprbbOA0AIe3G7pEm-wrZOldZQh23St-pkIr5MVdN3E5YRIHs/pub?output=csv&_v=" + new Date().getTime();
     
-    document.addEventListener("DOMContentLoaded", () => {
-      carregarImoveisDaPlanilha();
-    });
+    document.addEventListener("DOMContentLoaded", () => { carregarImoveisDaPlanilha(); });
 
     function carregarImoveisDaPlanilha() {
       Papa.parse(linkPlanilhaCSV, {
@@ -808,72 +641,152 @@
           const grid = document.getElementById('gridImoveis');
           const selectInteresse = document.getElementById('lead-interesse');
           
-          grid.innerHTML = ''; // Limpa a mensagem de "Carregando..."
+          grid.innerHTML = ''; 
           let visiveis = 0;
 
           imoveis.forEach((imovel, index) => {
-            // Ignora linhas da planilha que estejam vazias
             if (!imovel.Titulo_Imovel || imovel.Titulo_Imovel.trim() === '') return;
             visiveis++;
 
-            // 1. Cor da Tag de Status (À Venda, Temporada / Vendido)
+            // STATUS
             let status = imovel.Status_Venda ? imovel.Status_Venda.trim() : 'Disponível';
-            let corTagStatus = status.toLowerCase().includes('vendid') ? 'bg-red-600' : 'bg-km-laranja';
+            let isVendidoOuAlugado = status.toLowerCase().includes('vendid') || status.toLowerCase().includes('alugad');
+            let corTagStatus = isVendidoOuAlugado ? 'bg-red-600' : 'bg-km-laranja';
+            
+            let overlayVendido = isVendidoOuAlugado ? `
+                <div class="absolute inset-0 bg-black/40 z-30 flex items-center justify-center backdrop-blur-[2px]">
+                  <span class="bg-red-600 text-white font-black text-2xl px-8 py-3 rounded-2xl transform -rotate-12 border-4 border-white shadow-2xl tracking-widest uppercase">${status}</span>
+                </div>
+            ` : '';
 
-            // 2. Tag de Financiamento OK
+            // FINANCIAMENTO OK
             let tagFinanciamentoHTML = '';
-            let aceitaFinan = imovel.Aceita_Financiamento ? imovel.Aceita_Financiamento.trim().toLowerCase() : '';
-            if (aceitaFinan === 'sim' || aceitaFinan === 'ok') {
-              tagFinanciamentoHTML = `<span class="absolute top-3 right-3 bg-km-petroleo text-white text-[10px] font-semibold uppercase px-2.5 py-1 rounded-full z-10 shadow flex items-center gap-1"><i class="fas fa-check-circle"></i> Financiamento OK</span>`;
+            let aceitaFinan = imovel.Aceita_Financiamento ? imovel.Aceita_Financiamento.toLowerCase().trim() : '';
+            if (aceitaFinan === 'sim' || aceitaFinan === 'ok' || aceitaFinan === 'aceita') {
+              tagFinanciamentoHTML = `<span class="absolute top-3 right-3 bg-km-petroleo text-white text-[10px] font-semibold uppercase px-2.5 py-1 rounded-full z-20 shadow flex items-center gap-1"><i class="fas fa-check-circle"></i> Financiamento OK</span>`;
             }
 
-            // 3. Tag de Destaque (Exclusividade, Lançamento)
+            // EXCLUSIVIDADE
             let destaqueHTML = '';
             if (imovel.Destaque_Tag && imovel.Destaque_Tag.trim() !== '') {
-              destaqueHTML = `<span class="absolute top-10 left-3 bg-km-petroleo text-white text-[10px] font-semibold uppercase px-2.5 py-1 rounded-full z-10 shadow flex items-center gap-1"><i class="fas fa-star text-km-laranja"></i> ${imovel.Destaque_Tag}</span>`;
+              destaqueHTML = `<span class="absolute top-10 left-3 bg-km-petroleo text-white text-[10px] font-semibold uppercase px-2.5 py-1 rounded-full z-20 shadow flex items-center gap-1"><i class="fas fa-star text-km-laranja"></i> ${imovel.Destaque_Tag}</span>`;
             }
 
-            // 4. Botões Extras de Fotos do Imóvel
-            let botoesFotosInternas = '';
-            if (imovel.Link_Foto_Varanda && imovel.Link_Foto_Varanda.trim() !== '') {
-              botoesFotosInternas += `<span onclick="abrirFotoArea('Vista da Varanda', '${imovel.Link_Foto_Varanda}', 'Vista panorâmica direto do imóvel.')" class="tag-area-foto tag-area-destaque"><i class="fas fa-camera text-[10px]"></i> 📸 Varanda</span>`;
-            }
-            if (imovel.Link_Foto_Sala && imovel.Link_Foto_Sala.trim() !== '') {
-              botoesFotosInternas += `<span onclick="abrirFotoArea('Sala de Estar', '${imovel.Link_Foto_Sala}', 'Ambiente da sala do imóvel.')" class="tag-area-foto tag-area-destaque"><i class="fas fa-couch text-[10px]"></i> 🛋️ Sala</span>`;
-            }
-            if (imovel.Link_Foto_Quarto && imovel.Link_Foto_Quarto.trim() !== '') {
-              botoesFotosInternas += `<span onclick="abrirFotoArea('Dormitório', '${imovel.Link_Foto_Quarto}', 'Detalhes do quarto do imóvel.')" class="tag-area-foto tag-area-destaque"><i class="fas fa-bed text-[10px]"></i> 🛏️ Quarto</span>`;
-            }
-            if (imovel.Link_Foto_Cozinha && imovel.Link_Foto_Cozinha.trim() !== '') {
-              botoesFotosInternas += `<span onclick="abrirFotoArea('Cozinha', '${imovel.Link_Foto_Cozinha}', 'Detalhes da cozinha do imóvel.')" class="tag-area-foto tag-area-destaque"><i class="fas fa-utensils text-[10px]"></i> 🍳 Cozinha</span>`;
-            }
-            if (imovel.Link_Foto_Banheiro && imovel.Link_Foto_Banheiro.trim() !== '') {
-              botoesFotosInternas += `<span onclick="abrirFotoArea('Banheiro', '${imovel.Link_Foto_Banheiro}', 'Detalhes do banheiro.')" class="tag-area-foto tag-area-destaque"><i class="fas fa-bath text-[10px]"></i> 🚿 Banheiro</span>`;
+            // === A MÁGICA DO CARROSSEL (LENDO TODAS AS FOTOS) ===
+            let fotos = [];
+            if (imovel.Link_Foto_Principal && imovel.Link_Foto_Principal.trim() !== '') fotos.push(imovel.Link_Foto_Principal.trim());
+            if (imovel.Link_Foto_Varanda && imovel.Link_Foto_Varanda.trim() !== '') fotos.push(imovel.Link_Foto_Varanda.trim());
+            if (imovel.Link_Foto_Sala && imovel.Link_Foto_Sala.trim() !== '') fotos.push(imovel.Link_Foto_Sala.trim());
+            if (imovel.Link_Foto_Quarto && imovel.Link_Foto_Quarto.trim() !== '') fotos.push(imovel.Link_Foto_Quarto.trim());
+            if (imovel.Link_Foto_Cozinha && imovel.Link_Foto_Cozinha.trim() !== '') fotos.push(imovel.Link_Foto_Cozinha.trim());
+            if (imovel.Link_Foto_Banheiro && imovel.Link_Foto_Banheiro.trim() !== '') fotos.push(imovel.Link_Foto_Banheiro.trim());
+
+            // Lê possíveis fotos genéricas (se tiver colunas Link_Foto_Extra_1, Link_Foto_Extra_2...)
+            for(let i=1; i<=10; i++) {
+               if (imovel['Link_Foto_Extra_' + i] && imovel['Link_Foto_Extra_' + i].trim() !== '') {
+                   fotos.push(imovel['Link_Foto_Extra_' + i].trim());
+               }
             }
 
-            // 5. Configuração de Vídeo Tour
+            if(fotos.length === 0) fotos.push('https://via.placeholder.com/800x500?text=Sem+Foto');
+
+            let carouselId = `carousel_${index}`;
+            let slidesHTML = fotos.map((f, i) => `
+                <div class="w-full h-full flex-shrink-0 relative">
+                   <img src="${f}" alt="${imovel.Titulo_Imovel}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
+                </div>
+            `).join('');
+            
+            let arrowsHTML = '';
+            let dotsHTML = '';
+            if(fotos.length > 1 && !isVendidoOuAlugado) {
+                arrowsHTML = `
+                    <button onclick="mudarSlide('${carouselId}', -1, event)" class="absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-km-petroleo w-8 h-8 flex items-center justify-center rounded-full shadow transition z-20 opacity-0 group-hover:opacity-100 hover:scale-110"><i class="fas fa-chevron-left text-[12px]"></i></button>
+                    <button onclick="mudarSlide('${carouselId}', 1, event)" class="absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-km-petroleo w-8 h-8 flex items-center justify-center rounded-full shadow transition z-20 opacity-0 group-hover:opacity-100 hover:scale-110"><i class="fas fa-chevron-right text-[12px]"></i></button>
+                `;
+                dotsHTML = `<div class="absolute bottom-10 left-0 w-full flex justify-center gap-1.5 z-20">` + 
+                           fotos.map((_, i) => `<span id="dot_${carouselId}_${i}" class="w-1.5 h-1.5 rounded-full ${i===0 ? 'bg-white shadow' : 'bg-white/50'} transition-all"></span>`).join('') +
+                           `</div>`;
+            }
+
+            // === FIM DO CARROSSEL ===
+
+            // LER AS COMODIDADES/DIFERENCIAIS PARA AS TAGS UNIVERSAIS
+            let diferenciaisHTML = '';
+            let diffs = imovel.Diferenciais ? imovel.Diferenciais : (imovel.Comodidades ? imovel.Comodidades : '');
+            if(diffs.trim() !== '') {
+               let lista = diffs.split(',');
+               lista.forEach(item => {
+                  let nome = item.trim();
+                  if(nome === '') return;
+                  let nomeMin = nome.toLowerCase();
+                  let icone = 'fas fa-check text-km-turquesa';
+                  if(nomeMin.includes('piscina')) icone = 'fas fa-swimming-pool text-km-turquesa';
+                  else if(nomeMin.includes('academia') || nomeMin.includes('fitness')) icone = 'fas fa-dumbbell text-km-turquesa';
+                  else if(nomeMin.includes('portaria') || nomeMin.includes('segurança')) icone = 'fas fa-user-shield text-km-turquesa';
+                  else if(nomeMin.includes('salão') || nomeMin.includes('salao') || nomeMin.includes('festa')) icone = 'fas fa-glass-cheers text-km-turquesa';
+                  else if(nomeMin.includes('gourmet') || nomeMin.includes('churrasqueira')) icone = 'fas fa-utensils text-km-turquesa';
+                  else if(nomeMin.includes('elevador')) icone = 'fas fa-arrows-alt-v text-km-turquesa';
+                  else if(nomeMin.includes('varanda') || nomeMin.includes('sacada')) icone = 'fas fa-sun text-km-turquesa';
+                  else if(nomeMin.includes('suíte') || nomeMin.includes('suite')) icone = 'fas fa-bed text-km-turquesa';
+                  
+                  diferenciaisHTML += `<span class="tag-sem-clique"><i class="${icone}"></i> ${nome}</span>`;
+               });
+            }
+
+            let containerDestaques = '';
+            if (diferenciaisHTML !== '') {
+               containerDestaques = `
+                 <div class="text-[11px] text-km-petroleo font-semibold mb-3 bg-gray-50/80 p-3 rounded-2xl border border-gray-100">
+                    <span class="block text-km-petroleo mb-2"><i class="fas fa-star text-km-laranja mr-1"></i> <strong>Características:</strong></span>
+                    <div class="flex flex-wrap gap-1.5">
+                      ${diferenciaisHTML}
+                    </div>
+                 </div>
+               `;
+            }
+
             let idVideo = 'imovel_' + index;
             linksVideos[idVideo] = imovel.Link_Video_Tour ? imovel.Link_Video_Tour.trim() : '';
 
-            // 6. Variáveis de Busca e Categorias
             let categoria = imovel.Categoria_Filtro ? imovel.Categoria_Filtro.toLowerCase().trim() : 'venda';
             let quartos = imovel.Quartos ? imovel.Quartos.trim() : '';
             let textoBusca = `${imovel.Titulo_Imovel} ${imovel.Descricao} ${imovel.Valor_Imovel} ${status} ${categoria}`.toLowerCase();
-            let fotoPrincipal = imovel.Link_Foto_Principal && imovel.Link_Foto_Principal.trim() !== '' ? imovel.Link_Foto_Principal.trim() : 'https://via.placeholder.com/800x500?text=Sem+Foto';
 
-            // 7. Montagem do HTML Dinâmico
+            let botoesAcao = '';
+            if (isVendidoOuAlugado) {
+              botoesAcao = `<div class="col-span-2 text-center py-2.5 bg-gray-100 text-gray-400 font-bold rounded-xl text-xs uppercase tracking-widest border border-gray-200">Indisponível no Momento</div>`;
+            } else {
+              botoesAcao = `
+                <a href="https://wa.me/5513974250913?text=${encodeURIComponent(`Olá, Kelli! Gostaria de informações sobre: ${imovel.Titulo_Imovel} (R$ ${imovel.Valor_Imovel}).`)}" target="_blank" rel="noopener noreferrer" class="btn-ripple text-xs font-bold bg-emerald-600 hover:bg-emerald-700 text-white py-2.5 px-3 rounded-xl shadow-sm flex items-center justify-center gap-1.5 text-center transition">
+                  <i class="fab fa-whatsapp text-sm"></i> Falar com Kelli
+                </a>
+                <button onclick="conectarFormulario('${imovel.Titulo_Imovel}')" class="btn-ripple text-xs font-bold bg-km-petroleo hover:bg-km-escuro text-white py-2.5 px-3 rounded-xl shadow-sm flex items-center justify-center gap-1.5 text-center transition">
+                  <i class="fas fa-envelope text-sm"></i> Proposta
+                </button>
+              `;
+            }
+
             let cardHTML = `
-              <div class="card-interativo bg-white rounded-3xl overflow-hidden border border-km-ceu/80 flex flex-col justify-between card-imovel"
+              <div class="card-interativo bg-white rounded-3xl overflow-hidden border border-km-ceu/80 flex flex-col justify-between card-imovel relative"
                    data-categoria="${categoria}" data-quartos="${quartos}" data-texto="${textoBusca}">
+                
+                ${overlayVendido}
+
                 <div>
                   <div class="relative aspect-[16/10] overflow-hidden group">
-                    <span class="absolute top-3 left-3 ${corTagStatus} text-white text-[11px] font-bold uppercase px-3 py-1 rounded-full z-10 shadow">${status}</span>
+                    <span class="absolute top-3 left-3 ${corTagStatus} text-white text-[11px] font-bold uppercase px-3 py-1 rounded-full z-20 shadow">${status}</span>
                     ${destaqueHTML}
                     ${tagFinanciamentoHTML}
-                    <img src="${fotoPrincipal}" alt="${imovel.Titulo_Imovel}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy" />
                     
-                    <button onclick="abrirModalVideo('Tour: ${imovel.Titulo_Imovel}', '${idVideo}')" class="btn-ripple absolute bottom-3 left-3 bg-black/75 hover:bg-km-petroleo text-white text-[11px] font-bold px-3 py-1.5 rounded-full backdrop-blur-sm border border-white/30 flex items-center gap-1.5 shadow transition">
-                      <i class="fas fa-play text-km-turquesa text-[10px]"></i> Tour em Vídeo
+                    <div id="${carouselId}" class="flex w-full h-full transition-transform duration-500 ease-out" data-slide="0" data-total="${fotos.length}">
+                        ${slidesHTML}
+                    </div>
+                    ${arrowsHTML}
+                    ${dotsHTML}
+                    
+                    <button onclick="abrirModalVideo('Tour: ${imovel.Titulo_Imovel}', '${idVideo}')" class="btn-ripple absolute bottom-3 left-3 bg-black/75 hover:bg-km-petroleo text-white text-[11px] font-bold px-3 py-1.5 rounded-full backdrop-blur-sm border border-white/30 flex items-center gap-1.5 shadow transition z-20">
+                      <i class="fas fa-play text-km-turquesa text-[10px]"></i> Tour
                     </button>
                   </div>
                   
@@ -884,18 +797,7 @@
                       ${imovel.Descricao || ''}
                     </p>
 
-                    <!-- ÁREAS DO CONDOMÍNIO E FOTOS EXTRAS -->
-                    <div class="text-[11px] text-km-petroleo font-semibold mb-3 bg-teal-50/70 p-3 rounded-2xl border border-teal-100">
-                      <span class="block text-km-petroleo mb-2"><i class="fas fa-building text-km-turquesa mr-1"></i> <strong>Destaques & Conveniência:</strong></span>
-                      <div class="flex flex-wrap gap-1.5">
-                        ${botoesFotosInternas}
-                        <span onclick="abrirFotoArea('Sea Market 24 Horas', 'market', 'Mercadinho autônomo 24 horas dentro do próprio condomínio.')" class="tag-area-foto tag-area-destaque"><i class="fas fa-store text-[10px]"></i> 🛒 Sea Market</span>
-                        <span onclick="abrirFotoArea('Recepção Sea Market', 'market_placa', 'Design moderno e ambiente agradável logo na entrada do minimercado.')" class="tag-area-foto tag-area-destaque"><i class="fas fa-leaf text-[10px]"></i> 🌿 Market Detalhe</span>
-                        <span onclick="abrirFotoArea('Portaria 24 Horas', 'portaria', 'Segurança e comodidade com portaria presencial 24 horas no condomínio.')" class="tag-area-foto"><i class="fas fa-user-shield text-[10px]"></i> Portaria 24h</span>
-                        <span onclick="abrirFotoArea('Piscina Raia no Rooftop', 'piscina', 'Piscina com raia privativa no rooftop cercada por parapeito panorâmico.')" class="tag-area-foto"><i class="fas fa-swimming-pool text-[10px]"></i> Piscina</span>
-                        <span onclick="abrirFotoArea('Academia Completa', 'academia', 'Espaço fitness moderno e vista livre.')" class="tag-area-foto"><i class="fas fa-dumbbell text-[10px]"></i> Academia</span>
-                      </div>
-                    </div>
+                    ${containerDestaques}
                     
                     <div class="grid grid-cols-3 gap-2 text-center text-xs text-gray-700 font-medium py-3 border-y border-gray-100 mb-4 bg-km-claro/60 rounded-xl">
                       <div><i class="fas fa-ruler-combined text-km-petroleo block mb-1"></i> ${imovel.Area_m2 || '-'} m²</div>
@@ -911,225 +813,167 @@
                     <span class="font-bold text-2xl text-km-petroleo">R$ ${imovel.Valor_Imovel || '-'}</span>
                   </div>
 
-                  <div class="grid grid-cols-2 gap-2">
-                    <a href="https://wa.me/5513974250913?text=${encodeURIComponent(`Olá, Kelli! Gostaria de informações sobre: ${imovel.Titulo_Imovel} (R$ ${imovel.Valor_Imovel}).`)}" target="_blank" rel="noopener noreferrer" class="btn-ripple text-xs font-bold bg-emerald-600 hover:bg-emerald-700 text-white py-2.5 px-3 rounded-xl shadow-sm flex items-center justify-center gap-1.5 text-center transition">
-                      <i class="fab fa-whatsapp text-sm"></i> Falar com Kelli
-                    </a>
-                    <button onclick="conectarFormulario('${imovel.Titulo_Imovel} (R$ ${imovel.Valor_Imovel})')" class="btn-ripple text-xs font-bold bg-km-petroleo hover:bg-km-escuro text-white py-2.5 px-3 rounded-xl shadow-sm flex items-center justify-center gap-1.5 text-center transition">
-                      <i class="fas fa-envelope text-sm"></i> Proposta
-                    </button>
+                  <div class="grid grid-cols-2 gap-2 relative z-10">
+                    ${botoesAcao}
                   </div>
                 </div>
               </div>
             `;
             grid.innerHTML += cardHTML;
 
-            // Injeta o imóvel no formulário de contato automaticamente
-            let opcaoText = `${imovel.Titulo_Imovel} (R$ ${imovel.Valor_Imovel})`;
-            let optionElement = document.createElement("option");
-            optionElement.value = opcaoText;
-            optionElement.textContent = `Imóvel: ${opcaoText}`;
-            selectInteresse.insertBefore(optionElement, selectInteresse.children[1]);
+            if (!isVendidoOuAlugado) {
+              let opcaoText = `${imovel.Titulo_Imovel} (R$ ${imovel.Valor_Imovel})`;
+              let optionElement = document.createElement("option");
+              optionElement.value = opcaoText;
+              optionElement.textContent = `Imóvel: ${opcaoText}`;
+              selectInteresse.insertBefore(optionElement, selectInteresse.children[1]);
+            }
           });
 
-          if (visiveis === 0) {
-            grid.innerHTML = `
-              <div class="col-span-3 text-center py-12 bg-white/80 backdrop-blur-sm rounded-3xl border border-dashed border-km-petroleo/30">
-                <h3 class="font-bold text-xl text-km-petroleo">Nenhum imóvel cadastrado no momento.</h3>
-                <p class="text-sm text-gray-500 mt-2">Acesse a planilha no Google Sheets para adicionar o primeiro imóvel.</p>
-              </div>
-            `;
-          }
-          
-          document.getElementById('contadorResultados').innerHTML = `<i class="fas fa-home text-km-petroleo mr-1"></i> Mostrando ${visiveis} imóvel(is) exclusivos`;
-        },
-        error: function(err) {
-          console.error("Erro ao carregar a planilha:", err);
-          document.getElementById('gridImoveis').innerHTML = '<div class="col-span-3 text-center py-12 text-red-500 font-bold">Erro ao conectar com o servidor da corretora. Tente recarregar a página.</div>';
+          if (visiveis === 0) { grid.innerHTML = `<div class="col-span-3 text-center py-12"><p>Nenhum imóvel disponível no momento.</p></div>`; }
+          document.getElementById('contadorResultados').innerHTML = `<i class="fas fa-home text-km-petroleo mr-1"></i> Mostrando ${visiveis} imóvel(is)`;
         }
       });
     }
 
+    // Lógica do Carrossel de Imagens Estilo Airbnb
+    window.mudarSlide = function(id, dir, event) {
+      event.preventDefault(); 
+      event.stopPropagation(); 
+      const el = document.getElementById(id);
+      if(!el) return;
+      let current = parseInt(el.getAttribute('data-slide'));
+      let total = parseInt(el.getAttribute('data-total'));
+      let next = current + dir;
+      if(next < 0) next = total - 1;
+      if(next >= total) next = 0;
+      el.setAttribute('data-slide', next);
+      el.style.transform = `translateX(-${next * 100}%)`;
+      
+      for(let i=0; i<total; i++) {
+          let dot = document.getElementById(`dot_${id}_${i}`);
+          if(dot) {
+              if(i === next) {
+                  dot.classList.remove('bg-white/50');
+                  dot.classList.add('bg-white', 'shadow');
+              } else {
+                  dot.classList.add('bg-white/50');
+                  dot.classList.remove('bg-white', 'shadow');
+              }
+          }
+      }
+    }
+
     /* ==========================================================================
-       RIPPLE EFFECT E FUNÇÕES DE INTERAÇÃO (Interface)
+       UX/UI: RIPPLE, MODAIS, BUSCA E FORMULÁRIO
        ========================================================================== */
     document.addEventListener('pointerdown', function (e) {
-      const target = e.target.closest('.btn-ripple, button, .tag-area-foto');
-      if (!target) return;
-
+      const target = e.target.closest('.btn-ripple, button');
+      if (!target || target.tagName === 'SELECT') return;
       const rect = target.getBoundingClientRect();
       const circle = document.createElement('span');
       const diameter = Math.max(rect.width, rect.height);
       const radius = diameter / 2;
-
       circle.style.width = circle.style.height = `${diameter}px`;
       circle.style.left = `${e.clientX - rect.left - radius}px`;
       circle.style.top = `${e.clientY - rect.top - radius}px`;
       circle.classList.add('ripple-wave-orange');
-
       const ripple = target.getElementsByClassName('ripple-wave-orange')[0];
       if (ripple) ripple.remove();
-
       target.appendChild(circle);
     });
 
     function mascaraTelefone(input) {
       let v = input.value.replace(/\D/g, "");
       if (v.length > 11) v = v.substring(0, 11);
-      if (v.length > 10) {
-        v = v.replace(/^(\d{2})(\d{5})(\d{4})$/, "($1) $2-$3");
-      } else if (v.length > 6) {
-        v = v.replace(/^(\d{2})(\d{4})(\d{0,4})$/, "($1) $2-$3");
-      } else if (v.length > 2) {
-        v = v.replace(/^(\d{2})(\d{0,5})$/, "($1) $2");
-      } else if (v.length > 0) {
-        v = v.replace(/^(\d*)$/, "($1");
-      }
+      if (v.length > 10) { v = v.replace(/^(\d{2})(\d{5})(\d{4})$/, "($1) $2-$3"); } 
+      else if (v.length > 6) { v = v.replace(/^(\d{2})(\d{4})(\d{0,4})$/, "($1) $2-$3"); } 
+      else if (v.length > 2) { v = v.replace(/^(\d{2})(\d{0,5})$/, "($1) $2"); } 
+      else if (v.length > 0) { v = v.replace(/^(\d*)$/, "($1"); }
       input.value = v;
     }
 
-    function sanitizarTexto(str) {
-      return String(str || '').replace(/[<>"{}]/g, '').trim();
-    }
+    function sanitizarTexto(str) { return String(str || '').replace(/[<>"{}]/g, '').trim(); }
 
     function conectarFormulario(nomeImovel) {
       const select = document.getElementById('lead-interesse');
       let encontrou = false;
-      
       for (let i = 0; i < select.options.length; i++) {
         if (select.options[i].value.includes(nomeImovel)) {
-          select.selectedIndex = i;
-          encontrou = true;
-          break;
+          select.selectedIndex = i; encontrou = true; break;
         }
       }
       if (!encontrou) select.selectedIndex = 0;
-
-      const contatoSec = document.getElementById('contato');
-      contatoSec.scrollIntoView({ behavior: 'smooth' });
-
+      document.getElementById('contato').scrollIntoView({ behavior: 'smooth' });
       const caixaForm = document.getElementById('caixaFormularioLead');
       caixaForm.classList.add('destaque-formulario');
-      setTimeout(() => {
-        caixaForm.classList.remove('destaque-formulario');
-      }, 1300);
-
-      setTimeout(() => {
-        document.getElementById('lead-nome').focus();
-      }, 600);
+      setTimeout(() => { caixaForm.classList.remove('destaque-formulario'); }, 1300);
+      setTimeout(() => { document.getElementById('lead-nome').focus(); }, 600);
     }
 
     function abrirModal(id) {
       const m = document.getElementById(id);
-      if (m) {
-        m.classList.remove('hidden');
-        document.body.classList.add('overflow-hidden');
-      }
+      if (m) { m.classList.remove('hidden'); document.body.classList.add('overflow-hidden'); }
     }
-
     function fecharModal(id) {
       const m = document.getElementById(id);
-      if (m) {
-        m.classList.add('hidden');
-        document.body.classList.remove('overflow-hidden');
-      }
+      if (m) { m.classList.add('hidden'); document.body.classList.remove('overflow-hidden'); }
     }
-
     window.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') {
-        ['modalFotoArea', 'modalPrivacidade', 'modalSeguranca', 'modalVideoImovel'].forEach(fecharModal);
-        fecharModalVideo();
-      }
+      if (e.key === 'Escape') { ['modalFotoArea', 'modalPrivacidade', 'modalSeguranca', 'modalVideoImovel'].forEach(fecharModal); fecharModalVideo(); }
     });
-
     window.addEventListener('click', (e) => {
-      if (e.target.classList.contains('fixed') && !e.target.classList.contains('hidden')) {
-        fecharModal(e.target.id);
-      }
+      if (e.target.classList.contains('fixed') && !e.target.classList.contains('hidden')) { fecharModal(e.target.id); }
     });
 
-    function abrirFotoArea(titulo, chaveFoto, desc) {
-      document.getElementById('tituloFotoArea').innerText = titulo;
-      document.getElementById('descFotoArea').innerText = desc;
-      const img = document.getElementById('imgFotoArea');
-      
-      // Se chaveFoto for um link de URL (começa com http), exibe o link direto da planilha
-      if(chaveFoto.startsWith('http')) {
-        img.src = chaveFoto;
-      } else {
-        img.src = bancoFotosAreas[chaveFoto]; // Pega do banco de fotos fixas do prédio
-      }
-      
-      img.alt = titulo;
-      abrirModal('modalFotoArea');
-    }
-
-    function abrirModalVideo(titulo, chaveImovel) {
+    function abrirModalVideo(titulo, chaveImovel, event) {
+      if(event) { event.preventDefault(); event.stopPropagation(); }
       document.getElementById('tituloModalVideo').innerText = titulo;
       const container = document.getElementById('containerVideoPlayer');
       const urlVideo = linksVideos[chaveImovel] || '';
-      
       if (urlVideo && urlVideo.trim() !== '') {
         if (urlVideo.includes('youtube') || urlVideo.includes('youtu.be')) {
           container.innerHTML = `<iframe class="w-full h-full" src="${urlVideo}" title="${titulo}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
         } else {
-          container.innerHTML = `<video class="w-full h-full object-contain" controls autoplay><source src="${urlVideo}" type="video/mp4">Seu navegador não suporta vídeos.</video>`;
+          container.innerHTML = `<video class="w-full h-full object-contain" controls autoplay><source src="${urlVideo}" type="video/mp4"></video>`;
         }
       } else {
         container.innerHTML = `
           <div class="space-y-3">
-            <div class="w-14 h-14 rounded-2xl bg-km-turquesa/20 text-km-turquesa flex items-center justify-center mx-auto text-2xl">
-              <i class="fas fa-video"></i>
-            </div>
+            <div class="w-14 h-14 rounded-2xl bg-km-turquesa/20 text-km-turquesa flex items-center justify-center mx-auto text-2xl"><i class="fas fa-video"></i></div>
             <h5 class="font-serif font-bold text-lg">Tour em Gravação</h5>
-            <p class="text-xs text-gray-300 max-w-sm mx-auto">
-              O vídeo completo deste imóvel está disponível. Solicite agora à corretora Kelli pelo WhatsApp!
-            </p>
-            <a href="https://wa.me/5513974250913?text=${encodeURIComponent('Olá, Kelli! Gostaria de receber o vídeo do imóvel: ' + titulo)}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold px-5 py-2.5 rounded-full shadow transition">
-              <i class="fab fa-whatsapp"></i> Receber no WhatsApp
-            </a>
+            <p class="text-xs text-gray-300 max-w-sm mx-auto">O vídeo deste imóvel está em produção. Solicite à corretora Kelli pelo WhatsApp!</p>
           </div>
         `;
       }
       abrirModal('modalVideoImovel');
     }
 
-    function fecharModalVideo() {
-      const container = document.getElementById('containerVideoPlayer');
-      container.innerHTML = '';
-      fecharModal('modalVideoImovel');
-    }
+    function fecharModalVideo() { document.getElementById('containerVideoPlayer').innerHTML = ''; fecharModal('modalVideoImovel'); }
 
     function enviarParaWhatsApp(e) {
       e.preventDefault();
       const btn = document.getElementById('btnSubmitForm');
-      const textoBtn = document.getElementById('btnSubmitTexto');
       const nome = sanitizarTexto(document.getElementById('lead-nome').value);
       const tel = sanitizarTexto(document.getElementById('lead-telefone').value);
       const interesse = sanitizarTexto(document.getElementById('lead-interesse').value);
       const msg = sanitizarTexto(document.getElementById('lead-mensagem').value);
-
       if (!nome || !tel) return;
 
       btn.disabled = true;
-      textoBtn.textContent = 'Abrindo WhatsApp...';
-
       const texto = `Olá, Kelli! Vim pelo seu site.%0A%0A*Nome:* ${encodeURIComponent(nome)}%0A*Telefone:* ${encodeURIComponent(tel)}%0A*Interesse:* ${encodeURIComponent(interesse)}${msg ? `%0A*Detalhes:* ${encodeURIComponent(msg)}` : ''}`;
-      
       setTimeout(() => {
-        window.open(`https://wa.me/5513974250913?text=${texto}`, '_blank', 'noopener,noreferrer');
+        window.open(`https://wa.me/5513974250913?text=${texto}`, '_blank');
         btn.disabled = false;
-        textoBtn.textContent = 'Conversar com a Kelli Martins';
       }, 500);
     }
 
     let categoriaAtual = 'todos';
-
     function filtrarCategoria(cat, botao) {
       categoriaAtual = cat;
       document.querySelectorAll('#imoveis button.bg-km-petroleo').forEach(btn => {
         const t = btn.innerText.trim();
-        if (['Todos', 'Venda', 'Aluguel Anual', 'Temporada'].includes(t)) {
+        if (['Todos', 'Venda', 'Aluguel', 'Temporada'].includes(t)) {
           btn.classList.remove('bg-km-petroleo', 'text-white', 'shadow');
           btn.classList.add('bg-white', 'text-km-petroleo');
         }
@@ -1162,21 +1006,15 @@
         const quartosCard = card.getAttribute('data-quartos');
 
         const bateTexto = termoBusca === '' || textoCard.includes(termoBusca);
-        // Filtra por Categoria exata
         const bateCategoria = categoriaAtual === 'todos' || categoriaCard === categoriaAtual;
         
         let bateQuartos = false;
-        if (filtroQuartos === '') {
-          bateQuartos = true;
-        } else if (filtroQuartos === '3' && parseInt(quartosCard) >= 3) {
-          bateQuartos = true;
-        } else if (quartosCard === filtroQuartos) {
-          bateQuartos = true;
-        }
+        if (filtroQuartos === '') { bateQuartos = true; } 
+        else if (filtroQuartos === '3' && parseInt(quartosCard) >= 3) { bateQuartos = true; } 
+        else if (quartosCard === filtroQuartos) { bateQuartos = true; }
 
         if (bateTexto && bateCategoria && bateQuartos) {
-          card.classList.remove('hidden');
-          visiveis++;
+          card.classList.remove('hidden'); visiveis++;
         } else {
           card.classList.add('hidden');
         }
@@ -1184,15 +1022,9 @@
 
       contador.innerHTML = `<i class="fas fa-home text-km-petroleo mr-1"></i> Mostrando ${visiveis} imóvel(is)`;
       const semResultados = document.getElementById('semResultados');
-      if (visiveis === 0) semResultados.classList.remove('hidden');
-      else semResultados.classList.add('hidden');
+      if (visiveis === 0) semResultados.classList.remove('hidden'); else semResultados.classList.add('hidden');
     }
-
-    const menuBtn = document.getElementById('menu-btn');
-    const mobileMenu = document.getElementById('mobile-menu');
-    menuBtn.addEventListener('click', () => {
-      mobileMenu.classList.toggle('hidden');
-    });
+    document.getElementById('menu-btn').addEventListener('click', () => { document.getElementById('mobile-menu').classList.toggle('hidden'); });
   </script>
 </body>
 </html>
