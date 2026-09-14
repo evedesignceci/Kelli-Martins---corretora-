@@ -307,7 +307,7 @@
         <div class="bg-white/95 p-6 rounded-2xl border border-km-ceu/80 card-interativo"><div class="w-12 h-12 rounded-xl bg-km-ceu/40 text-km-petroleo flex items-center justify-center text-xl mb-4"><i class="fas fa-file-invoice-dollar"></i></div><h3 class="font-bold text-base text-km-petroleo mb-2">Financiamento</h3><p class="text-xs text-gray-700 font-medium leading-relaxed">Simulação e suporte completo para aprovação do seu crédito.</p></div>
         <div class="bg-white/95 p-6 rounded-2xl border border-km-ceu/80 card-interativo"><div class="w-12 h-12 rounded-xl bg-km-ceu/40 text-km-petroleo flex items-center justify-center text-xl mb-4"><i class="fas fa-route"></i></div><h3 class="font-bold text-base text-km-petroleo mb-2">Assessoria</h3><p class="text-xs text-gray-700 font-medium leading-relaxed">Assessoria do início do processo até a entrega das chaves.</p></div>
         <div class="bg-white/95 p-6 rounded-2xl border border-km-ceu/80 card-interativo"><div class="w-12 h-12 rounded-xl bg-km-ceu/40 text-km-petroleo flex items-center justify-center text-xl mb-4"><i class="fas fa-calculator"></i></div><h3 class="font-bold text-base text-km-petroleo mb-2">Avaliação Imobiliária</h3><p class="text-xs text-gray-700 font-medium leading-relaxed">Avaliadora credenciada emitindo Parecer Técnico (PTAM).</p></div>
-        <div class="bg-white/95 p-6 rounded-2xl border border-km-ceu/80 card-interativo"><div class="w-12 h-12 rounded-xl bg-km-ceu/40 text-km-petroleo flex items-center justify-center text-xl mb-4"><i class="fas fa-landmark"></i></div><h3 class="font-bold text-base text-km-petroleo mb-2">Crédito com Garantia</h3><p class="text-xs text-gray-700 font-medium leading-relaxed">Linhas de crédito inteligente com as menores taxas.</p></div>
+        <div class="bg-white/95 p-6 rounded-2xl border border-km-ceu/80 card-interativo"><div class="w-12 h-12 rounded-xl bg-km-ceu/40 text-km-petroleo flex items-center justify-center text-xl mb-4"><i class="fas fa-landmark"></i></div><h3 class="font-bold text-base text-km-petroleo mb-2">Crédito com Garantia</h3><p class="text-xs text-gray-700 font-medium leading-relaxed">Linhas de crédito inteligente utilizando seu patrimônio com as menores taxas.</p></div>
         <div class="bg-white/95 p-6 rounded-2xl border border-km-ceu/80 card-interativo"><div class="w-12 h-12 rounded-xl bg-km-ceu/40 text-km-petroleo flex items-center justify-center text-xl mb-4"><i class="fas fa-hammer"></i></div><h3 class="font-bold text-base text-km-petroleo mb-2">Construção e Reforma</h3><p class="text-xs text-gray-700 font-medium leading-relaxed">Recursos sob medida para modernizar, reformar ou construir.</p></div>
       </div>
     </div>
@@ -371,6 +371,7 @@
         <p class="text-sm text-gray-700 font-medium max-w-md mx-auto mb-6">A corretora Kelli possui opções exclusivas fora do site. Fale com ela!</p>
         <button onclick="limparBusca()" class="btn-ripple inline-flex items-center gap-2 bg-km-petroleo text-white px-6 py-2.5 rounded-full font-bold text-xs shadow-md transition"><i class="fas fa-redo"></i> Limpar Filtros</button>
       </div>
+
     </div>
   </section>
 
@@ -488,10 +489,6 @@
   <script>
     let linksVideos = {};
 
-    /* ==========================================================================
-       LÓGICA DO BANCO DE DADOS RELACIONAL (CONDOMÍNIOS + IMÓVEIS)
-       ========================================================================== */
-    // Timestamp para evitar cache
     const timestamp = new Date().getTime();
     const urlCondominios = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTpXfABQC7PV2smtCMZR_lZohuOlY5WprbbOA0AIe3G7pEm-wrZOldZQh23St-pkIr5MVdN3E5YRIHs/pub?gid=1001&single=true&output=csv&_v=" + timestamp;
     const urlImoveis = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTpXfABQC7PV2smtCMZR_lZohuOlY5WprbbOA0AIe3G7pEm-wrZOldZQh23St-pkIr5MVdN3E5YRIHs/pub?gid=0&single=true&output=csv&_v=" + timestamp;
@@ -518,6 +515,11 @@
       });
     }
 
+    // Função auxiliar para normalizar textos (ignora maiúsculas/minúsculas e acentos)
+    function normalizarTexto(str) {
+      return String(str || '').toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim();
+    }
+
     function renderizarCatalogo(imoveis, condominios) {
       const grid = document.getElementById('gridImoveis');
       const selectInteresse = document.getElementById('lead-interesse');
@@ -528,7 +530,6 @@
         if (!imovel.Titulo_Imovel || imovel.Titulo_Imovel.trim() === '') return;
         visiveis++;
 
-        // 1. DADOS DE STATUS E VENDIDO
         let status = imovel.Status_Venda ? imovel.Status_Venda.trim() : 'Disponível';
         let isVendidoOuAlugado = status.toLowerCase().includes('vendid') || status.toLowerCase().includes('alugad');
         let corTagStatus = isVendidoOuAlugado ? 'bg-red-600' : 'bg-km-laranja';
@@ -539,7 +540,6 @@
             </div>
         ` : '';
 
-        // 2. TAGS: FINANCIAMENTO E EXCLUSIVIDADE
         let tagFinanciamentoHTML = '';
         let aceitaFinan = imovel.Aceita_Financiamento ? imovel.Aceita_Financiamento.toLowerCase().trim() : '';
         if (aceitaFinan === 'sim' || aceitaFinan === 'ok' || aceitaFinan === 'aceita') {
@@ -551,34 +551,42 @@
           destaqueHTML = `<span class="absolute top-10 left-3 bg-km-petroleo text-white text-[10px] font-semibold uppercase px-2.5 py-1 rounded-full z-20 shadow flex items-center gap-1"><i class="fas fa-star text-km-laranja"></i> ${imovel.Destaque_Tag}</span>`;
         }
 
-        // 3. LÓGICA RELACIONAL: BUSCA O CONDOMÍNIO NA ABA 1
+        // LÓGICA DE VÍNCULO DO CONDOMÍNIO FLEXÍVEL
         let btnCondominioHTML = '';
         let condData = null;
-        if (imovel.Condominio_Vinculo && imovel.Condominio_Vinculo.trim() !== '') {
-            condData = condominios.find(c => c.Nome_Condominio && c.Nome_Condominio.trim().toLowerCase() === imovel.Condominio_Vinculo.trim().toLowerCase());
+        
+        // Procura em qualquer variação provável da coluna (Condominio_Vinculo, Condominio Vinculo, Condominio)
+        let nomeCondVinculado = imovel.Condominio_Vinculo || imovel['Condominio Vinculo'] || imovel.Condominio || '';
+
+        if (nomeCondVinculado.trim() !== '') {
+            let nomeBusca = normalizarTexto(nomeCondVinculado);
+            condData = condominios.find(c => {
+               let nomeC = normalizarTexto(c.Nome_Condominio || c['Nome Condominio'] || c.Condominio);
+               return nomeC === nomeBusca;
+            });
         }
 
         if (condData) {
-            // Puxa as 5 fotos das Áreas do Prédio
             for(let i=1; i<=5; i++) {
-                let linkFotoArea = condData['Link_Foto_Area_' + i];
+                let linkFotoArea = condData['Link_Foto_Area_' + i] || condData['Link Foto Area ' + i];
                 if (linkFotoArea && linkFotoArea.trim() !== '') {
-                    let nomeArea = condData['Nome_Area_' + i] ? condData['Nome_Area_' + i].trim() : 'Área Comum';
-                    let descArea = condData['Desc_Area_' + i] ? condData['Desc_Area_' + i].trim() : 'Detalhes do condomínio.';
-                    btnCondominioHTML += `<span onclick="abrirFotoArea('${nomeArea}', '${linkFotoArea}', '${descArea}')" class="tag-area-foto tag-area-destaque cursor-pointer"><i class="fas fa-building text-[10px]"></i> 📸 ${nomeArea}</span>`;
+                    let nomeArea = condData['Nome_Area_' + i] || condData['Nome Area ' + i] || 'Área Comum';
+                    let descArea = condData['Desc_Area_' + i] || condData['Desc Area ' + i] || 'Detalhes do condomínio.';
+                    btnCondominioHTML += `<span onclick="abrirFotoArea('${nomeArea.trim()}', '${linkFotoArea.trim()}', '${descArea.trim()}')" class="tag-area-foto tag-area-destaque cursor-pointer"><i class="fas fa-building text-[10px]"></i> 📸 ${nomeArea.trim()}</span>`;
                 }
             }
 
-            // Puxa o Vídeo Geral do Condomínio
-            if (condData.Link_Video_Condominio && condData.Link_Video_Condominio.trim() !== '') {
+            let videoCond = condData.Link_Video_Condominio || condData['Link Video Condominio'];
+            if (videoCond && videoCond.trim() !== '') {
                let idVideoCondominio = 'vid_cond_' + index;
-               linksVideos[idVideoCondominio] = condData.Link_Video_Condominio.trim();
-               btnCondominioHTML += `<span onclick="abrirModalVideo('Tour do Condomínio: ${condData.Nome_Condominio}', '${idVideoCondominio}', event)" class="tag-area-foto cursor-pointer bg-purple-100 border-purple-300 text-purple-700 hover:bg-purple-600 hover:text-white"><i class="fas fa-video text-[10px]"></i> 🎥 Tour do Prédio</span>`;
+               linksVideos[idVideoCondominio] = videoCond.trim();
+               let nomeCondText = condData.Nome_Condominio || 'Prédio';
+               btnCondominioHTML += `<span onclick="abrirModalVideo('Tour do Condomínio: ${nomeCondText}', '${idVideoCondominio}', event)" class="tag-area-foto cursor-pointer bg-purple-100 border-purple-300 text-purple-700 hover:bg-purple-600 hover:text-white"><i class="fas fa-video text-[10px]"></i> 🎥 Tour do Prédio</span>`;
             }
 
-            // Puxa as comodidades em texto
-            if (condData.Comodidades_Gerais && condData.Comodidades_Gerais.trim() !== '') {
-              let listaComodidades = condData.Comodidades_Gerais.split(',');
+            let comodidadesGerais = condData.Comodidades_Gerais || condData['Comodidades Gerais'];
+            if (comodidadesGerais && comodidadesGerais.trim() !== '') {
+              let listaComodidades = comodidadesGerais.split(',');
               listaComodidades.forEach(item => {
                 let nome = item.trim();
                 if(nome === '') return;
@@ -597,7 +605,7 @@
             }
         }
 
-        // 4. BOTÕES DE FOTOS DOS CÔMODOS INTERNOS
+        // CÔMODOS INTERNOS DO IMÓVEL
         let botoesFotosInternas = '';
         if (imovel.Link_Foto_Varanda && imovel.Link_Foto_Varanda.trim() !== '') {
           let desc = imovel.Descricao_Foto_Varanda ? imovel.Descricao_Foto_Varanda.trim() : 'Vista da varanda.';
@@ -620,7 +628,7 @@
           botoesFotosInternas += `<span onclick="abrirFotoArea('Banheiro', '${imovel.Link_Foto_Banheiro}', '${desc}')" class="tag-area-foto tag-area-destaque cursor-pointer"><i class="fas fa-bath text-[10px]"></i> 🚿 Banheiro</span>`;
         }
 
-        // 5. CARROSSEL AIRBNB (Junta todas as fotos do Imóvel)
+        // CARROSSEL AIRBNB
         let fotos = [];
         if (imovel.Link_Foto_Principal && imovel.Link_Foto_Principal.trim() !== '') fotos.push(imovel.Link_Foto_Principal.trim());
         if (imovel.Link_Foto_Varanda && imovel.Link_Foto_Varanda.trim() !== '') fotos.push(imovel.Link_Foto_Varanda.trim());
@@ -653,7 +661,6 @@
                        fotos.map((_, i) => `<span id="dot_${carouselId}_${i}" class="w-1.5 h-1.5 rounded-full ${i===0 ? 'bg-white shadow' : 'bg-white/50'} transition-all"></span>`).join('') + `</div>`;
         }
 
-        // Caixinha de destaques combinada
         let containerDestaques = '';
         if (botoesFotosInternas !== '' || btnCondominioHTML !== '') {
            containerDestaques = `
@@ -672,9 +679,8 @@
 
         let categoria = imovel.Categoria_Filtro ? imovel.Categoria_Filtro.toLowerCase().trim() : 'venda';
         let quartos = imovel.Quartos ? imovel.Quartos.trim() : '';
-        let textoBusca = `${imovel.Titulo_Imovel} ${imovel.Descricao} ${imovel.Valor_Imovel} ${imovel.Condominio_Vinculo || ''} ${status} ${categoria}`.toLowerCase();
+        let textoBusca = `${imovel.Titulo_Imovel} ${imovel.Descricao} ${imovel.Valor_Imovel} ${nomeCondVinculado} ${status} ${categoria}`.toLowerCase();
 
-        // Botões de Ação
         let botoesAcao = '';
         if (isVendidoOuAlugado) {
           botoesAcao = `<div class="col-span-2 text-center py-2.5 bg-gray-100 text-gray-400 font-bold rounded-xl text-xs uppercase tracking-widest border border-gray-200">Indisponível no Momento</div>`;
@@ -711,7 +717,7 @@
               </div>
               
               <div class="p-6">
-                <span class="text-[11px] font-bold text-km-turquesa uppercase tracking-wider block">${imovel.Condominio_Vinculo ? imovel.Condominio_Vinculo : 'Baixada Santista • SP'}</span>
+                <span class="text-[11px] font-bold text-km-turquesa uppercase tracking-wider block">${nomeCondVinculado !== '' ? nomeCondVinculado : 'Baixada Santista • SP'}</span>
                 <h3 class="font-serif font-bold text-lg text-km-petroleo mt-1 mb-2">${imovel.Titulo_Imovel}</h3>
                 <p class="text-xs text-gray-600 font-medium mb-3 leading-relaxed" style="display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;">
                   ${imovel.Descricao || ''}
@@ -751,7 +757,6 @@
       document.getElementById('contadorResultados').innerHTML = `<i class="fas fa-home text-km-petroleo mr-1"></i> Mostrando ${visiveis} imóvel(is)`;
     }
 
-    // Funcionalidade do Carrossel
     window.mudarSlide = function(id, dir, event) {
       event.preventDefault(); 
       event.stopPropagation(); 
@@ -779,9 +784,6 @@
       }
     }
 
-    /* ==========================================================================
-       UX/UI: RIPPLE, MODAIS E BUSCA
-       ========================================================================== */
     document.addEventListener('pointerdown', function (e) {
       const target = e.target.closest('.btn-ripple, button');
       if (!target || target.tagName === 'SELECT') return;
