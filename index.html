@@ -23,7 +23,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
 
-  <!-- PapaParse (Biblioteca para ler a planilha do Google Sheets) -->
+  <!-- PapaParse -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
 
   <script>
@@ -452,7 +452,7 @@
           <p class="text-xs text-km-ceu leading-relaxed">Atendimento humanizado e focado em toda a Baixada Santista / SP.</p>
           <div class="space-y-2 text-xs">
             <p><a href="tel:5513974250913" class="text-white/80 hover:text-km-turquesa transition flex items-center"><i class="fas fa-phone-alt text-km-turquesa mr-2 w-4"></i> (13) 97425-0913</a></p>
-            <p><a href="https://www.instagram.com/kellimartins.imoveis/" target="_blank" rel="noopener noreferrer" class="text-white/80 hover:text-km-turquesa transition flex items-center"><i class="fab fa-instagram text-km-turquesa mr-2 w-4"></i> @kellimartins.imoveis</a></p>
+            <p><a href="https://www.instagram.com/kellimartins.imoveis/" target="_blank" rel="noopener noreferrer" class="hover:text-km-turquesa transition flex items-center"><i class="fab fa-instagram text-km-turquesa mr-2 w-4"></i> @kellimartins.imoveis</a></p>
           </div>
         </div>
       </div>
@@ -490,6 +490,7 @@
     let linksVideos = {};
 
     const timestamp = new Date().getTime();
+    // Links oficiais atualizados com os gids corretos
     const urlCondominios = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTpXfABQC7PV2smtCMZR_lZohuOlY5WprbbOA0AIe3G7pEm-wrZOldZQh23St-pkIr5MVdN3E5YRIHs/pub?gid=1001&single=true&output=csv&_v=" + timestamp;
     const urlImoveis = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTpXfABQC7PV2smtCMZR_lZohuOlY5WprbbOA0AIe3G7pEm-wrZOldZQh23St-pkIr5MVdN3E5YRIHs/pub?gid=0&single=true&output=csv&_v=" + timestamp;
 
