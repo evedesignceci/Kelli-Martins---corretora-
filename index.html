@@ -440,6 +440,8 @@
           <div class="flex flex-wrap gap-2">
             <button onclick="filtrarCategoria('todos', this)" class="btn-ripple px-4 py-2 rounded-full text-xs font-bold bg-km-petroleo text-white shadow">Todos</button>
             <button onclick="filtrarCategoria('venda', this)" class="btn-ripple px-4 py-2 rounded-full text-xs font-bold bg-white text-km-petroleo hover:bg-km-ceu transition">Venda</button>
+            <button onclick="filtrarCategoria('aluguel', this)" class="btn-ripple px-4 py-2 rounded-full text-xs font-bold bg-white text-km-petroleo hover:bg-km-ceu transition">Aluguel</button>
+            <button onclick="filtrarCategoria('temporada', this)" class="btn-ripple px-4 py-2 rounded-full text-xs font-bold bg-white text-km-petroleo hover:bg-km-ceu transition">Temporada</button>
           </div>
         </div>
       </div>
@@ -487,7 +489,7 @@
         <div class="col-span-3 py-16 text-center flex flex-col items-center justify-center text-km-petroleo bg-white/50 backdrop-blur-sm rounded-3xl border border-dashed border-km-petroleo/30">
           <i class="fas fa-spinner fa-spin text-4xl mb-4 text-km-turquesa"></i>
           <p class="font-bold text-lg font-serif">Sincronizando imóveis exclusivos...</p>
-          <p class="text-sm text-gray-600 mt-2">Conectando direto com a base de dados da Kelli.</p>
+          <p class="text-sm text-gray-600 mt-2">Conectando com o banco de dados da Kelli.</p>
         </div>
       </div>
 
@@ -772,7 +774,7 @@
 
   <script>
     /* ==========================================================================
-       LINKS E BANCO DE FOTOS FIXAS DO PRÉDIO (A Kelli não precisa cadastrar isso de novo todo imóvel)
+       LINKS E BANCO DE FOTOS FIXAS DO PRÉDIO (A Kelli não precisa cadastrar isso)
        ========================================================================== */
     const bancoFotosAreas = {
       piscina:  'https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?auto=format&fit=crop&w=1200&q=80',
@@ -790,8 +792,8 @@
        LÓGICA DO GOOGLE SHEETS (SISTEMA 100% DINÂMICO LENDO A PLANILHA)
        ========================================================================== */
     
-    // AQUI ESTÁ O SEU LINK DA PLANILHA GERADO:
-    const linkPlanilhaCSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTpXfABQC7PV2smtCMZR_lZohuOlY5WprbbOA0AIe3G7pEm-wrZOldZQh23St-pkIr5MVdN3E5YRIHs/pub?output=csv";
+    // LINK DA PLANILHA GERADO COM ANTI-CACHE (Para atualizar na hora)
+    const linkPlanilhaCSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTpXfABQC7PV2smtCMZR_lZohuOlY5WprbbOA0AIe3G7pEm-wrZOldZQh23St-pkIr5MVdN3E5YRIHs/pub?output=csv&_v=" + new Date().getTime();
     
     document.addEventListener("DOMContentLoaded", () => {
       carregarImoveisDaPlanilha();
@@ -814,33 +816,52 @@
             if (!imovel.Titulo_Imovel || imovel.Titulo_Imovel.trim() === '') return;
             visiveis++;
 
-            // 1. Cor da Tag de Status (Ex: À Venda / Vendido)
-            let status = imovel.Status_Venda ? imovel.Status_Venda.trim() : 'À Venda';
+            // 1. Cor da Tag de Status (À Venda, Temporada / Vendido)
+            let status = imovel.Status_Venda ? imovel.Status_Venda.trim() : 'Disponível';
             let corTagStatus = status.toLowerCase().includes('vendid') ? 'bg-red-600' : 'bg-km-laranja';
 
-            // 2. Tag de Destaque (Ex: Exclusividade, Lançamento)
+            // 2. Tag de Financiamento OK
+            let tagFinanciamentoHTML = '';
+            let aceitaFinan = imovel.Aceita_Financiamento ? imovel.Aceita_Financiamento.trim().toLowerCase() : '';
+            if (aceitaFinan === 'sim' || aceitaFinan === 'ok') {
+              tagFinanciamentoHTML = `<span class="absolute top-3 right-3 bg-km-petroleo text-white text-[10px] font-semibold uppercase px-2.5 py-1 rounded-full z-10 shadow flex items-center gap-1"><i class="fas fa-check-circle"></i> Financiamento OK</span>`;
+            }
+
+            // 3. Tag de Destaque (Exclusividade, Lançamento)
             let destaqueHTML = '';
             if (imovel.Destaque_Tag && imovel.Destaque_Tag.trim() !== '') {
-              destaqueHTML = `<span class="absolute top-3 right-3 bg-km-petroleo text-white text-[10px] font-semibold uppercase px-2.5 py-1 rounded-full z-10 shadow flex items-center gap-1"><i class="fas fa-star text-km-laranja"></i> ${imovel.Destaque_Tag}</span>`;
+              destaqueHTML = `<span class="absolute top-10 left-3 bg-km-petroleo text-white text-[10px] font-semibold uppercase px-2.5 py-1 rounded-full z-10 shadow flex items-center gap-1"><i class="fas fa-star text-km-laranja"></i> ${imovel.Destaque_Tag}</span>`;
             }
 
-            // 3. Botão Extra da Varanda (Aparece automaticamente se ela colocar o link da varanda na planilha)
-            let btnVarandaHTML = '';
+            // 4. Botões Extras de Fotos do Imóvel
+            let botoesFotosInternas = '';
             if (imovel.Link_Foto_Varanda && imovel.Link_Foto_Varanda.trim() !== '') {
-              btnVarandaHTML = `<span onclick="abrirFotoArea('Vista da Varanda', '${imovel.Link_Foto_Varanda}', 'Vista panorâmica direto do seu futuro imóvel.')" class="tag-area-foto tag-area-destaque"><i class="fas fa-camera text-[10px]"></i> 📸 Vista Exclusiva</span>`;
+              botoesFotosInternas += `<span onclick="abrirFotoArea('Vista da Varanda', '${imovel.Link_Foto_Varanda}', 'Vista panorâmica direto do imóvel.')" class="tag-area-foto tag-area-destaque"><i class="fas fa-camera text-[10px]"></i> 📸 Varanda</span>`;
+            }
+            if (imovel.Link_Foto_Sala && imovel.Link_Foto_Sala.trim() !== '') {
+              botoesFotosInternas += `<span onclick="abrirFotoArea('Sala de Estar', '${imovel.Link_Foto_Sala}', 'Ambiente da sala do imóvel.')" class="tag-area-foto tag-area-destaque"><i class="fas fa-couch text-[10px]"></i> 🛋️ Sala</span>`;
+            }
+            if (imovel.Link_Foto_Quarto && imovel.Link_Foto_Quarto.trim() !== '') {
+              botoesFotosInternas += `<span onclick="abrirFotoArea('Dormitório', '${imovel.Link_Foto_Quarto}', 'Detalhes do quarto do imóvel.')" class="tag-area-foto tag-area-destaque"><i class="fas fa-bed text-[10px]"></i> 🛏️ Quarto</span>`;
+            }
+            if (imovel.Link_Foto_Cozinha && imovel.Link_Foto_Cozinha.trim() !== '') {
+              botoesFotosInternas += `<span onclick="abrirFotoArea('Cozinha', '${imovel.Link_Foto_Cozinha}', 'Detalhes da cozinha do imóvel.')" class="tag-area-foto tag-area-destaque"><i class="fas fa-utensils text-[10px]"></i> 🍳 Cozinha</span>`;
+            }
+            if (imovel.Link_Foto_Banheiro && imovel.Link_Foto_Banheiro.trim() !== '') {
+              botoesFotosInternas += `<span onclick="abrirFotoArea('Banheiro', '${imovel.Link_Foto_Banheiro}', 'Detalhes do banheiro.')" class="tag-area-foto tag-area-destaque"><i class="fas fa-bath text-[10px]"></i> 🚿 Banheiro</span>`;
             }
 
-            // 4. Configuração de Vídeo Tour
+            // 5. Configuração de Vídeo Tour
             let idVideo = 'imovel_' + index;
             linksVideos[idVideo] = imovel.Link_Video_Tour ? imovel.Link_Video_Tour.trim() : '';
 
-            // 5. Variáveis de Busca e Categorias
+            // 6. Variáveis de Busca e Categorias
             let categoria = imovel.Categoria_Filtro ? imovel.Categoria_Filtro.toLowerCase().trim() : 'venda';
             let quartos = imovel.Quartos ? imovel.Quartos.trim() : '';
-            let textoBusca = `${imovel.Titulo_Imovel} ${imovel.Descricao} ${imovel.Valor_Imovel}`.toLowerCase();
+            let textoBusca = `${imovel.Titulo_Imovel} ${imovel.Descricao} ${imovel.Valor_Imovel} ${status} ${categoria}`.toLowerCase();
             let fotoPrincipal = imovel.Link_Foto_Principal && imovel.Link_Foto_Principal.trim() !== '' ? imovel.Link_Foto_Principal.trim() : 'https://via.placeholder.com/800x500?text=Sem+Foto';
 
-            // 6. Montagem do HTML Dinâmico Exato que o antigo tinha
+            // 7. Montagem do HTML Dinâmico
             let cardHTML = `
               <div class="card-interativo bg-white rounded-3xl overflow-hidden border border-km-ceu/80 flex flex-col justify-between card-imovel"
                    data-categoria="${categoria}" data-quartos="${quartos}" data-texto="${textoBusca}">
@@ -848,6 +869,7 @@
                   <div class="relative aspect-[16/10] overflow-hidden group">
                     <span class="absolute top-3 left-3 ${corTagStatus} text-white text-[11px] font-bold uppercase px-3 py-1 rounded-full z-10 shadow">${status}</span>
                     ${destaqueHTML}
+                    ${tagFinanciamentoHTML}
                     <img src="${fotoPrincipal}" alt="${imovel.Titulo_Imovel}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy" />
                     
                     <button onclick="abrirModalVideo('Tour: ${imovel.Titulo_Imovel}', '${idVideo}')" class="btn-ripple absolute bottom-3 left-3 bg-black/75 hover:bg-km-petroleo text-white text-[11px] font-bold px-3 py-1.5 rounded-full backdrop-blur-sm border border-white/30 flex items-center gap-1.5 shadow transition">
@@ -862,16 +884,16 @@
                       ${imovel.Descricao || ''}
                     </p>
 
-                    <!-- ÁREAS DO CONDOMÍNIO (Varanda Dinâmica + Fixo do Prédio) -->
+                    <!-- ÁREAS DO CONDOMÍNIO E FOTOS EXTRAS -->
                     <div class="text-[11px] text-km-petroleo font-semibold mb-3 bg-teal-50/70 p-3 rounded-2xl border border-teal-100">
                       <span class="block text-km-petroleo mb-2"><i class="fas fa-building text-km-turquesa mr-1"></i> <strong>Destaques & Conveniência:</strong></span>
                       <div class="flex flex-wrap gap-1.5">
-                        ${btnVarandaHTML}
+                        ${botoesFotosInternas}
                         <span onclick="abrirFotoArea('Sea Market 24 Horas', 'market', 'Mercadinho autônomo 24 horas dentro do próprio condomínio.')" class="tag-area-foto tag-area-destaque"><i class="fas fa-store text-[10px]"></i> 🛒 Sea Market</span>
                         <span onclick="abrirFotoArea('Recepção Sea Market', 'market_placa', 'Design moderno e ambiente agradável logo na entrada do minimercado.')" class="tag-area-foto tag-area-destaque"><i class="fas fa-leaf text-[10px]"></i> 🌿 Market Detalhe</span>
                         <span onclick="abrirFotoArea('Portaria 24 Horas', 'portaria', 'Segurança e comodidade com portaria presencial 24 horas no condomínio.')" class="tag-area-foto"><i class="fas fa-user-shield text-[10px]"></i> Portaria 24h</span>
-                        <span onclick="abrirFotoArea('Piscina Raia no Rooftop', 'piscina', 'Piscina com raia de natação no terraço do edifício com vista panorâmica.')" class="tag-area-foto"><i class="fas fa-swimming-pool text-[10px]"></i> Piscina</span>
-                        <span onclick="abrirFotoArea('Academia Completa', 'academia', 'Espaço fitness com aparelhos modernos e vista livre.')" class="tag-area-foto"><i class="fas fa-dumbbell text-[10px]"></i> Academia</span>
+                        <span onclick="abrirFotoArea('Piscina Raia no Rooftop', 'piscina', 'Piscina com raia privativa no rooftop cercada por parapeito panorâmico.')" class="tag-area-foto"><i class="fas fa-swimming-pool text-[10px]"></i> Piscina</span>
+                        <span onclick="abrirFotoArea('Academia Completa', 'academia', 'Espaço fitness moderno e vista livre.')" class="tag-area-foto"><i class="fas fa-dumbbell text-[10px]"></i> Academia</span>
                       </div>
                     </div>
                     
@@ -910,7 +932,6 @@
             selectInteresse.insertBefore(optionElement, selectInteresse.children[1]);
           });
 
-          // Se a planilha estiver vazia, exibe uma mensagem
           if (visiveis === 0) {
             grid.innerHTML = `
               <div class="col-span-3 text-center py-12 bg-white/80 backdrop-blur-sm rounded-3xl border border-dashed border-km-petroleo/30">
@@ -930,7 +951,7 @@
     }
 
     /* ==========================================================================
-       RIPPLE EFFECT E FUNÇÕES DE INTERAÇÃO
+       RIPPLE EFFECT E FUNÇÕES DE INTERAÇÃO (Interface)
        ========================================================================== */
     document.addEventListener('pointerdown', function (e) {
       const target = e.target.closest('.btn-ripple, button, .tag-area-foto');
@@ -1108,7 +1129,7 @@
       categoriaAtual = cat;
       document.querySelectorAll('#imoveis button.bg-km-petroleo').forEach(btn => {
         const t = btn.innerText.trim();
-        if (['Todos', 'Venda'].includes(t)) {
+        if (['Todos', 'Venda', 'Aluguel Anual', 'Temporada'].includes(t)) {
           btn.classList.remove('bg-km-petroleo', 'text-white', 'shadow');
           btn.classList.add('bg-white', 'text-km-petroleo');
         }
@@ -1141,6 +1162,7 @@
         const quartosCard = card.getAttribute('data-quartos');
 
         const bateTexto = termoBusca === '' || textoCard.includes(termoBusca);
+        // Filtra por Categoria exata
         const bateCategoria = categoriaAtual === 'todos' || categoriaCard === categoriaAtual;
         
         let bateQuartos = false;
