@@ -338,7 +338,7 @@
         <div class="grid grid-cols-1 sm:grid-cols-12 gap-3 items-center">
           <div class="sm:col-span-8 relative">
             <i class="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-km-petroleo/50"></i>
-            <input type="text" id="campoBusca" maxlength="80" oninput="filtrarImoveis()" placeholder="Pesquisar por localização, condomínio, preço..." class="w-full pl-11 pr-10 py-3 rounded-2xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-km-turquesa text-sm bg-white font-medium text-gray-700 transition" />
+            <input type="text" id="campoBusca" maxlength="80" oninput="filtrarImoveis()" placeholder="Pesquisar por localização, palavra-chave, preço..." class="w-full pl-11 pr-10 py-3 rounded-2xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-km-turquesa text-sm bg-white font-medium text-gray-700 transition" />
             <button id="btnLimparBusca" onclick="limparBusca()" class="hidden absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 p-1"><i class="fas fa-times-circle"></i></button>
           </div>
           <div class="sm:col-span-4">
@@ -359,8 +359,8 @@
       <div id="gridImoveis" class="grid md:grid-cols-3 gap-8">
         <div class="col-span-3 py-16 text-center flex flex-col items-center justify-center text-km-petroleo bg-white/50 backdrop-blur-sm rounded-3xl border border-dashed border-km-petroleo/30">
           <i class="fas fa-spinner fa-spin text-4xl mb-4 text-km-turquesa"></i>
-          <p class="font-bold text-lg font-serif">Sincronizando banco de dados...</p>
-          <p class="text-sm text-gray-600 mt-2">Conectando direto com a base central da Kelli.</p>
+          <p class="font-bold text-lg font-serif">Sincronizando imóveis...</p>
+          <p class="text-sm text-gray-600 mt-2">Conectando direto com a planilha da Kelli.</p>
         </div>
       </div>
 
@@ -452,7 +452,7 @@
           <p class="text-xs text-km-ceu leading-relaxed">Atendimento humanizado e focado em toda a Baixada Santista / SP.</p>
           <div class="space-y-2 text-xs">
             <p><a href="tel:5513974250913" class="text-white/80 hover:text-km-turquesa transition flex items-center"><i class="fas fa-phone-alt text-km-turquesa mr-2 w-4"></i> (13) 97425-0913</a></p>
-            <p><a href="https://www.instagram.com/kellimartins.imoveis/" target="_blank" rel="noopener noreferrer" class="hover:text-km-turquesa transition flex items-center"><i class="fab fa-instagram text-km-turquesa mr-2 w-4"></i> @kellimartins.imoveis</a></p>
+            <p><a href="https://www.instagram.com/kellimartins.imoveis/" target="_blank" rel="noopener noreferrer" class="text-white/80 hover:text-km-turquesa transition flex items-center"><i class="fab fa-instagram text-km-turquesa mr-2 w-4"></i> @kellimartins.imoveis</a></p>
           </div>
         </div>
       </div>
@@ -466,7 +466,7 @@
     <i class="fab fa-whatsapp"></i><span class="absolute -top-1 -right-1 flex h-4 w-4"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span><span class="relative inline-flex rounded-full h-4 w-4 bg-km-laranja"></span></span>
   </a>
 
-  <!-- MODAIS DE VÍDEO E FOTOS -->
+  <!-- MODAIS -->
   <div id="modalVideoImovel" class="fixed inset-0 z-50 hidden bg-black/90 backdrop-blur-md flex items-center justify-center p-4">
     <div class="bg-white rounded-3xl max-w-2xl w-full overflow-hidden shadow-2xl relative border-2 border-km-turquesa">
       <button onclick="fecharModalVideo()" class="btn-ripple absolute top-4 right-4 bg-white/90 hover:bg-white text-gray-800 rounded-full w-9 h-9 flex items-center justify-center z-10 shadow transition"><i class="fas fa-times"></i></button>
@@ -489,103 +489,68 @@
   <script>
     let linksVideos = {};
 
-    const timestamp = new Date().getTime();
-    // Links oficiais atualizados com os gids corretos
-    const urlCondominios = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTpXfABQC7PV2smtCMZR_lZohuOlY5WprbbOA0AIe3G7pEm-wrZOldZQh23St-pkIr5MVdN3E5YRIHs/pub?gid=1001&single=true&output=csv&_v=" + timestamp;
-    const urlImoveis = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTpXfABQC7PV2smtCMZR_lZohuOlY5WprbbOA0AIe3G7pEm-wrZOldZQh23St-pkIr5MVdN3E5YRIHs/pub?gid=0&single=true&output=csv&_v=" + timestamp;
+    // Link oficial da aba única de imóveis (gid=0) com anti-cache
+    const linkPlanilhaCSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTpXfABQC7PV2smtCMZR_lZohuOlY5WprbbOA0AIe3G7pEm-wrZOldZQh23St-pkIr5MVdN3E5YRIHs/pub?gid=0&single=true&output=csv&_v=" + new Date().getTime();
+    
+    document.addEventListener("DOMContentLoaded", () => { carregarImoveisDaPlanilha(); });
 
-    document.addEventListener("DOMContentLoaded", () => { 
-      Promise.all([fetchCSV(urlCondominios), fetchCSV(urlImoveis)])
-        .then(([condominiosData, imoveisData]) => {
-           renderizarCatalogo(imoveisData, condominiosData);
-        })
-        .catch(err => {
-           console.error("Erro ao carregar base de dados:", err);
-           document.getElementById('gridImoveis').innerHTML = '<div class="col-span-3 text-center py-12 text-red-500 font-bold">Erro ao conectar com a base central da corretora. Tente recarregar a página.</div>';
-        });
-    });
+    function carregarImoveisDaPlanilha() {
+      Papa.parse(linkPlanilhaCSV, {
+        download: true,
+        header: true,
+        complete: function(results) {
+          const imoveis = results.data;
+          const grid = document.getElementById('gridImoveis');
+          const selectInteresse = document.getElementById('lead-interesse');
+          
+          grid.innerHTML = ''; 
+          let visiveis = 0;
 
-    function fetchCSV(url) {
-      return new Promise((resolve, reject) => {
-        Papa.parse(url, {
-          download: true,
-          header: true,
-          complete: (results) => resolve(results.data),
-          error: (err) => reject(err)
-        });
-      });
-    }
+          imoveis.forEach((imovel, index) => {
+            if (!imovel.Titulo_Imovel || imovel.Titulo_Imovel.trim() === '') return;
+            visiveis++;
 
-    function normalizarTexto(str) {
-      return String(str || '').toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim();
-    }
+            // 1. STATUS E VENDIDO
+            let status = imovel.Status_Venda ? imovel.Status_Venda.trim() : 'Disponível';
+            let isVendidoOuAlugado = status.toLowerCase().includes('vendid') || status.toLowerCase().includes('alugad');
+            let corTagStatus = isVendidoOuAlugado ? 'bg-red-600' : 'bg-km-laranja';
+            
+            let overlayVendido = isVendidoOuAlugado ? `
+                <div class="absolute inset-0 bg-black/40 z-30 flex items-center justify-center backdrop-blur-[2px]">
+                  <span class="bg-red-600 text-white font-black text-2xl px-8 py-3 rounded-2xl transform -rotate-12 border-4 border-white shadow-2xl tracking-widest uppercase">${status}</span>
+                </div>
+            ` : '';
 
-    function renderizarCatalogo(imoveis, condominios) {
-      const grid = document.getElementById('gridImoveis');
-      const selectInteresse = document.getElementById('lead-interesse');
-      grid.innerHTML = ''; 
-      let visiveis = 0;
-
-      imoveis.forEach((imovel, index) => {
-        if (!imovel.Titulo_Imovel || imovel.Titulo_Imovel.trim() === '') return;
-        visiveis++;
-
-        let status = imovel.Status_Venda ? imovel.Status_Venda.trim() : 'Disponível';
-        let isVendidoOuAlugado = status.toLowerCase().includes('vendid') || status.toLowerCase().includes('alugad');
-        let corTagStatus = isVendidoOuAlugado ? 'bg-red-600' : 'bg-km-laranja';
-        
-        let overlayVendido = isVendidoOuAlugado ? `
-            <div class="absolute inset-0 bg-black/40 z-30 flex items-center justify-center backdrop-blur-[2px]">
-              <span class="bg-red-600 text-white font-black text-2xl px-8 py-3 rounded-2xl transform -rotate-12 border-4 border-white shadow-2xl tracking-widest uppercase">${status}</span>
-            </div>
-        ` : '';
-
-        let tagFinanciamentoHTML = '';
-        let aceitaFinan = imovel.Aceita_Financiamento ? imovel.Aceita_Financiamento.toLowerCase().trim() : '';
-        if (aceitaFinan === 'sim' || aceitaFinan === 'ok' || aceitaFinan === 'aceita') {
-          tagFinanciamentoHTML = `<span class="absolute top-3 right-3 bg-km-petroleo text-white text-[10px] font-semibold uppercase px-2.5 py-1 rounded-full z-20 shadow flex items-center gap-1"><i class="fas fa-check-circle"></i> Financiamento OK</span>`;
-        }
-
-        let destaqueHTML = '';
-        if (imovel.Destaque_Tag && imovel.Destaque_Tag.trim() !== '') {
-          destaqueHTML = `<span class="absolute top-10 left-3 bg-km-petroleo text-white text-[10px] font-semibold uppercase px-2.5 py-1 rounded-full z-20 shadow flex items-center gap-1"><i class="fas fa-star text-km-laranja"></i> ${imovel.Destaque_Tag}</span>`;
-        }
-
-        let btnCondominioHTML = '';
-        let condData = null;
-        
-        let nomeCondVinculado = imovel.Condominio_Vinculo || imovel['Condominio Vinculo'] || imovel.Condominio || imovel.Predio || '';
-
-        if (nomeCondVinculado.trim() !== '') {
-            let nomeBusca = normalizarTexto(nomeCondVinculado);
-            condData = condominios.find(c => {
-               let nomeC = normalizarTexto(c.Nome_Condominio || c['Nome Condominio'] || c.Condominio || c.Predio);
-               return nomeC === nomeBusca;
-            });
-        }
-
-        if (condData) {
-            for(let i=1; i<=5; i++) {
-                let linkFotoArea = condData['Link_Foto_Area_' + i] || condData['Link Foto Area ' + i] || condData['Foto_Area_' + i];
-                let linkVideoArea = condData['Link_Video_Area_' + i] || condData['Link Video Area ' + i] || condData['Video_Area_' + i];
-                let nomeArea = condData['Nome_Area_' + i] || condData['Nome Area ' + i] || condData['Area_' + i] || 'Área Comum';
-                let descArea = condData['Desc_Area_' + i] || condData['Desc Area ' + i] || condData['Descricao_Area_' + i] || 'Detalhes do condomínio.';
-
-                if (linkFotoArea && linkFotoArea.trim() !== '') {
-                    btnCondominioHTML += `<span onclick="abrirFotoArea('${nomeArea.trim()}', '${linkFotoArea.trim()}', '${descArea.trim()}')" class="tag-area-foto tag-area-destaque cursor-pointer"><i class="fas fa-building text-[10px]"></i> 📸 ${nomeArea.trim()}</span>`;
-                }
-                
-                if (linkVideoArea && linkVideoArea.trim() !== '') {
-                    let idVidArea = `vid_area_${index}_${i}`;
-                    linksVideos[idVidArea] = linkVideoArea.trim();
-                    btnCondominioHTML += `<span onclick="abrirModalVideo('Vídeo: ${nomeArea.trim()}', '${idVidArea}', event)" class="tag-area-foto cursor-pointer bg-purple-100 border-purple-300 text-purple-700 hover:bg-purple-600 hover:text-white"><i class="fas fa-video text-[10px]"></i> 🎥 Vídeo (${nomeArea.trim()})</span>`;
-                }
+            // 2. FINANCIAMENTO OK
+            let tagFinanciamentoHTML = '';
+            let aceitaFinan = imovel.Aceita_Financiamento ? imovel.Aceita_Financiamento.toLowerCase().trim() : '';
+            if (aceitaFinan === 'sim' || aceitaFinan === 'ok' || aceitaFinan === 'aceita') {
+              tagFinanciamentoHTML = `<span class="absolute top-3 right-3 bg-km-petroleo text-white text-[10px] font-semibold uppercase px-2.5 py-1 rounded-full z-20 shadow flex items-center gap-1"><i class="fas fa-check-circle"></i> Financiamento OK</span>`;
             }
 
-            let comodidadesGerais = condData.Comodidades_Gerais || condData['Comodidades Gerais'] || condData.Comodidades;
-            if (comodidadesGerais && comodidadesGerais.trim() !== '') {
-              let listaComodidades = comodidadesGerais.split(',');
-              listaComodidades.forEach(item => {
+            // 3. TAG EXCLUSIVIDADE
+            let destaqueHTML = '';
+            if (imovel.Destaque_Tag && imovel.Destaque_Tag.trim() !== '') {
+              destaqueHTML = `<span class="absolute top-10 left-3 bg-km-petroleo text-white text-[10px] font-semibold uppercase px-2.5 py-1 rounded-full z-20 shadow flex items-center gap-1"><i class="fas fa-star text-km-laranja"></i> ${imovel.Destaque_Tag}</span>`;
+            }
+
+            // 4. ÁREAS DO PRÉDIO / CONDOMÍNIO (LENDO DIRETO DA LINHA)
+            let btnCondominio = '';
+            if (imovel.Link_Foto_Area_Comum_1 && imovel.Link_Foto_Area_Comum_1.trim() !== '') {
+              let nome1 = imovel.Nome_Area_Comum_1 ? imovel.Nome_Area_Comum_1.trim() : 'Área do Prédio';
+              let desc1 = imovel.Descricao_Area_Comum_1 ? imovel.Descricao_Area_Comum_1.trim() : 'Detalhes do condomínio.';
+              btnCondominio += `<span onclick="abrirFotoArea('${nome1}', '${imovel.Link_Foto_Area_Comum_1}', '${desc1}')" class="tag-area-foto tag-area-destaque cursor-pointer"><i class="fas fa-building text-[10px]"></i> 📸 ${nome1}</span>`;
+            }
+            if (imovel.Link_Foto_Area_Comum_2 && imovel.Link_Foto_Area_Comum_2.trim() !== '') {
+              let nome2 = imovel.Nome_Area_Comum_2 ? imovel.Nome_Area_Comum_2.trim() : 'Área do Prédio';
+              let desc2 = imovel.Descricao_Area_Comum_2 ? imovel.Descricao_Area_Comum_2.trim() : 'Detalhes do condomínio.';
+              btnCondominio += `<span onclick="abrirFotoArea('${nome2}', '${imovel.Link_Foto_Area_Comum_2}', '${desc2}')" class="tag-area-foto tag-area-destaque cursor-pointer"><i class="fas fa-building text-[10px]"></i> 📸 ${nome2}</span>`;
+            }
+
+            // 5. COMODIDADES GERAIS (TAGS)
+            if (imovel.Comodidades_Condominio && imovel.Comodidades_Condominio.trim() !== '') {
+              let lista = imovel.Comodidades_Condominio.split(',');
+              lista.forEach(item => {
                 let nome = item.trim();
                 if(nome === '') return;
                 let nomeMin = nome.toLowerCase();
@@ -598,159 +563,170 @@
                 else if(nomeMin.includes('elevador')) icone = 'fas fa-arrows-alt-v text-km-turquesa';
                 else if(nomeMin.includes('market') || nomeMin.includes('mercado')) icone = 'fas fa-store text-km-turquesa';
                 
-                btnCondominioHTML += `<span class="tag-sem-clique"><i class="${icone}"></i> ${nome}</span>`;
+                btnCondominio += `<span class="tag-sem-clique"><i class="${icone}"></i> ${nome}</span>`;
               });
             }
-        }
 
-        let botoesFotosInternas = '';
-        if (imovel.Link_Foto_Varanda && imovel.Link_Foto_Varanda.trim() !== '') {
-          let desc = imovel.Descricao_Foto_Varanda ? imovel.Descricao_Foto_Varanda.trim() : 'Vista da varanda.';
-          botoesFotosInternas += `<span onclick="abrirFotoArea('Varanda', '${imovel.Link_Foto_Varanda}', '${desc}')" class="tag-area-foto tag-area-destaque cursor-pointer"><i class="fas fa-camera text-[10px]"></i> 📸 Varanda</span>`;
-        }
-        if (imovel.Link_Foto_Sala && imovel.Link_Foto_Sala.trim() !== '') {
-          let desc = imovel.Descricao_Foto_Sala ? imovel.Descricao_Foto_Sala.trim() : 'Ambiente da sala.';
-          botoesFotosInternas += `<span onclick="abrirFotoArea('Sala de Estar', '${imovel.Link_Foto_Sala}', '${desc}')" class="tag-area-foto tag-area-destaque cursor-pointer"><i class="fas fa-couch text-[10px]"></i> 🛋️ Sala</span>`;
-        }
-        if (imovel.Link_Foto_Quarto && imovel.Link_Foto_Quarto.trim() !== '') {
-          let desc = imovel.Descricao_Foto_Quarto ? imovel.Descricao_Foto_Quarto.trim() : 'Detalhes do quarto.';
-          botoesFotosInternas += `<span onclick="abrirFotoArea('Dormitório', '${imovel.Link_Foto_Quarto}', '${desc}')" class="tag-area-foto tag-area-destaque cursor-pointer"><i class="fas fa-bed text-[10px]"></i> 🛏️ Quarto</span>`;
-        }
-        if (imovel.Link_Foto_Cozinha && imovel.Link_Foto_Cozinha.trim() !== '') {
-          let desc = imovel.Descricao_Foto_Cozinha ? imovel.Descricao_Foto_Cozinha.trim() : 'Detalhes da cozinha.';
-          botoesFotosInternas += `<span onclick="abrirFotoArea('Cozinha', '${imovel.Link_Foto_Cozinha}', '${desc}')" class="tag-area-foto tag-area-destaque cursor-pointer"><i class="fas fa-utensils text-[10px]"></i> 🍳 Cozinha</span>`;
-        }
-        if (imovel.Link_Foto_Banheiro && imovel.Link_Foto_Banheiro.trim() !== '') {
-          let desc = imovel.Descricao_Foto_Banheiro ? imovel.Descricao_Foto_Banheiro.trim() : 'Detalhes do banheiro.';
-          botoesFotosInternas += `<span onclick="abrirFotoArea('Banheiro', '${imovel.Link_Foto_Banheiro}', '${desc}')" class="tag-area-foto tag-area-destaque cursor-pointer"><i class="fas fa-bath text-[10px]"></i> 🚿 Banheiro</span>`;
-        }
+            // 6. CARROSSEL AIRBNB (FOTOS DO APARTAMENTO)
+            let fotos = [];
+            if (imovel.Link_Foto_Principal && imovel.Link_Foto_Principal.trim() !== '') fotos.push(imovel.Link_Foto_Principal.trim());
+            if (imovel.Link_Foto_Varanda && imovel.Link_Foto_Varanda.trim() !== '') fotos.push(imovel.Link_Foto_Varanda.trim());
+            if (imovel.Link_Foto_Sala && imovel.Link_Foto_Sala.trim() !== '') fotos.push(imovel.Link_Foto_Sala.trim());
+            if (imovel.Link_Foto_Quarto && imovel.Link_Foto_Quarto.trim() !== '') fotos.push(imovel.Link_Foto_Quarto.trim());
+            if (imovel.Link_Foto_Cozinha && imovel.Link_Foto_Cozinha.trim() !== '') fotos.push(imovel.Link_Foto_Cozinha.trim());
+            if (imovel.Link_Foto_Banheiro && imovel.Link_Foto_Banheiro.trim() !== '') fotos.push(imovel.Link_Foto_Banheiro.trim());
 
-        let fotos = [];
-        if (imovel.Link_Foto_Principal && imovel.Link_Foto_Principal.trim() !== '') fotos.push(imovel.Link_Foto_Principal.trim());
-        if (imovel.Link_Foto_Varanda && imovel.Link_Foto_Varanda.trim() !== '') fotos.push(imovel.Link_Foto_Varanda.trim());
-        if (imovel.Link_Foto_Sala && imovel.Link_Foto_Sala.trim() !== '') fotos.push(imovel.Link_Foto_Sala.trim());
-        if (imovel.Link_Foto_Quarto && imovel.Link_Foto_Quarto.trim() !== '') fotos.push(imovel.Link_Foto_Quarto.trim());
-        if (imovel.Link_Foto_Cozinha && imovel.Link_Foto_Cozinha.trim() !== '') fotos.push(imovel.Link_Foto_Cozinha.trim());
-        if (imovel.Link_Foto_Banheiro && imovel.Link_Foto_Banheiro.trim() !== '') fotos.push(imovel.Link_Foto_Banheiro.trim());
+            for(let i=1; i<=10; i++) {
+               if (imovel['Link_Foto_Extra_' + i] && imovel['Link_Foto_Extra_' + i].trim() !== '') {
+                   fotos.push(imovel['Link_Foto_Extra_' + i].trim());
+               }
+            }
 
-        for(let i=1; i<=10; i++) {
-           if (imovel['Link_Foto_Extra_' + i] && imovel['Link_Foto_Extra_' + i].trim() !== '') {
-               fotos.push(imovel['Link_Foto_Extra_' + i].trim());
-           }
-        }
-        if(fotos.length === 0) fotos.push('https://via.placeholder.com/800x500?text=Sem+Foto');
+            if(fotos.length === 0) fotos.push('https://via.placeholder.com/800x500?text=Sem+Foto');
 
-        let carouselId = `carousel_${index}`;
-        let slidesHTML = fotos.map((f, i) => `
-            <div class="w-full h-full flex-shrink-0 relative">
-               <img src="${f}" alt="${imovel.Titulo_Imovel}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
-            </div>
-        `).join('');
-        
-        let arrowsHTML = ''; let dotsHTML = '';
-        if(fotos.length > 1 && !isVendidoOuAlugado) {
-            arrowsHTML = `
-                <button onclick="mudarSlide('${carouselId}', -1, event)" class="absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-km-petroleo w-8 h-8 flex items-center justify-center rounded-full shadow transition z-20 opacity-0 group-hover:opacity-100 hover:scale-110"><i class="fas fa-chevron-left text-[12px]"></i></button>
-                <button onclick="mudarSlide('${carouselId}', 1, event)" class="absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-km-petroleo w-8 h-8 flex items-center justify-center rounded-full shadow transition z-20 opacity-0 group-hover:opacity-100 hover:scale-110"><i class="fas fa-chevron-right text-[12px]"></i></button>
-            `;
-            dotsHTML = `<div class="absolute bottom-10 left-0 w-full flex justify-center gap-1.5 z-20">` + 
-                       fotos.map((_, i) => `<span id="dot_${carouselId}_${i}" class="w-1.5 h-1.5 rounded-full ${i===0 ? 'bg-white shadow' : 'bg-white/50'} transition-all"></span>`).join('') + `</div>`;
-        }
-
-        let containerDestaques = '';
-        if (botoesFotosInternas !== '' || btnCondominioHTML !== '') {
-           containerDestaques = `
-             <div class="text-[11px] text-km-petroleo font-semibold mb-3 bg-gray-50/80 p-3 rounded-2xl border border-gray-100">
-                <span class="block text-km-petroleo mb-2"><i class="fas fa-camera text-km-turquesa mr-1"></i> <strong>Fotos & Destaques:</strong></span>
-                <div class="flex flex-wrap gap-1.5">
-                  ${botoesFotosInternas}
-                  ${btnCondominioHTML}
+            let carouselId = `carousel_${index}`;
+            let slidesHTML = fotos.map((f, i) => `
+                <div class="w-full h-full flex-shrink-0 relative">
+                   <img src="${f}" alt="${imovel.Titulo_Imovel}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
                 </div>
-             </div>
-           `;
-        }
+            `).join('');
+            
+            let arrowsHTML = '';
+            let dotsHTML = '';
+            if(fotos.length > 1 && !isVendidoOuAlugado) {
+                arrowsHTML = `
+                    <button onclick="mudarSlide('${carouselId}', -1, event)" class="absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-km-petroleo w-8 h-8 flex items-center justify-center rounded-full shadow transition z-20 opacity-0 group-hover:opacity-100 hover:scale-110"><i class="fas fa-chevron-left text-[12px]"></i></button>
+                    <button onclick="mudarSlide('${carouselId}', 1, event)" class="absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-km-petroleo w-8 h-8 flex items-center justify-center rounded-full shadow transition z-20 opacity-0 group-hover:opacity-100 hover:scale-110"><i class="fas fa-chevron-right text-[12px]"></i></button>
+                `;
+                dotsHTML = `<div class="absolute bottom-10 left-0 w-full flex justify-center gap-1.5 z-20">` + 
+                           fotos.map((_, i) => `<span id="dot_${carouselId}_${i}" class="w-1.5 h-1.5 rounded-full ${i===0 ? 'bg-white shadow' : 'bg-white/50'} transition-all"></span>`).join('') +
+                           `</div>`;
+            }
 
-        let idVideo = 'imovel_' + index;
-        linksVideos[idVideo] = imovel.Link_Video_Tour ? imovel.Link_Video_Tour.trim() : '';
+            // 7. CÔMODOS INTERNOS (COM DESCRIÇÕES INDIVIDUAIS)
+            let botoesFotosInternas = '';
+            if (imovel.Link_Foto_Varanda && imovel.Link_Foto_Varanda.trim() !== '') {
+              let desc = imovel.Descricao_Foto_Varanda ? imovel.Descricao_Foto_Varanda.trim() : 'Vista da varanda.';
+              botoesFotosInternas += `<span onclick="abrirFotoArea('Varanda', '${imovel.Link_Foto_Varanda}', '${desc}')" class="tag-area-foto tag-area-destaque cursor-pointer"><i class="fas fa-camera text-[10px]"></i> 📸 Varanda</span>`;
+            }
+            if (imovel.Link_Foto_Sala && imovel.Link_Foto_Sala.trim() !== '') {
+              let desc = imovel.Descricao_Foto_Sala ? imovel.Descricao_Foto_Sala.trim() : 'Ambiente da sala.';
+              botoesFotosInternas += `<span onclick="abrirFotoArea('Sala de Estar', '${imovel.Link_Foto_Sala}', '${desc}')" class="tag-area-foto tag-area-destaque cursor-pointer"><i class="fas fa-couch text-[10px]"></i> 🛋️ Sala</span>`;
+            }
+            if (imovel.Link_Foto_Quarto && imovel.Link_Foto_Quarto.trim() !== '') {
+              let desc = imovel.Descricao_Foto_Quarto ? imovel.Descricao_Foto_Quarto.trim() : 'Detalhes do quarto.';
+              botoesFotosInternas += `<span onclick="abrirFotoArea('Dormitório', '${imovel.Link_Foto_Quarto}', '${desc}')" class="tag-area-foto tag-area-destaque cursor-pointer"><i class="fas fa-bed text-[10px]"></i> 🛏️ Quarto</span>`;
+            }
+            if (imovel.Link_Foto_Cozinha && imovel.Link_Foto_Cozinha.trim() !== '') {
+              let desc = imovel.Descricao_Foto_Cozinha ? imovel.Descricao_Foto_Cozinha.trim() : 'Detalhes da cozinha.';
+              botoesFotosInternas += `<span onclick="abrirFotoArea('Cozinha', '${imovel.Link_Foto_Cozinha}', '${desc}')" class="tag-area-foto tag-area-destaque cursor-pointer"><i class="fas fa-utensils text-[10px]"></i> 🍳 Cozinha</span>`;
+            }
+            if (imovel.Link_Foto_Banheiro && imovel.Link_Foto_Banheiro.trim() !== '') {
+              let desc = imovel.Descricao_Foto_Banheiro ? imovel.Descricao_Foto_Banheiro.trim() : 'Detalhes do banheiro.';
+              botoesFotosInternas += `<span onclick="abrirFotoArea('Banheiro', '${imovel.Link_Foto_Banheiro}', '${desc}')" class="tag-area-foto tag-area-destaque cursor-pointer"><i class="fas fa-bath text-[10px]"></i> 🚿 Banheiro</span>`;
+            }
 
-        let categoria = imovel.Categoria_Filtro ? imovel.Categoria_Filtro.toLowerCase().trim() : 'venda';
-        let quartos = imovel.Quartos ? imovel.Quartos.trim() : '';
-        let textoBusca = `${imovel.Titulo_Imovel} ${imovel.Descricao} ${imovel.Valor_Imovel} ${nomeCondVinculado} ${status} ${categoria}`.toLowerCase();
+            let containerDestaques = '';
+            if (botoesFotosInternas !== '' || btnCondominio !== '') {
+               containerDestaques = `
+                 <div class="text-[11px] text-km-petroleo font-semibold mb-3 bg-gray-50/80 p-3 rounded-2xl border border-gray-100">
+                    <span class="block text-km-petroleo mb-2"><i class="fas fa-camera text-km-turquesa mr-1"></i> <strong>Fotos & Destaques:</strong></span>
+                    <div class="flex flex-wrap gap-1.5">
+                      ${botoesFotosInternas}
+                      ${btnCondominio}
+                    </div>
+                 </div>
+               `;
+            }
 
-        let botoesAcao = '';
-        if (isVendidoOuAlugado) {
-          botoesAcao = `<div class="col-span-2 text-center py-2.5 bg-gray-100 text-gray-400 font-bold rounded-xl text-xs uppercase tracking-widest border border-gray-200">Indisponível no Momento</div>`;
-        } else {
-          botoesAcao = `
-            <a href="https://wa.me/5513974250913?text=${encodeURIComponent(`Olá, Kelli! Gostaria de informações sobre: ${imovel.Titulo_Imovel} (R$ ${imovel.Valor_Imovel}).`)}" target="_blank" rel="noopener noreferrer" class="btn-ripple text-xs font-bold bg-emerald-600 hover:bg-emerald-700 text-white py-2.5 px-3 rounded-xl shadow-sm flex items-center justify-center gap-1.5 text-center transition">
-              <i class="fab fa-whatsapp text-sm"></i> Falar com Kelli
-            </a>
-            <button onclick="conectarFormulario('${imovel.Titulo_Imovel}')" class="btn-ripple text-xs font-bold bg-km-petroleo hover:bg-km-escuro text-white py-2.5 px-3 rounded-xl shadow-sm flex items-center justify-center gap-1.5 text-center transition">
-              <i class="fas fa-envelope text-sm"></i> Proposta
-            </button>
-          `;
-        }
+            let idVideo = 'imovel_' + index;
+            linksVideos[idVideo] = imovel.Link_Video_Tour ? imovel.Link_Video_Tour.trim() : '';
 
-        let cardHTML = `
-          <div class="card-interativo bg-white rounded-3xl overflow-hidden border border-km-ceu/80 flex flex-col justify-between card-imovel relative"
-               data-categoria="${categoria}" data-quartos="${quartos}" data-texto="${textoBusca}">
-            ${overlayVendido}
-            <div>
-              <div class="relative aspect-[16/10] overflow-hidden group">
-                <span class="absolute top-3 left-3 ${corTagStatus} text-white text-[11px] font-bold uppercase px-3 py-1 rounded-full z-20 shadow">${status}</span>
-                ${destaqueHTML}
-                ${tagFinanciamentoHTML}
-                
-                <div id="${carouselId}" class="flex w-full h-full transition-transform duration-500 ease-out" data-slide="0" data-total="${fotos.length}">
-                    ${slidesHTML}
-                </div>
-                ${arrowsHTML}
-                ${dotsHTML}
-                
-                <button onclick="abrirModalVideo('Tour do Imóvel: ${imovel.Titulo_Imovel}', '${idVideo}', event)" class="btn-ripple absolute bottom-3 left-3 bg-black/75 hover:bg-km-petroleo text-white text-[11px] font-bold px-3 py-1.5 rounded-full backdrop-blur-sm border border-white/30 flex items-center gap-1.5 shadow transition z-20">
-                  <i class="fas fa-play text-km-turquesa text-[10px]"></i> Tour do Imóvel
+            let categoria = imovel.Categoria_Filtro ? imovel.Categoria_Filtro.toLowerCase().trim() : 'venda';
+            let quartos = imovel.Quartos ? imovel.Quartos.trim() : '';
+            let textoBusca = `${imovel.Titulo_Imovel} ${imovel.Descricao} ${imovel.Valor_Imovel} ${status} ${categoria}`.toLowerCase();
+
+            let botoesAcao = '';
+            if (isVendidoOuAlugado) {
+              botoesAcao = `<div class="col-span-2 text-center py-2.5 bg-gray-100 text-gray-400 font-bold rounded-xl text-xs uppercase tracking-widest border border-gray-200">Indisponível no Momento</div>`;
+            } else {
+              botoesAcao = `
+                <a href="https://wa.me/5513974250913?text=${encodeURIComponent(`Olá, Kelli! Gostaria de informações sobre: ${imovel.Titulo_Imovel} (R$ ${imovel.Valor_Imovel}).`)}" target="_blank" rel="noopener noreferrer" class="btn-ripple text-xs font-bold bg-emerald-600 hover:bg-emerald-700 text-white py-2.5 px-3 rounded-xl shadow-sm flex items-center justify-center gap-1.5 text-center transition">
+                  <i class="fab fa-whatsapp text-sm"></i> Falar com Kelli
+                </a>
+                <button onclick="conectarFormulario('${imovel.Titulo_Imovel}')" class="btn-ripple text-xs font-bold bg-km-petroleo hover:bg-km-escuro text-white py-2.5 px-3 rounded-xl shadow-sm flex items-center justify-center gap-1.5 text-center transition">
+                  <i class="fas fa-envelope text-sm"></i> Proposta
                 </button>
-              </div>
-              
-              <div class="p-6">
-                <span class="text-[11px] font-bold text-km-turquesa uppercase tracking-wider block">${nomeCondVinculado !== '' ? nomeCondVinculado : 'Baixada Santista • SP'}</span>
-                <h3 class="font-serif font-bold text-lg text-km-petroleo mt-1 mb-2">${imovel.Titulo_Imovel}</h3>
-                <p class="text-xs text-gray-600 font-medium mb-3 leading-relaxed" style="display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;">
-                  ${imovel.Descricao || ''}
-                </p>
+              `;
+            }
 
-                ${containerDestaques}
+            let cardHTML = `
+              <div class="card-interativo bg-white rounded-3xl overflow-hidden border border-km-ceu/80 flex flex-col justify-between card-imovel relative"
+                   data-categoria="${categoria}" data-quartos="${quartos}" data-texto="${textoBusca}">
                 
-                <div class="grid grid-cols-3 gap-2 text-center text-xs text-gray-700 font-medium py-3 border-y border-gray-100 mb-4 bg-km-claro/60 rounded-xl">
-                  <div><i class="fas fa-ruler-combined text-km-petroleo block mb-1"></i> ${imovel.Area_m2 || '-'} m²</div>
-                  <div><i class="fas fa-bed text-km-petroleo block mb-1"></i> ${imovel.Quartos || '-'} Dorm.</div>
-                  <div><i class="fas fa-car text-km-petroleo block mb-1"></i> ${imovel.Vagas || '-'} Vaga(s)</div>
+                ${overlayVendido}
+
+                <div>
+                  <div class="relative aspect-[16/10] overflow-hidden group">
+                    <span class="absolute top-3 left-3 ${corTagStatus} text-white text-[11px] font-bold uppercase px-3 py-1 rounded-full z-20 shadow">${status}</span>
+                    ${destaqueHTML}
+                    ${tagFinanciamentoHTML}
+                    
+                    <div id="${carouselId}" class="flex w-full h-full transition-transform duration-500 ease-out" data-slide="0" data-total="${fotos.length}">
+                        ${slidesHTML}
+                    </div>
+                    ${arrowsHTML}
+                    ${dotsHTML}
+                    
+                    <button onclick="abrirModalVideo('Tour: ${imovel.Titulo_Imovel}', '${idVideo}', event)" class="btn-ripple absolute bottom-3 left-3 bg-black/75 hover:bg-km-petroleo text-white text-[11px] font-bold px-3 py-1.5 rounded-full backdrop-blur-sm border border-white/30 flex items-center gap-1.5 shadow transition z-20">
+                      <i class="fas fa-play text-km-turquesa text-[10px]"></i> Tour
+                    </button>
+                  </div>
+                  
+                  <div class="p-6">
+                    <span class="text-[11px] font-bold text-km-turquesa uppercase tracking-wider block">Baixada Santista • SP</span>
+                    <h3 class="font-serif font-bold text-lg text-km-petroleo mt-1 mb-2">${imovel.Titulo_Imovel}</h3>
+                    <p class="text-xs text-gray-600 font-medium mb-3 leading-relaxed" style="display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;">
+                      ${imovel.Descricao || ''}
+                    </p>
+
+                    ${containerDestaques}
+                    
+                    <div class="grid grid-cols-3 gap-2 text-center text-xs text-gray-700 font-medium py-3 border-y border-gray-100 mb-4 bg-km-claro/60 rounded-xl">
+                      <div><i class="fas fa-ruler-combined text-km-petroleo block mb-1"></i> ${imovel.Area_m2 || '-'} m²</div>
+                      <div><i class="fas fa-bed text-km-petroleo block mb-1"></i> ${imovel.Quartos || '-'} Dorm.</div>
+                      <div><i class="fas fa-car text-km-petroleo block mb-1"></i> ${imovel.Vagas || '-'} Vaga(s)</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="px-6 pb-6 pt-0 space-y-3">
+                  <div>
+                    <span class="text-[10px] text-gray-500 block font-semibold">Condomínio: R$ ${imovel.Valor_Condominio || '-'} | IPTU: R$ ${imovel.Valor_IPTU || '-'}</span>
+                    <span class="font-bold text-2xl text-km-petroleo">R$ ${imovel.Valor_Imovel || '-'}</span>
+                  </div>
+
+                  <div class="grid grid-cols-2 gap-2 relative z-10">
+                    ${botoesAcao}
+                  </div>
                 </div>
               </div>
-            </div>
+            `;
+            grid.innerHTML += cardHTML;
 
-            <div class="px-6 pb-6 pt-0 space-y-3">
-              <div>
-                <span class="text-[10px] text-gray-500 block font-semibold">Condomínio: R$ ${imovel.Valor_Condominio || '-'} | IPTU: R$ ${imovel.Valor_IPTU || '-'}</span>
-                <span class="font-bold text-2xl text-km-petroleo">R$ ${imovel.Valor_Imovel || '-'}</span>
-              </div>
-              <div class="grid grid-cols-2 gap-2 relative z-10">${botoesAcao}</div>
-            </div>
-          </div>
-        `;
-        grid.innerHTML += cardHTML;
+            if (!isVendidoOuAlugado) {
+              let opcaoText = `${imovel.Titulo_Imovel} (R$ ${imovel.Valor_Imovel})`;
+              let optionElement = document.createElement("option");
+              optionElement.value = opcaoText;
+              optionElement.textContent = `Imóvel: ${opcaoText}`;
+              selectInteresse.insertBefore(optionElement, selectInteresse.children[1]);
+            }
+          });
 
-        if (!isVendidoOuAlugado) {
-          let opcaoText = `${imovel.Titulo_Imovel} (R$ ${imovel.Valor_Imovel})`;
-          let optionElement = document.createElement("option");
-          optionElement.value = opcaoText;
-          optionElement.textContent = `Imóvel: ${opcaoText}`;
-          selectInteresse.insertBefore(optionElement, selectInteresse.children[1]);
+          if (visiveis === 0) { grid.innerHTML = `<div class="col-span-3 text-center py-12"><p>Nenhum imóvel disponível no momento.</p></div>`; }
+          document.getElementById('contadorResultados').innerHTML = `<i class="fas fa-home text-km-petroleo mr-1"></i> Mostrando ${visiveis} imóvel(is)`;
         }
       });
-
-      if (visiveis === 0) { grid.innerHTML = `<div class="col-span-3 text-center py-12"><p class="text-km-petroleo font-bold">Nenhum imóvel disponível no momento.</p></div>`; }
-      document.getElementById('contadorResultados').innerHTML = `<i class="fas fa-home text-km-petroleo mr-1"></i> Mostrando ${visiveis} imóvel(is)`;
     }
 
     window.mudarSlide = function(id, dir, event) {
@@ -842,15 +818,17 @@
     function abrirFotoArea(titulo, chaveFoto, desc) {
       document.getElementById('tituloFotoArea').innerText = titulo;
       document.getElementById('descFotoArea').innerText = desc;
-      document.getElementById('imgFotoArea').src = chaveFoto;
+      const img = document.getElementById('imgFotoArea');
+      img.src = chaveFoto;
+      img.alt = titulo;
       abrirModal('modalFotoArea');
     }
 
-    function abrirModalVideo(titulo, chaveVideo, event) {
+    function abrirModalVideo(titulo, chaveImovel, event) {
       if(event) { event.preventDefault(); event.stopPropagation(); }
       document.getElementById('tituloModalVideo').innerText = titulo;
       const container = document.getElementById('containerVideoPlayer');
-      const urlVideo = linksVideos[chaveVideo] || '';
+      const urlVideo = linksVideos[chaveImovel] || '';
       if (urlVideo && urlVideo.trim() !== '') {
         if (urlVideo.includes('youtube') || urlVideo.includes('youtu.be')) {
           container.innerHTML = `<iframe class="w-full h-full" src="${urlVideo}" title="${titulo}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
@@ -861,8 +839,8 @@
         container.innerHTML = `
           <div class="space-y-3">
             <div class="w-14 h-14 rounded-2xl bg-km-turquesa/20 text-km-turquesa flex items-center justify-center mx-auto text-2xl"><i class="fas fa-video"></i></div>
-            <h5 class="font-serif font-bold text-lg">Tour Indisponível</h5>
-            <p class="text-xs text-gray-300 max-w-sm mx-auto">Solicite detalhes à corretora pelo WhatsApp!</p>
+            <h5 class="font-serif font-bold text-lg">Tour em Gravação</h5>
+            <p class="text-xs text-gray-300 max-w-sm mx-auto">O vídeo deste imóvel está em produção. Solicite à corretora Kelli pelo WhatsApp!</p>
           </div>
         `;
       }
