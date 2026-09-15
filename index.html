@@ -530,9 +530,36 @@
               destaqueHTML = `<span class="absolute top-10 left-3 bg-km-petroleo text-white text-[10px] font-semibold uppercase px-2.5 py-1 rounded-full z-20 shadow flex items-center gap-1"><i class="fas fa-star text-km-laranja"></i> ${imovel.Destaque_Tag}</span>`;
             }
 
+            // MONTAR A LISTA DE FOTOS DO CARROSSEL (ESTILO AIRBNB: PRINCIPAL + CÔMODOS + ÁREAS COMUNS ATÉ 7 + EXTRAS)
+            let fotos = [];
+            if (imovel.Link_Foto_Principal && imovel.Link_Foto_Principal.trim() !== '') fotos.push(imovel.Link_Foto_Principal.trim());
+            if (imovel.Link_Foto_Varanda && imovel.Link_Foto_Varanda.trim() !== '') fotos.push(imovel.Link_Foto_Varanda.trim());
+            if (imovel.Link_Foto_Sala && imovel.Link_Foto_Sala.trim() !== '') fotos.push(imovel.Link_Foto_Sala.trim());
+            if (imovel.Link_Foto_Quarto && imovel.Link_Foto_Quarto.trim() !== '') fotos.push(imovel.Link_Foto_Quarto.trim());
+            if (imovel.Link_Foto_Cozinha && imovel.Link_Foto_Cozinha.trim() !== '') fotos.push(imovel.Link_Foto_Cozinha.trim());
+            if (imovel.Link_Foto_Banheiro && imovel.Link_Foto_Banheiro.trim() !== '') fotos.push(imovel.Link_Foto_Banheiro.trim());
+
+            // ADICIONAR AUTOMATICAMENTE AS FOTOS DAS ÁREAS COMUNS (DE 1 ATÉ 7) NA ROLETA PRINCIPAL
+            for(let i=1; i<=7; i++) {
+                let fotoAreaRoleta = imovel['Link_Foto_Area_Comum_' + i] || imovel['Link Foto Area Comum ' + i] || imovel['Foto_Area_Comum_' + i];
+                if(fotoAreaRoleta && fotoAreaRoleta.trim() !== '') {
+                    fotos.push(fotoAreaRoleta.trim());
+                }
+            }
+
+            // ADICIONAR FOTOS EXTRAS DA PLANILHA (DE 1 ATÉ 10)
+            for(let i=1; i<=10; i++) {
+               if (imovel['Link_Foto_Extra_' + i] && imovel['Link_Foto_Extra_' + i].trim() !== '') {
+                   fotos.push(imovel['Link_Foto_Extra_' + i].trim());
+               }
+            }
+
+            if(fotos.length === 0) fotos.push('https://via.placeholder.com/800x500?text=Sem+Foto');
+
+            // CRIAR OS BOTÕES DE ÁREAS COMUNS (DE 1 ATÉ 7) E COMODIDADES TEXTUAIS
             let nomesAreasComFotos = [];
             let btnCondominio = '';
-            for(let i=1; i<=3; i++) {
+            for(let i=1; i<=7; i++) {
                 let fotoArea = imovel['Link_Foto_Area_Comum_' + i] || imovel['Link Foto Area Comum ' + i] || imovel['Foto_Area_Comum_' + i];
                 let videoArea = imovel['Link_Video_Area_Comum_' + i] || imovel['Link Video Area Comum ' + i];
                 let nomeArea = imovel['Nome_Area_Comum_' + i] || imovel['Nome Area Comum ' + i] || imovel['Nome_Area_' + i] || `Área ${i}`;
@@ -573,22 +600,6 @@
                 btnCondominio += `<span class="tag-sem-clique"><i class="${icone}"></i> ${nome}</span>`;
               });
             }
-
-            let fotos = [];
-            if (imovel.Link_Foto_Principal && imovel.Link_Foto_Principal.trim() !== '') fotos.push(imovel.Link_Foto_Principal.trim());
-            if (imovel.Link_Foto_Varanda && imovel.Link_Foto_Varanda.trim() !== '') fotos.push(imovel.Link_Foto_Varanda.trim());
-            if (imovel.Link_Foto_Sala && imovel.Link_Foto_Sala.trim() !== '') fotos.push(imovel.Link_Foto_Sala.trim());
-            if (imovel.Link_Foto_Quarto && imovel.Link_Foto_Quarto.trim() !== '') fotos.push(imovel.Link_Foto_Quarto.trim());
-            if (imovel.Link_Foto_Cozinha && imovel.Link_Foto_Cozinha.trim() !== '') fotos.push(imovel.Link_Foto_Cozinha.trim());
-            if (imovel.Link_Foto_Banheiro && imovel.Link_Foto_Banheiro.trim() !== '') fotos.push(imovel.Link_Foto_Banheiro.trim());
-
-            for(let i=1; i<=10; i++) {
-               if (imovel['Link_Foto_Extra_' + i] && imovel['Link_Foto_Extra_' + i].trim() !== '') {
-                   fotos.push(imovel['Link_Foto_Extra_' + i].trim());
-               }
-            }
-
-            if(fotos.length === 0) fotos.push('https://via.placeholder.com/800x500?text=Sem+Foto');
 
             let carouselId = `carousel_${index}`;
             let slidesHTML = fotos.map((f, i) => `
@@ -657,7 +668,7 @@
               botoesAcao = `<div class="col-span-2 text-center py-2.5 bg-gray-100 text-gray-400 font-bold rounded-xl text-xs uppercase tracking-widest border border-gray-200">Indisponível no Momento</div>`;
             } else {
               botoesAcao = `
-                <a href="https://wa.me/5513974250913?text=${encodeURIComponent(`Olá, Kelli! Gostaria de informações sobre: ${imovel.Titulo_Imovel} (${valorImovelStr.toLowerCase() === 'a combinar' || valorImovelStr.toLowerCase() === 'sob consulta' ? valorImovelStr : 'R$ ' + valorImovelStr}).`)}" target="_blank" rel="noopener noreferrer" class="btn-ripple text-xs font-bold bg-emerald-600 hover:bg-emerald-700 text-white py-2.5 px-3 rounded-xl shadow-sm flex items-center justify-center gap-1.5 text-center transition">
+                <a href="https://wa.me/5513974250913?text=${encodeURIComponent(`Olá, Kelli! Vim pelo seu site.%0A%0A*Imóvel:* ${imovel.Titulo_Imovel}%0A*Valor:* ${valorImovelStr.toLowerCase() === 'a combinar' || valorImovelStr.toLowerCase() === 'sob consulta' ? valorImovelStr : 'R$ ' + valorImovelStr}`)}" target="_blank" rel="noopener noreferrer" class="btn-ripple text-xs font-bold bg-emerald-600 hover:bg-emerald-700 text-white py-2.5 px-3 rounded-xl shadow-sm flex items-center justify-center gap-1.5 text-center transition">
                   <i class="fab fa-whatsapp text-sm"></i> Falar com Kelli
                 </a>
                 <button onclick="conectarFormulario('${imovel.Titulo_Imovel}')" class="btn-ripple text-xs font-bold bg-km-petroleo hover:bg-km-escuro text-white py-2.5 px-3 rounded-xl shadow-sm flex items-center justify-center gap-1.5 text-center transition">
